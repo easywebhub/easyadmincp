@@ -1,0 +1,90 @@
+<template>
+    <style>
+        .form-group {
+            height: 60px;
+            margin-right: 20px;
+        }
+        
+        .form-group label {
+            margin-right: 10px;
+        }
+        
+        a {
+            color: black;
+        }
+    </style>
+    <section class="ui">
+        <h3>Quản lý Website &nbsp;
+        </h3>    
+              <form>
+            <div class="ui form">
+                <div class="three fields">
+                    <div class="field">
+                        <label>Tên WebSite</label>
+                        <input type="text" placeholder="Tên WebSite" ref="searchNamWebSite">
+                    </div>
+                    <div class="field">
+                        <label>Sản phẩm</label>
+                        <input type="text" placeholder="Sản phẩm" ref="searchProduction">
+                    </div>
+                    <div class="field">
+                        <label>Loại Website</label>
+                        <input type="text" placeholder="Loại Website" ref="searchType">
+                    </div>
+                </div>
+            </div>
+              </form>
+             <button click.delegate="updateUser(item)" senam_tooltip data-content="Tạo mới" style="width:50px;margin:10px 0px"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+        
+            <table class="ui table">
+                <thead>
+                    <tr>
+
+                        <th>Stt</th>
+                        <th>Tên Website</th>
+                        <th>Tên Website hiển thị</th>
+                        <th>Link</th>
+                        <th>Stagging</th>
+                        <th>Sản phẩm</th>
+                        <th>Kiểu</th>
+                        <th>Account</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tbody ref="mydata" items.bind="listWebSite | searchTypes:searchType.value |searchName:searchNamWebSite.value |searchProduction:searchProduction.value">
+                        <tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (itemperpage):current * (itemperpage)">
+                            <td>${$index+1}</td>
+                            <td>${item.Name}</td>
+                            <td>${item.DisplayName}</td>
+                            <td>${item.Url}</td>
+                            <td>${item.Stagging}</td>
+                            <td>${item.Production}</td>
+                            <td>${item.Type}</td>
+                            <td style="width:15%"><code>${item.accounts|json}</code></td>
+
+
+                            <td>
+                                <div class="row">
+                                    <button senam_tooltip data-content="Xóa" type="button" class="btn btn-default" style="margin-right:5px">
+          <a  click.delegate="deleteWebSite(item)"><i class="fa fa-trash-o" aria-hidden="true"></i></span></a>
+        </button>
+                                    <button type="button" class="btn btn-default" senam_tooltip data-content="Cập nhật" click.delegate="$parent.updateUser(item)">
+         <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+
+
+                                </div>
+
+
+                            </td>
+                        </tr>
+                    </tbody>
+
+            </table>
+            <pagination page-size.bind="pagesize" total.bind="total" item-per-page.bind="itemperpage" current-page.bind="current"></pagination>
+        </section>
+    </section>
+    </div>
+</template>

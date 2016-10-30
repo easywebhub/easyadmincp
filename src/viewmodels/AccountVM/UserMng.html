@@ -1,0 +1,83 @@
+
+<template>
+    <style>
+        .form-group {
+            height: 60px;
+            margin-right: 20px;
+        }
+        
+        .form-group label {
+            margin-right: 10px;
+        }
+        
+        a {
+            color: black;
+        }
+    </style>
+    <section class="ui">
+        <h3>Quản lý User &nbsp;
+        </h3>    
+              <form>
+            <div class="ui form">
+                <div class="three fields">
+                   
+                    <div class=" form-group">
+                        <label for="">Tài khoản</label>
+                        <input type="text" class="form-control" id="" placeholder="Tài khoản" ref="searchUserName">
+                    </div>
+                     <div class=" form-group">
+                        <label for="">Quyền</label>
+                        <input type="text" class="form-control" id="" placeholder="Kiểu Website"  ref="searchAccountType">
+                    </div>
+                    <div class="field">
+                        <label>Quyền</label>
+                        <input type="text" placeholder="Kiểu Website"  ref="searchAccountType">
+                    </div>
+                   
+                </div>
+            </div>
+              </form>
+             <button click.delegate="updateUser(item)" senam_tooltip data-content="Tạo mới" style="width:50px;margin:10px 0px"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+        
+            <table class="ui table">
+            <thead>
+                <tr>  
+                    <th>Stt</th>
+                    <th>Tài khoản</th>
+                    <th>Trạng thái</th>
+                    <th>Info</th>
+                    <th>Websites</th>
+                    <th>Quyền</th>
+                    <th></th>
+               </tr>
+            </thead>
+                
+                    <tbody ref="mydata" items.bind="listUser | searchAccountType:searchAccountType.value | searchUserName:searchUserName.value">
+                        <tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (itemperpage):current * (itemperpage)">
+                    <td>${$index+1}</td>
+                    <td>${item.UserName}</td>
+                    <td>${item.Status}</td>
+                    <td style="width:15%"><code>${item.Info | json}</code></td>
+                     <td style="width:15%"><code>${item.Websites | json}</code></td>
+                    <td>${item.AccountType}</td>
+                    
+               <td>                    <div class="row">
+                            <button senam_tooltip data-content="Xóa" type="button" class="btn btn-default" click.delegate="deleteUser(item)" style="margin-right:5px">
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </button>
+                            <button type="button" class="btn btn-default" senam_tooltip data-content="Cập nhật" click.delegate="$parent.updateUser(item)">
+         <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+                         </div>
+
+
+                    </td>
+                </tr>
+            </tbody>
+
+            </table>
+            <pagination page-size.bind="pagesize" total.bind="total" item-per-page.bind="itemperpage" current-page.bind="current"></pagination>
+        </section>
+    </section>
+    </div>
+</template>

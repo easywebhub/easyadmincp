@@ -1,0 +1,58 @@
+<template bindable="router">
+  <style>
+    .aurelia-hide{display: block !important;} 
+  </style>  
+         <div class="col-xs shrink">
+
+                <div class="sidebar">
+
+                      <div class="ui  big label fluid">
+                        <i class="cubes icon"></i> Các dự án
+                      </div>
+
+                      <div class="ui accordion desadmin-sidebar-accordion" semantic_accordion>
+                              <div class="title">
+                                <i class="dropdown icon"></i>
+
+                                <i class="setting  icon"></i> Dashboard
+
+                                </div>
+                                <div class="content">
+                                    <div class="ui secondary vertical menu">
+                                      <ul>
+                                        <li repeat.for="row of router.navigation">
+                                          <a href.bind="row.href" class="item">${row.title}</a>
+                                        </li>
+                                      </ul>
+                                    </div>
+
+                                </div>
+                        </div>
+
+                 </div>
+
+        </div>
+
+      <!--<div if.bind="router.appState.UserInfo.UserLoginTokenModel" class="btn-group user-info">
+        <a class="btn btn-info"><i class="fa fa-user fa-fw"></i> ${router.appState.UserInfo.UserModel.FullName}</a>
+        <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">
+          <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#/editprofile/"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Sửa thông tin</a></li>
+          <li><a href="#/changpassword/"><i class="fa fa-key fa-fw" aria-hidden="true"></i> Đổi mật khẩu</a></li>
+          <li class="divider"></li>
+          <li><a href="#/logout/"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Đăng xuất</a></li>
+        </ul>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="loader" if.bind="router.isNavigating">
+          <i class="fa fa-spinner fa-spin fa-3x" style="color: white"></i>
+        </li>
+      </ul>
+    </div>
+  </nav>-->
+
+ 
+</template>
