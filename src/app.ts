@@ -16,16 +16,23 @@ export class App {
   configureRouter(config, router) {
     config.title = ' ADMINCP';
     config.addPipelineStep('authorize', AuthorizeStep);
-    this.checkNav = (Lockr.get('UserInfo')as any);  
-    console.log('this.checkNav',this.checkNav);
+    if(Lockr.get('UserInfo'))
+    {
+    this.checkNav = (Lockr.get('UserInfo')as any).Result;  
+    }
+    else
+    {
+      this.checkNav=false
+    }
      
   
     config.map([
-      { route: ['','Dashboard'], name: 'Dashboard', moduleId: 'viewmodels/DashBoardVM/dash_board', nav: this.checkNav, title: 'DASHBOARB' },
+      { route: ['','Dashboard'], name: 'Dashboard', moduleId: 'viewmodels/DashBoardVM/dash_board', nav:this.checkNav, title: 'DASHBOARB' },
       { route: 'login', name: 'login', moduleId: 'viewmodels/LoginVM/login', nav: false, settings: { roles: [] }, title: 'Đăng nhập' },
       { route: 'WebSiteMenu', name: 'WebSiteMenu', moduleId: 'viewmodels/WebSiteVM/WebSiteMenu', nav: this.checkNav, title: 'QL WEBSITE' },
       { route: 'AccountMenu', name: 'AccountMenu', moduleId: 'viewmodels/AccountVM/AccountMenu', nav:this.checkNav, title: 'QL USER' },
-      { route: 'logout', name: 'logout', moduleId: 'viewmodels/LoginVM/logout', nav: false, title: 'Logout'}
+      { route: 'logout', name: 'logout', moduleId: 'viewmodels/LoginVM/logout', nav: false, title: 'Logout'},
+      { route: 'signup', name: 'signup', moduleId: 'viewmodels/LoginVM/signup', nav: false, title: 'SignUp'}
     ]);
      
     this.router = router;

@@ -142,7 +142,7 @@
 
 
   <require from="select2/css/select2.css"></require>
-  <div class="topNav">
+  <div class="topNav" if.bind="checkNav">
 
     <div class="row between-xs middle-xs">
       <div class="col-xs ">
@@ -173,7 +173,7 @@
     </div>
   </div>
    <div class="row flex-nowrap">
-       <div class="col-xs shrink">
+       <div class="col-xs shrink" if.bind="checkNav">
 
                 <div class="sidebar">
 

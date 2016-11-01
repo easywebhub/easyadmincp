@@ -1,0 +1,113 @@
+<template>
+
+	<style>
+		/*fix z index*/
+		
+		.sweet-alert {
+			z-index: 200111;
+		}
+		
+		body > span.select2-container {
+			z-index: 100111;
+		}
+		
+		ai-dialog-overlay.active {
+			background-color: black;
+			opacity: .5;
+			z-index: 9998 !important;
+		}
+		
+		.edit-form {}
+		
+		ai-dialog-container {
+			margin: 30px auto;
+			z-index: 100005 !important;
+		}
+		
+		ai-dialog,
+		ai-dialog-container>div>div {
+			max-width: 800px;
+			min-width: 600px;
+			height: auto;
+			margin: auto;
+			display: block;
+		}
+		
+		ai-dialog>ai-dialog-header {
+			padding: 11px 16px 4px;
+		}
+		
+		ai-dialog>ai-dialog-header>button {
+			display: inline-block;
+			float: none;
+		}
+		
+		ai-dialog-overlay.active {
+			background-color: black;
+			opacity: .5;
+		}
+		
+		.lstdoi {
+			margin-bottom: 20px;
+		}
+		
+		.noidung-lsthaydoi {
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			padding: 5px;
+			max-height: 150px;
+			overflow: scroll;
+			overflow-x: hidden;
+			min-height: 30px;
+		}
+		
+		#style-1::-webkit-scrollbar-track {
+			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+			border-radius: 10px;
+			background-color: #F5F5F5;
+		}
+		
+		#style-1::-webkit-scrollbar {
+			width: 5px;
+			background-color: #000;
+			border-radius: 10px;
+		}
+		
+		#style-1::-webkit-scrollbar-thumb {
+			border-radius: 10px;
+			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+			background-color: #555;
+		}
+	</style>
+
+	<ai-dialog class="edit-form" data-backdrop="static">
+		<ai-dialog-header>
+
+			<span>Tạo mới Website</span>
+
+
+		</ai-dialog-header>
+		<ai-dialog-body>
+
+			<form class="ui form" submit.delegate="submit()">
+				<div class="field">
+					<label>Tên Website</label>
+					<input type="text" name="tên Website" placeholder="tên Website" value.bind="Web.Name">
+				</div>
+				<div class="field">
+					<label>DisplayName</label>
+					<input type="text" name="DisplayName" placeholder="DisplayName" value.bind="Web.DisplayName">
+				</div>
+				<div class="field">
+					<label>Link</label>
+					<input type="text" name="Link" placeholder="Link" value.bind="Web.Url">
+				</div>
+				<button class="ui button" type="submit">Submit</button>
+			</form>
+
+		</ai-dialog-body>
+		<ai-dialog-footer>
+
+		</ai-dialog-footer>
+	</ai-dialog>
+</template>
