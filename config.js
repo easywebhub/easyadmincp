@@ -14,6 +14,7 @@ System.config({
     "datetimepicker": "bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js",
     "magnificPopup": "bower_components/magnific-popup/dist/jquery.magnific-popup.min.js",
     "semantic": "bower_components/semantic/dist/semantic.min.js",
+    "tinymce": "bower_components/tinymce/tinymce.min.js",
     "chart.js": "bower_components/chart.js/dist/chart.min.js",
     "semantic-ui-calendar": "bower_components/semantic-ui-calendar/dist/calendar.js"
   },
