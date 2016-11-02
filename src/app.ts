@@ -11,28 +11,22 @@ export class App {
  @bindable appState;
   config:any
   constructor(appState, private history: History) {
-  
+     this.checkNav =true;  
   }
   configureRouter(config, router) {
     config.title = ' ADMINCP';
     config.addPipelineStep('authorize', AuthorizeStep);
-    if(Lockr.get('UserInfo'))
-    {
-    this.checkNav = (Lockr.get('UserInfo')as any).Result;  
-    }
-    else
-    {
-      this.checkNav=false
-    }
+   
+    console.log('this.checkNav',this.checkNav);
      
   
     config.map([
-      { route: ['','Dashboard'], name: 'Dashboard', moduleId: 'viewmodels/DashBoardVM/dash_board', nav:this.checkNav, title: 'DASHBOARB' },
+      { route: ['','Dashboard'], name: 'Dashboard', moduleId: 'viewmodels/DashBoardVM/dash_board', nav: this.checkNav, title: 'DASHBOARB' },
       { route: 'login', name: 'login', moduleId: 'viewmodels/LoginVM/login', nav: false, settings: { roles: [] }, title: 'Đăng nhập' },
-      { route: 'WebSiteMenu', name: 'WebSiteMenu', moduleId: 'viewmodels/WebSiteVM/WebSiteMenu', nav: this.checkNav, title: 'QL WEBSITE' },
+      { route: 'WebSiteMenu', name: 'WebSiteMenu', moduleId: 'viewmodels/WebSiteVM/WebSiteMenu', nav:this.checkNav, title: 'QL WEBSITE' },
       { route: 'AccountMenu', name: 'AccountMenu', moduleId: 'viewmodels/AccountVM/AccountMenu', nav:this.checkNav, title: 'QL USER' },
-      { route: 'logout', name: 'logout', moduleId: 'viewmodels/LoginVM/logout', nav: false, title: 'Logout'},
-      { route: 'signup', name: 'signup', moduleId: 'viewmodels/LoginVM/signup', nav: false, title: 'SignUp'}
+      { route: 'logout', name: 'logout', moduleId: 'viewmodels/LoginVM/logout', nav: false, title: 'Logout' },
+        { route: 'register', name: 'register', moduleId: 'viewmodels/LoginVM/resgister', nav: false, title: 'register'}
     ]);
      
     this.router = router;

@@ -15,34 +15,7 @@ export class WebSiteServices {
             this.http.fetch(`api-user/getlistWebsite`, { method: 'get'}).then(response => response.json()).then(data => { resolve(data) }).catch(err => reject(Error(err)));
         })
     }
-    CreateWeb(meta){
-    return new Promise((resolve, reject) => {
-            this.http.fetch(`website/addnew`, {
-                method: 'post',
-                body: json(meta),
-            })
-                .then(response => response.json())
-                .then(data => {
-                    resolve(data);
-                })
-                .catch(err => reject(Error(err)));
 
-        });
-  }
-  RoleWeb(meta){
-    return new Promise((resolve, reject) => {
-            this.http.fetch(`website/add-account`, {
-                method:'post',
-                body: json(meta),
-            })
-                .then(response => response.json())
-                .then(data => {
-                    resolve(data);
-                })
-                .catch(err => reject(Error(err)));
-
-        });
-  }
 
 
 }

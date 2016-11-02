@@ -1,20 +1,5 @@
 <template>
-  <style>
-     body > .grid {
-      height: 100%;
-    }
-    .image {
-      margin-top: -100px;
-    }
-    .column {
-      max-width: 450px;
-     
-    }
-    .login_height{
-      margin-top:200px;
-    }
-    
-    </style>
+ 
     <div class="login_height">
   <div class="ui middle aligned center aligned grid">
   <div class="column">
@@ -29,15 +14,19 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" name="email" placeholder="Tài khoản" value.bind="Login.UserName">
+            
+            <input type="text" id="UserName" data-validate="UserName" name="UserName" value.bind="Login.UserName">
           </div>
         </div>
-        <div class="field">
+       
+       <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Mật khẩu" value.bind="Login.Password">
+            
+            <input type="text" id="Password" data-validate="Password" name="Password" value.bind="Login.Password">
           </div>
         </div>
+
         <button class="ui fluid large teal submit button" type="submit">Login</button>
       </div>
 
@@ -46,8 +35,8 @@
     </form>
 
     <div class="ui message">
-       <button class="ui fluid large teal submit button" click.delegate="routerToSignup()">Register</button>
-    
+       <span class="ui fluid large teal submit button"  click.delegate="routeRegister()">Register</span>
+   
     </div>
   </div>
 </div>

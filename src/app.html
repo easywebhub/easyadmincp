@@ -138,11 +138,42 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+     
+    }
+    .login_height{
+      margin-top:200px;
+    }
+    td.day{
+  position:relative;  
+}
+
+td.day.disabled:hover:before {
+    content: 'This date is disabled';
+    color: red;
+    background-color: white;
+    top: -22px;
+    position: absolute;
+    width: 136px;
+    left: -34px;
+    z-index: 1000;
+    text-align: center;
+    padding: 2px;
+}
+
   </style>
 
 
   <require from="select2/css/select2.css"></require>
-  <div class="topNav" if.bind="checkNav">
+ 
+  <div class="topNav">
 
     <div class="row between-xs middle-xs">
       <div class="col-xs ">
@@ -173,7 +204,7 @@
     </div>
   </div>
    <div class="row flex-nowrap">
-       <div class="col-xs shrink" if.bind="checkNav">
+       <div class="col-xs shrink">
 
                 <div class="sidebar">
 

@@ -12,7 +12,7 @@ export class DateTimePicker {
     @bindable vl;
     constructor(private element: Element) {
         this.element = element;
-
+        this.vl = new Date();
     }
     attached() {
         console.log('this :', this);

@@ -34,6 +34,7 @@
     "eonasdan-bootstrap-datetimepicker": "^4.17.37",
     "magnific-popup": "^1.1.0",
     "semantic": "semantic-ui#^2.2.4",
-    "chart.js": "^2.3.0"
+    "chart.js": "^2.3.0",
+    "semantic-ui-calendar": "^0.0.3"
   }
 }

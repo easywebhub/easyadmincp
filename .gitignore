@@ -10,4 +10,5 @@ test/e2e/dist
 /typings
 /export
 /out
+src/configs/appConfig.ts
 deploy/
