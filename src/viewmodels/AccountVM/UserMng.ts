@@ -62,4 +62,3 @@ export class SearchAccountTypeValueConverter {
         return array;
     }
 }
-

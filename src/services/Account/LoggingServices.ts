@@ -18,7 +18,7 @@ export class LoggingServices {
     //http://api.easywebhub.com/api-user/Logon
   CheckLogin(meta) {
         return new Promise((resolve, reject) => {
-            this.http.fetch(`api-user/Logon`, {
+            this.http.fetch(`auth/signin`, {
                 method: 'post',
                 body: json(meta),
             })
@@ -30,6 +30,19 @@ export class LoggingServices {
 
         });
     }
+  SignUp(meta){
+    return new Promise((resolve, reject) => {
+            this.http.fetch(`auth/signup`, {
+                method: 'post',
+                body: json(meta),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => reject(Error(err)));
 
+        });
+  }
 
 }

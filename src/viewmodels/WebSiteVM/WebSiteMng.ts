@@ -1,8 +1,12 @@
 import { inject, BindingEngine } from 'aurelia-framework';
 //import * as toastr from 'toastr';
 import { WebSiteServices } from '../../services/WebSite/WebSiteServices';
+import { DialogService } from 'aurelia-dialog';
 import * as _ from 'lodash';
-@inject(WebSiteServices, BindingEngine)
+import { CreateWebDlg } from './CreateWebDlg';
+import { CreateWeb } from '../../models//website';
+
+@inject(WebSiteServices, BindingEngine,DialogService)
 export class WebSiteMng {
     webSiteServices: WebSiteServices;
     listWebSite: any;
@@ -13,14 +17,15 @@ export class WebSiteMng {
     current: number;
     pagesize: number;
     bindingEngine: BindingEngine;
-
-    constructor(webSiteServices, bindingEngine) {
+     dialogService:DialogService
+    constructor(webSiteServices, bindingEngine,dialogService) {
         this.webSiteServices = webSiteServices;
 
         this.itemperpage = 10;
         this.pagesize = 6;
         this.current = 1;
         this.total=0
+        this.dialogService=dialogService;
 
     }
     activate() {
@@ -36,6 +41,31 @@ export class WebSiteMng {
         }
 
         );
+    }
+    createWeb() {
+
+        this.dialogService.open({ viewModel: CreateWebDlg}).then((result) => {
+            if (!result.wasCancelled) {
+                console.log('result.output',result.output);
+
+
+                this.webSiteServices.CreateWeb(new CreateWeb(result.output)).then((rs: any) => {
+                   if (rs.Result == true) {
+
+                        swal({ title: "Thông báo", text:rs.Message, timer: 2500, showConfirmButton: true, type: "success" });
+                     
+                        this.activate();
+                    }
+                    else {
+                         swal({ title: "Thông báo",text:(rs as any).Message , timer: 2500, showConfirmButton: true,type: "warning" });
+                    }
+                });
+
+            } else {
+                console.log('bad');
+            }
+
+        });
     }
 
 
