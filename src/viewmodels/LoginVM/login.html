@@ -15,7 +15,7 @@
     }
     
     </style>
-    <div class="login_height">
+     <div class="login_height">
   <div class="ui middle aligned center aligned grid">
   <div class="column">
     <h2 class="ui image header">
@@ -29,15 +29,19 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" name="email" placeholder="Tài khoản" value.bind="Login.UserName">
+            
+            <input type="text" id="UserName" data-validate="UserName" name="UserName" value.bind="Login.UserName">
           </div>
         </div>
-        <div class="field">
+       
+       <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Mật khẩu" value.bind="Login.Password">
+            
+            <input type="password" id="Password" data-validate="Password" name="Password" value.bind="Login.Password">
           </div>
         </div>
+
         <button class="ui fluid large teal submit button" type="submit">Login</button>
       </div>
 
@@ -46,8 +50,8 @@
     </form>
 
     <div class="ui message">
-       <button class="ui fluid large teal submit button" click.delegate="routerToSignup()">Register</button>
-    
+       <span class="ui fluid large teal submit button"  click.delegate="routeRegister()">Register</span>
+   
     </div>
   </div>
 </div>
