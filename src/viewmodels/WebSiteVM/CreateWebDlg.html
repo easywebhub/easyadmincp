@@ -102,12 +102,11 @@
 					<label>Link</label>
 					<input type="text" data-validate="Link" placeholder="Link" value.bind="Web.Url">
 				</div>
-				<button class="ui button" type="submit">Submit</button>
+				<button class="ui blue button" type="submit">Tạo mới</button> 
+				<button class="ui red button" click.trigger ="dialogController.cancel()">Cancel</button>
 			</form>
 
 		</ai-dialog-body>
-		<ai-dialog-footer>
-
-		</ai-dialog-footer>
+		
 	</ai-dialog>
 </template>

@@ -34,7 +34,7 @@
                 </div>
             </div>
               </form>
-             <button click.delegate="createWeb(item)" senam_tooltip data-content="Tạo mới" style="width:50px;margin:10px 0px"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+             <button click.delegate="createWeb(item)" senam_tooltip data-content="Tạo mới" style="width:50px;margin:10px 0px" class="ui blue button"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
         
             <table class="ui table">
                 <thead>
@@ -67,10 +67,10 @@
 
                             <td>
                                 <div class="row">
-                                    <button senam_tooltip data-content="Xóa" type="button" class="btn btn-default" style="margin-right:5px">
+                                    <button senam_tooltip data-content="Xóa" type="button" style="margin-right:5px" class="ui red button">
           <a  click.delegate="deleteWebSite(item)"><i class="fa fa-trash-o" aria-hidden="true"></i></span></a>
         </button>
-                                    <button type="button" class="btn btn-default" senam_tooltip data-content="Cập nhật" click.delegate="$parent.updateUser(item)">
+                                    <button type="button" class="ui green button" senam_tooltip data-content="Cập nhật" click.delegate="$parent.updateUser(item)">
          <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
 
