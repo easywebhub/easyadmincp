@@ -68,7 +68,7 @@ export class LoginViewModel {
        
       if ((rs[0] as any).Result == true)
       {
-        //Lockr.set('UserInfo', (rs[0] as any).Data);
+        Lockr.set('UserInfo',rs[0]);
         //console.log('object',this.Login);
          window.setTimeout(() => {
         this.theRouter.navigateToRoute('Dashboard');

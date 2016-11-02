@@ -11,14 +11,17 @@ export class App {
  @bindable appState;
   config:any
   constructor(appState, private history: History) {
-     this.checkNav =true;  
+       this.checkNav = false;
   }
   configureRouter(config, router) {
     config.title = ' ADMINCP';
     config.addPipelineStep('authorize', AuthorizeStep);
    
     console.log('this.checkNav',this.checkNav);
-     
+    if (Lockr.get('UserInfo'))
+    {
+      this.checkNav = (Lockr.get('UserInfo') as any).Result;
+    }  
   
     config.map([
       { route: ['','Dashboard'], name: 'Dashboard', moduleId: 'viewmodels/DashBoardVM/dash_board', nav: this.checkNav, title: 'DASHBOARB' },
@@ -31,7 +34,7 @@ export class App {
      
     this.router = router;
    
-    return;
+  
   }
   
 

@@ -173,7 +173,7 @@ td.day.disabled:hover:before {
 
   <require from="select2/css/select2.css"></require>
  
-  <div class="topNav">
+  <div class="topNav" if.bind="checkNav">
 
     <div class="row between-xs middle-xs">
       <div class="col-xs ">
@@ -206,7 +206,7 @@ td.day.disabled:hover:before {
    <div class="row flex-nowrap">
        <div class="col-xs shrink">
 
-                <div class="sidebar">
+                <div class="sidebar" if.bind="checkNav">
 
                       <div class="ui  big label fluid">
                         <i class="cubes icon"></i> Các dự án

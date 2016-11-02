@@ -1,6 +1,21 @@
 <template>
- 
-    <div class="login_height">
+  <style>
+     body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+     
+    }
+    .login_height{
+      margin-top:200px;
+    }
+    
+    </style>
+     <div class="login_height">
   <div class="ui middle aligned center aligned grid">
   <div class="column">
     <h2 class="ui image header">
@@ -23,7 +38,7 @@
           <div class="ui left icon input">
             <i class="lock icon"></i>
             
-            <input type="text" id="Password" data-validate="Password" name="Password" value.bind="Login.Password">
+            <input type="password" id="Password" data-validate="Password" name="Password" value.bind="Login.Password">
           </div>
         </div>
 
