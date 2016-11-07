@@ -4,7 +4,9 @@ import { Router } from 'aurelia-router';
 import { inject} from 'aurelia-dependency-injection';
 import { LoggingServices } from '../../services/Account/LoggingServices';
 import Lockr = require('lockr');
+import 'tinymce';
 
+declare var tinymce: any;
 @inject( Router,LoggingServices)
 export class LoginViewModel {
   theRouter: Router;
@@ -34,29 +36,35 @@ export class LoginViewModel {
   attached() {
          
     var rules = {
-    UserName: {
+      UserName: {
         identifier: 'UserName',
         rules: [{
-            type: 'empty',
-            prompt: 'Xin vui lòng nhập tên vào'
+          type: 'empty',
+          prompt: 'Xin vui lòng nhập tên vào'
         }]
       },
       Password: {
         identifier: 'Password',
         rules: [{
-            type   : 'minLength[6]',
-            prompt : 'Mật khẩu ít nhất {ruleValue} ký tự'
+          type: 'minLength[6]',
+          prompt: 'Mật khẩu ít nhất {ruleValue} ký tự'
         }]
       },
       
-};
-($(".ui.form")as any).form(rules, {
-    inline: true,
-    on: 'blur'
+    };
+    ($(".ui.form") as any).form(rules, {
+      inline: true,
+      on: 'blur'
+    });
+
+    
+     
+     
+    
+    tinymce.init({
+  selector: "#mytextarea" // change this value according to your HTML
+  
 });
-
-   
-
     
   }
   routeRegister() {

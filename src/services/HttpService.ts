@@ -1,6 +1,6 @@
 import {  inject, LogManager, transient} from 'aurelia-framework';
 import {  HttpClient, json } from 'aurelia-fetch-client';
-import * as AppConfig from '../Configs/appConfig';
+import {ApiUrlBase } from '../configs/appConfig';
 @inject(HttpClient)
 @transient()
 export class HttpService {
@@ -14,7 +14,7 @@ export class HttpService {
     http.configure(config => {
       config
         .useStandardConfiguration()
-        .withBaseUrl(AppConfig.ApiUrlBase)
+        .withBaseUrl(ApiUrlBase)
         .withDefaults({
           headers: {
             'SessionToken': (Lockr.get('UserInfo') == null || typeof Lockr.get('UserInfo') === "undefined") ? "" : (Lockr.get('UserInfo')as any).AccountId

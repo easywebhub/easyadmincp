@@ -12,7 +12,7 @@ export class WebSiteServices {
     }
     GetListWebSite() {
         return new Promise((resolve, reject) => {
-            this.http.fetch(`api-user/getlistWebsite`, { method: 'get'}).then(response => response.json()).then(data => { resolve(data) }).catch(err => reject(Error(err)));
+            this.http.fetch(`website/all`, { method: 'get'}).then(response => response.json()).then(data => { resolve(data) }).catch(err => reject(Error(err)));
         })
     }
     CreateWeb(meta){
@@ -28,7 +28,8 @@ export class WebSiteServices {
                 .catch(err => reject(Error(err)));
 
         });
-  }
+    }
+    
   RoleWeb(meta){
     return new Promise((resolve, reject) => {
             this.http.fetch(`website/add-account`, {

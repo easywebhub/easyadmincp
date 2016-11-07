@@ -25,10 +25,16 @@ export class UserMng {
     }
     activate() {
         return Promise.all([this.userServices.GetListUser()]).then(rs => {
-            this.listUser = (rs[0] as any).Data;
-            this.total = this.listUser.length;
-             console.log('listUser',this.total);
-            console.log('listUser',this.listUser[0].Websites);
+            if ((rs[0] as any).Result == true) {
+                this.listUser = (rs[0] as any).Data;
+                this.total = (rs[0] as any).ItemsCount;
+
+                console.log('listUser', (rs[0] as any));
+            }
+            else
+            {
+                console.log('bad');
+                }
         });
     }
 

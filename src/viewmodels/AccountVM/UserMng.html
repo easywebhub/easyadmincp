@@ -50,7 +50,7 @@
                 
                     <tbody ref="mydata" items.bind="listUser | searchAccountType:searchAccountType.value | searchUserName:searchUserName.value">
                         <tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (itemperpage):current * (itemperpage)">
-                    <td>${$index+1}</td>
+                    <td>${($index+1)}</td>
                     <td>${item.UserName}</td>
                     <td>${item.Status}</td>
                     <td style="width:15%"><code>${item.Info | json}</code></td>

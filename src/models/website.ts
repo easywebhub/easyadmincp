@@ -13,3 +13,18 @@ export class CreateWeb {
        
     }
 }
+export class CreateRoleWeb {
+
+    AccountId  : string;
+    WebsiteId : string;
+    WebsiteDisplayName : string;
+    AccessLevel:any;
+     constructor(entity: any) {
+      
+        this.AccountId = entity.AccountId;
+        this.WebsiteId = entity.WebsiteId;
+        this.WebsiteDisplayName = entity.WebsiteDisplayName;
+        this.AccessLevel = entity.AccessLevel;
+       
+    }
+}

@@ -14,9 +14,9 @@ System.config({
     "datetimepicker": "bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js",
     "magnificPopup": "bower_components/magnific-popup/dist/jquery.magnific-popup.min.js",
     "semantic": "bower_components/semantic/dist/semantic.min.js",
-    "tinymce": "bower_components/tinymce/tinymce.min.js",
     "chart.js": "bower_components/chart.js/dist/chart.min.js",
-    "semantic-ui-calendar": "bower_components/semantic-ui-calendar/dist/calendar.js"
+    "semantic-ui-calendar": "bower_components/semantic-ui-calendar/dist/calendar.js",
+    "tinymce": "bower_components/tinymce/tinymce.min.js"
   },
   meta: {
     "bootstrap": {
@@ -420,6 +420,8 @@ System.config({
       "resources/CustomElements/panel/panel.js",
       "resources/CustomElements/semantic-calendar/semantic-calendar.html!github:systemjs/plugin-text@0.0.8.js",
       "resources/CustomElements/semantic-calendar/semantic-calendar.js",
+      "resources/CustomElements/semantic-dropdown/semantic-dropdown.html!github:systemjs/plugin-text@0.0.8.js",
+      "resources/CustomElements/semantic-dropdown/semantic-dropdown.js",
       "resources/Excel/importExcel.js",
       "resources/ValueConverter/ObjectKeyConverter.js",
       "resources/ValueConverter/ToGender.js",
@@ -456,6 +458,8 @@ System.config({
       "viewmodels/LoginVM/resgister.js",
       "viewmodels/WebSiteVM/CreateWebDlg.html!github:systemjs/plugin-text@0.0.8.js",
       "viewmodels/WebSiteVM/CreateWebDlg.js",
+      "viewmodels/WebSiteVM/RoleWebDlg.html!github:systemjs/plugin-text@0.0.8.js",
+      "viewmodels/WebSiteVM/RoleWebDlg.js",
       "viewmodels/WebSiteVM/WebSiteMenu.html!github:systemjs/plugin-text@0.0.8.js",
       "viewmodels/WebSiteVM/WebSiteMenu.js",
       "viewmodels/WebSiteVM/WebSiteMng.html!github:systemjs/plugin-text@0.0.8.js",
@@ -550,6 +554,9 @@ System.config({
       "aurelia-framework",
       "semantic-ui-calendar"
     ],
+    "resources/CustomElements/semantic-dropdown/semantic-dropdown.js": [
+      "aurelia-framework"
+    ],
     "services/Account/CustomerServices.js": [
       "aurelia-framework",
       "aurelia-fetch-client",
@@ -576,7 +583,7 @@ System.config({
     "services/HttpService.js": [
       "aurelia-framework",
       "aurelia-fetch-client",
-      "../Configs/appConfig"
+      "../configs/appConfig"
     ],
     "services/WebSite/WebSiteServices.js": [
       "aurelia-framework",
@@ -596,7 +603,8 @@ System.config({
       "aurelia-router",
       "aurelia-dependency-injection",
       "../../services/Account/LoggingServices",
-      "lockr"
+      "lockr",
+      "tinymce"
     ],
     "viewmodels/LoginVM/logout.js": [
       "aurelia-framework",
@@ -611,11 +619,16 @@ System.config({
       "aurelia-dialog",
       "aurelia-dependency-injection"
     ],
+    "viewmodels/WebSiteVM/RoleWebDlg.js": [
+      "aurelia-dialog",
+      "aurelia-dependency-injection"
+    ],
     "viewmodels/WebSiteVM/WebSiteMng.js": [
       "aurelia-framework",
       "../../services/WebSite/WebSiteServices",
       "aurelia-dialog",
       "./CreateWebDlg",
+      "./RoleWebDlg",
       "../../models//website"
     ],
     "welcome.js": [

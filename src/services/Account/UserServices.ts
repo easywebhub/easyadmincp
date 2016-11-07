@@ -13,7 +13,7 @@ export class UserServices {
     
     GetListUser() {
         return new Promise((resolve, reject) => {
-            this.http.fetch(`api-user/getlistuser`, {
+            this.http.fetch(`account/all`, {
                 method: 'get'
               
             })

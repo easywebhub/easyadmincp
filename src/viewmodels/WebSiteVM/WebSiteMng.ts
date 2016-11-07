@@ -4,7 +4,9 @@ import { WebSiteServices } from '../../services/WebSite/WebSiteServices';
 import { DialogService } from 'aurelia-dialog';
 import * as _ from 'lodash';
 import { CreateWebDlg } from './CreateWebDlg';
-import { CreateWeb } from '../../models//website';
+import { RoleWebDlg } from './RoleWebDlg';
+
+import { CreateWeb,CreateRoleWeb } from '../../models//website';
 
 @inject(WebSiteServices, BindingEngine,DialogService)
 export class WebSiteMng {
@@ -31,16 +33,48 @@ export class WebSiteMng {
     activate() {
 
         return Promise.all([this.webSiteServices.GetListWebSite()]).then(rs => {
+            if ((rs[0] as any).Result == true) {
+                this.listWebSite = (rs[0] as any).Data;
+              
 
-            this.listWebSite = (rs[0] as any).Data;
-            console.log('listWebSite',this.listWebSite);
-
-            this.total = this.listWebSite.length;
-
+                this.total = (rs[0] as any).ItemsCount;
+                console.log('listWebSite',(rs[0] as any).Data);
+            }
+            else
+            {
+                console.log('bad');
+                }
 
         }
 
         );
+    }
+    roleWeb(item)
+    {
+         this.dialogService.open({ viewModel: RoleWebDlg,model:item}).then((result) => {
+            if (!result.wasCancelled) {
+                console.log('result output',JSON.stringify(new CreateRoleWeb(result.output)));
+
+
+                this.webSiteServices.RoleWeb(new CreateRoleWeb(result.output)).then((rs: any) => {
+                    console.log("rs",rs);
+                   if (rs.Result == true) {
+
+                        swal({ title: "Thông báo", text:rs.Message, timer: 2500, showConfirmButton: true, type: "success" });
+                     
+                        this.activate();
+                    }
+                    else {
+                         swal({ title: "Thông báo",text:"Tạo mới role web thất bại" , timer: 2500, showConfirmButton: true,type: "warning" });
+                    }
+               });
+
+            } else {
+                console.log('bad');
+            }
+
+        });
+
     }
     createWeb() {
 
