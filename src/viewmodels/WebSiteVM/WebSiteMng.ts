@@ -4,6 +4,8 @@ import { WebSiteServices } from '../../services/WebSite/WebSiteServices';
 import { DialogService } from 'aurelia-dialog';
 import * as _ from 'lodash';
 import { CreateWebDlg } from './CreateWebDlg';
+import { DetailWebDlg } from './DetailWebDlg';
+
 import { RoleWebDlg } from './RoleWebDlg';
 
 import { CreateWeb,CreateRoleWeb } from '../../models//website';
@@ -48,6 +50,22 @@ export class WebSiteMng {
         }
 
         );
+    }
+     detailRoleWeb(item)
+    {
+         this.dialogService.open({ viewModel: DetailWebDlg,model:item}).then((result) => {
+            if (!result.wasCancelled) {
+                console.log('result output',JSON.stringify(new CreateRoleWeb(result.output)));
+
+
+                
+
+            } else {
+                console.log('bad');
+            }
+
+        });
+
     }
     roleWeb(item)
     {
