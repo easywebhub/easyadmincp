@@ -20,6 +20,7 @@
     "type": "git",
     "url": "http://github.com/aurelia/skeleton-navigation-typescript"
   },
+ 
   "scripts": {
     "postinstall": "./node_modules/.bin/typings install",
     "test": "gulp test",

@@ -6,6 +6,7 @@ import { LoggingServices } from '../../services/Account/LoggingServices';
 import Lockr = require('lockr');
 import 'tinymce';
 
+
 declare var tinymce: any;
 @inject( Router,LoggingServices)
 export class LoginViewModel {
@@ -14,6 +15,7 @@ export class LoginViewModel {
   loggingServices: LoggingServices;
   router: any;
   Login: any; 
+  
   constructor(router: Router,loggingServices) {
     {
    
@@ -34,7 +36,7 @@ export class LoginViewModel {
   //   });
   // }
   attached() {
-         
+        
     var rules = {
       UserName: {
         identifier: 'UserName',
@@ -56,15 +58,23 @@ export class LoginViewModel {
       inline: true,
       on: 'blur'
     });
-
+ 
     
-     
-     
-    
+ 
     tinymce.init({
-  selector: "#mytextarea" // change this value according to your HTML
-  
-});
+  selector: 'textarea',
+  plugins: [
+    'paste',
+    'link',
+    'autoresize',
+    'imagetools',
+    'table'
+  ]
+})
+   
+     
+    
+   
     
   }
   routeRegister() {

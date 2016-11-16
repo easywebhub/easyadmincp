@@ -22,7 +22,10 @@ module.exports = {
     "bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js",
     "bower_components/magnific-popup/dist/jquery.magnific-popup.min.js",
     "bower_components/semantic/dist/semantic.min.js",
-     "bower_components/tinymce/tinymce.min.js",
+    "bower_components/tinymce/tinymce.min.js",
+    "bower_components/tinymce/plugins/**/*.js",
+    "bower_components/tinymce/skins/**/*.js",
+    "bower_components/tinymce/themes/**/*.js",
     "bower_components/chart.js/dist/chart.min.js",
     "bower_components/semantic-ui-calendar/dist/calendar.js",
     
