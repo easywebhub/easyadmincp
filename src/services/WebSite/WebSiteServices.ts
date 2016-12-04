@@ -10,7 +10,7 @@ export class WebSiteServices {
         this.http = httpService.httpInstance;
 
     }
-    GetListWebSite() {
+    GetListWebSite():Promise<Array<any>> {
         return new Promise((resolve, reject) => {
             this.http.fetch(`website/all`, { method: 'get'}).then(response => response.json()).then(data => { resolve(data) }).catch(err => reject(Error(err)));
         })

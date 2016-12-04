@@ -22,7 +22,8 @@ export function configure(aurelia) {
         './CustomElements/number/number-box',
         './CustomElements/panel/panel',
         './CustomAttributes/semantic-accordion',
-        './CustomAttributes/seman-calendar',
-         './CustomElements/semantic-calendar/semantic-calendar'
+         './CustomElements/semantic-calendar/semantic-calendar',
+         './CustomAttributes/semantic-menu'
+         
     );
 }

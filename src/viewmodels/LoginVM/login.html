@@ -15,7 +15,17 @@
     }
     
     </style>
-     <div class="login_height">
+      <div class="ui" if.bind="!pendding">
+                <div class="ui active inverted dimmer">
+                    <div class="ui large text loader">Loading</div>
+                </div>
+                <p></p>
+                <p></p>
+                <p></p>
+                </div>
+               <div >    
+            
+     <div class="login_height" if.bind="pendding">
   <div class="ui middle aligned center aligned grid">
   <div class="column">
     <h2 class="ui image header">
@@ -44,13 +54,14 @@
           </div>
         </div>
 
-        <button class="ui submit button" type="submit" >Login</button>
+        <button class="ui green button" type="submit" >Login</button>
         
       </div>
        <a click.delegate="routeRegister()">not register?<span style="color:green">Create an Account</span></a>
      
 
     </form>
+   
         <!--<textarea name="content" style="width:100%"></textarea>-->
    
   </div>

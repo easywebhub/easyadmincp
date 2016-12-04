@@ -10,7 +10,7 @@ export class StudentServices {
         this.http = httpService.httpInstance;
 
     }
-    GetListStudent(meta) {
+    GetListStudent(meta):Promise<Array<any>> {
         return new Promise((resolve, reject) => {
             this.http.fetch(`api/student/GetAllStudent`, { method: 'post',body:json(meta) }).then(response => response.json()).then(data => { resolve(data) }).catch(err => reject(Error(err)));
         })

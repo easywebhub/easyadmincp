@@ -13,7 +13,7 @@ export class UserMng {
     current: number;
     pagesize: number;
     bindingEngine: BindingEngine;
-
+    pendding:boolean=true
     constructor(userServices, bindingEngine) {
         this.userServices = userServices;
 
@@ -24,12 +24,14 @@ export class UserMng {
 
     }
     activate() {
-        return Promise.all([this.userServices.GetListUser()]).then(rs => {
-            if ((rs[0] as any).Result == true) {
-                this.listUser = (rs[0] as any).Data;
-                this.total = (rs[0] as any).ItemsCount;
+        this.pendding=!this.pendding;
+        this.userServices.GetListUser().then(rs => {
+            if ((rs as any).Result == true) {
+                this.pendding=!this.pendding;
+                this.listUser = (rs as any).Data;
+                this.total = (rs as any).ItemsCount;
 
-                console.log('listUser', (rs[0] as any));
+                //console.log('listUser', (rs[0] as any));
             }
             else
             {

@@ -20,7 +20,6 @@
     "type": "git",
     "url": "http://github.com/aurelia/skeleton-navigation-typescript"
   },
- 
   "scripts": {
     "postinstall": "./node_modules/.bin/typings install",
     "test": "gulp test",
@@ -99,6 +98,7 @@
     "bluebird": "^3.4.6",
     "lockr": "^0.8.4",
     "lodash": "^4.14.0",
+    "semantic-ui": "^2.2.6",
     "sweetalert": "^1.1.3"
   }
 }

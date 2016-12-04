@@ -4,10 +4,9 @@ import { Router } from 'aurelia-router';
 import { inject} from 'aurelia-dependency-injection';
 import { LoggingServices } from '../../services/Account/LoggingServices';
 import Lockr = require('lockr');
-import 'tinymce';
 
 
-declare var tinymce: any;
+
 @inject( Router,LoggingServices)
 export class LoginViewModel {
   theRouter: Router;
@@ -15,7 +14,7 @@ export class LoginViewModel {
   loggingServices: LoggingServices;
   router: any;
   Login: any; 
-  
+  pendding:boolean=true
   constructor(router: Router,loggingServices) {
     {
    
@@ -54,50 +53,36 @@ export class LoginViewModel {
       },
       
     };
-    ($(".ui.form") as any).form(rules, {
+    ($(".ui.form") as any).form({fields:rules,
       inline: true,
-      on: 'blur'
+      on: 'blur',
+      onSuccess: this.submit
     });
  
-    
- 
-    tinymce.init({
-  selector: 'textarea',
-  plugins: [
-    'paste',
-    'link',
-    'autoresize',
-    'imagetools',
-    'table'
-  ]
-})
-   
-     
-    
-   
-    
   }
   routeRegister() {
          this.theRouter.navigateToRoute('register');
     }
   submit() {
-    
-    return Promise.all([this.loggingServices.CheckLogin(this.Login)]).then(rs => {
+    //console.log(this.submit());
+    this.pendding=!this.pendding;
+    this.loggingServices.CheckLogin(this.Login).then(rs => {
        
-      if ((rs[0] as any).Result == true)
+      if ((rs as any).Result == true)
       {
-        Lockr.set('UserInfo',rs[0]);
+        this.pendding=!this.pendding;
+        Lockr.set('UserInfo',rs);
         //console.log('object',this.Login);
          window.setTimeout(() => {
         this.theRouter.navigateToRoute('Dashboard');
-          location.reload();
+        location.reload();
         
     }, 1200);
           swal({ title: "Thông báo", text: "Đăng nhập thành công", timer: 2500, showConfirmButton: true,type: "success"});
       }  
       else
       {
-        
+          this.pendding=!this.pendding;
       
          swal({ title: "Thông báo", text: "Đăng nhập thất bại", timer: 2500, showConfirmButton: true,type: "warning"});
       }

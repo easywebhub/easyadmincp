@@ -13,11 +13,12 @@
             color: black;
         }
     </style>
-    <section class="ui">
-        <h3>Quản lý Website &nbsp;
-        </h3>    
-              <form>
-            <div class="ui form">
+
+       
+            
+        
+            <form class="ui form">
+            
                 <div class="three fields">
                     <div class="field">
                         <label>Tên WebSite</label>
@@ -32,11 +33,22 @@
                         <input type="text" placeholder="Loại Website" ref="searchType">
                     </div>
                 </div>
-            </div>
+           
               </form>
              <button click.delegate="createWeb(item)" senam_tooltip data-content="Tạo mới" style="width:50px;margin:10px 0px" class="ui blue button"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
-        
-            <table class="ui table">
+             
+                    
+               
+            <div class="ui" if.bind="!pendding">
+                <div class="ui active inverted dimmer">
+                    <div class="ui large text loader">Loading</div>
+                </div>
+                <p></p>
+                <p></p>
+                <p></p>
+                </div>
+               <div if.bind="pendding">    
+            <table class="ui table" >
                 <thead>
                     <tr>
 
@@ -53,7 +65,7 @@
 
                     </tr>
                 </thead>
-                <tbody>
+                
                     <tbody ref="mydata" items.bind="listWebSite | searchTypes:searchType.value |searchName:searchNamWebSite.value |searchProduction:searchProduction.value">
                         <tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (itemperpage):current * (itemperpage)">
                             <td>${(current-1)*10+$index+1}</td>
@@ -89,7 +101,8 @@
 
             </table>
             <pagination page-size.bind="pagesize" total.bind="total" item-per-page.bind="itemperpage" current-page.bind="current"></pagination>
-        </section>
-    </section>
-    </div>
+       </div>
+    
+   
+   
 </template>

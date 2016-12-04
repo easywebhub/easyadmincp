@@ -29,7 +29,6 @@
     "moment": "^2.14.1",
     "numeral": "^1.5.3",
     "select2": "^4.0.3",
-    "tinymce":"4.4.3",
     "ckeditor": "^4.5.10",
     "summernote": "^0.8.2",
     "eonasdan-bootstrap-datetimepicker": "^4.17.37",

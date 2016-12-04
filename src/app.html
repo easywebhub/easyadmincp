@@ -67,7 +67,6 @@
       width: 100%;
       background: #FAFAFA;
       margin-top: 0;
-     
     }
     
     .ui.vertical.menu>.active.item:first-child {
@@ -96,83 +95,101 @@
     ul {
       list-style: none;
     }
-  .pagination {
-    display: inline-block;
-    padding-left: 0;
-    margin: 20px 0;
-    border-radius: 4px;
-}
-.pagination > li {
-    display: inline; 
-}
-.pagination > li:first-child > a, .pagination > li:first-child > span {
-    margin-left: 0;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-}
-.pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus {
-    color: #777;
-    cursor: not-allowed;
-    background-color: #fff;
-    border-color: #ddd;
-}
-.pagination > li > a, .pagination > li > span {
-    position: relative;
-    float: left;
-    padding: 6px 12px;
-    margin-left: -1px;
-    line-height: 1.42857143;
-    color: #337ab7;
-    text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #ddd;
-}
-.glyphicon {
-    position: relative;
-    top: 1px;
-    display: inline-block;
-    font-family: 'Glyphicons Halflings';
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-body > .grid {
+    
+    .pagination {
+      display: inline-block;
+      padding-left: 0;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    
+    .pagination > li {
+      display: inline;
+    }
+    
+    .pagination > li:first-child > a,
+    .pagination > li:first-child > span {
+      margin-left: 0;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+    
+    .pagination > .disabled > span,
+    .pagination > .disabled > span:hover,
+    .pagination > .disabled > span:focus,
+    .pagination > .disabled > a,
+    .pagination > .disabled > a:hover,
+    .pagination > .disabled > a:focus {
+      color: #777;
+      cursor: not-allowed;
+      background-color: #fff;
+      border-color: #ddd;
+    }
+    
+    .pagination > li > a,
+    .pagination > li > span {
+      position: relative;
+      float: left;
+      padding: 6px 12px;
+      margin-left: -1px;
+      line-height: 1.42857143;
+      color: #337ab7;
+      text-decoration: none;
+      background-color: #fff;
+      border: 1px solid #ddd;
+    }
+    
+    .glyphicon {
+      position: relative;
+      top: 1px;
+      display: inline-block;
+      font-family: 'Glyphicons Halflings';
+      font-style: normal;
+      font-weight: normal;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    body > .grid {
       height: 100%;
     }
+    
     .image {
       margin-top: -100px;
     }
+    
     .column {
       max-width: 450px;
-     
     }
-    .login_height{
-      margin-top:200px;
+    
+    .login_height {
+      margin-top: 200px;
     }
-    td.day{
-  position:relative;  
-}
-
-td.day.disabled:hover:before {
-    content: 'This date is disabled';
-    color: red;
-    background-color: white;
-    top: -22px;
-    position: absolute;
-    width: 136px;
-    left: -34px;
-    z-index: 1000;
-    text-align: center;
-    padding: 2px;
-}
+    
+    td.day {
+      position: relative;
+    }
+    
+    td.day.disabled:hover:before {
+      content: 'This date is disabled';
+      color: red;
+      background-color: white;
+      top: -22px;
+      position: absolute;
+      width: 136px;
+      left: -34px;
+      z-index: 1000;
+      text-align: center;
+      padding: 2px;
+    }
+    
 
   </style>
 
 
-  <require from="select2/css/select2.css"></require>
- 
+  
+
   <div class="topNav" if.bind="checkNav">
 
     <div class="row between-xs middle-xs">
@@ -185,7 +202,7 @@ td.day.disabled:hover:before {
       <div class="col-xs shrink">
 
         <div class="ui  dropdown top right pointing" semantic_dropdown>
-         
+
 
           <img class="ui avatar" src="http://semantic-ui.com/images/avatar/small/jenny.jpg" width="30" alt="">
           <span>Username</span>
@@ -193,8 +210,8 @@ td.day.disabled:hover:before {
           <i class="dropdown icon"></i>
 
           <div class="menu">
-            <a class="item" href="#link1"><i class="edit icon"></i> Sửa thông tin</a>
-            <a class="item" href="#link2"><i class="lock icon"></i> Đổi mật khẩu</a>
+            <a class="item" href="#"><i class="edit icon"></i> Sửa thông tin</a>
+            <a class="item" href="#"><i class="lock icon"></i> Đổi mật khẩu</a>
             <div class="divider"></div>
             <a class="item" href="#/logout"><i class="sign out icon"></i> Đăng xuất</a>
           </div>
@@ -203,43 +220,39 @@ td.day.disabled:hover:before {
       </div>
     </div>
   </div>
-   <div class="row flex-nowrap">
-       <div class="col-xs shrink">
+  <div class="row flex-nowrap">
+    <div class="col-xs shrink">
 
-                <div class="sidebar" if.bind="checkNav">
+      <div class="sidebar" if.bind="checkNav">
+        
+        
 
-                     
+        <div class="ui accordion desadmin-sidebar-accordion" semantic_accordion>
+          <div class="title">
+            <i class="dropdown icon"></i>
 
-                      <div class="ui accordion desadmin-sidebar-accordion" semantic_accordion>
-                              <div class="title">
-                                <i class="dropdown icon"></i>
+            <i class="setting  icon"></i> Dashboard
 
-                                <i class="setting  icon"></i> Dashboard
+          </div>
+          <div class="content">
+            <div class="ui vertical green fluid tabular menu" semantic_menu>
+                 <a repeat.for="row of router.navigation" href.bind="row.href" class="${row.isActive ? 'active item' : 'item'}">${row.title}</a>
+            </div>
 
-                                </div>
-                                <div class="content">
-                                    <div class="ui secondary vertical menu">
-                                      <ul>
-                                        <li repeat.for="row of router.navigation">
-                                          <a href.bind="row.href" class="item">${row.title}</a>
-                                        </li>
-                                      </ul>
-                                    </div>
-
-                                </div>
-                        </div>
-
-                 </div>
-
+          </div>
         </div>
 
-      
-     <div class="col-xs">
+      </div>
 
-       <router-view></router-view>
+    </div>
+
+
+    <div class="col-xs">
+
+      <router-view></router-view>
 
 
     </div>
-  </div>    
+  </div>
 
 </template>

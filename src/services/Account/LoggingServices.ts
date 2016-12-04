@@ -16,7 +16,7 @@ export class LoggingServices {
     //     })
     // }
     //http://api.easywebhub.com/api-user/Logon
-  CheckLogin(meta) {
+  CheckLogin(meta):Promise<Array<any>> {
         return new Promise((resolve, reject) => {
             this.http.fetch(`auth/signin`, {
                 method: 'post',

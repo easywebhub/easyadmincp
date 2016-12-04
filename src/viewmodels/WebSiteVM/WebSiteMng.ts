@@ -22,6 +22,7 @@ export class WebSiteMng {
     pagesize: number;
     bindingEngine: BindingEngine;
      dialogService:DialogService
+     pendding:boolean
     constructor(webSiteServices, bindingEngine,dialogService) {
         this.webSiteServices = webSiteServices;
 
@@ -30,22 +31,24 @@ export class WebSiteMng {
         this.current = 1;
         this.total=0
         this.dialogService=dialogService;
-
+        this.pendding=true
     }
     activate() {
-
-        return Promise.all([this.webSiteServices.GetListWebSite()]).then(rs => {
-            if ((rs[0] as any).Result == true) {
-                this.listWebSite = (rs[0] as any).Data;
-              
-
-                this.total = (rs[0] as any).ItemsCount;
-                console.log('listWebSite',(rs[0] as any).Data);
+        this.pendding=!this.pendding;
+        console.log('show',this.pendding)
+        this.webSiteServices.GetListWebSite().then(rs => {
+           // console.log('result',JSON.stringify(rs[0]))
+            if ((rs as any).Result == true) {
+                 this.pendding=!this.pendding;
+               // console.log('(rs[0] as any).Result',(rs[0] as any).Results)
+                this.listWebSite = (rs as any).Data;
+                this.total = (rs as any).ItemsCount;
+                //console.log('listWebSite',(rs[0] as any).Data);
             }
             else
             {
                 console.log('bad');
-                }
+            }
 
         }
 
