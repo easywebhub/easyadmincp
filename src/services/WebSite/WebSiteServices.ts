@@ -24,11 +24,10 @@ export class WebSiteServices {
     }
     CreateWeb(meta){
     return new Promise((resolve, reject) => {
-            this.http.fetch(`website/addnew`, {
+            this.http.fetch(`websites`, {
                 method: 'post',
-                body: json(meta),
-            })
-                .then(response => response.json())
+                body: json(meta)
+            }).then(response => response.json())
                 .then(data => {
                     resolve(data);
                 })

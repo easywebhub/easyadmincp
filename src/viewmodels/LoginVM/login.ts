@@ -67,28 +67,23 @@ export class LoginViewModel {
     //console.log(this.submit());
     this.pendding=!this.pendding;
     this.loggingServices.CheckLogin(this.Login).then(rs => {
-
-   
-       console.log('test',rs)
-      if ((rs as any).status == 200)
-      {
+ // console.log('err',(rs as any).status);
+    //console.log('test',(rs as any).status)
+     
         this.pendding=!this.pendding;
-        Lockr.set('UserInfo',(rs as any).status);
+        console.log('úe',(rs as any));
+        Lockr.set('UserInfo',(rs as any));
         //console.log('object',this.Login);
          window.setTimeout(() => {
-        this.theRouter.navigateToRoute('Dashboard');
-        location.reload();
+       this.theRouter.navigateToRoute('Dashboard');
+       location.reload();
         
     }, 1200);
           swal({ title: "Thông báo", text: "Đăng nhập thành công", timer: 2500, showConfirmButton: true,type: "success"});
-      }  
-      else
-      {
-          this.pendding=!this.pendding;
-      
-         swal({ title: "Thông báo", text: "Đăng nhập thất bại", timer: 2500, showConfirmButton: true,type: "warning"});
-      }
      
+     }).catch(err=>{
+        this.pendding=!this.pendding;
+        swal({ title: "Thông báo", text: "Đăng nhập thất bại", timer: 2500, showConfirmButton: true,type: "warning"});
      })
     
    
