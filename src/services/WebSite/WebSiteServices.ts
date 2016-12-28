@@ -17,6 +17,11 @@ export class WebSiteServices {
             this.http.fetch(`websites`, { method: 'get'}).then(response => response.json()).then(data => { resolve(data) }).catch(err => reject(Error(err)));
         })
     }
+    DetailWebSite(WebsiteId){
+         return new Promise((resolve, reject) => {
+            this.http.fetch(`websites/${WebsiteId}`, { method: 'get'}).then(response => response.json()).then(data => { resolve(data) }).catch(err => reject(Error(err)));
+        })
+    }
     CreateWeb(meta){
     return new Promise((resolve, reject) => {
             this.http.fetch(`website/addnew`, {

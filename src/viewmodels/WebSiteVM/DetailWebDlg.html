@@ -1,160 +1,200 @@
 <template>
+  <style>
+    /*fix z index*/
+    
+    .sweet-alert {
+      z-index: 200111;
+    }
+    
+    body>span.select2-container {
+      z-index: 100111;
+    }
+    
+    ai-dialog-overlay.active {
+      background-color: black;
+      opacity: .5;
+      z-index: 9998 !important;
+    }
+    
+    .edit-form {}
+    
+    ai-dialog-container {
+      margin: 30px auto;
+      z-index: 100005 !important;
+    }
+    
+    ai-dialog,
+    ai-dialog-container>div>div {
+      max-width: 1200px;
+      min-width: 1000px;
+      height: auto;
+      margin: auto;
+      display: block;
+    }
+    
+    ai-dialog>ai-dialog-header {
+      padding: 11px 16px 4px;
+    }
+    
+    ai-dialog>ai-dialog-header>button {
+      display: inline-block;
+      float: none;
+    }
+    
+    ai-dialog-overlay.active {
+      background-color: black;
+      opacity: .5;
+    }
+    
+    .lstdoi {
+      margin-bottom: 20px;
+    }
+    
+    .noidung-lsthaydoi {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 5px;
+      max-height: 150px;
+      overflow: scroll;
+      overflow-x: hidden;
+      min-height: 30px;
+    }
+    
+    #style-1::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      background-color: #F5F5F5;
+    }
+    
+    #style-1::-webkit-scrollbar {
+      width: 5px;
+      background-color: #000;
+      border-radius: 10px;
+    }
+    
+    #style-1::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+      background-color: #555;
+    }
+    
+    dl {
+      border: 3px double #ccc;
+      padding: 0.5em;
+    }
+    
+    dt {
+      float: left;
+      clear: left;
+      width: 100px;
+      text-align: right;
+      font-weight: bold;
+      color: green;
+    }
+    
+    dt:after {
+      content: ":";
+    }
+    
+    dd {
+      margin: 0 0 0 110px;
+      padding: 0 0 0.5em 0;
+    }
 
-	<style>
-		/*fix z index*/
-		
-		.sweet-alert {
-			z-index: 200111;
-		}
-		
-		body > span.select2-container {
-			z-index: 100111;
-		}
-		
-		ai-dialog-overlay.active {
-			background-color: black;
-			opacity: .5;
-			z-index: 9998 !important;
-		}
-		
-		.edit-form {}
-		
-		ai-dialog-container {
-			margin: 30px auto;
-			z-index: 100005 !important;
-		}
-		
-		ai-dialog,
-		ai-dialog-container>div>div {
-			max-width: 800px;
-			min-width: 600px;
-			height: auto;
-			margin: auto;
-			display: block;
-		}
-		
-		ai-dialog>ai-dialog-header {
-			padding: 11px 16px 4px;
-		}
-		
-		ai-dialog>ai-dialog-header>button {
-			display: inline-block;
-			float: none;
-		}
-		
-		ai-dialog-overlay.active {
-			background-color: black;
-			opacity: .5;
-		}
-		
-		.lstdoi {
-			margin-bottom: 20px;
-		}
-		
-		.noidung-lsthaydoi {
-			border: 1px solid #ccc;
-			border-radius: 5px;
-			padding: 5px;
-			max-height: 150px;
-			overflow: scroll;
-			overflow-x: hidden;
-			min-height: 30px;
-		}
-		
-		#style-1::-webkit-scrollbar-track {
-			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-			border-radius: 10px;
-			background-color: #F5F5F5;
-		}
-		
-		#style-1::-webkit-scrollbar {
-			width: 5px;
-			background-color: #000;
-			border-radius: 10px;
-		}
-		
-		#style-1::-webkit-scrollbar-thumb {
-			border-radius: 10px;
-			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-			background-color: #555;
-		}
-		dl {
-    border: 3px double #ccc;
-    padding: 0.5em;
-  }
-  dt {
-    float: left;
-    clear: left;
-    width: 100px;
-    text-align: right;
-    font-weight: bold;
-    color: green;
-  }
-  dt:after {
-    content: ":";
-  }
-  dd {
-    margin: 0 0 0 110px;
-    padding: 0 0 0.5em 0;
-  }
-	</style>
-
-	<ai-dialog class="edit-form" data-backdrop="static">
-		<ai-dialog-header>
-
-			<span>Chi tiết</span>
-
- 
-		</ai-dialog-header>
-		<ai-dialog-body>
-		<table>
-    <tr>
-        <td class="title">Id: </td>
-        <td class="text">${Web.Id}</td>
-    </tr>
-    <tr>
-        <td class="title">Name: </td>
-        <td class="text">${Web.Name}</td>
-    </tr> 
-    <tr>
-        <td class="title">Url: </td>
-        <td class="text">${Web.Url}</td>
-    </tr>     
-    <tr>
-        <td class="title">Type:</td>
-        <td class="text">${Web.Type}</td>
-    </tr>
-	 <tr>
-        <td class="title">Stagging:</td>
-        <td class="text">${Web.Stagging}</td>
-    </tr>
-	 <tr>
-        <td class="title">Production:</td>
-        <td class="text">${Web.Production}</td>
-    </tr>
-	</table>
-	<hr>
-	<h4>Danh sách Accounts
-	</h4>
-<table>
-	
-   <thead>
-                    <tr>
-                          <th>AccountId</th>
-                          <th>AccessLevel</th>
-                        </tr>
-                </thead>
-                
-                    <tbody>
-                        <tr repeat.for="item of Web.Accounts">
-                            <td>${item.AccountId}</td>
-							<td><span repeat.for="role of item.AccessLevel" class="ui blue button">${role}</span></td>
-						
-						 </tr> 
-                    </tbody>
-  
-             </table>
-		</ai-dialog-body>
-		
-	</ai-dialog>
+  </style>
+  <ai-dialog class="edit-form" data-backdrop="static">
+    <ai-dialog-header>
+      <span>Chi tiết</span>
+    </ai-dialog-header>
+    <ai-dialog-body>
+      <table>
+        <tr>
+          <td class="title">WebsiteId: </td>
+          <td class="text">${Web.WebsiteId}</td>
+        </tr>
+        <tr>
+          <td class="title">Name: </td>
+          <td class="text">${Web.Name}</td>
+        </tr>
+        <tr>
+          <td class="title">DisplayName:</td>
+          <td class="text">${Web.DisplayName}</td>
+        </tr>
+        <tr>
+          <td class="title">Url: </td>
+          <td class="text">${Web.Url}</td>
+        </tr>
+        <br>
+      </table>
+	   <hr>
+	  
+      <h4>Danh sách Production
+      </h4>
+      <table if.bind="Web.Production.length>0">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>HostingFee</th>
+            <th>Url</th>
+            <th>Git</th>
+            <th>IsDefault</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr repeat.for="item of Web.Production">
+            <td>${item.Name}</td>
+            <td>${item.HostingFee}</td>
+            <td>${item.Url}</td>
+            <td>${item.Git}</td>
+            <td>${item.IsDefault}</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      </table>
+      <hr>
+    
+      <h4>Danh sách Stagging
+      </h4>
+      <table if.bind="Web.Stagging.length>0">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>HostingFee</th>
+            <th>Url</th>
+            <th>Git</th>
+            <th>IsDefault</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr repeat.for="item of Web.Stagging">
+            <td>${item.Name}</td>
+            <td>${item.HostingFee}</td>
+            <td>${item.Url}</td>
+            <td>${item.Git}</td>
+            <td>${item.IsDefault}</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      </table>
+      <hr>
+      <h4>Danh sách Accounts
+      </h4>
+      <table if.bind="Web.Accounts.length>0">
+        <thead>
+          <tr>
+            <th>AccountId</th>
+            <th>AccessLevel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr repeat.for="item of Web.Accounts">
+            <td>${item.AccountId}</td>
+            <td><span repeat.for="role of item.AccessLevels" class="ui blue button">${role}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </ai-dialog-body>
+  </ai-dialog>
 </template>

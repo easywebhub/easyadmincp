@@ -57,6 +57,7 @@ export class WebSiteMng {
      detailRoleWeb(item)
     {
          this.dialogService.open({ viewModel: DetailWebDlg,model:item}).then((result) => {
+             
             if (!result.wasCancelled) {
                 console.log('result output',JSON.stringify(new CreateRoleWeb(result.output)));
 
