@@ -106,7 +106,7 @@ export class WebSiteMng {
 
 
                 this.webSiteServices.CreateWeb(new CreateWeb(result.output)).then((rs: any) => {
-                   if (rs.Result == true) {
+                   if (rs.status == 200) {
 
                         swal({ title: "Thông báo", text:rs.Message, timer: 2500, showConfirmButton: true, type: "success" });
                      

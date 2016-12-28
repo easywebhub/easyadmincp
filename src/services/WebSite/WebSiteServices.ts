@@ -27,8 +27,7 @@ export class WebSiteServices {
             this.http.fetch(`websites`, {
                 method: 'post',
                 body: json(meta)
-            }).then(response => response.json())
-                .then(data => {
+            }).then(data => {
                     resolve(data);
                 })
                 .catch(err => reject(Error(err)));
