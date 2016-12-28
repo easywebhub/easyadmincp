@@ -13,7 +13,7 @@ export class UserServices {
     
     GetListUser() {
         return new Promise((resolve, reject) => {
-            this.http.fetch(`account/all`, {
+            this.http.fetch(`users`, {
                 method: 'get'
               
             })
@@ -25,5 +25,18 @@ export class UserServices {
 
         });
     }
+     CreateUser(meta){
+    return new Promise((resolve, reject) => {
+            this.http.fetch(`users`, {
+                method: 'post',
+                body: json(meta)
+            }).then(data => {
+                    resolve(data);
+                })
+                .catch(err => reject(Error(err)));
+
+        });
+    }
+    
     
 }

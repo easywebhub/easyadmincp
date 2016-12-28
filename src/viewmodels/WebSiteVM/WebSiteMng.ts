@@ -108,12 +108,12 @@ export class WebSiteMng {
                 this.webSiteServices.CreateWeb(new CreateWeb(result.output)).then((rs: any) => {
                    if (rs.status == 200) {
 
-                        swal({ title: "Thông báo", text:rs.Message, timer: 2500, showConfirmButton: true, type: "success" });
+                        swal({ title: "Thông báo", text:"Tạo mới thành công", timer: 2500, showConfirmButton: true, type: "success" });
                      
                         this.activate();
                     }
                     else {
-                         swal({ title: "Thông báo",text:(rs as any).Message , timer: 2500, showConfirmButton: true,type: "warning" });
+                         swal({ title: "Thông báo",text:"Tạo mới thất bại" , timer: 2500, showConfirmButton: true,type: "warning" });
                     }
                 });
 
