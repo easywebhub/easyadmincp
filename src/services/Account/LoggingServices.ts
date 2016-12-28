@@ -16,14 +16,15 @@ export class LoggingServices {
     //     })
     // }
     //http://api.easywebhub.com/api-user/Logon
-  CheckLogin(meta):Promise<Array<any>> {
+  CheckLogin(meta) {
         return new Promise((resolve, reject) => {
             this.http.fetch(`auth/signin`, {
                 method: 'post',
-                body: json(meta),
+                body: json(meta)
             })
-                .then(response => response.json())
+              
                 .then(data => {
+                    console.log('data',data)
                     resolve(data);
                 })
                 .catch(err => reject(Error(err)));

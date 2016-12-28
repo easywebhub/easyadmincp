@@ -17,7 +17,7 @@ export class HttpService {
         .withBaseUrl(ApiUrlBase)
         .withDefaults({
           headers: {
-            'SessionToken': (Lockr.get('UserInfo') == null || typeof Lockr.get('UserInfo') === "undefined") ? "" : (Lockr.get('UserInfo')as any).AccountId
+            'SessionToken': (Lockr.get('UserInfo') == null || typeof Lockr.get('UserInfo') === "undefined") ? "" : (Lockr.get('UserInfo')as any).AccountId           
           }
         })
         // .withInterceptor({

@@ -1,7 +1,7 @@
 import {
   ValidationRenderer,
   RenderInstruction,
-  ValidationError
+ // ValidationError
 } from 'aurelia-validation';
 
 export class BootstrapFormRenderer {

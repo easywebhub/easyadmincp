@@ -21,13 +21,13 @@ export class App {
     config.title = ' ADMINCP';
     config.addPipelineStep('authorize', AuthorizeStep);
 
-    console.log('this.checkNav', this.checkNav);
-    if (Lockr.get('UserInfo')) {
-      this.checkNav = (Lockr.get('UserInfo') as any).Result;
+    //console.log('this.checkNav', this.checkNav);
+    if ((Lockr.get('UserInfo')as any)) {
+      this.checkNav = true;
     }
 
     config.map([
-      { route: 'Dashboard', name: 'Dashboard', moduleId: 'viewmodels/DashBoardVM/dash_board', nav: this.checkNav, title: 'DASHBOARB' },
+     { route: 'Dashboard', name: 'Dashboard', moduleId: 'viewmodels/DashBoardVM/dash_board', nav: this.checkNav, title: 'DASHBOARB' },
       { route: ['', 'login'], name: 'login', moduleId: 'viewmodels/LoginVM/login', nav: false, settings: { roles: [] }, title: 'Đăng nhập' },
       { route: 'WebSiteMenu', name: 'WebSiteMenu', moduleId: 'viewmodels/WebSiteVM/WebSiteMenu', nav: this.checkNav, title: 'Website Management' },
       { route: 'AccountMenu', name: 'AccountMenu', moduleId: 'viewmodels/AccountVM/AccountMenu', nav: this.checkNav, title: 'User Management' },

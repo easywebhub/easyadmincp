@@ -81,6 +81,7 @@
       "aurelia-templating-resources": "npm:aurelia-templating-resources@^1.0.0-rc.1.0.0",
       "aurelia-templating-router": "npm:aurelia-templating-router@^1.0.0-rc.1.0.0",
       "aurelia-validation": "npm:aurelia-validation@^0.12.5",
+      "axios": "npm:axios@^0.15.3",
       "bluebird": "npm:bluebird@3.4.1",
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
       "fetch": "github:github/fetch@^1.0.0",
@@ -88,6 +89,8 @@
       "jquery": "npm:jquery@^2.2.4",
       "jquery-ui": "github:components/jqueryui@^1.12.0",
       "moment": "npm:moment@^2.15.1",
+      "myaxios": "npm:axios@^0.15.3",
+      "mzabriskie/axios": "github:mzabriskie/axios@^0.15.3",
       "select2": "github:select2/select2@^4.0.3",
       "text": "github:systemjs/plugin-text@^0.0.8",
       "tungptvn/aurelia-paginator": "github:tungptvn/aurelia-paginator@^0.1.8"

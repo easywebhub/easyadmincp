@@ -44,6 +44,7 @@ System.config({
     "aurelia-templating-resources": "npm:aurelia-templating-resources@1.0.0",
     "aurelia-templating-router": "npm:aurelia-templating-router@1.0.0",
     "aurelia-validation": "npm:aurelia-validation@0.12.5",
+    "axios": "npm:axios@0.15.3",
     "bluebird": "npm:bluebird@3.4.1",
     "bootstrap": "github:twbs/bootstrap@3.3.7",
     "fetch": "github:github/fetch@1.0.0",
@@ -51,6 +52,8 @@ System.config({
     "jquery": "npm:jquery@2.2.4",
     "jquery-ui": "github:components/jqueryui@1.12.1",
     "moment": "npm:moment@2.15.1",
+    "myaxios": "npm:axios@0.15.3",
+    "mzabriskie/axios": "github:mzabriskie/axios@0.15.3",
     "select2": "github:select2/select2@4.0.3",
     "text": "github:systemjs/plugin-text@0.0.8",
     "tungptvn/aurelia-paginator": "github:tungptvn/aurelia-paginator@0.1.8",
@@ -63,14 +66,37 @@ System.config({
     "github:jspm/nodelibs-buffer@0.1.0": {
       "buffer": "npm:buffer@3.6.0"
     },
+    "github:jspm/nodelibs-events@0.1.1": {
+      "events": "npm:events@1.0.2"
+    },
+    "github:jspm/nodelibs-http@1.7.1": {
+      "Base64": "npm:Base64@0.2.1",
+      "events": "github:jspm/nodelibs-events@0.1.1",
+      "inherits": "npm:inherits@2.0.1",
+      "stream": "github:jspm/nodelibs-stream@0.1.0",
+      "url": "github:jspm/nodelibs-url@0.1.0",
+      "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "github:jspm/nodelibs-https@0.1.0": {
+      "https-browserify": "npm:https-browserify@0.0.0"
+    },
     "github:jspm/nodelibs-process@0.1.2": {
       "process": "npm:process@0.11.9"
+    },
+    "github:jspm/nodelibs-stream@0.1.0": {
+      "stream-browserify": "npm:stream-browserify@1.0.0"
+    },
+    "github:jspm/nodelibs-url@0.1.0": {
+      "url": "npm:url@0.10.3"
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
     },
     "github:jspm/nodelibs-vm@0.1.0": {
       "vm-browserify": "npm:vm-browserify@0.0.4"
+    },
+    "github:jspm/nodelibs-zlib@0.1.0": {
+      "browserify-zlib": "npm:browserify-zlib@0.1.4"
     },
     "github:select2/select2@4.0.3": {
       "jquery": "npm:jquery@2.2.4"
@@ -226,27 +252,113 @@ System.config({
       "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0",
       "aurelia-templating": "npm:aurelia-templating@1.1.0"
     },
+    "npm:axios@0.15.3": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "follow-redirects": "npm:follow-redirects@1.0.0",
+      "https": "github:jspm/nodelibs-https@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.2",
+      "url": "github:jspm/nodelibs-url@0.1.0",
+      "zlib": "github:jspm/nodelibs-zlib@0.1.0"
+    },
     "npm:bluebird@3.4.1": {
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:browserify-zlib@0.1.4": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "pako": "npm:pako@0.2.9",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "readable-stream": "npm:readable-stream@2.2.2",
+      "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:buffer-shims@1.0.0": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
     "npm:buffer@3.6.0": {
       "base64-js": "npm:base64-js@0.0.8",
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "ieee754": "npm:ieee754@1.1.6",
+      "ieee754": "npm:ieee754@1.1.8",
       "isarray": "npm:isarray@1.0.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:core-util-is@1.0.2": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0"
+    },
+    "npm:debug@2.5.1": {
+      "ms": "npm:ms@0.7.2"
+    },
+    "npm:follow-redirects@1.0.0": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "debug": "npm:debug@2.5.1",
+      "http": "github:jspm/nodelibs-http@1.7.1",
+      "https": "github:jspm/nodelibs-https@0.1.0",
+      "stream": "github:jspm/nodelibs-stream@0.1.0",
+      "url": "github:jspm/nodelibs-url@0.1.0"
     },
     "npm:font-awesome@4.6.3": {
       "css": "github:systemjs/plugin-css@0.1.27"
     },
+    "npm:https-browserify@0.0.0": {
+      "http": "github:jspm/nodelibs-http@1.7.1"
+    },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:pako@0.2.9": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:process-nextick-args@1.0.7": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:process@0.11.9": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "vm": "github:jspm/nodelibs-vm@0.1.0"
+    },
+    "npm:punycode@1.3.2": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:readable-stream@1.1.14": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "core-util-is": "npm:core-util-is@1.0.2",
+      "events": "github:jspm/nodelibs-events@0.1.1",
+      "inherits": "npm:inherits@2.0.1",
+      "isarray": "npm:isarray@0.0.1",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "stream-browserify": "npm:stream-browserify@1.0.0",
+      "string_decoder": "npm:string_decoder@0.10.31"
+    },
+    "npm:readable-stream@2.2.2": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "buffer-shims": "npm:buffer-shims@1.0.0",
+      "core-util-is": "npm:core-util-is@1.0.2",
+      "events": "github:jspm/nodelibs-events@0.1.1",
+      "inherits": "npm:inherits@2.0.1",
+      "isarray": "npm:isarray@1.0.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "process-nextick-args": "npm:process-nextick-args@1.0.7",
+      "string_decoder": "npm:string_decoder@0.10.31",
+      "util-deprecate": "npm:util-deprecate@1.0.2"
+    },
+    "npm:stream-browserify@1.0.0": {
+      "events": "github:jspm/nodelibs-events@0.1.1",
+      "inherits": "npm:inherits@2.0.1",
+      "readable-stream": "npm:readable-stream@1.1.14"
+    },
+    "npm:string_decoder@0.10.31": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0"
+    },
+    "npm:url@0.10.3": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "punycode": "npm:punycode@1.3.2",
+      "querystring": "npm:querystring@0.2.0",
+      "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:util-deprecate@1.0.2": {
+      "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:util@0.10.3": {
       "inherits": "npm:inherits@2.0.1",
@@ -255,386 +367,5 @@ System.config({
     "npm:vm-browserify@0.0.4": {
       "indexof": "npm:indexof@0.0.1"
     }
-  },
-  bundles: {
-    "aurelia.js": [
-      "github:github/fetch@1.0.0.js",
-      "github:github/fetch@1.0.0/fetch.js",
-      "github:select2/select2@4.0.3.js",
-      "github:select2/select2@4.0.3/js/select2.js",
-      "github:systemjs/plugin-text@0.0.8.js",
-      "github:systemjs/plugin-text@0.0.8/text.js",
-      "github:tungptvn/aurelia-paginator@0.1.8.js",
-      "github:tungptvn/aurelia-paginator@0.1.8/index.js",
-      "github:twbs/bootstrap@3.3.7.js",
-      "github:twbs/bootstrap@3.3.7/css/bootstrap.css!github:systemjs/plugin-text@0.0.8.js",
-      "github:twbs/bootstrap@3.3.7/js/bootstrap.js",
-      "npm:aurelia-animator-css@1.0.1.js",
-      "npm:aurelia-animator-css@1.0.1/aurelia-animator-css.js",
-      "npm:aurelia-binding@1.0.4.js",
-      "npm:aurelia-binding@1.0.4/aurelia-binding.js",
-      "npm:aurelia-bootstrapper@1.0.0.js",
-      "npm:aurelia-bootstrapper@1.0.0/aurelia-bootstrapper.js",
-      "npm:aurelia-dependency-injection@1.0.0.js",
-      "npm:aurelia-dependency-injection@1.0.0/aurelia-dependency-injection.js",
-      "npm:aurelia-dialog@1.0.0-beta.3.0.0.js",
-      "npm:aurelia-dialog@1.0.0-beta.3.0.0/ai-dialog-body.js",
-      "npm:aurelia-dialog@1.0.0-beta.3.0.0/ai-dialog-footer.js",
-      "npm:aurelia-dialog@1.0.0-beta.3.0.0/ai-dialog-header.js",
-      "npm:aurelia-dialog@1.0.0-beta.3.0.0/ai-dialog.js",
-      "npm:aurelia-dialog@1.0.0-beta.3.0.0/attach-focus.js",
-      "npm:aurelia-dialog@1.0.0-beta.3.0.0/aurelia-dialog.js",
-      "npm:aurelia-dialog@1.0.0-beta.3.0.0/dialog-configuration.js",
-      "npm:aurelia-dialog@1.0.0-beta.3.0.0/dialog-controller.js",
-      "npm:aurelia-dialog@1.0.0-beta.3.0.0/dialog-options.js",
-      "npm:aurelia-dialog@1.0.0-beta.3.0.0/dialog-renderer.js",
-      "npm:aurelia-dialog@1.0.0-beta.3.0.0/dialog-result.js",
-      "npm:aurelia-dialog@1.0.0-beta.3.0.0/dialog-service.js",
-      "npm:aurelia-dialog@1.0.0-beta.3.0.0/lifecycle.js",
-      "npm:aurelia-dialog@1.0.0-beta.3.0.0/renderer.js",
-      "npm:aurelia-event-aggregator@1.0.0.js",
-      "npm:aurelia-event-aggregator@1.0.0/aurelia-event-aggregator.js",
-      "npm:aurelia-fetch-client@1.0.0.js",
-      "npm:aurelia-fetch-client@1.0.0/aurelia-fetch-client.js",
-      "npm:aurelia-framework@1.0.3.js",
-      "npm:aurelia-framework@1.0.3/aurelia-framework.js",
-      "npm:aurelia-history-browser@1.0.0.js",
-      "npm:aurelia-history-browser@1.0.0/aurelia-history-browser.js",
-      "npm:aurelia-history@1.0.0.js",
-      "npm:aurelia-history@1.0.0/aurelia-history.js",
-      "npm:aurelia-loader-default@1.0.0.js",
-      "npm:aurelia-loader-default@1.0.0/aurelia-loader-default.js",
-      "npm:aurelia-loader@1.0.0.js",
-      "npm:aurelia-loader@1.0.0/aurelia-loader.js",
-      "npm:aurelia-logging-console@1.0.0.js",
-      "npm:aurelia-logging-console@1.0.0/aurelia-logging-console.js",
-      "npm:aurelia-logging@1.0.0.js",
-      "npm:aurelia-logging@1.0.0/aurelia-logging.js",
-      "npm:aurelia-metadata@1.0.0.js",
-      "npm:aurelia-metadata@1.0.0/aurelia-metadata.js",
-      "npm:aurelia-pal-browser@1.0.0.js",
-      "npm:aurelia-pal-browser@1.0.0/aurelia-pal-browser.js",
-      "npm:aurelia-pal@1.0.0.js",
-      "npm:aurelia-pal@1.0.0/aurelia-pal.js",
-      "npm:aurelia-path@1.0.0.js",
-      "npm:aurelia-path@1.0.0/aurelia-path.js",
-      "npm:aurelia-polyfills@1.1.1.js",
-      "npm:aurelia-polyfills@1.1.1/aurelia-polyfills.js",
-      "npm:aurelia-route-recognizer@1.0.0.js",
-      "npm:aurelia-route-recognizer@1.0.0/aurelia-route-recognizer.js",
-      "npm:aurelia-router@1.0.3.js",
-      "npm:aurelia-router@1.0.3/aurelia-router.js",
-      "npm:aurelia-task-queue@1.0.0.js",
-      "npm:aurelia-task-queue@1.0.0/aurelia-task-queue.js",
-      "npm:aurelia-templating-binding@1.0.0.js",
-      "npm:aurelia-templating-binding@1.0.0/aurelia-templating-binding.js",
-      "npm:aurelia-templating-resources@1.0.0.js",
-      "npm:aurelia-templating-resources@1.0.0/abstract-repeater.js",
-      "npm:aurelia-templating-resources@1.0.0/analyze-view-factory.js",
-      "npm:aurelia-templating-resources@1.0.0/array-repeat-strategy.js",
-      "npm:aurelia-templating-resources@1.0.0/aurelia-hide-style.js",
-      "npm:aurelia-templating-resources@1.0.0/aurelia-templating-resources.js",
-      "npm:aurelia-templating-resources@1.0.0/binding-mode-behaviors.js",
-      "npm:aurelia-templating-resources@1.0.0/binding-signaler.js",
-      "npm:aurelia-templating-resources@1.0.0/compose.js",
-      "npm:aurelia-templating-resources@1.0.0/css-resource.js",
-      "npm:aurelia-templating-resources@1.0.0/debounce-binding-behavior.js",
-      "npm:aurelia-templating-resources@1.0.0/dynamic-element.js",
-      "npm:aurelia-templating-resources@1.0.0/focus.js",
-      "npm:aurelia-templating-resources@1.0.0/hide.js",
-      "npm:aurelia-templating-resources@1.0.0/html-resource-plugin.js",
-      "npm:aurelia-templating-resources@1.0.0/html-sanitizer.js",
-      "npm:aurelia-templating-resources@1.0.0/if.js",
-      "npm:aurelia-templating-resources@1.0.0/map-repeat-strategy.js",
-      "npm:aurelia-templating-resources@1.0.0/null-repeat-strategy.js",
-      "npm:aurelia-templating-resources@1.0.0/number-repeat-strategy.js",
-      "npm:aurelia-templating-resources@1.0.0/repeat-strategy-locator.js",
-      "npm:aurelia-templating-resources@1.0.0/repeat-utilities.js",
-      "npm:aurelia-templating-resources@1.0.0/repeat.js",
-      "npm:aurelia-templating-resources@1.0.0/replaceable.js",
-      "npm:aurelia-templating-resources@1.0.0/sanitize-html.js",
-      "npm:aurelia-templating-resources@1.0.0/set-repeat-strategy.js",
-      "npm:aurelia-templating-resources@1.0.0/show.js",
-      "npm:aurelia-templating-resources@1.0.0/signal-binding-behavior.js",
-      "npm:aurelia-templating-resources@1.0.0/throttle-binding-behavior.js",
-      "npm:aurelia-templating-resources@1.0.0/update-trigger-binding-behavior.js",
-      "npm:aurelia-templating-resources@1.0.0/with.js",
-      "npm:aurelia-templating-router@1.0.0.js",
-      "npm:aurelia-templating-router@1.0.0/aurelia-templating-router.js",
-      "npm:aurelia-templating-router@1.0.0/route-href.js",
-      "npm:aurelia-templating-router@1.0.0/route-loader.js",
-      "npm:aurelia-templating-router@1.0.0/router-view.js",
-      "npm:aurelia-templating@1.1.0.js",
-      "npm:aurelia-templating@1.1.0/aurelia-templating.js",
-      "npm:aurelia-validation@0.12.5.js",
-      "npm:aurelia-validation@0.12.5/aurelia-validation.js",
-      "npm:aurelia-validation@0.12.5/implementation/rules.js",
-      "npm:aurelia-validation@0.12.5/implementation/standard-validator.js",
-      "npm:aurelia-validation@0.12.5/implementation/util.js",
-      "npm:aurelia-validation@0.12.5/implementation/validation-messages.js",
-      "npm:aurelia-validation@0.12.5/implementation/validation-parser.js",
-      "npm:aurelia-validation@0.12.5/implementation/validation-rules.js",
-      "npm:aurelia-validation@0.12.5/property-info.js",
-      "npm:aurelia-validation@0.12.5/validate-binding-behavior.js",
-      "npm:aurelia-validation@0.12.5/validate-trigger.js",
-      "npm:aurelia-validation@0.12.5/validation-controller-factory.js",
-      "npm:aurelia-validation@0.12.5/validation-controller.js",
-      "npm:aurelia-validation@0.12.5/validation-error.js",
-      "npm:aurelia-validation@0.12.5/validation-errors-custom-attribute.js",
-      "npm:aurelia-validation@0.12.5/validation-renderer-custom-attribute.js",
-      "npm:aurelia-validation@0.12.5/validator.js",
-      "npm:jquery@2.2.4.js",
-      "npm:jquery@2.2.4/dist/jquery.js",
-      "npm:moment@2.15.1.js",
-      "npm:moment@2.15.1/moment.js",
-      "numeral"
-    ],
-    "app-build.js": [
-      "app.html!github:systemjs/plugin-text@0.0.8.js",
-      "app.js",
-      "configs/appConfig.js",
-      "configs/authorizeStep.js",
-      "main.js",
-      "models/login.js",
-      "models/website.js",
-      "nav-bar.html!github:systemjs/plugin-text@0.0.8.js",
-      "nav-bar.js",
-      "resources/CustomAttributes/bootstrap-tooltip.js",
-      "resources/CustomAttributes/datetime-picker.js",
-      "resources/CustomAttributes/manific-popup.js",
-      "resources/CustomAttributes/number-box.js",
-      "resources/CustomAttributes/select2.js",
-      "resources/CustomAttributes/semantic-accordion.js",
-      "resources/CustomAttributes/semantic-checkbox.js",
-      "resources/CustomAttributes/semantic-dropdown.js",
-      "resources/CustomAttributes/semantic-menu.js",
-      "resources/CustomAttributes/semantic-modal.js",
-      "resources/CustomAttributes/semantic-rating.js",
-      "resources/CustomAttributes/semantic-search.js",
-      "resources/CustomAttributes/semantic-tooltip.js",
-      "resources/CustomAttributes/summernote.js",
-      "resources/CustomElements/number/number-box.html!github:systemjs/plugin-text@0.0.8.js",
-      "resources/CustomElements/number/number-box.js",
-      "resources/CustomElements/panel/panel.html!github:systemjs/plugin-text@0.0.8.js",
-      "resources/CustomElements/panel/panel.js",
-      "resources/CustomElements/semantic-calendar/semantic-calendar.html!github:systemjs/plugin-text@0.0.8.js",
-      "resources/CustomElements/semantic-calendar/semantic-calendar.js",
-      "resources/CustomElements/semantic-dropdown/semantic-dropdown.html!github:systemjs/plugin-text@0.0.8.js",
-      "resources/CustomElements/semantic-dropdown/semantic-dropdown.js",
-      "resources/Excel/importExcel.js",
-      "resources/ValueConverter/ObjectKeyConverter.js",
-      "resources/ValueConverter/ToGender.js",
-      "resources/ValueConverter/convert-to-image.js",
-      "resources/ValueConverter/currency-format.js",
-      "resources/ValueConverter/date-format.js",
-      "resources/ValueConverter/index.js",
-      "resources/ValueConverter/json.js",
-      "resources/ValueConverter/number.js",
-      "resources/ValueConverter/take-from-to.js",
-      "resources/ValueConverter/take.js",
-      "resources/ValueConverter/to-length.js",
-      "resources/helpers/lib.js",
-      "resources/index.js",
-      "resources/validation-render/bootstrap-render.js",
-      "services/Account/CustomerServices.js",
-      "services/Account/LoggingServices.js",
-      "services/Account/StudentServices.js",
-      "services/Account/UserServices.js",
-      "services/HttpService.js",
-      "services/WebSite/WebSiteServices.js",
-      "services/appState.js",
-      "viewmodels/AccountVM/AccountMenu.html!github:systemjs/plugin-text@0.0.8.js",
-      "viewmodels/AccountVM/AccountMenu.js",
-      "viewmodels/AccountVM/UserMng.html!github:systemjs/plugin-text@0.0.8.js",
-      "viewmodels/AccountVM/UserMng.js",
-      "viewmodels/DashBoardVM/dash_board.html!github:systemjs/plugin-text@0.0.8.js",
-      "viewmodels/DashBoardVM/dash_board.js",
-      "viewmodels/LoginVM/login.html!github:systemjs/plugin-text@0.0.8.js",
-      "viewmodels/LoginVM/login.js",
-      "viewmodels/LoginVM/logout.html!github:systemjs/plugin-text@0.0.8.js",
-      "viewmodels/LoginVM/logout.js",
-      "viewmodels/LoginVM/resgister.html!github:systemjs/plugin-text@0.0.8.js",
-      "viewmodels/WebSiteVM/CreateWebDlg.html!github:systemjs/plugin-text@0.0.8.js",
-      "viewmodels/WebSiteVM/CreateWebDlg.js",
-      "viewmodels/WebSiteVM/DetailWebDlg.html!github:systemjs/plugin-text@0.0.8.js",
-      "viewmodels/WebSiteVM/DetailWebDlg.js",
-      "viewmodels/WebSiteVM/RoleWebDlg.html!github:systemjs/plugin-text@0.0.8.js",
-      "viewmodels/WebSiteVM/RoleWebDlg.js",
-      "viewmodels/WebSiteVM/WebSiteMenu.html!github:systemjs/plugin-text@0.0.8.js",
-      "viewmodels/WebSiteVM/WebSiteMenu.js",
-      "viewmodels/WebSiteVM/WebSiteMng.html!github:systemjs/plugin-text@0.0.8.js",
-      "viewmodels/WebSiteVM/WebSiteMng.js",
-      "views/entity-header.html!github:systemjs/plugin-text@0.0.8.js",
-      "welcome.html!github:systemjs/plugin-text@0.0.8.js",
-      "welcome.js"
-    ]
-  },
-  depCache: {
-    "app.js": [
-      "aurelia-framework",
-      "./services/appState",
-      "./configs/authorizeStep",
-      "aurelia-history"
-    ],
-    "configs/authorizeStep.js": [
-      "aurelia-framework",
-      "../services/appState"
-    ],
-    "main.js": [
-      "lockr",
-      "sweetalert",
-      "numeral",
-      "jquery",
-      "semantic"
-    ],
-    "models/login.js": [
-      "aurelia-validation"
-    ],
-    "resources/CustomAttributes/bootstrap-tooltip.js": [
-      "aurelia-framework"
-    ],
-    "resources/CustomAttributes/datetime-picker.js": [
-      "aurelia-framework",
-      "moment",
-      "datetimepicker"
-    ],
-    "resources/CustomAttributes/manific-popup.js": [
-      "aurelia-framework",
-      "magnificPopup"
-    ],
-    "resources/CustomAttributes/number-box.js": [
-      "aurelia-framework",
-      "aurelia-binding"
-    ],
-    "resources/CustomAttributes/select2.js": [
-      "aurelia-framework",
-      "select2"
-    ],
-    "resources/CustomAttributes/semantic-accordion.js": [
-      "aurelia-framework",
-      "jquery"
-    ],
-    "resources/CustomAttributes/semantic-checkbox.js": [
-      "aurelia-framework",
-      "jquery"
-    ],
-    "resources/CustomAttributes/semantic-dropdown.js": [
-      "aurelia-framework",
-      "jquery"
-    ],
-    "resources/CustomAttributes/semantic-menu.js": [
-      "aurelia-framework",
-      "jquery"
-    ],
-    "resources/CustomAttributes/semantic-modal.js": [
-      "aurelia-framework",
-      "jquery"
-    ],
-    "resources/CustomAttributes/semantic-rating.js": [
-      "aurelia-framework",
-      "jquery"
-    ],
-    "resources/CustomAttributes/semantic-tooltip.js": [
-      "aurelia-framework",
-      "jquery"
-    ],
-    "resources/CustomAttributes/summernote.js": [
-      "aurelia-framework",
-      "summernote"
-    ],
-    "resources/CustomElements/number/number-box.js": [
-      "aurelia-framework",
-      "aurelia-binding"
-    ],
-    "resources/CustomElements/panel/panel.js": [
-      "aurelia-framework",
-      "../../helpers/lib"
-    ],
-    "resources/CustomElements/semantic-calendar/semantic-calendar.js": [
-      "aurelia-framework",
-      "semantic-ui-calendar"
-    ],
-    "resources/CustomElements/semantic-dropdown/semantic-dropdown.js": [
-      "aurelia-framework"
-    ],
-    "services/Account/CustomerServices.js": [
-      "aurelia-framework",
-      "aurelia-fetch-client",
-      "../..//services/HttpService"
-    ],
-    "services/Account/LoggingServices.js": [
-      "aurelia-framework",
-      "aurelia-fetch-client",
-      "../..//services/HttpService"
-    ],
-    "services/Account/StudentServices.js": [
-      "aurelia-framework",
-      "aurelia-fetch-client",
-      "../..//services/HttpService"
-    ],
-    "services/Account/UserServices.js": [
-      "aurelia-framework",
-      "../..//services/HttpService"
-    ],
-    "services/appState.js": [
-      "aurelia-framework",
-      "lockr"
-    ],
-    "services/HttpService.js": [
-      "aurelia-framework",
-      "aurelia-fetch-client",
-      "../configs/appConfig"
-    ],
-    "services/WebSite/WebSiteServices.js": [
-      "aurelia-framework",
-      "aurelia-fetch-client",
-      "../..//services/HttpService"
-    ],
-    "viewmodels/AccountVM/UserMng.js": [
-      "aurelia-framework",
-      "../../services/Account/UserServices"
-    ],
-    "viewmodels/DashBoardVM/dash_board.js": [
-      "aurelia-framework",
-      "aurelia-fetch-client",
-      "../../services/appState"
-    ],
-    "viewmodels/LoginVM/login.js": [
-      "aurelia-router",
-      "aurelia-dependency-injection",
-      "../../services/Account/LoggingServices",
-      "lockr"
-    ],
-    "viewmodels/LoginVM/logout.js": [
-      "aurelia-framework",
-      "aurelia-router"
-    ],
-    "viewmodels/WebSiteVM/CreateWebDlg.js": [
-      "aurelia-dialog",
-      "aurelia-dependency-injection"
-    ],
-    "viewmodels/WebSiteVM/DetailWebDlg.js": [
-      "aurelia-dialog",
-      "aurelia-dependency-injection"
-    ],
-    "viewmodels/WebSiteVM/RoleWebDlg.js": [
-      "aurelia-dialog",
-      "aurelia-dependency-injection"
-    ],
-    "viewmodels/WebSiteVM/WebSiteMng.js": [
-      "aurelia-framework",
-      "../../services/WebSite/WebSiteServices",
-      "aurelia-dialog",
-      "./CreateWebDlg",
-      "./DetailWebDlg",
-      "./RoleWebDlg",
-      "../../models//website"
-    ],
-    "welcome.js": [
-      "aurelia-dependency-injection",
-      "aurelia-validation",
-      "./resources/validation-render/bootstrap-render",
-      "chart.js"
-    ]
   }
 });

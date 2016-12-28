@@ -53,8 +53,8 @@
                     <tr>
 
                         <th>Stt</th>
-                        <th>Id</th>
-                        <th>Tên Website</th>
+                        <th>Tên</th>
+                        <th>Hiển thị Website</th>
                         <!--<th>Tên Website hiển thị</th>-->
                         <th>Url</th>
                         <!--<th>Stagging</th>
@@ -69,14 +69,14 @@
                     <tbody ref="mydata" items.bind="listWebSite | searchTypes:searchType.value |searchName:searchNamWebSite.value |searchProduction:searchProduction.value">
                         <tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (itemperpage):current * (itemperpage)">
                             <td>${(current-1)*10+$index+1}</td>
-                            <td>${item.Id}</td>
+                           
                             <td>${item.Name}</td>
                             <!--<td>${item.DisplayName}</td>-->
-                            <td>${item.Url}</td>
+                            <td>${item.DisplayName}</td>
                             <!--<td>${item.Stagging}</td>
                             <td>${item.Production}</td>
                             <td>${item.Type}</td>-->
-                        
+                            <td>${item.Url}</td>
 
 
                             <td>

@@ -36,6 +36,7 @@
     "selenium-webdriver": "registry:dt/selenium-webdriver#2.44.0+20160317120654"
   },
   "globalDependencies": {
+    "axios": "registry:dt/axios#0.9.1+20161128041239",
     "bootstrap": "registry:dt/bootstrap#3.3.5+20160619023404",
     "ckeditor": "registry:dt/ckeditor#0.0.0+20160620141711",
     "jquery": "registry:dt/jquery#1.10.0+20160704162008",

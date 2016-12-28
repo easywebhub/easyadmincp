@@ -47,7 +47,7 @@ export class LoginViewModel {
       Password: {
         identifier: 'Password',
         rules: [{
-          type: 'minLength[6]',
+          type: 'minLength[1]',
           prompt: 'Mật khẩu ít nhất {ruleValue} ký tự'
         }]
       },
@@ -67,11 +67,13 @@ export class LoginViewModel {
     //console.log(this.submit());
     this.pendding=!this.pendding;
     this.loggingServices.CheckLogin(this.Login).then(rs => {
-       
-      if ((rs as any).Result == true)
+
+   
+       console.log('test',rs)
+      if ((rs as any).status == 200)
       {
         this.pendding=!this.pendding;
-        Lockr.set('UserInfo',rs);
+        Lockr.set('UserInfo',(rs as any).status);
         //console.log('object',this.Login);
          window.setTimeout(() => {
         this.theRouter.navigateToRoute('Dashboard');

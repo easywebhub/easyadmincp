@@ -40,9 +40,13 @@ export class UserMng {
         });
     }
 
-    
+    updateUser(item){
+        console.log('updateUser')
+    }
 
-
+   deleteUser(item){
+        console.log('delete user')   
+   }
 }
 export class SearchUserNameValueConverter {
  toView(array, obj) {
