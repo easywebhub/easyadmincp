@@ -133,7 +133,7 @@ export class SearchTypesValueConverter {
         if (obj == "") {
             return array;
         } else if (obj) {
-            let filteredArr = array.filter(x => x.Type.toLowerCase().indexOf(obj.toLowerCase()) != -1);
+            let filteredArr = array.filter(x => x.DisplayName.toLowerCase().indexOf(obj.toLowerCase()) != -1);
         
             return filteredArr;
         }
@@ -146,7 +146,7 @@ export class SearchProductionValueConverter {
         if (obj == "") {
             return array;
         } else if (obj) {
-            let filteredArr = array.filter(x => x.Production.toLowerCase().indexOf(obj.toLowerCase()) != -1);
+            let filteredArr = array.filter(x => x.Name.toLowerCase().indexOf(obj.toLowerCase()) != -1);
         
             return filteredArr;
         }

@@ -17,18 +17,18 @@
   <form class="ui form">
     <div class="three fields">
       <div class="field">
-        <label>Tên WebSite</label>
-        <input type="text" placeholder="Tên WebSite" ref="searchNamWebSite">
+        <label>DisplayName</label>
+        <input type="text" placeholder="DisplayName" ref="searchNamWebSite">
       </div>
       <div class="field">
-        <label>Sản phẩm</label>
-        <input type="text" placeholder="Sản phẩm" ref="searchProduction">
+        <label>Name</label>
+        <input type="text" placeholder="Name" ref="searchProduction">
       </div>
-      <div class="field">
+      <!--<div class="field">
         <label>Loại Website</label>
         <input type="text" placeholder="Loại Website" ref="searchType">
       </div>
-    </div>
+    </div>-->
   </form>
   <button click.delegate="createWeb(item)" senam_tooltip data-content="Tạo mới" style="width:50px;margin:10px 0px" class="ui blue button"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
   <div class="ui" if.bind="!pendding">
@@ -44,8 +44,8 @@
       <thead>
         <tr>
           <th>Stt</th>
-          <th>Tên</th>
-          <th>Hiển thị Website</th>
+          <th>Name</th>
+          <th>DisplayName</th>
           <!--<th>Tên Website hiển thị</th>-->
           <!--<th>Url</th>-->
           <!--<th>Stagging</th>
