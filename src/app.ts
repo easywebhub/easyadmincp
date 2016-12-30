@@ -1,45 +1,18 @@
-import { inject, LogManager, bindable } from 'aurelia-framework';
-import { AppState } from './services/appState';
-import { AuthorizeStep } from './configs/authorizeStep';
-import { HttpClient } from 'aurelia-fetch-client';
-import { History } from 'aurelia-history';
+import {Aurelia} from 'aurelia-framework';
+import {Router, RouterConfiguration} from 'aurelia-router';
 
-
-
-
-@inject(AppState, History)
 export class App {
-  logger: any;
-  router: any;
-  checkNav: boolean
-  @bindable appState;
-  config: any
-  constructor(appState, private history: History) {
-    this.checkNav = false;
-  }
-  configureRouter(config, router) {
-    config.title = ' ADMINCP';
-    config.addPipelineStep('authorize', AuthorizeStep);
+  router: Router;
 
-    //console.log('this.checkNav', this.checkNav);
-    if ((Lockr.get('UserInfo')as any)) {
-      this.checkNav = true;
-    }
-
+  configureRouter(config: RouterConfiguration, router: Router) {
+    config.title = 'AdminCp';
     config.map([
-     { route: 'Dashboard', name: 'Dashboard', moduleId: 'viewmodels/DashBoardVM/dash_board', nav: this.checkNav, title: 'DASHBOARB' },
-      { route: ['', 'login'], name: 'login', moduleId: 'viewmodels/LoginVM/login', nav: false, settings: { roles: [] }, title: 'Đăng nhập' },
-      { route: 'WebSiteMenu', name: 'WebSiteMenu', moduleId: 'viewmodels/WebSiteVM/WebSiteMenu', nav: this.checkNav, title: 'Website Management' },
-      { route: 'AccountMenu', name: 'AccountMenu', moduleId: 'viewmodels/AccountVM/AccountMenu', nav: this.checkNav, title: 'User Management' },
-      { route: 'logout', name: 'logout', moduleId: 'viewmodels/LoginVM/logout', nav: false, title: 'Logout' },
-      { route: 'register', name: 'register', moduleId: 'viewmodels/LoginVM/resgister', nav: false, title: 'register' }
+      { route: ['', 'welcome'], name: 'welcome',      moduleId: './welcome',      nav: true, title: 'Welcome' },
+      { route: 'users',         name: 'users',        moduleId: './users',        nav: true, title: 'Github Users' },
+      { route: 'child-router',  name: 'child-router', moduleId: './child-router', nav: true, title: 'Child Router' },
+      { route: 'demo',  name: 'demo', moduleId: './ViewDemo/demo', nav: true, title: 'Demo Semantic UI' }
     ]);
 
     this.router = router;
-
-
   }
- 
-
-
 }

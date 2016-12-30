@@ -1,0 +1,182 @@
+<template>
+  <table id="example" class="display" width="100%"></table>
+  <br>
+ <ui-calendar vl.bind="dtTime"></ui-calendar>
+  <br>
+  <div class="ui checkbox" ui-checkbox>
+    <input type="checkbox" name="example">
+    <label>check box</label>
+  </div>
+  <br>
+  <br>
+  <div class="ui star rating" data-rating="3" ui-rating></div>
+  <br>
+  <div class="ui icon button" data-content="Tooltip" ui-tooltip>
+    <i class="add icon"></i>
+  </div>
+  <br>
+  <div class="ui accordion" ui-accordion>
+    <div class="title active">
+      <i class="dropdown icon"></i> Run accordion
+    </div>
+    <div class="content active">
+      <p class="transition visible" style="display: block !important;">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest
+        in many households across the world.</p>
+    </div>
+  </div>
+  <br>
+  <a class="item" ui-modal style="color:green">
+    Run modal
+   </a>
+  <div class="ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+      Profile Picture
+    </div>
+    <div class="image content">
+      <div class="ui medium image">
+      </div>
+      <div class="description">
+        <div class="ui header">We've auto-chosen a profile image for you.</div>
+        <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image
+          associated with your registered e-mail address.</p>
+        <p>Is it okay to use this photo?</p>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui black deny button">
+        Nope
+      </div>
+      <div class="ui positive right labeled icon button">
+        Yep, that's me
+        <i class="checkmark icon"></i>
+      </div>
+    </div>
+
+  </div>
+  <br>
+
+  </div>
+
+  <div class="ui three item menu" ui-menu>
+    <a class="active item">Home</a>
+    <a class="item">About</a>
+    <a class="item">Contact</a>
+  </div>
+  <div class="ui vertical menu" ui-menu>
+    <a class="teal item">
+    Home
+    <div class="ui teal left pointing label">1</div>
+  </a>
+    <a class="item">
+    About
+    <div class="ui label">51</div>
+  </a>
+    <a class="item active">
+     Contact
+    <div class="ui label">1</div>
+  </a>
+    <div class="item">
+      <div class="ui transparent icon input">
+        <input type="text" placeholder="Search mail...">
+        <i class="search icon"></i>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="ui segment">
+    <p></p>
+    <div class="ui active dimmer">
+      <div class="ui loader"></div>
+    </div>
+  </div>
+  <br>
+  <div class="ui raised very padded text container segment">
+    <h2 class="ui header">Dogs Roles with Humans</h2>
+    <form class="ui form" submit.delegate="submit()" action="demo.html" method="post">
+      <div class="field">
+        <label>Empty</label>
+        <input name="empty" type="text">
+      </div>
+      <div class="field">
+        <label>ckeditor</label>
+        <input ui-ckeditor type="text" name="ckeditor" id="ckeditor" rows="10" cols="80" value.two-way="contents" />
+      </div>
+      <button class="ui submit button" type="submit">Submit</button>
+      <div class="ui error message"></div>
+    </form>
+  </div>
+  <br>
+  <div class="ui top attached tabular menu" ui-tab>
+    <a class="item active" data-tab="first">First</a>
+    <a class="item" data-tab="second">Second</a>
+    <a class="item" data-tab="third">Third</a>
+  </div>
+  <div class="ui bottom attached tab segment active" data-tab="first">
+    First
+  </div>
+  <div class="ui bottom attached tab segment" data-tab="second">
+    Second
+  </div>
+  <div class="ui bottom attached tab segment" data-tab="third">
+    Third
+  </div>
+ <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="slect">
+  <input name="gender" type="hidden" value="${slect}">
+  <i class="dropdown icon"></i>
+  <div class="default text">--Select All--</div>
+  <div class="menu">
+      <div class="item" data-value="${item.id}" repeat.for="item of list">${item.name}</div>
+      
+  </div>
+</div>
+${slect}
+  <br>
+  <br>
+ 
+
+ 
+     <table class="ui table" >
+                <thead>
+                    <tr>
+                        
+                        <th>Stt</th>
+                        <th>subscriptions url</th>
+                        <th>type</th>
+                        <!--<th>Tên Website hiển thị</th>-->
+                        <th>url</th>
+                        <!--<th>Stagging</th>
+                        <th>Sản phẩm</th>
+                        <th>Kiểu</th>-->
+                   
+                        <th></th>
+
+                    </tr>
+                </thead>
+                
+                    <tbody ref="mydata" items.bind="listData">
+                        <tr repeat.for="item of mydata.items |takeFromTo:(current-1)*(pageSize):current*(pageSize)">
+                            <td>${(current-1)*10+$index+1}</td>
+                            <td>${item.subscriptions_url}</td>
+                            <td>${item.type}</td>
+                            <!--<td>${item.DisplayName}</td>-->
+                            <td>${item.url}</td>
+                            <!--<td>${item.Stagging}</td>
+                            <td>${item.Production}</td>
+                            <td>${item.Type}</td>-->
+                        
+
+
+                            
+                        </tr>
+                    </tbody>
+
+            </table>
+             <ui-pagination  total-record.bind="total" page-size.two-way="pageSize" page-all.bind="allPage" current-page.two-way="current"></ui-pagination>
+             <br>
+            <div id="htmString" innerhtml.bind="htmlTag"></div>
+       </div>
+       
+ 
+
+</template>

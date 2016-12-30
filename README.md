@@ -1,192 +1,193 @@
-# aurelia-skeleton-navigation (typescript)
+# aurelia-skeleton-webpack
 
-## Running The App
+## Getting started
 
-To run the app, follow these steps.
+Before you start, make sure you have a recent version of [NodeJS](http://nodejs.org/) environment *>=4.0* with NPM 3.
 
-1. Ensure that [NodeJS](http://nodejs.org/) is installed. This provides the platform on which the build tooling runs.
-2. From the project folder, execute the following command:
-
-  ```shell
-  npm install
-  ```
-3. Ensure that [Gulp](http://gulpjs.com/) is installed globally. If you need to install it, use the following command:
-
-  ```shell
-  npm install -g gulp
-  ```
-  > **Note:** Gulp must be installed globally, but a local version will also be installed to ensure a compatible version is used for the project.
-4. Ensure that [jspm](http://jspm.io/) is installed globally. If you need to install it, use the following command:
-
-  ```shell
-  npm install -g jspm
-  ```
-  > **Note:** jspm must be installed globally, but a local version will also be installed to ensure a compatible version is used for the project.
-
-  > **Note:** jspm queries GitHub to install semver packages, but GitHub has a rate limit on anonymous API requests. It is advised that you configure jspm with your GitHub credentials in order to avoid problems. You can do this by executing `jspm registry config github` and following the prompts. If you choose to authorize jspm by an access token instead of giving your password (see GitHub `Settings > Personal Access Tokens`), `public_repo` access for the token is required.
-5. Install the client-side dependencies with jspm:
-
-  ```shell
-  jspm install -y
-  ```
-  >**Note:** Windows users, if you experience an error of "unknown command unzip" you can solve this problem by doing `npm install -g unzip` and then re-running `jspm install`.
-6. To run the app, execute the following command:
-
-  ```shell
-  gulp watch
-  ```
-7. Browse to [http://localhost:9000](http://localhost:9000) to see the app. You can make changes in the code found under `src` and the browser should auto-refresh itself as you save files.
-
-> The Skeleton App uses [BrowserSync](http://www.browsersync.io/) for automated page refreshes on code/markup changes concurrently across multiple browsers. If you prefer to disable the mirroring feature set the [ghostMode option](http://www.browsersync.io/docs/options/#option-ghostMode) to false
-
-## Running The App under Electron
-
-#### Note:
-The first five steps below are identical to the first five steps for running this app the "standard' way, using the jspm / systemjs tooling. The difference is in the command to run the app, where the standard `gulp watch` command is replaced by the sequence of two commands:
+From the project folder, execute the following commands:
 
 ```shell
-gulp build
-electron index.js
+npm install
 ```
 
-To run the app under [Electron](http://electron.atom.io), follow these steps.
+This will install all required dependencies, including a local version of Webpack that is going to
+build and bundle the app. There is no need to install Webpack globally. 
 
-1. Install [Electron](http://electron.atom.io)
+To run the app execute the following command:
 
-  ```shell
-  npm install electron-prebuilt -g
+```shell
+npm start
 ```
 
-2. From the project folder, execute the following command:
+This command starts the webpack development server that serves the build bundles.
+You can now browse the skeleton app at http://localhost:9000. Changes in the code
+will automatically build and reload the app.
 
-  ```shell
-  npm install
-  ```
+## Feature configuration
 
-3. Ensure that [Gulp](http://gulpjs.com/) is installed globally. If you need to install it, use the following command:
-
-  ```shell
-  npm install -g gulp
-  ```
-  > **Note:** Gulp must be installed globally, but a local version will also be installed to ensure a compatible version is used for the project.
-
-4. Ensure that [jspm](http://jspm.io/) is installed globally. If you need to install it, use the following command:
-
-  ```shell
-  npm install -g jspm
-  ```
-  > **Note:** jspm must be installed globally, but a local version will also be installed to ensure a compatible version is used for the project.
-
-  > **Note:** jspm queries GitHub to install semver packages, but GitHub has a rate limit on anonymous API requests. It is advised that you configure jspm with your GitHub credentials in order to avoid problems. You can do this by executing `jspm registry config github` and following the prompts. If you choose to authorize jspm by an access token instead of giving your password (see GitHub `Settings > Personal Access Tokens`), `public_repo` access for the token is required.
-
-5. Install the client-side dependencies with jspm:
-
-  ```shell
-  jspm install -y
-  ```
-  >**Note:** Windows users, if you experience an error of "unknown command unzip" you can solve this problem by doing `npm install -g unzip` and then re-running `jspm install`.
-
-6. To build the app execute the following command (this will give you a dist directory)
-
- ```shell
-    gulp build
- ```
-
-7. To start the app, execute the following command:
-
-  ```shell
-  electron index.js
-  ```
->**Note:** If typing the command `electron index.js` is too much for you change this line in package.json from `"main": "dist/main.js",` to `"main": "index.js",`
-> Then, you can invoke electron by just typing
- ```shell
-   electron .
-```
-
+Most of the configuration will happen in the `webpack.config.js` file.
+There, you may configure advanced loader features or add direct SASS or LESS loading support.
 
 ## Bundling
-Bundling is performed by [Aurelia Bundler](http://github.com/aurelia/bundler). A gulp task is already configured for that. Use the following command to bundle the app:
 
-  ```shell
-    gulp bundle
-  ```
+To build a development bundle (output to /dist) execute:
 
-You can also unbundle using the command bellow:
+```shell
+npm run build
+```
 
-  ```shell
-    gulp unbundle
-  ```
+To build an optimized, minified production bundle (output to /dist) execute:
 
-To start the bundled app, execute the following command:
+```shell
+npm run build:prod
+```
 
-  ```shell
-    gulp serve-bundle
-  ```
-#### Configuration
-The configuration is done by ```bundles.js``` file.
-##### Optional
-Under ```options``` of ```dist/aurelia``` add ```rev: true``` to add bundle file revision/version.
+To test either the development or production build execute:
+
+```shell
+npm run server:prod
+```
+
+The production bundle includes all files that are required for deployment.
+
+## Resource and bundling configuration
+
+You may want to separate out parts of your code to other files.
+This can be done by specifying a build resource object inside `package.json`. 
+
+For example, if you wanted to lazy-load the /users path of the skeleton you could define it as follows:
+
+```js
+// (package.json)
+"aurelia": {
+  "build": {
+    "resources": [
+      {
+        "path": "users",
+        "bundle": "users",
+        "lazy": true
+      }
+    ]
+  }
+},
+```
+
+The "path" field can be either a string or an array of strings. 
+The string should be a path, relative to the src or in case of an external resource, as a require path (e.g. `aurelia-plugin/some-resource.html`).
+`.js`, `.ts` and `.html` extensions are optional and will be resolved automatically.
+The bundle setting is recursive, therefore any files required by the specified path will also be contained by the bundle, unless they are also contained by another one (iteration is done from first to last resource).
+
+Resources must also be specified in case Aurelia is supposed to load an external file or an external module that was not defined as a resource by any of the dependencies.
+Since the syntax is still relatively new, most Aurelia plugins don't define their resources. 
+There might also be reasons not to declare those resources, in case the plugin is to be consumed only partially.
+If you'd like to use external resources, you should declare them yourself, like so:
+
+```js
+// (package.json)
+"aurelia": {
+  "build": {
+    "resources": [
+      "aurelia-some-ui-plugin/dropdown",
+      "aurelia-some-ui-plugin/checkbox"
+    ]
+  }
+},
+```
+
+You can also combine both features to separate out plugins or resources for lazy-loading:
+
+```js
+// (package.json)
+"aurelia": {
+  "build": {
+    "resources": [
+      {
+        "path": "aurelia-animator-css",
+        "bundle": "animator",
+        "lazy": true
+      },
+      {
+        "path": [
+          // lets say we only use the checkbox from within subpage1
+          // we want those to be bundled together in a bundle called: "subpage1"
+          "aurelia-some-ui-plugin/checkbox",
+          "./items/subpage1"
+        ],
+        "bundle": "subpage1",
+        "lazy": true
+      },
+      "aurelia-some-ui-plugin/dropdown"
+    ]
+  }
+},
+```
+
+Please see https://github.com/aurelia/webpack-plugin for more information.
 
 ## Running The Unit Tests
 
-To run the unit tests, first ensure that you have followed the steps above in order to install all dependencies and successfully build the library. Once you have done that, proceed with these additional steps:
-
-1. Ensure that the [Karma](http://karma-runner.github.io/) CLI is installed. If you need to install it, use the following command:
-
-  ```shell
-  npm install -g karma-cli
-  ```
-2. Install Aurelia libs for test visibility:
+To run the unit tests:
 
 ```shell
-jspm install aurelia-framework
-jspm install aurelia-http-client
-jspm install aurelia-router
+npm test
 ```
-3. You can now run the tests with this command:
-
-  ```shell
-  karma start
-  ```
 
 ## Running The E2E Tests
 Integration tests are performed with [Protractor](http://angular.github.io/protractor/#/).
 
 1. Place your E2E-Tests into the folder ```test/e2e/src```
-2. Install the necessary webdriver
+
+2. Run the tests by invoking
 
   ```shell
-  gulp webdriver-update
+  npm run e2e
   ```
 
-3. Configure the path to the webdriver by opening the file ```protractor.conf.js``` and adjusting the ```seleniumServerJar``` property. Typically its only needed to adjust the version number.
+### Running e2e tests manually
 
-4. Make sure your app runs and is accessible
+1. Make sure your app runs and is accessible
 
   ```shell
-  gulp watch
+  WEBPACK_PORT=19876 npm start
   ```
 
-5. In another console run the E2E-Tests
+3. Once bundle is ready, run the E2E-Tests in another console
 
   ```shell
-  gulp e2e
+  npm run e2e:start
   ```
 
-## Exporting bundled production version
-A gulp task is already configured for that. Use the following command to export the app:
+## Electron (coming soon)
 
-  ```shell
-    gulp export
-  ```
-The app will be exported into ```export``` directory preserving the directory structure.
+To add Electron support to the skeleton, first run:
 
-To start the exported app, execute the following command:
+```shell
+npm run electron:setup
+```
 
-  ```shell
-    gulp serve-export
-  ```
+Once the packages are installed, you may either view your app in Electron or build application packages for production:
 
-#### Configuration
-The configuration is done by ```bundles.js``` file.
-In addition, ```export.js``` file is available for including individual files.
+```shell
+# developing on Electron with live-reload
+npm run electron:start
+
+# creates packages for the current operating system
+npm run electron:package
+
+# creates packages for all operating systems
+npm run electron:package:all
+```
+
+The entry-file for Electron can be found in `config/electron.entry.development.ts`.
+
+Building or creating the Electron package will create a file `electron.js` in the root directory of the skeleton.
+
+### Loading native packages in Electron
+
+If you have packages that cannot work in the Electron Renderer process (e.g. native packages), or wish to use the package in the renderer process as if it is running under Node, list them under `externals`, in the file `config/webpack.electron.js`.
+
+## Acknowledgments
+
+Parts of code responsible for Webpack configuration were inspired by or copied from @AngularClass' [angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter).
+
+Parts of code responsible for Webpack-Electron configuration and packaging were inspired by or copied from @chentsulin's [electron-react-boilerplate](https://github.com/chentsulin/electron-react-boilerplate).

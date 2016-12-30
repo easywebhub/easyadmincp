@@ -1,31 +1,51 @@
+﻿import {Aurelia} from 'aurelia-framework';
+// we want font-awesome to load as soon as possible to show the fa-spinner
+import 'jquery/dist/jquery.min.js';
 
-import 'lockr';
-import 'sweetalert';
-import 'numeral';
-import 'jquery';
-import 'semantic';
+import 'datatables.net/js/jquery.dataTables.js';
+import 'datatables.net-dt/css/jquery.dataTables.css';
 
-/**
- * jquery-ui orveride some boostrapjs function , import jquery-ui explicit 
- */
-//import 'jquery-ui';
-export function configure(aurelia: any) {
+import 'sweetalert/dist/sweetalert.css';
+import 'sweetalert/dist/sweetalert.min.js';
+
+
+import 'semantic-ui-css/semantic.min.css';
+import 'semantic-ui-css/semantic.min.js';
+import 'semantic-ui-calendar/dist/calendar.min.css';
+import 'semantic-ui-calendar/dist/calendar.min.js';
+
+
+import 'font-awesome/css/font-awesome.css';
+import '../styles/styles.css';
+import '../styles/inline.css';
+import '../styles/app.css';
+
+
+
+// comment out if you don't want a Promise polyfill (remove also from webpack.config.js)
+import * as Bluebird from 'bluebird';
+Bluebird.config({ warnings: false });
+
+export async function configure(aurelia: Aurelia) {
   aurelia.use
     .standardConfiguration()
-    .developmentLogging()
-    .plugin('aurelia-validation')
-    .feature('resources')
-    //.plugin('aurelia-kendoui-bridge', (kendo) => kendo.core())
+    .feature('resources/ui')
+    .developmentLogging();
 
-    .plugin('tungptvn/aurelia-paginator')
-    .plugin('aurelia-dialog', config => {
-      config.useDefaults();
-      config.settings.lock = false;
-      config.settings.centerHorizontalOnly = false;
-      config.settings.startingZIndex = 10005;
-    })
-    // .plugin('aurelia-tabs')
+  // Uncomment the line below to enable animation.
+  // aurelia.use.plugin('aurelia-animator-css');
+  // if the css animator is enabled, add swap-order="after" to all router-view elements
 
-  aurelia.start().then(a => a.setRoot());
+  // Anyone wanting to use HTMLImports to load views, will need to install the following plugin.
+  // aurelia.use.plugin('aurelia-html-import-template-loader')
 
+  await aurelia.start();
+  aurelia.setRoot('app');
+
+  // if you would like your website to work offline (Service Worker), 
+  // install and enable the @easy-webpack/config-offline package in webpack.config.js and uncomment the following code:
+  /*
+  const offline = await System.import('offline-plugin/runtime');
+  offline.install();
+  */
 }
