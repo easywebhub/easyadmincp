@@ -1,35 +1,33 @@
-import {lazy} from 'aurelia-framework';
-import {HttpClient} from 'aurelia-fetch-client';
+import {
+  lazy
+} from 'aurelia-framework';
 
 // polyfill fetch client conditionally
-const fetch = !self.fetch ? System.import('isomorphic-fetch') : Promise.resolve(self.fetch);
 
-interface IUser {
-  avatar_url: string;
-  login: string;
-  html_url: string;
-}
-
+import axios from 'axios';
 export class Users {
   heading: string = 'Github Users';
-  users: Array<IUser> = [];
-  http: HttpClient;
-
-  constructor(@lazy(HttpClient) private getHttpClient: () => HttpClient) {}
-
-  async activate(): Promise<void> {
-    // ensure fetch is polyfilled before we create the http client
-    await fetch;
-    const http = this.http = this.getHttpClient();
-
-    http.configure(config => {
-      config
-        .useStandardConfiguration()
-        .withBaseUrl('https://api.github.com/');
+  //users: Array < IUser > = [];
+  instance:any
+  constructor() {
+    this.instance = axios.create({
+      baseURL: 'https://api.github.com/',
+      timeout: 100000      
     });
+  }
 
-    const response = await http.fetch('users');
-    this.users = await response.json();
-    console.log('data',this.users)
+
+  async activate(): Promise < void > {
+    // ensure fetch is polyfilled before we create the http client
+
+     return await this.instance.get('/users')
+  .then(function (response) {
+    console.log('respon',response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+   
   }
 }

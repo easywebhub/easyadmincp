@@ -1,0 +1,85 @@
+<template>
+  <style>
+    .form-group {
+      height: 60px;
+      margin-right: 20px;
+    }
+    
+    .form-group label {
+      margin-right: 10px;
+    }
+    
+    a {
+      color: black;
+    }
+
+  </style>
+  <form class="ui form">
+    <div class="three fields">
+      <div class="field">
+        <label>DisplayName</label>
+        <input type="text" placeholder="DisplayName" ref="searchNamWebSite">
+      </div>
+      <div class="field">
+        <label>Name</label>
+        <input type="text" placeholder="Name" ref="searchProduction">
+      </div>
+    </div>
+    <!--<div class="field">
+        <label>Loại Website</label>
+        <input type="text" placeholder="Loại Website" ref="searchType">
+      </div>
+    </div>-->
+  </form>
+  <button click.delegate="createWeb()" ui-tooltip data-content="Tạo mới" style="width:50px;margin:10px 0px" class="ui blue button"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+  <div class="ui" if.bind="!pendding">
+    <div class="ui active inverted dimmer">
+      <div class="ui large text loader">Loading</div>
+    </div>
+    <p></p>
+    <p></p>
+    <p></p>
+  </div>
+  <div if.bind="pendding">
+    <table class="ui table">
+      <thead>
+        <tr>
+          <th>Stt</th>
+          <th>Name</th>
+          <th>DisplayName</th>
+          <th>Tên Website hiển thị</th>
+          <th>Url</th>
+          <th>Stagging</th>
+          <th>Sản phẩm</th>
+          <th>Kiểu</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody ref="mydata" items.bind="listWebSite | searchTypes:searchType.value |searchName:searchNamWebSite.value |searchProduction:searchProduction.value">
+        <tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (itemperpage):current * (itemperpage)">
+          <td>${(current-1)*10+$index+1}</td>
+          <td>${item.Name}</td>
+          <td>${item.DisplayName}</td>
+          <td>${item.DisplayName}</td>
+          <td>${item.Stagging}</td>
+          <td>${item.Production}</td>
+          <td>${item.Type}</td>
+          <td>${item.Url}</td>
+          <td>
+            <div class="row">
+              <!--<button click.delegate="roleWeb(item)" senam_tooltip data-content="Quyền Website" class="ui blue button"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>-->
+              <!--<button click.delegate="detailRoleWeb(item)" senam_tooltip data-content="Chi tiết Website" class="ui button"><i class="info icon" aria-hidden="true"></i></button>-->
+              <!--<button senam_tooltip data-content="Xóa" type="button" style="margin-right:5px" class="ui red button">
+          <a  click.delegate="deleteWebSite(item)"><i class="fa fa-trash-o" aria-hidden="true"></i></span></a>-->
+              <!--</button>-->
+              <button type="button" class="ui green button" ui-tooltip data-content="Cập nhật" click.delegate="$parent.updateUser(item)">
+         <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!--<pagination page-size.bind="pagesize" total.bind="total" item-per-page.bind="itemperpage" current-page.bind="current"></pagination>-->
+  </div>
+</template>

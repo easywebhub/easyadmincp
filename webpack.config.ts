@@ -10,6 +10,8 @@ import {
   EasyWebpackConfig
 } from '@easy-webpack/core';
 import * as path from 'path';
+var AureliaWebpackPlugin = require('aurelia-webpack-plugin');
+var webpack = require('webpack');
 
 import * as envProd from '@easy-webpack/config-env-production';
 import * as envDev from '@easy-webpack/config-env-development';
@@ -67,7 +69,10 @@ const coreBundles = {
     'aurelia-templating',
     'aurelia-templating-binding',
     'aurelia-templating-router',
-    'aurelia-templating-resources'
+    'aurelia-templating-resources',
+    'aurelia-dialog',
+    'axios',
+   
   ]
 }
 
@@ -83,8 +88,23 @@ let config = generateConfig({
       'aurelia': coreBundles.aurelia.filter(pkg => coreBundles.bootstrap.indexOf(pkg) === -1)
     },
     output: {
-      path: outDir,
-    },
+      path: outDir
+     },
+  //    plugins: [
+  //   new AureliaWebpackPlugin({
+  //     includeSubModules: [
+  //       { moduleId: 'aurelia-auth' },
+  //       { moduleId: 'aurelia-dialog' }
+  //     ]
+  //   })
+  // ],
+  // module: {
+  //   loaders: [
+  //     { test: /\.css?$/, loader: 'style!css', exclude: /aurelia-dialog/ },
+  //     { test: /\.css?$/, loader: 'raw', include: /aurelia-dialog/ },
+  //     { test: /\.html$/, loader: 'html' },
+  //   ]
+  // }
   },
 
   /**
