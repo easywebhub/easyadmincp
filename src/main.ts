@@ -1,21 +1,21 @@
 ﻿import {Aurelia} from 'aurelia-framework';
 // we want font-awesome to load as soon as possible to show the fa-spinner
-import 'jquery/dist/jquery.min.js';
+// import 'jquery/dist/jquery.min.js';
 
-import 'datatables.net/js/jquery.dataTables.js';
-import 'datatables.net-dt/css/jquery.dataTables.css';
+// import 'datatables.net/js/jquery.dataTables.js';
+// import 'datatables.net-dt/css/jquery.dataTables.css';
 
-import 'sweetalert/dist/sweetalert.css';
-import 'sweetalert/dist/sweetalert.min.js';
+// import 'sweetalert/dist/sweetalert.css';
+// import 'sweetalert/dist/sweetalert.min.js';
 
 
-import 'semantic-ui-css/semantic.min.css';
-import 'semantic-ui-css/semantic.min.js';
-import 'semantic-ui-calendar/dist/calendar.min.css';
-import 'semantic-ui-calendar/dist/calendar.min.js';
+// import 'semantic-ui-css/semantic.min.css';
+// import 'semantic-ui-css/semantic.min.js';
+// import 'semantic-ui-calendar/dist/calendar.min.css';
+// import 'semantic-ui-calendar/dist/calendar.min.js';
 //import 'axios/dist/axios.min.js';
 
-import 'font-awesome/css/font-awesome.css';
+// import 'font-awesome/css/font-awesome.css';
 
 import '../styles/styles.css';
 
