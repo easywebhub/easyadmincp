@@ -1,0 +1,82 @@
+<template>
+	<style>
+		body > .grid {
+			height: 100%;
+		}
+		
+		.image {
+			margin-top: -100px;
+		}
+		
+		.column {
+			max-width: 450px;
+		}
+		
+		.login_height {
+			margin-top: 200px;
+		}
+	</style>
+	<div class="login_height">
+		<div class="ui middle aligned center aligned grid">
+			<div class="column">
+				<h2 class="ui image header">
+					<div class="content">
+						Sign-in to your account
+					</div>
+				</h2>
+			
+				<form class="ui large form" submit.delegate="submit()">
+
+					<div class="ui stacked secondary  segment">
+						
+                        <div class="field">
+							<div class="ui left icon input">
+								<i class="user icon"></i>
+								<input type="text" id="username" data-validate="username" name="username" placeholder="tài khoản" value.bind="SignUp.username">
+							</div>
+						</div>
+                        <div class="field">
+							<div class="ui left icon input">
+							<i class="lock icon"></i>
+								<input type="password" id="password" data-validate="password" name="password" placeholder="mật khẩu" value.bind="SignUp.password">
+							</div>
+						</div>
+                    
+						<div class="field">
+							<div class="ui left icon input">
+								<i class="user icon"></i>
+								<input type="text" id="name" data-validate="name" name="name" placeholder="tên" value.bind="SignUp.info.name">
+							</div>
+						</div>
+						<div class="field">
+							<div class="ui left icon input">
+								<i class="user icon"></i>
+								<input type="text" id="age" data-validate="age" name="age" placeholder="tên" placeholder="tuổi" value.bind="SignUp.info.age">
+							</div>
+						</div>
+						<div class="field">
+                           
+							<select class="ui dropdown" value.bind="SignUp.info.sex">
+                                 <option value="">--Chọn giới tính --</option>
+                                <option value="nam">Name</option>
+                                <option value="nữ">Nữ</option>
+                             </select>
+						</div>
+						<div class="field">
+							<div class="ui left icon input">
+								<i class="home icon"></i>
+								<input type="text" id="address" data-validate="address" name="address" placeholder="địa chỉ" value.bind="SignUp.info.address">
+							</div>
+						</div>
+						<button  class="ui teal button" type="submit">Create Account</button>
+					</div>
+
+					
+
+				</form>
+
+
+			</div>
+		</div>
+	</div>
+</template>

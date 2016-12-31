@@ -1,18 +1,19 @@
 ﻿import {Aurelia} from 'aurelia-framework';
-// we want font-awesome to load as soon as possible to show the fa-spinner
-import 'jquery/dist/jquery.min.js';
+// // we want font-awesome to load as soon as possible to show the fa-spinner
 
-import 'datatables.net/js/jquery.dataTables.js';
-import 'datatables.net-dt/css/jquery.dataTables.css';
+// import 'jquery/dist/jquery.min.js';
 
-import 'sweetalert/dist/sweetalert.css';
-import 'sweetalert/dist/sweetalert.min.js';
+// import 'datatables.net/js/jquery.dataTables.js';
+// import 'datatables.net-dt/css/jquery.dataTables.css';
+
+// import 'sweetalert/dist/sweetalert.css';
+// import 'sweetalert/dist/sweetalert.min.js';
 
 
 import 'semantic-ui-css/semantic.min.css';
 import 'semantic-ui-css/semantic.min.js';
-import 'semantic-ui-calendar/dist/calendar.min.css';
-import 'semantic-ui-calendar/dist/calendar.min.js';
+// import 'semantic-ui-calendar/dist/calendar.min.css';
+// import 'semantic-ui-calendar/dist/calendar.min.js';
 //import 'axios/dist/axios.min.js';
 
 import 'font-awesome/css/font-awesome.css';
@@ -35,12 +36,7 @@ export async function configure(aurelia: Aurelia) {
     .standardConfiguration()
     .feature('resources/ui')
     .developmentLogging()
-     .plugin('aurelia-dialog', config => {
-      config.useDefaults();
-      config.settings.lock = false;
-      config.settings.centerHorizontalOnly = false;
-      config.settings.startingZIndex = 10005;
-    })
+  
  
   // Uncomment the line below to enable animation.
   // aurelia.use.plugin('aurelia-animator-css');

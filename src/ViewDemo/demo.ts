@@ -86,6 +86,7 @@ export class Datatable {
   constructor(@lazy(HttpClient) private getHttpClient: () => HttpClient) {
 
      this.current = 1;
+   
   }
 
 

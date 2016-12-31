@@ -31,7 +31,7 @@
       </div>
     </div>-->
   </form>
-  <button click.delegate="createWeb()" ui-tooltip data-content="Tạo mới" style="width:50px;margin:10px 0px" class="ui blue button"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+  <button click.delegate="createWeb()" ui-modal ui-tooltip data-content="Tạo mới" style="width:50px;margin:10px 0px" class="ui blue button"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
   <div class="ui" if.bind="!pendding">
     <div class="ui active inverted dimmer">
       <div class="ui large text loader">Loading</div>
@@ -56,8 +56,8 @@
         </tr>
       </thead>
       <tbody ref="mydata" items.bind="listWebSite | searchTypes:searchType.value |searchName:searchNamWebSite.value |searchProduction:searchProduction.value">
-        <tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (itemperpage):current * (itemperpage)">
-          <td>${(current-1)*10+$index+1}</td>
+        <tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (pageSize):current * (pageSize)">
+          <td>${(current-1)*pageSize+$index+1}</td>
           <td>${item.Name}</td>
           <td>${item.DisplayName}</td>
           <td>${item.DisplayName}</td>
@@ -80,6 +80,58 @@
         </tr>
       </tbody>
     </table>
-    <!--<pagination page-size.bind="pagesize" total.bind="total" item-per-page.bind="itemperpage" current-page.bind="current"></pagination>-->
+    <ui-pagination total-record.two-way="total" page-size.two-way="pageSize" page-all.two-way="allPage" current-page.two-way="current"></ui-pagination>
   </div>
+  <div class="ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+      Tạo mới Website
+    </div>
+    <div class="image content">
+      <div class="ui medium image">
+      </div>
+      <div class="description">
+        <div class="ui form segment">
+          <select name="skills" multiple="" class="ui fluid dropdown">
+        <option value="">Roles</option>
+        <option value="Role1">Role 1</option>
+        <option value="Role2">Role 2</option>
+        <option value="Role3">Role 3</option>
+    </select>
+          <div class="field">
+            <label>Username</label>
+            <div class="ui left labeled icon input">
+              <input type="text" placeholder="Username">
+              <i class="user icon"></i>
+              <div class="ui corner label">
+                <i class="icon asterisk"></i>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <div class="ui left labeled icon input">
+              <input type="password">
+              <i class="lock icon"></i>
+              <div class="ui corner label">
+                <i class="icon asterisk"></i>
+              </div>
+            </div>
+          </div>
+          <div class="ui error message">
+            <div class="header">We noticed some issues</div>
+          </div>
+          <div class="ui blue submit button">Login</div>
+        </div>
+      </div>
+      <div class="actions">
+        <div class="ui black deny button">
+          Nope
+        </div>
+        <div class="ui positive right labeled icon button">
+          Yep, that's me
+          <i class="checkmark icon"></i>
+        </div>
+      </div>
+    </div>
 </template>

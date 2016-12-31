@@ -12,13 +12,17 @@ import { CreateWeb,CreateRoleWeb } from '../../models//website';
 
 @inject(WebSiteServices, BindingEngine,DialogService)
 export class WebSiteMng {
+     pageSize:number=5
+   total :number=0
+   current :number
+   allPage:number
     webSiteServices: WebSiteServices;
     listWebSite: any;
     //listSchool: any;
-    total: number;
+   
 
     itemperpage: number;
-    current: number;
+   
     pagesize: number;
     bindingEngine: BindingEngine;
      dialogService:DialogService
@@ -26,8 +30,8 @@ export class WebSiteMng {
     constructor(webSiteServices, bindingEngine,dialogService) {
         this.webSiteServices = webSiteServices;
 
-        this.itemperpage = 10;
-        this.pagesize = 6;
+      
+      
         this.current = 1;
         this.total=0
         this.dialogService=dialogService;
@@ -45,7 +49,9 @@ export class WebSiteMng {
                // console.log('(rs[0] as any).Result',(rs[0] as any).Results)
                 this.listWebSite = (rs as any).data;
                 this.total = (rs as any).data.length;
-                console.log('listWebSite',this.listWebSite);
+             
+               this.allPage = Math.ceil(this.total / this.pageSize)
+                console.log('this.allPage',this.allPage);
             }
             else
             {

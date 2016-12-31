@@ -12,7 +12,7 @@ import {
 import * as path from 'path';
 var AureliaWebpackPlugin = require('aurelia-webpack-plugin');
 var webpack = require('webpack');
-
+var ProvidePlugin = require('webpack/lib/ProvidePlugin');
 import * as envProd from '@easy-webpack/config-env-production';
 import * as envDev from '@easy-webpack/config-env-development';
 import * as aurelia from '@easy-webpack/config-aurelia';
@@ -70,9 +70,9 @@ const coreBundles = {
     'aurelia-templating-binding',
     'aurelia-templating-router',
     'aurelia-templating-resources',
-    'aurelia-dialog',
-    'axios',
-   
+    'lockr'
+    
+  
   ]
 }
 
@@ -90,21 +90,21 @@ let config = generateConfig({
     output: {
       path: outDir
      },
-  //    plugins: [
-  //   new AureliaWebpackPlugin({
-  //     includeSubModules: [
-  //       { moduleId: 'aurelia-auth' },
-  //       { moduleId: 'aurelia-dialog' }
-  //     ]
-  //   })
-  // ],
-  // module: {
-  //   loaders: [
-  //     { test: /\.css?$/, loader: 'style!css', exclude: /aurelia-dialog/ },
-  //     { test: /\.css?$/, loader: 'raw', include: /aurelia-dialog/ },
-  //     { test: /\.html$/, loader: 'html' },
-  //   ]
-  // }
+      plugins: [
+    new AureliaWebpackPlugin({
+      includeSubModules: [
+     
+        { moduleId: "aurelia-dialog" }
+      
+      ]
+    }),
+    new ProvidePlugin({
+      'Lockr':'lockr',
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery"
+    })
+  ]
   },
 
   /**
