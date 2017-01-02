@@ -1,1 +1,0 @@
-export const ApiUrlBase = 'https://api.easywebhub.com/';
