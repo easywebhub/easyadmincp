@@ -20,9 +20,7 @@ import {
 import {
   DetailWebUsersDlg
 } from '../../resources/ui/Dialog/DetailWebUsersDlg'; 
-import {
-  RoleWebDlg
-} from './RoleWebDlg';
+
 import {
   CreateWeb,
   CreateRoleWeb
@@ -46,9 +44,9 @@ export class WebSiteMng {
   //listSchool: any;
 
   Web: any;
-  itemperpage: number;
+  
 
-  pagesize: number;
+ 
   bindingEngine: BindingEngine;
   dialogService: DialogService
   pendding: boolean

@@ -33,7 +33,7 @@ export class WebSiteServices {
       })
     })
   }
- 
+
   DetailWebSiteUsers(WebsiteId) {
 
     return new Promise((resolve, reject) => {
@@ -81,20 +81,6 @@ export class WebSiteServices {
 
 
 
-  //   RoleWeb(meta) {
-  //     return new Promise((resolve, reject) => {
-  //       this.http.fetch(`website/add-account`, {
-  //           method: 'post',
-  //           body: json(meta),
-  //         })
-  //         .then(response => response.json())
-  //         .then(data => {
-  //           resolve(data);
-  //         })
-  //         .catch(err => reject(Error(err)));
-
-  //     });
-  //   }
 
 
 }

@@ -11,32 +11,61 @@ export class UserServices {
 
     }
     
-    // GetListUser() {
-    //     return new Promise((resolve, reject) => {
-    //         this.http.fetch(`users`, {
-    //             method: 'get'
-              
-    //         })
-    //             .then(response => response.json())
-    //             .then(data => {
-    //                 resolve(data);
-    //             })
-    //             .catch(err => reject(Error(err)));
+    GetListByUsers() {
 
-    //     });
-    // }
-    //  CreateUser(meta){
-    // return new Promise((resolve, reject) => {
-    //         this.http.fetch(`users`, {
-    //             method: 'post',
-    //             body: json(meta)
-    //         }).then(data => {
-    //                 resolve(data);
-    //             })
-    //             .catch(err => reject(Error(err)));
+    return new Promise((resolve, reject) => {
+      this.http.get(`users`, {
+        responseType: 'json'
+      }).then(data =>
 
-    //     });
-    // }
-    
+        resolve(data)
+      ).catch(err => {
+        console.log(err)
+        reject(Error(err))
+      })
+    })
+  }
+  CreateByUsers(meta) {
+    return new Promise((resolve, reject) => {
+      this.http.post(`users`, meta, {
+        responseType: 'json'
+      }).then(data =>
+        resolve(data)
+      ).catch(err => {
+        console.log(err)
+        reject(Error(err))
+      })
+    })
+  }
+   DetaiByUser(AccountId) {
+
+    return new Promise((resolve, reject) => {
+      this.http.get(`users/${AccountId}`, {
+        responseType: 'json'
+      }).then(data =>
+
+        resolve(data)
+      ).catch(err => {
+        console.log(err)
+        reject(Error(err))
+      })
+    })
+  }
+  CreateByUser(meta) {
+    return new Promise((resolve, reject) => {
+      this.http.post(`users/${meta.userId}`, meta, {
+        responseType: 'json'
+      }).then(data =>
+        resolve(data)
+      ).catch(err => {
+        console.log(err)
+        reject(Error(err))
+      })
+    })
+  }
+
+
+
+
     
 }

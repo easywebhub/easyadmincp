@@ -1,0 +1,85 @@
+<template>
+  <style>
+    .form-group {
+      height: 60px;
+      margin-right: 20px;
+    }
+    
+    .form-group label {
+      margin-right: 10px;
+    }
+    
+    a {
+      color: black;
+    }
+
+  </style>
+  <section class="ui">
+    <h3>Quản lý User &nbsp;
+    </h3>
+    <form>
+      <div class="ui form">
+        <div class="three fields">
+          <div class="field">
+            <label>Name</label>
+            <input type="text" placeholder="DisplayName" ref="searchName">
+          </div>
+          <div class="field">
+            <label>UserName</label>
+            <input type="text" placeholder="Name" ref="searchUserName">
+          </div>
+        </div>
+      </div>
+    </form>
+    <button click.delegate="createUser()" senam_tooltip data-content="Tạo mới" style="width:50px;margin:10px 0px" class="ui blue button"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+    <div class="ui" if.bind="!pendding">
+      <div class="ui active inverted dimmer">
+        <div class="ui large text loader">Loading</div>
+      </div>
+      <p></p>
+      <p></p>
+      <p></p>
+    </div>
+    <div if.bind="pendding">
+      <table class="ui table">
+        <thead>
+           <tr>
+            <th>Stt</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Sex</th>
+            <th>Address</th>
+            <th>AccountType</th>
+            <th>UserName</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody ref="mydata" items.bind="listUsers">
+          <tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (pageSize):current * (pageSize)">
+            <td>${(current-1)*pageSize+$index+1}</td>
+            <td>${item.Info.Name}</td>
+            <td>${item.Info.Age}</td>
+            <td>${item.Info.Sex}</td>
+            <td>${item.Info.Address}</td>
+            <td>${item.AccountType}</td>
+            <td>${item.UserName}</td>
+            <td>${item.Status}</td>
+            <td>
+              <div class="row">
+                <button ui-tooltip data-content="Create User" type="button" class="ui blue button" click.delegate="CreateUser(item)" style="margin-right:5px">
+          Create User
+        </button>
+                <button type="button" class="ui green button" ui-tooltip data-content="Detail User" click.delegate="$parent.DetailUser(item)">
+        Detail User
+        </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+     <ui-pagination total-record.two-way="total" page-size.two-way="pageSize" page-all.two-way="allPage" current-page.two-way="current"></ui-pagination>
+  </section>
+  </section>
+  </div>
+</template>

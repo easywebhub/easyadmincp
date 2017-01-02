@@ -14,5 +14,6 @@ export function configure(aurelia) {
     './Dialog/CreateWebDlg',
     './Dialog/DetailWebDlg',
     './Dialog/DetailWebUsersDlg',
+    './Dialog/DetailUserDlg',
   );
 }
