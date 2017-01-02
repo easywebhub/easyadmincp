@@ -19,7 +19,7 @@ import {
 
 import {
   RoleWebDlg
-} from './RoleWebDlg'; 
+} from './RoleWebDlg';
 import {
   CreateWeb,
   CreateRoleWeb
@@ -59,9 +59,9 @@ export class WebSiteMng {
   }
   activate() {
     this.pendding = !this.pendding;
-   // console.log('show', this.pendding)
+    // console.log('show', this.pendding)
     this.webSiteServices.GetListWebSite().then(rs => {
-       // console.log('result', JSON.stringify((rs as any).data))
+        //console.log('result', JSON.stringify((rs as any).data))
         if ((rs as any).status == 200) {
           this.pendding = !this.pendding;
           // console.log('(rs[0] as any).Result',(rs[0] as any).Results)
@@ -69,7 +69,7 @@ export class WebSiteMng {
           this.total = (rs as any).data.length;
 
           this.allPage = Math.ceil(this.total / this.pageSize)
-        //  console.log('this.allPage', this.allPage);
+            //  console.log('this.allPage', this.allPage);
         } else {
           console.log('bad');
         }
@@ -99,99 +99,47 @@ export class WebSiteMng {
 
   }
 
-  // attached() {
-  //  var rules = {
-  //     Name: {
-  //       identifier: 'Name',
-  //       rules: [{
-  //         type: 'empty',
-  //         prompt: 'Xin vui lòng nhập tên vào'
-  //       }]
-  //     },
-  //     PasswoDisplayName: {
-  //       identifier: 'DisplayName',
-  //       rules: [{
-  //         type: 'empty',
-  //         prompt: 'Xin vui lòng nhập DisplayName'
-  //       }]
-  //     },
-  //     Link: {
-  //       identifier: 'Url',
-  //       rules: [{
-  //         type: 'empty',
-  //         prompt: 'Xin vui lòng nhập Link'
-  //       }]
-  //     }
 
-
-  //   };
-  //   ($(".ui.form") as any).form(rules, {
-  //     inline: true,
-  //     on: 'blur'
-  //   });
-
-
-  // }
-  createWeb(){
-
-    
-   
-     this.dialogService.open({ viewModel: CreateWebDlg}).then((result) => {
-      if (!result.wasCancelled) {
-         console.log('result.output',result.output);
-
-
+  createWeb() {
+      this.dialogService.open({
+        viewModel: CreateWebDlg
+      }).then((result) => {
+        if (!result.wasCancelled) {
+         // console.log('result.output', result.output);
           this.webSiteServices.CreateWeb(new CreateWeb(result.output)).then((rs: any) => {
-             if (rs.status == 200) {
+          
 
-                  swal({ title: "Thông báo", text:"Tạo mới thành công", timer: 2500, showConfirmButton: true, type: "success" });
+              swal({
+                title: "Thông báo",
+                text: "Tạo mới thành công",
+                timer: 2500,
+                showConfirmButton: true,
+                type: "success"
+              });
 
-                  this.activate();
-              }
-              else {
-                   swal({ title: "Thông báo",text:"Tạo mới thất bại" , timer: 2500, showConfirmButton: true,type: "warning" });
-              }
-          });
+              this.activate();
+            
+          }).catch(err=>{
+          
+              swal({
+                title: "Thông báo",
+                text: "Tạo mới thất bại",
+                timer: 2500,
+                showConfirmButton: true,
+                type: "warning"
+              });
+            
+          })
 
-      } else {
+        } else {
           console.log('bad');
-      }
+        }
 
-  });
-
-
-  }
-  // createWeb() {
-  //  // $('form').form('clear')
-  //     // $('.ui.form').find('.error').removeClass('error')
-  //   $('.modal').modal('show');
-  //   //  this.attached()
-  // };
-  // this.dialogService.open({ viewModel: CreateWebDlg}).then((result) => {
-  //     if (!result.wasCancelled) {
-  //         console.log('result.output',result.output);
+      });
 
 
-  //         // this.webSiteServices.CreateWeb(new CreateWeb(result.output)).then((rs: any) => {
-  //         //    if (rs.status == 200) {
-
-  //         //         swal({ title: "Thông báo", text:"Tạo mới thành công", timer: 2500, showConfirmButton: true, type: "success" });
-
-  //         //         this.activate();
-  //         //     }
-  //         //     else {
-  //         //          swal({ title: "Thông báo",text:"Tạo mới thất bại" , timer: 2500, showConfirmButton: true,type: "warning" });
-  //         //     }
-  //         // });
-
-  //     } else {
-  //         console.log('bad');
-  //     }
-
-  // });
-  // }
-
-
+    }
+   
 
 }
 export class SearchTypesValueConverter {

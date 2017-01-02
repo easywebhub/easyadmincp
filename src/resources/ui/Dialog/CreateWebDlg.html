@@ -81,7 +81,7 @@
   </style>
   <ai-dialog class="edit-form" data-backdrop="static">
     <ai-dialog-header>
-      <span>Tạo mới Website</span>
+      <span>Create Website</span>
     </ai-dialog-header>
     <ai-dialog-body>
       <form class="ui form" submit.delegate="submit()">
@@ -99,22 +99,25 @@
         </div>
         <div class="field">
           <label>WebsiteDisplayName</label>
-          <input type="text" placeholder="WebsiteDisplayName" value.bind="Web.Accounts.WebsiteDisplayName">
+          <input type="text" placeholder="WebsiteDisplayName" value.two-way="Web.Accounts.WebsiteDisplayName">
         </div>
-	
         <div class="field">
-          <div class="ui sub header">AccessLevels</div>
-          <select   class="ui fluid normal dropdown" data-validate="access" ui-dropdown vdrop.two-way="access">
-				<option value="dev">dev</option>
-				<option value="tester">tester</option>
-
-				</select>
-        <input type="text" value.bind="access">
-          <div>
-            <br>
-            <button class="ui blue button" type="submit">Tạo mới</button>
-            <button class="ui red button" click.trigger="dialogController.cancel()">Cancel</button>
-            
+          <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="Web.Accounts.AccessLevels">
+            <input name="gender" type="hidden" value="${Web.Accounts.AccessLevels}">
+            <i class="dropdown icon"></i>
+            <div class="default text">--Select All--</div>
+            <div class="menu">
+              <div class="item" data-value="dev">dev</div>
+              <div class="item" data-value="tester" >tester</div>
+            </div>
+          </div>
+        
+        </div>
+        
+       
+        <br>
+        <button class="ui blue button" type="submit">Create</button>
+        <button class="ui red button" click.trigger="dialogController.cancel()">Cancel</button>
       </form>
     </ai-dialog-body>
   </ai-dialog>

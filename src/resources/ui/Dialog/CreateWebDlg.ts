@@ -12,28 +12,19 @@ import * as Lockr from 'lockr'
 export class CreateWebDlg {
   dialogController: DialogController;
   Web: any;
-  Account: any;
-  objAccessLevel:any
-  access:any
+  
   constructor(dialogController) {
     this.dialogController = dialogController
      this.Web = {}
-     this.Web.Accounts = [];
-      this.objAccessLevel = [];
-   
+      this.Web.Accounts = [];
+       this.Web.Accounts.AccountId = (Lockr.get("UserInfo") as any).AccountId;
+     
+      
   }
 
   submit() {
-   
-
-   this.Web.Accounts.AccountId = (Lockr.get("UserInfo") as any).AccountId;
-   
-    this.Web.Accounts = this.Account;
-    //this.Web.Accounts.AccessLevels=[]
-    //this.Web.Accounts.AccessLevels=this.access
-     this.objAccessLevel=this.access
-    console.log('web',this.Web,'access',this.access)
-     this.dialogController.ok(this.Web);
+     console.log('web',this.Web.Accounts.WebsiteDisplayName,this.Web.Accounts.AccessLevels,this.Web.Accounts.AccountId)
+    this.dialogController.ok(this.Web);
   }
 
   attached() {
@@ -46,24 +37,17 @@ export class CreateWebDlg {
           prompt: 'Xin vui lòng nhập tên vào'
         }]
       },
-      PasswoDisplayName: {
+      DisplayName: {
         identifier: 'DisplayName',
         rules: [{
           type: 'empty',
           prompt: 'Xin vui lòng nhập DisplayName'
         }]
       },
-      Link: {
+      Url: {
         identifier: 'Url',
         rules: [{
           type: 'empty',
-          prompt: 'Xin vui lòng nhập Link'
-        }]
-      },
-      access:{
-         identifier:'access',
-          rules: [{
-          type: 'number',
           prompt: 'Xin vui lòng nhập Link'
         }]
       }

@@ -78,16 +78,16 @@ GetRequest(url){
     }
     CreateWeb(meta){
       return new Promise((resolve, reject) => {
-        this.http.post(`websites`, {
+        this.http.post(`websites`,meta, {
           responseType: 'json'
-        }).then(data => {
-          console.log(data);
+        }).then(data => 
          
-            resolve(data);  
+         
+            resolve(data)
        
            
          
-        }).catch(err => {
+        ).catch(err => {
             console.log(err)
           reject(Error(err))
         })
