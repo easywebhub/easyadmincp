@@ -15,7 +15,7 @@ import {
 } from '../../resources/ui/Dialog/CreateWebDlg';
 import {
   DetailWebDlg
-} from './DetailWebDlg';
+} from '../../resources/ui/Dialog/DetailWebDlg';
 
 import {
   RoleWebDlg
@@ -78,24 +78,31 @@ export class WebSiteMng {
 
     );
   }
-  detailRoleWeb(item) {
-    this.dialogService.open({
-      viewModel: DetailWebDlg,
+  detailWebsite(item) {
+      
+       this.dialogService.open({
+        viewModel: DetailWebDlg,model:item
+      }).then((result) => {
+        if (!result.wasCancelled) {
+         // console.log('result.output', result.output);
+          this.webSiteServices.CreateWeb(new CreateWeb(result.output)).then((rs: any) => {
+          
 
-      model: item
-    }).then((result) => {
+            
+            
+            
+          }).catch(err=>{
+          
+            
+            
+          })
 
-      if (!result.wasCancelled) {
-        console.log('result output', JSON.stringify(new CreateRoleWeb(result.output)));
+        } else {
+          console.log('bad');
+        }
 
+      });
 
-
-
-      } else {
-        console.log('bad');
-      }
-
-    });
 
   }
 

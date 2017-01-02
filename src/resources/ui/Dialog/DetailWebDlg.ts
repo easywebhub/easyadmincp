@@ -1,6 +1,6 @@
 import { DialogController } from 'aurelia-dialog';
 import { inject } from 'aurelia-dependency-injection';
-import { WebSiteServices } from '../../services/WebSite/WebSiteServices';
+import { WebSiteServices } from '../../../services/WebSite/WebSiteServices';
 @inject(DialogController,WebSiteServices)
 export class DetailWebDlg {
     dialogController: DialogController;
@@ -16,8 +16,8 @@ export class DetailWebDlg {
     activate(params) {
        
         this.webSiteServices.DetailWebSite(params.WebsiteId).then(rs=>{
-             this.Web=rs;
-             //console.log('params',JSON.stringify(this.Web));
+        this.Web=(rs as any).data;
+             console.log('params',JSON.stringify(rs));
         })
         
     }

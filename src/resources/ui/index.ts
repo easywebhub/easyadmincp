@@ -11,6 +11,7 @@ export function configure(aurelia) {
     './CustomAttributes/Menu',
     './CustomAttributes/Tab',
     './CustomElements/pagination',
-    './Dialog/CreateWebDlg'
+    './Dialog/CreateWebDlg',
+    './Dialog/DetailWebDlg'
   );
 }

@@ -104,7 +104,7 @@
   </style>
   <ai-dialog class="edit-form" data-backdrop="static">
     <ai-dialog-header>
-      <span>Chi tiết</span>
+      <span>Detail Website</span>
     </ai-dialog-header>
     <ai-dialog-body>
       <table>
@@ -128,7 +128,7 @@
       </table>
 	   <hr>
 	  
-      <h4>Danh sách Production
+      <h4>List Production
       </h4>
       <table if.bind="Web.Production.length>0">
         <thead>
@@ -154,7 +154,7 @@
       </table>
       <hr>
     
-      <h4>Danh sách Stagging
+      <h4>List Stagging
       </h4>
       <table if.bind="Web.Stagging.length>0">
         <thead>
@@ -179,7 +179,7 @@
       <br>
       </table>
       <hr>
-      <h4>Danh sách Accounts
+      <h4>List Accounts
       </h4>
       <table if.bind="Web.Accounts.length>0">
         <thead>
@@ -195,6 +195,10 @@
           </tr>
         </tbody>
       </table>
+      
     </ai-dialog-body>
+    <ai-dialog-footer>
+      <button class="ui red button" click.trigger="dialogController.cancel()">Cancel</button> 
+      <ai-dialog-footer>
   </ai-dialog>
 </template>
