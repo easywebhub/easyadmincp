@@ -18,6 +18,9 @@ import {
 } from '../../resources/ui/Dialog/DetailWebDlg';
 
 import {
+  DetailWebUsersDlg
+} from '../../resources/ui/Dialog/DetailWebUsersDlg'; 
+import {
   RoleWebDlg
 } from './RoleWebDlg';
 import {
@@ -27,7 +30,11 @@ import {
 
 import * as Lockr from 'lockr';
 
+
+
 declare let $: any;
+ 
+
 @inject(WebSiteServices, BindingEngine, DialogService)
 export class WebSiteMng {
   pageSize: number = 5
@@ -87,15 +94,29 @@ export class WebSiteMng {
          // console.log('result.output', result.output);
           this.webSiteServices.CreateWeb(new CreateWeb(result.output)).then((rs: any) => {
           
-
-            
-            
-            
           }).catch(err=>{
           
             
             
           })
+
+        } else {
+          console.log('bad');
+        }
+
+      });
+
+
+  }
+
+detailWebsiteUser(item) {
+      
+       this.dialogService.open({
+        viewModel: DetailWebUsersDlg,model:item
+      }).then((result) => {
+        if (!result.wasCancelled) {
+          console.log('result.output', result.output);
+         
 
         } else {
           console.log('bad');
@@ -149,41 +170,35 @@ export class WebSiteMng {
    
 
 }
-export class SearchTypesValueConverter {
+
+
+// export class NameByValueConverter {
+//   toView(array, obj) {
+        
+//         if (obj == "") {
+//             return array;
+//         } else if (obj) {
+//             // let filteredArr = array.filter(function(x){
+//             //     console.log('xx',x.Name)
+//             // });
+//            // let filteredArr=_.find(array, function(o) { console.log('obj',(o as any).Name); return (o as any).Name==obj });
+           
+//            return array => array
+//     .filter(array => array.Name  == obj)
+    
+//         }
+//         return array;
+//     }
+// }
+
+
+export class SearchDisplayNameValueConverter {
   toView(array, obj) {
 
     if (obj == "") {
       return array;
     } else if (obj) {
       let filteredArr = array.filter(x => x.DisplayName.toLowerCase().indexOf(obj.toLowerCase()) != -1);
-
-      return filteredArr;
-    }
-    return array;
-  }
-}
-export class SearchProductionValueConverter {
-  toView(array, obj) {
-
-    if (obj == "") {
-      return array;
-    } else if (obj) {
-      let filteredArr = array.filter(x => x.Name.toLowerCase().indexOf(obj.toLowerCase()) != -1);
-
-      return filteredArr;
-    }
-    return array;
-  }
-}
-
-
-export class SearchNameValueConverter {
-  toView(array, obj) {
-
-    if (obj == "") {
-      return array;
-    } else if (obj) {
-      let filteredArr = array.filter(x => x.Name.toLowerCase().indexOf(obj.toLowerCase()) != -1);
 
       return filteredArr;
     }

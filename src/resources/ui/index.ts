@@ -12,6 +12,7 @@ export function configure(aurelia) {
     './CustomAttributes/Tab',
     './CustomElements/pagination',
     './Dialog/CreateWebDlg',
-    './Dialog/DetailWebDlg'
+    './Dialog/DetailWebDlg',
+    './Dialog/DetailWebUsersDlg',
   );
 }

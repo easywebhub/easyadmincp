@@ -18,11 +18,11 @@
     <div class="three fields">
       <div class="field">
         <label>DisplayName</label>
-        <input type="text" placeholder="DisplayName" ref="searchNamWebSite">
+        <input type="text" placeholder="DisplayName" ref="searchDisplayName">
       </div>
       <div class="field">
         <label>Name</label>
-        <input type="text" placeholder="Name" ref="searchProduction">
+        <input type="text" placeholder="Name" ref="searchName">
       </div>
     </div>
     <!--<div class="field">
@@ -51,7 +51,7 @@
           <th></th>
         </tr>
       </thead>
-      <tbody ref="mydata" items.bind="listWebSite | searchTypes:searchType.value |searchName:searchNamWebSite.value |searchProduction:searchProduction.value">
+      <tbody ref="mydata" items.bind="listWebSite">
         <tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (pageSize):current * (pageSize)">
           <td>${(current-1)*pageSize+$index+1}</td>
           <td>${item.Name}</td>
@@ -68,6 +68,10 @@
               <button type="button" class="ui green button" ui-tooltip data-content="Detail Website" click.delegate="$parent.detailWebsite(item)">
          <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
+          <button type="button" class="ui green button" ui-tooltip data-content="Detail Website Users" click.delegate="$parent.detailWebsiteUser(item)">
+         <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+       
             </div>
           </td>
         </tr>

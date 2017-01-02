@@ -25,8 +25,8 @@
     
     ai-dialog,
     ai-dialog-container>div>div {
-      max-width: 800px;
-      min-width: 600px;
+      max-width: 1200px;
+      min-width: 1000px;
       height: auto;
       margin: auto;
       display: block;
@@ -81,47 +81,45 @@
     width: 10%;
    
   }
+ 
+
   </style>
   <ai-dialog class="edit-form" data-backdrop="static">
     <ai-dialog-header>
-      <span>Create Website</span>
+      <span>Detail Website List User</span>
     </ai-dialog-header>
     <ai-dialog-body>
-      <form class="ui form" submit.delegate="submit()">
-        <div class="field">
-          <label>Name</label>
-          <input type="text" data-validate="Name" placeholder="Name" value.bind="Web.Name">
-        </div>
-        <div class="field">
-          <label>DisplayName</label>
-          <input type="text" data-validate="DisplayName" placeholder="DisplayName" value.bind="Web.DisplayName">
-        </div>
-        <div class="field">
-          <label>Url</label>
-          <input type="text" data-validate="Url" placeholder="Url" value.bind="Web.Url">
-        </div>
-        <div class="field">
-          <label>WebsiteDisplayName</label>
-          <input type="text" placeholder="WebsiteDisplayName" value.two-way="Web.Accounts.WebsiteDisplayName">
-        </div>
-        <div class="field">
-          <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="Web.Accounts.AccessLevels">
-            <input name="gender" type="hidden" value="${Web.Accounts.AccessLevels}">
-            <i class="dropdown icon"></i>
-            <div class="default text">--Select All--</div>
-            <div class="menu">
-              <div class="item" data-value="dev">dev</div>
-              <div class="item" data-value="tester" >tester</div>
-            </div>
-          </div>
+      <table>
+        <thead>
+         <tr>
+            <th>AccountType</th>
+            <th>UserName</th>
+            <th>Status</th>
+            <th>Name</th>
+            <th>Age</th>
+             <th>Sex</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
         
-        </div>
-        
-       
-        <br>
-        <button class="ui blue button" type="submit">Create</button>
-        <button class="ui yellow button" click.trigger="dialogController.cancel()">Cancel</button>
-      </form>
+          <tr repeat.for="item of listUsers" align="center">
+            <td>${item.AccountType}</td>
+            <td>${item.UserName}</td>
+             <td>${item.Status}</td>
+            <td>${item.Info.Name}</td>
+            <td>${item.Info.Age}</td>
+            <td>${item.Info.Sex}</td>
+            <td>${item.Info.Address}</td>
+          </tr>
+        </tbody>
+      </table>
+    
+     
+      
     </ai-dialog-body>
+    <ai-dialog-footer>
+      <button class="ui yellow button" click.trigger="dialogController.cancel()">Cancel</button> 
+      <ai-dialog-footer>
   </ai-dialog>
 </template>

@@ -22,24 +22,19 @@ export class LoginViewModel {
   Login: any;
   pendding: boolean = true
   constructor(router: Router, loggingServices) {
-      {
+    {
 
-        this.theRouter = router;
-        this.loggingServices = loggingServices;
+      this.theRouter = router;
+      this.loggingServices = loggingServices;
 
 
-       
-      }
+
     }
-   activate()
-   {
-      Lockr.rm('UserInfo');
-      //  window.setTimeout(() => {
-      //       // this.theRouter.navigateToRoute('WebSiteMenu');
-      //       location.reload();
-      //          }, 1200);
-      
-   }
+  }
+  activate() {
+    Lockr.rm('UserInfo');
+   
+  }
   attached() {
 
     var rules = {
@@ -73,57 +68,41 @@ export class LoginViewModel {
   async submit() {
 
     this.pendding = !this.pendding;
-    console.log('login',JSON.stringify(this.Login))
-    await this.loggingServices.CheckLogin(this.Login).then(rs=>{
-       if((rs as any).status == 200)
-        {
-           this.pendding = !this.pendding;
-           Lockr.set('UserInfo', (rs as any).data)
-           swal({
+    console.log('login', JSON.stringify(this.Login))
+    await this.loggingServices.CheckLogin(this.Login).then(rs => {
+        if ((rs as any).status == 200) {
+          this.pendding = !this.pendding;
+          Lockr.set('UserInfo', (rs as any).data)
+          swal({
             title: "Thông báo",
             text: "Đăng nhập thành công",
             timer: 2500,
             showConfirmButton: true,
             type: "success"
           });
-                    window.setTimeout(() => {
+          window.setTimeout(() => {
             this.theRouter.navigateToRoute('WebSiteMenu');
             location.reload();
-               }, 1200);
+          }, 1200);
           console.log('true')
           return
         }
-    }
-    
-     ).catch(err=>{
-  
-       this.pendding = !this.pendding;
-        swal({ title: "Thông báo",text:"Dăng nhập thất bại" , timer: 2500, showConfirmButton: true,type: "warning" });
-        
-       return;
-     })
-  //   this.loggingServices.CheckLogin(this.Login).then(rs => {
-  //         console.log('status',rs)
-  //         this.pendding = !this.pendding;
-         
-  //        Lockr.set('UserInfo', (rs as any).data)
-  //         window.setTimeout(() => {
-  //           this.theRouter.navigateToRoute('WebSiteMenu');
-  //           location.reload();
+      }
 
-  //         }, 1200);
-  //         swal({
-  //           title: "Thông báo",
-  //           text: "Đăng nhập thành công",
-  //           timer: 2500,
-  //           showConfirmButton: true,
-  //           type: "success"
-  //         });
-        
+    ).catch(err => {
 
-  //     }
+      this.pendding = !this.pendding;
+      swal({
+        title: "Thông báo",
+        text: "Dăng nhập thất bại",
+        timer: 2500,
+        showConfirmButton: true,
+        type: "warning"
+      });
 
-  // )}
+      return;
+    })
+
   }
 
 

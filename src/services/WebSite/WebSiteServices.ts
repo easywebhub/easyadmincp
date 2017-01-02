@@ -33,6 +33,21 @@ export class WebSiteServices {
       })
     })
   }
+ 
+  DetailWebSiteUsers(WebsiteId) {
+
+    return new Promise((resolve, reject) => {
+      this.http.get(`websites/${WebsiteId}/users`, {
+        responseType: 'json'
+      }).then(data =>
+
+        resolve(data)
+      ).catch(err => {
+        console.log(err)
+        reject(Error(err))
+      })
+    })
+  }
   DetailWebSite(WebsiteId) {
 
     return new Promise((resolve, reject) => {

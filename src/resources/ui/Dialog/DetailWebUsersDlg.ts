@@ -2,21 +2,21 @@ import { DialogController } from 'aurelia-dialog';
 import { inject } from 'aurelia-dependency-injection';
 import { WebSiteServices } from '../../../services/WebSite/WebSiteServices';
 @inject(DialogController,WebSiteServices)
-export class DetailWebDlg {
+export class DetailWebUsersDlg {
     dialogController: DialogController;
-    Web: any;
-    Account: any;
-    webSiteServices:WebSiteServices
+    listUsers: any;
+       webSiteServices:WebSiteServices
     constructor(dialogController,webSiteServices) {
         this.dialogController = dialogController
-        this.Web = []
-        this.Account = []
+        this.listUsers = []
+    
         this.webSiteServices=webSiteServices
     }
     activate(params) {
        
-        this.webSiteServices.DetailWebSite(params.WebsiteId).then(rs=>{
-        this.Web=(rs as any).data;
+        this.webSiteServices.DetailWebSiteUsers(params.WebsiteId).then(rs=>{
+        this.listUsers=(rs as any).data;
+        console.log('data',JSON.stringify((rs as any).data))
            
         })
         

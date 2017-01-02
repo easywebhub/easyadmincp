@@ -167,7 +167,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr repeat.for="item of Web.Stagging">
+          <tr repeat.for="item of Web.Stagging" align="center">
             <td>${item.Name}</td>
             <td>${item.HostingFee}</td>
             <td>${item.Url}</td>
@@ -189,7 +189,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr repeat.for="item of Web.Accounts">
+          <tr repeat.for="item of Web.Accounts" align="center">
             <td>${item.AccountId}</td>
             <td><span repeat.for="role of item.AccessLevels" class="ui blue button">${role}</span></td>
           </tr>
@@ -198,7 +198,7 @@
       
     </ai-dialog-body>
     <ai-dialog-footer>
-      <button class="ui red button" click.trigger="dialogController.cancel()">Cancel</button> 
+      <button class="ui yellow button" click.trigger="dialogController.cancel()">Cancel</button> 
       <ai-dialog-footer>
   </ai-dialog>
 </template>

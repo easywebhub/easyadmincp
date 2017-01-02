@@ -90,6 +90,7 @@
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.1.1",
     "lockr": "^0.8.4",
+    "lodash": "^4.17.4",
     "semantic-ui-css": "^2.2.4",
     "sweetalert": "^1.1.3"
   },
