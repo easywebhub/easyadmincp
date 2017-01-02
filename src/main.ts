@@ -1,20 +1,23 @@
 ﻿import {Aurelia} from 'aurelia-framework';
 // // we want font-awesome to load as soon as possible to show the fa-spinner
-
-// import 'jquery/dist/jquery.min.js';
+ //import 'jquery/dist/jquery.min.js';
 
 // import 'datatables.net/js/jquery.dataTables.js';
 // import 'datatables.net-dt/css/jquery.dataTables.css';
 
 // import 'sweetalert/dist/sweetalert.css';
 // import 'sweetalert/dist/sweetalert.min.js';
-
+import 'lockr';
+import 'sweetalert/dist/sweetalert.css';
+import 'sweetalert/dist/sweetalert.min.js';
 
 import 'semantic-ui-css/semantic.min.css';
 import 'semantic-ui-css/semantic.min.js';
+
 // import 'semantic-ui-calendar/dist/calendar.min.css';
 // import 'semantic-ui-calendar/dist/calendar.min.js';
-//import 'axios/dist/axios.min.js';
+
+import 'axios/dist/axios.min.js';
 
 import 'font-awesome/css/font-awesome.css';
 
@@ -35,6 +38,13 @@ export async function configure(aurelia: Aurelia) {
   aurelia.use
     .standardConfiguration()
     .feature('resources/ui')
+     .plugin('aurelia-dialog', config => {
+      config.useDefaults();
+      config.settings.lock = true;
+      config.settings.centerHorizontalOnly = false;
+      config.settings.startingZIndex = 5;
+      config.settings.enableEscClose = true;
+    })
     .developmentLogging()
   
  

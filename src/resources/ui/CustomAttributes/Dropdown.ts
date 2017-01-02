@@ -5,7 +5,7 @@ import {
   customAttribute
 } from 'aurelia-framework';
 
-//import * as $ from "jquery";
+import * as $ from "jquery";
 
 @customAttribute("ui-dropdown")
 @inject(Element)
@@ -18,14 +18,13 @@ export class UIDropdown {
     this.element = element;
   }
   attached() {
-    ($('.ui.dropdown') as any).dropdown('refresh');
+    //($('.ui.dropdown') as any).dropdown('refresh');
 
-    setTimeout(() => {
-        ($('.ui.dropdown') as any).dropdown(
+          ($('.ui.dropdown') as any).dropdown(
           'set selected', this.vdrop
         );
-      }
-      , 1);
+      
+    
     ($('.ui.dropdown') as any)
     .dropdown({
       onChange: function (value, text, $selectedItem) {

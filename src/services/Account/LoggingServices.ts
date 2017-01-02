@@ -16,13 +16,12 @@ export class LoggingServices {
 
     }
   
- CheckLogin(meta): Promise < Array < any >>{
+  CheckLogin(meta){
       return new Promise((resolve, reject) => {
-        this.http.post(`auth/signin`,meta).then(data => {
-            console.log(data)
+        this.http.post(`auth/signin`,meta).then(data => 
             resolve(data)
-        }).catch(err => {
-            console.log('test',err)
+        ).catch(err => {
+            
           reject(Error(err))
         })
       })

@@ -1,38 +1,43 @@
 import {
   DialogController
 } from 'aurelia-dialog';
+
 import {
   inject
 } from 'aurelia-dependency-injection';
+
+import * as Lockr from 'lockr'
 @inject(DialogController)
+
 export class CreateWebDlg {
   dialogController: DialogController;
   Web: any;
   Account: any;
   objAccessLevel:any
+  access:any
   constructor(dialogController) {
     this.dialogController = dialogController
-     this.Web = []
+     this.Web = {}
      this.Web.Accounts = [];
       this.objAccessLevel = [];
-    //console.log('test', JSON.stringify(Lockr.get("UserInfo")))
-    // dialogController.settings.lock = false
-  
-    console.log('this',this.dialogController)
+   
   }
 
   submit() {
    
 
-  //  this.Web.Accounts.AccountId = (Lockr.get("UserInfo") as any).AccountId;
-    // this.Account.AccessLevel = [];
-    //this.Web.Accounts = this.Account;
-    // this.Web.Accounts.AccessLevels=this.objAccessLevel
-    // console.log('dialog', this.Web);
-     this.dialogController.ok();
+   this.Web.Accounts.AccountId = (Lockr.get("UserInfo") as any).AccountId;
+   
+    this.Web.Accounts = this.Account;
+    //this.Web.Accounts.AccessLevels=[]
+    //this.Web.Accounts.AccessLevels=this.access
+     this.objAccessLevel=this.access
+    console.log('web',this.Web,'access',this.access)
+     this.dialogController.ok(this.Web);
   }
+
   attached() {
-      this.Web.Accounts = [];
+  
     var rules = {
       Name: {
         identifier: 'Name',
@@ -54,26 +59,21 @@ export class CreateWebDlg {
           type: 'empty',
           prompt: 'Xin vui lòng nhập Link'
         }]
+      },
+      access:{
+         identifier:'access',
+          rules: [{
+          type: 'number',
+          prompt: 'Xin vui lòng nhập Link'
+        }]
       }
-
-
     };
-    ($(".ui.form") as any).form(rules, {
-      inline: true,
+($(".ui.form")as any).form({
+    fields: rules,
+     inline: true,
       on: 'blur'
-    });
-    // ($('.dropdown') as any)
-    // .dropdown({
-
-    //   onChange: function (value, text, $selectedItem) {
-       
-    //     this.objAccessLevel = value;
-
-    //     console.log('value change', value);
-    //   }
-    // });
+})
   }
-
 
 
 }

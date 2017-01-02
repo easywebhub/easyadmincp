@@ -11,8 +11,7 @@ import {
   LoggingServices
 } from '../../services/Account/LoggingServices';
 
-//import Lockr from 'lockr'
-
+import * as Lockr from 'lockr'
 
 @inject(Router, LoggingServices)
 export class LoginViewModel {
@@ -29,18 +28,18 @@ export class LoginViewModel {
         this.loggingServices = loggingServices;
 
 
-        //Lockr.set('UserInfo', false);
+       
       }
     }
-    // activate() {
-    //   return Promise.all([this.loggingServices.GetListLogging()]).then(rs => {
-
-  //     this.checkLogin = (rs[0] as any).Data;
-  //         console.log('getUser', (rs[0] as any).Data);
-
-
-  //   });
-  // }
+   activate()
+   {
+      Lockr.rm('UserInfo');
+      //  window.setTimeout(() => {
+      //       // this.theRouter.navigateToRoute('WebSiteMenu');
+      //       location.reload();
+      //          }, 1200);
+      
+   }
   attached() {
 
     var rules = {
@@ -71,44 +70,60 @@ export class LoginViewModel {
   routeRegister() {
     this.theRouter.navigateToRoute('register');
   }
-  submit() {
+  async submit() {
 
     this.pendding = !this.pendding;
-    this.loggingServices.CheckLogin(this.Login).then(rs => {
-        //console.log('result',JSON.stringify((rs as any).data))
-        if ((rs as any).status == 200) {
-          this.pendding = !this.pendding;
-         console.log('lockr',(rs as any).data);
-         Lockr.set('UserInfo', (rs as any).data)
-          window.setTimeout(() => {
+    console.log('login',JSON.stringify(this.Login))
+    await this.loggingServices.CheckLogin(this.Login).then(rs=>{
+       if((rs as any).status == 200)
+        {
+           this.pendding = !this.pendding;
+           Lockr.set('UserInfo', (rs as any).data)
+           swal({
+            title: "Thông báo",
+            text: "Đăng nhập thành công",
+            timer: 2500,
+            showConfirmButton: true,
+            type: "success"
+          });
+                    window.setTimeout(() => {
             this.theRouter.navigateToRoute('WebSiteMenu');
             location.reload();
-
-          }, 1200);
-          // swal({
-          //   title: "Thông báo",
-          //   text: "Đăng nhập thành công",
-          //   timer: 2500,
-          //   showConfirmButton: true,
-          //   type: "success"
-          // });
-        } else {
-          console.log('bad');
+               }, 1200);
+          console.log('true')
+          return
         }
+    }
+    
+     ).catch(err=>{
+  
+       this.pendding = !this.pendding;
+        swal({ title: "Thông báo",text:"Dăng nhập thất bại" , timer: 2500, showConfirmButton: true,type: "warning" });
+        
+       return;
+     })
+  //   this.loggingServices.CheckLogin(this.Login).then(rs => {
+  //         console.log('status',rs)
+  //         this.pendding = !this.pendding;
+         
+  //        Lockr.set('UserInfo', (rs as any).data)
+  //         window.setTimeout(() => {
+  //           this.theRouter.navigateToRoute('WebSiteMenu');
+  //           location.reload();
 
-      }
+  //         }, 1200);
+  //         swal({
+  //           title: "Thông báo",
+  //           text: "Đăng nhập thành công",
+  //           timer: 2500,
+  //           showConfirmButton: true,
+  //           type: "success"
+  //         });
+        
 
-    ).catch(err => {
-      this.pendding = !this.pendding;
-      // swal({
-      //   title: "Thông báo",
-      //   text: "Đăng nhập thất bại",
-      //   timer: 2500,
-      //   showConfirmButton: true,
-      //   type: "warning"
-      // });
-    })
+  //     }
 
+  // )}
   }
 
 

@@ -3,7 +3,7 @@ import {
   inject,
   customAttribute
 } from "aurelia-framework";
-// import * as $ from "jquery";
+import * as $ from "jquery";
 
 @customAttribute("ui-tab")
 @inject(Element)

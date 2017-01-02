@@ -3,16 +3,9 @@
  * To learn more about how to use Easy Webpack
  * Take a look at the README here: https://github.com/easy-webpack/core
  **/
-import {
-  generateConfig,
-  get,
-  stripMetadata,
-  EasyWebpackConfig
-} from '@easy-webpack/core';
+import { generateConfig, get, stripMetadata, EasyWebpackConfig } from '@easy-webpack/core';
 import * as path from 'path';
-var AureliaWebpackPlugin = require('aurelia-webpack-plugin');
-var webpack = require('webpack');
-var ProvidePlugin = require('webpack/lib/ProvidePlugin');
+
 import * as envProd from '@easy-webpack/config-env-production';
 import * as envDev from '@easy-webpack/config-env-development';
 import * as aurelia from '@easy-webpack/config-aurelia';
@@ -31,8 +24,8 @@ import * as generateCoverage from '@easy-webpack/config-test-coverage-istanbul';
 const ENV: 'development' | 'production' | 'test' = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() || (process.env.NODE_ENV = 'development');
 
 // basic configuration:
-const title = 'AdminCp';
-const baseUrl = 'https://easywebhub.github.io/aurelia-skeleton/';
+const title = 'Aurelia Navigation Skeleton';
+const baseUrl = 'https://vvthinh.github.io/easyadmincp/';
 const rootDir = path.resolve();
 const srcDir = path.resolve('src');
 const outDir = path.resolve('dist');
@@ -69,42 +62,23 @@ const coreBundles = {
     'aurelia-templating',
     'aurelia-templating-binding',
     'aurelia-templating-router',
-    'aurelia-templating-resources',
-    'lockr'
-    
-  
+    'aurelia-templating-resources'
   ]
 }
 
 /**
  * Main Webpack Configuration
  */
-
-let config = generateConfig({
-   
+let config = generateConfig(
+  {
     entry: {
-      'app': ['./src/main' /* this is filled by the aurelia-webpack-plugin */ ],
+      'app': ['./src/main' /* this is filled by the aurelia-webpack-plugin */],
       'aurelia-bootstrap': coreBundles.bootstrap,
       'aurelia': coreBundles.aurelia.filter(pkg => coreBundles.bootstrap.indexOf(pkg) === -1)
     },
     output: {
-      path: outDir
-     },
-      plugins: [
-    new AureliaWebpackPlugin({
-      includeSubModules: [
-     
-        { moduleId: "aurelia-dialog" }
-      
-      ]
-    }),
-    new ProvidePlugin({
-      'Lockr':'lockr',
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery"
-    })
-  ]
+      path: outDir,
+    },
   },
 
   /**
@@ -115,66 +89,29 @@ let config = generateConfig({
    * For Webpack docs, see: https://webpack.js.org/configuration/
    */
 
-  ENV === 'test' || ENV === 'development' ?
-  envDev(ENV !== 'test' ? {} : {
-    devtool: 'inline-source-map'
-  }) :
-  envProd({ /* devtool: '...' */ }),
+  ENV === 'test' || ENV === 'development' ? 
+    envDev(ENV !== 'test' ? {} : {devtool: 'inline-source-map'}) :
+    envProd({ /* devtool: '...' */ }),
 
-  aurelia({
-    root: rootDir,
-    src: srcDir,
-    title: title,
-    baseUrl: baseUrl
-  }),
-  typescript(ENV !== 'test' ? {} : {
-    options: {
-      doTypeCheck: false,
-      sourceMap: false,
-      inlineSourceMap: true,
-      inlineSources: true
-    }
-  }),
+  aurelia({root: rootDir, src: srcDir, title: title, baseUrl: baseUrl}),
+  typescript(ENV !== 'test' ? {} : { options: { doTypeCheck: false, sourceMap: false, inlineSourceMap: true, inlineSources: true } }),
   html(),
-  css({
-    filename: 'styles.css',
-    allChunks: true,
-    sourceMap: false
-  }),
+  css({ filename: 'styles.css', allChunks: true, sourceMap: false }),
   fontAndImages(),
   globalBluebird(),
   globalJquery(),
-  generateIndexHtml({
-    minify: ENV === 'production'
-  }),
+  generateIndexHtml({minify: ENV === 'production'}),
 
   ...(ENV === 'production' || ENV === 'development' ? [
-    commonChunksOptimize({
-      appChunkName: 'app',
-      firstChunk: 'aurelia-bootstrap'
-    }),
-    copyFiles({
-      patterns: [{
-        from: 'favicon.ico',
-        to: 'favicon.ico'
-      }]
-    })
-  ] : [
+      commonChunksOptimize({appChunkName: 'app', firstChunk: 'aurelia-bootstrap'}),
+      copyFiles({patterns: [{ from: 'favicon.ico', to: 'favicon.ico' }]})
+    ] : [
     /* ENV === 'test' */
-    generateCoverage({
-      options: {
-        esModules: true
-      }
-    })
+    generateCoverage({ options: { esModules: true } })
   ]),
 
   ENV === 'production' ?
-  uglify({
-    debug: false,
-    mangle: {
-      except: ['cb', '__webpack_require__']
-    }
-  }) : {}
+    uglify({debug: false, mangle: { except: ['cb', '__webpack_require__'] }}) : {}
 );
 
 module.exports = stripMetadata(config);

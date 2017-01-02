@@ -1,0 +1,7 @@
+{
+  "globalDependencies": {
+    "jquery": "registry:dt/jquery#1.10.0+20170101013624",
+    "lockr": "registry:dt/lockr#0.8.3+20161005184000",
+    "sweetalert": "registry:dt/sweetalert#1.1.3+20160510002910"
+  }
+}

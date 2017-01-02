@@ -2,7 +2,9 @@
   <style>
     /*fix z index*/
     
-    
+    .sweet-alert {
+      z-index: 200111;
+    }
     
     body>span.select2-container {
       z-index: 100111;
@@ -82,21 +84,38 @@
       <span>Tạo mới Website</span>
     </ai-dialog-header>
     <ai-dialog-body>
-      
-		<!--<div class="twelve wide field" ui-dropdown>
-    <label style="width: 250px">Add roles to user</label>
-    <select name="skills" multiple="" class="ui fluid dropdown">
-        <option value="">Roles</option>
-        <option value="Role1">Role 1</option>
-        <option value="Role2">Role 2</option>
-        <option value="Role3">Role 3</option>
-    </select>
-</div>-->
-        
+      <form class="ui form" submit.delegate="submit()">
+        <div class="field">
+          <label>Name</label>
+          <input type="text" data-validate="Name" placeholder="Name" value.bind="Web.Name">
+        </div>
+        <div class="field">
+          <label>DisplayName</label>
+          <input type="text" data-validate="DisplayName" placeholder="DisplayName" value.bind="Web.DisplayName">
+        </div>
+        <div class="field">
+          <label>Url</label>
+          <input type="text" data-validate="Url" placeholder="Url" value.bind="Web.Url">
+        </div>
+        <div class="field">
+          <label>WebsiteDisplayName</label>
+          <input type="text" placeholder="WebsiteDisplayName" value.bind="Web.Accounts.WebsiteDisplayName">
+        </div>
+	
+        <div class="field">
+          <div class="ui sub header">AccessLevels</div>
+          <select   class="ui fluid normal dropdown" data-validate="access" ui-dropdown vdrop.two-way="access">
+				<option value="dev">dev</option>
+				<option value="tester">tester</option>
+
+				</select>
+        <input type="text" value.bind="access">
+          <div>
+            <br>
+            <button class="ui blue button" type="submit">Tạo mới</button>
+            <button class="ui red button" click.trigger="dialogController.cancel()">Cancel</button>
+            
+      </form>
     </ai-dialog-body>
-    <ai-dialog-footer>
-      <button click.trigger="dialogController.cancel()">Cancel</button>
-      <button click.trigger="dialogController.ok()">Ok</button>
-    </ai-dialog-footer>
   </ai-dialog>
 </template>

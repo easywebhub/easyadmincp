@@ -1,18 +1,12 @@
 <template>
-  <!--<require from="./nav-bar.html"></require>
-  
-  <nav-bar router.bind="router"></nav-bar>
-
-  <div class="page-host">
-    <router-view></router-view>
-  </div>-->
-  <div class="topNav">
+ 
+  <div class="topNav" show.bind="checkNav==true">
     <div class="row between-xs middle-xs">
       <div class="col-xs ">
         <div class="logo">
           <a href="index.html">
             <!--<img src="https://cdn1.vienthonga.vn/image/2016/10/5/100000_vta-admin-logo.png" width="200" alt="">-->
-            </a>
+          </a>
         </div>
         <div class="ui  search">
           <!--<div class="ui icon input">
@@ -39,10 +33,10 @@
     </div>
   </div>
   <div class="row flex-nowrap">
-    <div class="col-xs shrink">
+    <div class="col-xs shrink" show.bind="checkNav==true">
       <div class="sidebar">
         <div class="ui  big label fluid">
-          <i class="cubes icon"></i>Admin 
+          <i class="cubes icon"></i>Admin
         </div>
         <div class="ui accordion desadmin-sidebar-accordion">
           <div class="title active">
@@ -54,17 +48,14 @@
               <a repeat.for="row of router.navigation" href.bind="row.href" class="item ${row.isActive ? 'active' : ''}">
                            ${row.title}
                         </a>
-            
             </div>
           </div>
-        
         </div>
       </div>
     </div>
     <div class="col-xs">
       <div class="page-host">
         <router-view>
-          
         </router-view>
       </div>
     </div>

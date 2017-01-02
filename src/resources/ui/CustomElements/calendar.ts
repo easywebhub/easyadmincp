@@ -1,5 +1,5 @@
 import {inject, bindable, bindingMode , customElement  } from 'aurelia-framework';
-declare let $: JQueryStatic;
+import * as $ from 'jquery'
 import * as moment from 'moment';
 @customElement('ui-calendar')
 @inject(Element)    

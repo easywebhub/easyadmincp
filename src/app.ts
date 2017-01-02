@@ -1,6 +1,9 @@
 import {Aurelia} from 'aurelia-framework';
 import {Router, RouterConfiguration} from 'aurelia-router';
 
+import * as Lockr from 'lockr';
+
+
 export class App {
   router: Router;
   checkNav:any
@@ -9,7 +12,7 @@ export class App {
   }
   configureRouter(config: RouterConfiguration, router: Router) {
     config.title = 'AdminCp';
-    console.log('app',Lockr.get('UserInfo'))
+    
     if ((Lockr.get('UserInfo')as any)) {
       this.checkNav = true;
     }
