@@ -24,10 +24,10 @@ export class User {
 
   constructor(entity: any) {
     this.AccountId=entity.AccountId
-    this.Name = entity.Name;
-    this.Age = entity.Age;
-    this.Sex = entity.Sex;
-    this.Address = entity.Address;
+    this.Name = entity.Info.Name;
+    this.Age = entity.Info.Age;
+    this.Sex = entity.Info.Sex;
+    this.Address = entity.Info.Address;
 
   }
 }

@@ -96,8 +96,6 @@ export class UserMng {
 
   }
 
-
-
   UpdateAccount(item: User) {
     this.dialogService.open({
       viewModel: UpdateAccountDlg,
@@ -105,11 +103,11 @@ export class UserMng {
     }).then((result) => {
       if (!result.wasCancelled) {
 
-        this.userServices.UpdateByUser(new User(result.output)).then((rs: any) => {
+        this.userServices.UpdateByUser(result.output).then((rs: any) => {
 
           swal({
             title: "Thông báo",
-            text: "Tạo mới thành công",
+            text: "Cập nhật Account thành công",
             timer: 2500,
             showConfirmButton: true,
             type: "success"
@@ -121,7 +119,7 @@ export class UserMng {
 
           swal({
             title: "Thông báo",
-            text: "Tạo mới thất bại",
+            text: "Cập nhật Account thất bại",
             timer: 2500,
             showConfirmButton: true,
             type: "warning"

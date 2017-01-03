@@ -11,23 +11,23 @@ import * as $ from 'jquery'
 @inject(DialogController)
 export class UpdateAccountDlg {
   dialogController: DialogController;
-  meta: any;
+  meta:User;
   
   constructor(dialogController) {
     this.dialogController = dialogController
     
-    this.meta={}
+    //this.meta={}
   }
 activate(params){
    
    this.meta=new User(params);
-   console.log('params',this.meta)
+   console.log('params',new User(params))
 }
 
  
   submit() {
    
-    console.log('meta',JSON.stringify(this.meta))
+   // console.log('meta',JSON.stringify(this.meta))
     this.dialogController.ok(this.meta);
   }
   attached() {

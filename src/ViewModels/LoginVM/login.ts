@@ -35,7 +35,7 @@ export class LoginViewModel {
 
   }
   activate() {
-    Lockr.rm('UserInfo');
+  //  Lockr.rm('UserInfo');
    
   }
   attached() {

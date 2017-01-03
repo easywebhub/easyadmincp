@@ -81,7 +81,7 @@
   </style>
   <ai-dialog class="edit-form" data-backdrop="static">
     <ai-dialog-header>
-      <span>Create User</span>
+      <span>Update Account</span>
     </ai-dialog-header>
     <ai-dialog-body>
       
@@ -91,13 +91,16 @@
           <label>Name</label>
           <input type="text" data-validate="Name" placeholder="Name" value.bind="meta.Name">
         </div>
+        
         <div class="field">
           <label>Age</label>
           <input type="text"  placeholder="Age" value.bind="meta.Age">
         </div>
+
         <div class="field">
           <label>Sex</label>
           <select value.bind="meta.Sex">
+              <option value="">--Select All--</option>
              <option value="Female">Female</option>
              <option value="Male">Male</option>
            </select> 
@@ -109,7 +112,7 @@
         </div>
         
             <br>
-            <button class="ui blue button" type="submit">Tạo mới</button>
+            <button class="ui blue button" type="submit">Update Account</button>
             <button class="ui yellow button" click.trigger="dialogController.cancel()">Cancel</button>
       </form>
     </ai-dialog-body>

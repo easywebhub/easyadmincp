@@ -18,7 +18,7 @@ export class App {
     }
     config.map([
        { route: ['', 'login'], name: 'login', moduleId: 'ViewModels/LoginVM/login', nav: false, settings: { roles: [] }, title: 'Đăng nhập' },
-      { route: 'welcome', name: 'welcome',moduleId: './welcome',nav: this.checkNav, title: 'Welcome' },
+      // { route: 'welcome', name: 'welcome',moduleId: './welcome',nav: this.checkNav, title: 'Welcome' },
       { route: 'WebSiteMenu', name: 'WebSiteMenu', moduleId: 'ViewModels/WebSiteVM/WebSiteMenu', nav:this.checkNav, title: 'Website Management' },
        { route: 'AccountMenu', name: 'AccountMenu', moduleId: 'ViewModels/AccountVM/AccountMenu', nav:this.checkNav, title: 'Account Management' }
     ]);

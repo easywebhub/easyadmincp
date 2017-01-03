@@ -24,48 +24,39 @@ export class CreateAccountsDlg {
     console.log('meta',JSON.stringify(this.meta))
     this.dialogController.ok(this.meta);
   }
-  // attached() {
+  attached() {
      
-  //   var rules = {
-  //     Name: {
-  //       identifier: 'Name',
-  //       rules: [{
-  //         type: 'empty',
-  //         prompt: 'Xin vui lòng nhập tên vào'
-  //       }]
-  //     },
-  //     PasswoDisplayName: {
-  //       identifier: 'DisplayName',
-  //       rules: [{
-  //         type: 'empty',
-  //         prompt: 'Xin vui lòng nhập DisplayName'
-  //       }]
-  //     },
-  //     Link: {
-  //       identifier: 'Url',
-  //       rules: [{
-  //         type: 'empty',
-  //         prompt: 'Xin vui lòng nhập Link'
-  //       }]
-  //     }
+    var rules = {
+      Name: {
+        identifier: 'Name',
+        rules: [{
+          type: 'empty',
+          prompt: 'Xin vui lòng nhập Name'
+        }]
+      },
+      PasswoDisplayName: {
+        identifier: 'AccountType',
+        rules: [{
+          type: 'empty',
+          prompt: 'Xin vui lòng nhập AccountType'
+        }]
+      },
+      Link: {
+        identifier: 'UserName',
+        rules: [{
+          type: 'empty',
+          prompt: 'Xin vui lòng nhập UserName'
+        }]
+      }
 
 
-  //   };
-  //   ($(".ui.form") as any).form(rules, {
-  //     inline: true,
-  //     on: 'blur'
-  //   });
-  //   ($('.dropdown') as any)
-  //   .dropdown({
-
-  //     onChange: function (value, text, $selectedItem) {
-       
-  //       this.objAccessLevel = value;
-
-  //       console.log('value change', value);
-  //     }
-  //   });
-  // }
+    };
+    ($(".ui.form") as any).form({fields:rules, 
+      inline: true,
+      on: 'blur'
+    );
+    
+  }
 
 
 
