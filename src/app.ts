@@ -17,12 +17,20 @@ export class App {
       this.checkNav = true;
     }
     config.map([
-       { route: ['', 'login'], name: 'login', moduleId: 'ViewModels/LoginVM/login', nav: false, settings: { roles: [] }, title: 'Đăng nhập' },
+       { route: ['', 'login'], name: 'login', moduleId: 'ViewModels/LoginVM/login', nav: false, settings: { roles: [] }, title: 'Login' },
       // { route: 'welcome', name: 'welcome',moduleId: './welcome',nav: this.checkNav, title: 'Welcome' },
       { route: 'WebSiteMenu', name: 'WebSiteMenu', moduleId: 'ViewModels/WebSiteVM/WebSiteMenu', nav:this.checkNav, title: 'Website Management' },
-       { route: 'AccountMenu', name: 'AccountMenu', moduleId: 'ViewModels/AccountVM/AccountMenu', nav:this.checkNav, title: 'Account Management' }
+       { route: 'AccountMenu', name: 'AccountMenu', moduleId: 'ViewModels/AccountVM/AccountMenu', nav:this.checkNav, title: 'Account Management' },
+        { route: 'logout', name: 'logout', moduleId: 'ViewModels/LoginVM/logout', nav: false, settings: { roles: [] }, title: 'LogOut' },
     ]);
 
     this.router = router;
+  }
+  attached() {
+   ($('.ui.inline.dropdown') as any)
+  .dropdown({
+   
+  })
+;
   }
 }

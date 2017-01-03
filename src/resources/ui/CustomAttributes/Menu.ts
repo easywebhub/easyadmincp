@@ -13,7 +13,7 @@ export class UIMenu {
 
     attached() {
         ($(this.element) as any)
-            .on('click', '.item', function () {
+            .on('click','.item', function () {
                 if (!($(this) as any).hasClass('dropdown')) {
                     ($(this) as any)
                         .addClass('active')
