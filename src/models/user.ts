@@ -6,10 +6,10 @@ export class Users {
   Info: any;
   constructor(entity: any) {
 
-    this.AccountType = entity.Name;
-    this.UserName = entity.DisplayName;
-    this.Password = entity.Url;
-    this.Info = entity.User;
+    this.AccountType = entity.AccountType;
+    this.UserName = entity.UserName;
+    this.Password = entity.Password;
+    this.Info = entity.Info;
 
   }
 }

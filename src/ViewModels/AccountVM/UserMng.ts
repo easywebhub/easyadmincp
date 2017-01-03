@@ -21,9 +21,10 @@ import {
   CreateAccountsDlg
 } from '../../resources/ui/Dialog/CreateAccountsDlg';
 import {
-  User,Users
+  User,
+  Users
 } from '../../models//user';
-import * as swal  from 'sweetalert'
+import * as swal from 'sweetalert'
 @inject(UserServices, BindingEngine, DialogService)
 export class UserMng {
   userServices: UserServices;
@@ -57,86 +58,86 @@ export class UserMng {
     })
   }
 
-//  CreateAccount() {
-//       this.dialogService.open({
-//         viewModel: CreateAccountDlg,model:item
-//       }).then((result) => {
-//         if (!result.wasCancelled) {
-         
-//           this.userServices.UpdateByUser(new User(result.output)).then((rs: any) => {
-           
-//             swal({
-//                 title: "Thông báo",
-//                 text: "Tạo mới thành công",
-//                 timer: 2500,
-//                 showConfirmButton: true,
-//                 type: "success"
-//               });
+  CreateAccount() {
+    this.dialogService.open({
+      viewModel: CreateAccountsDlg
+    }).then(result => {
+      if (!result.wasCancelled) {
+        this.userServices.CreateByUsers(new Users(result.output)).then((rs: any) => {
 
-//               this.activate();
-            
-//           }).catch(err=>{
-          
-//               swal({
-//                 title: "Thông báo",
-//                 text: "Tạo mới thất bại",
-//                 timer: 2500,
-//                 showConfirmButton: true,
-//                 type: "warning"
-//               });
-            
-//           })
+          swal({
+            title: "Thông báo",
+            text: "Tạo mới thành công",
+            timer: 2500,
+            showConfirmButton: true,
+            type: "success"
+          });
 
-//         } else {
-//           console.log('bad');
-//         }
+          this.activate();
 
-//       });
+        }).catch(err => {
 
+          swal({
+            title: "Thông báo",
+            text: "Tạo mới thất bại",
+            timer: 2500,
+            showConfirmButton: true,
+            type: "warning"
+          });
 
-//     }
-   
+        })
+
+      } else {
+        console.log('bad');
+      }
+
+    });
 
 
- UpdateAccount(item:User) {
-      this.dialogService.open({
-        viewModel: UpdateAccountDlg,model:item
-      }).then((result) => {
-        if (!result.wasCancelled) {
-         
-          this.userServices.UpdateByUser(new User(result.output)).then((rs: any) => {
-           
-            swal({
-                title: "Thông báo",
-                text: "Tạo mới thành công",
-                timer: 2500,
-                showConfirmButton: true,
-                type: "success"
-              });
-
-              this.activate();
-            
-          }).catch(err=>{
-          
-              swal({
-                title: "Thông báo",
-                text: "Tạo mới thất bại",
-                timer: 2500,
-                showConfirmButton: true,
-                type: "warning"
-              });
-            
-          })
-
-        } else {
-          console.log('bad');
-        }
-
-      });
+  }
 
 
-    }
-   
+
+  UpdateAccount(item: User) {
+    this.dialogService.open({
+      viewModel: UpdateAccountDlg,
+      model: item
+    }).then((result) => {
+      if (!result.wasCancelled) {
+
+        this.userServices.UpdateByUser(new User(result.output)).then((rs: any) => {
+
+          swal({
+            title: "Thông báo",
+            text: "Tạo mới thành công",
+            timer: 2500,
+            showConfirmButton: true,
+            type: "success"
+          });
+
+          this.activate();
+
+        }).catch(err => {
+
+          swal({
+            title: "Thông báo",
+            text: "Tạo mới thất bại",
+            timer: 2500,
+            showConfirmButton: true,
+            type: "warning"
+          });
+
+        })
+
+      } else {
+        console.log('bad');
+      }
+
+    });
+
+
+  }
+
 
   DetailAccount(item) {
 

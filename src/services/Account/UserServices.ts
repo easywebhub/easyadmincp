@@ -27,9 +27,7 @@ export class UserServices {
   }
   CreateByUsers(meta) {
     return new Promise((resolve, reject) => {
-      this.http.post(`users`, meta, {
-        responseType: 'json'
-      }).then(data =>
+      this.http.post(`users`, meta).then(data =>
         resolve(data)
       ).catch(err => {
         console.log(err)
