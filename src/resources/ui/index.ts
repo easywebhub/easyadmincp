@@ -15,7 +15,7 @@ export function configure(aurelia) {
     './Dialog/DetailWebDlg',
     './Dialog/DetailWebUsersDlg',
     './Dialog/DetailUserDlg',
-    './Dialog/CreateAccountDlg',
+    './Dialog/UpdateAccountDlg',
     './Dialog/CreateAccountsDlg',
   );
 }

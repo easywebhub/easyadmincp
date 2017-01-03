@@ -8,7 +8,7 @@ import {
   User,Users
 } from '../../../models//user';
 @inject(DialogController)
-export class CreateAccountDlg {
+export class UpdateAccountDlg {
   dialogController: DialogController;
   meta: any;
   

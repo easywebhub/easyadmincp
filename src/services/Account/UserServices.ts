@@ -37,6 +37,7 @@ export class UserServices {
       })
     })
   }
+  
    DetaiByUser(AccountId) {
 
     return new Promise((resolve, reject) => {
@@ -51,7 +52,7 @@ export class UserServices {
       })
     })
   }
-  CreateByUser(meta) {
+  UpdateByUser(meta) {
     return new Promise((resolve, reject) => {
       this.http.post(`users/${meta.AccountId}`, meta).then(data =>
         resolve(data)

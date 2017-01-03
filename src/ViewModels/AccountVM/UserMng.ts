@@ -15,8 +15,11 @@ import {
   DetailUserDlg
 } from '../../resources/ui/Dialog/DetailUserDlg';
 import {
-  CreateAccountDlg
-} from '../../resources/ui/Dialog/CreateAccountDlg';
+  UpdateAccountDlg
+} from '../../resources/ui/Dialog/UpdateAccountDlg';
+import {
+  CreateAccountsDlg
+} from '../../resources/ui/Dialog/CreateAccountsDlg';
 import {
   User,Users
 } from '../../models//user';
@@ -53,13 +56,54 @@ export class UserMng {
     })
   }
 
+//  CreateAccount() {
+//       this.dialogService.open({
+//         viewModel: CreateAccountDlg,model:item
+//       }).then((result) => {
+//         if (!result.wasCancelled) {
+         
+//           this.userServices.UpdateByUser(new User(result.output)).then((rs: any) => {
+           
+//             swal({
+//                 title: "Thông báo",
+//                 text: "Tạo mới thành công",
+//                 timer: 2500,
+//                 showConfirmButton: true,
+//                 type: "success"
+//               });
+
+//               this.activate();
+            
+//           }).catch(err=>{
+          
+//               swal({
+//                 title: "Thông báo",
+//                 text: "Tạo mới thất bại",
+//                 timer: 2500,
+//                 showConfirmButton: true,
+//                 type: "warning"
+//               });
+            
+//           })
+
+//         } else {
+//           console.log('bad');
+//         }
+
+//       });
+
+
+//     }
+   
+
+
  UpdateAccount(item:User) {
       this.dialogService.open({
-        viewModel: CreateAccountDlg,model:item
+        viewModel: UpdateAccountDlg,model:item
       }).then((result) => {
         if (!result.wasCancelled) {
          
-          this.userServices.CreateByUser(new User(result.output)).then((rs: any) => {
+          this.userServices.UpdateByUser(new User(result.output)).then((rs: any) => {
            
             swal({
                 title: "Thông báo",
