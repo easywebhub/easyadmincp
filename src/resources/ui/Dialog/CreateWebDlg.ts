@@ -7,6 +7,7 @@ import {
 } from 'aurelia-dependency-injection';
 
 import * as Lockr from 'lockr'
+import * as $ from 'jquery'
 @inject(DialogController)
 
 export class CreateWebDlg {

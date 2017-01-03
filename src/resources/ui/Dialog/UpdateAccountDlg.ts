@@ -7,6 +7,7 @@ import {
 import {
   User,Users
 } from '../../../models//user';
+import * as $ from 'jquery'
 @inject(DialogController)
 export class UpdateAccountDlg {
   dialogController: DialogController;

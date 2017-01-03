@@ -12,6 +12,8 @@ import {
 } from '../../services/Account/LoggingServices';
 
 import * as Lockr from 'lockr'
+import * as $ from 'jquery'
+import * as swal  from 'sweetalert'
 
 @inject(Router, LoggingServices)
 export class LoginViewModel {
@@ -30,6 +32,7 @@ export class LoginViewModel {
 
 
     }
+
   }
   activate() {
     Lockr.rm('UserInfo');
