@@ -23,6 +23,7 @@ import {
 import {
   User,Users
 } from '../../models//user';
+import * as swal  from 'sweetalert'
 @inject(UserServices, BindingEngine, DialogService)
 export class UserMng {
   userServices: UserServices;

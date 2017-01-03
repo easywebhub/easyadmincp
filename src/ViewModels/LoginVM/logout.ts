@@ -1,6 +1,6 @@
 import { inject } from 'aurelia-framework'
 import { Router } from 'aurelia-router';
-
+import * as Lockr from 'lockr';
 @inject(Router)
 
 export class LogOut {

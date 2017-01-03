@@ -1,5 +1,7 @@
 import {DialogService} from 'aurelia-dialog';
 import {Prompt} from './prompt';
+import * as Lockr from 'lockr';
+import * as $ from 'jquery'
 export class Welcome {
   static inject = [DialogService];
   constructor(private dialogService) {

@@ -3,6 +3,8 @@ import { bindingMode,
   inject,lazy} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 import * as $ from "jquery";
+import * as Lockr from 'lockr';
+import * as swal  from 'sweetalert'
 // polyfill fetch client conditionally
 const fetch = !self.fetch ? System.import('isomorphic-fetch') : Promise.resolve(self.fetch);
 

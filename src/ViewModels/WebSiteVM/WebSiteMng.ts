@@ -10,6 +10,7 @@ import {
   DialogService
 } from 'aurelia-dialog';
 import * as _ from 'lodash';
+import * as swal  from 'sweetalert'
 import {
   CreateWebDlg
 } from '../../resources/ui/Dialog/CreateWebDlg';
