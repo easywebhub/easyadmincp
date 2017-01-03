@@ -15,7 +15,7 @@
 
   </style>
   <section class="ui">
-    <h3>Quản lý User &nbsp;
+    <h3>Management Account &nbsp;
     </h3>
     <form>
       <div class="ui form">
@@ -31,7 +31,7 @@
         </div>
       </div>
     </form>
-    <button click.delegate="createUser()" senam_tooltip data-content="Tạo mới" style="width:50px;margin:10px 0px" class="ui blue button"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+    <button click.delegate="createAccount()" ui-tooltip data-content="Create Account" style="width:50px;margin:10px 0px" class="ui blue button"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
     <div class="ui" if.bind="!pendding">
       <div class="ui active inverted dimmer">
         <div class="ui large text loader">Loading</div>
@@ -67,11 +67,11 @@
             <td>${item.Status}</td>
             <td>
               <div class="row">
-                <button ui-tooltip data-content="Create User" type="button" class="ui blue button" click.delegate="CreateUser(item)" style="margin-right:5px">
-          Create User
+                <button ui-tooltip data-content="Update Account" type="button" class="ui blue button" click.delegate="UpdateAccount(item)" style="margin-right:5px">
+          Update Account
         </button>
-                <button type="button" class="ui green button" ui-tooltip data-content="Detail User" click.delegate="$parent.DetailUser(item)">
-        Detail User
+                <button type="button" class="ui green button" ui-tooltip data-content="Detail Account" click.delegate="$parent.DetailAccount(item)">
+        Detail Account
         </button>
               </div>
             </td>

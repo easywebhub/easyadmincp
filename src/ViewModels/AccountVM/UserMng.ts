@@ -15,7 +15,10 @@ import {
   DetailUserDlg
 } from '../../resources/ui/Dialog/DetailUserDlg';
 import {
-  User
+  CreateAccountDlg
+} from '../../resources/ui/Dialog/CreateAccountDlg';
+import {
+  User,Users
 } from '../../models//user';
 @inject(UserServices, BindingEngine, DialogService)
 export class UserMng {
@@ -50,7 +53,47 @@ export class UserMng {
     })
   }
 
-  DetailUser(item) {
+ UpdateAccount(item:User) {
+      this.dialogService.open({
+        viewModel: CreateAccountDlg,model:item
+      }).then((result) => {
+        if (!result.wasCancelled) {
+         
+          this.userServices.CreateByUser(new User(result.output)).then((rs: any) => {
+           
+            swal({
+                title: "Thông báo",
+                text: "Tạo mới thành công",
+                timer: 2500,
+                showConfirmButton: true,
+                type: "success"
+              });
+
+              this.activate();
+            
+          }).catch(err=>{
+          
+              swal({
+                title: "Thông báo",
+                text: "Tạo mới thất bại",
+                timer: 2500,
+                showConfirmButton: true,
+                type: "warning"
+              });
+            
+          })
+
+        } else {
+          console.log('bad');
+        }
+
+      });
+
+
+    }
+   
+
+  DetailAccount(item) {
 
     this.dialogService.open({
       viewModel: DetailUserDlg,
@@ -58,9 +101,6 @@ export class UserMng {
     }).then((result) => {
       if (!result.wasCancelled) {
         console.log('result.output', result.output);
-
-
-
 
       } else {
         console.log('bad');

@@ -4,7 +4,9 @@ import {
 import {
   inject
 } from 'aurelia-dependency-injection';
-
+import {
+  User,Users
+} from '../../../models//user';
 @inject(DialogController)
 export class CreateAccountDlg {
   dialogController: DialogController;
@@ -15,57 +17,35 @@ export class CreateAccountDlg {
     
     this.meta={}
   }
+activate(params){
+   
+   this.meta=new User(params);
+   console.log('params',this.meta)
+}
 
+ 
   submit() {
    
-
-    
-    //this.Web.Accounts = this.Account;
     console.log('meta',JSON.stringify(this.meta))
     this.dialogController.ok(this.meta);
   }
-  // attached() {
+  attached() {
      
-  //   var rules = {
-  //     Name: {
-  //       identifier: 'Name',
-  //       rules: [{
-  //         type: 'empty',
-  //         prompt: 'Xin vui lòng nhập tên vào'
-  //       }]
-  //     },
-  //     PasswoDisplayName: {
-  //       identifier: 'DisplayName',
-  //       rules: [{
-  //         type: 'empty',
-  //         prompt: 'Xin vui lòng nhập DisplayName'
-  //       }]
-  //     },
-  //     Link: {
-  //       identifier: 'Url',
-  //       rules: [{
-  //         type: 'empty',
-  //         prompt: 'Xin vui lòng nhập Link'
-  //       }]
-  //     }
-
-
-  //   };
-  //   ($(".ui.form") as any).form(rules, {
-  //     inline: true,
-  //     on: 'blur'
-  //   });
-  //   ($('.dropdown') as any)
-  //   .dropdown({
-
-  //     onChange: function (value, text, $selectedItem) {
-       
-  //       this.objAccessLevel = value;
-
-  //       console.log('value change', value);
-  //     }
-  //   });
-  // }
+    var rules = {
+      Name: {
+        identifier: 'Name',
+        rules: [{
+          type: 'empty',
+          prompt: 'Xin vui lòng nhập tên vào'
+        }]
+      }
+    };
+    ($(".ui.form") as any).form({fields:rules,
+      inline: true,
+      on: 'blur'}
+    );
+    
+  }
 
 
 
