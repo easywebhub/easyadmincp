@@ -22,11 +22,11 @@
         <div class="three fields">
           <div class="field">
             <label>Name</label>
-            <input type="text" placeholder="DisplayName" ref="searchName">
+            <input type="text" placeholder="Name" ref="searchName">
           </div>
           <div class="field">
             <label>UserName</label>
-            <input type="text" placeholder="Name" ref="searchUserName">
+            <input type="text" placeholder="UserName" ref="searchUserName">
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@
             <th></th>
           </tr>
         </thead>
-        <tbody ref="mydata" items.bind="listUsers">
+        <tbody ref="mydata" items.bind="listUsers | searchUserName:searchUserName.value | searchName:searchName.value">
           <tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (pageSize):current * (pageSize)">
             <td>${(current-1)*pageSize+$index+1}</td>
             <td>${item.Info.Name}</td>
