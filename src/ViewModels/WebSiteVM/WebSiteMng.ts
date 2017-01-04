@@ -191,16 +191,29 @@ detailWebsiteUser(item) {
 // }
 
 
-export class SearchDisplayNameValueConverter {
-  toView(array, obj) {
+export class SearchNameValueConverter {
+    toView(array, obj) {
 
-    if (obj == "") {
-      return array;
-    } else if (obj) {
-      let filteredArr = array.filter(x => x.DisplayName.toLowerCase().indexOf(obj.toLowerCase()) != -1);
+        if (obj == "") {
+            return array;
+        } else if (obj) {
+            let filteredArr = array.filter(x => x.Name && x.Name.toLowerCase().indexOf(obj.toLowerCase()) !== -1);
 
-      return filteredArr;
+            return filteredArr;
+        }
+        return array;
     }
-    return array;
-  }
+}
+export class SearchDisplayNameValueConverter {
+    toView(array, obj) {
+
+        if (obj == "") {
+            return array;
+        } else if (obj) {
+            let filteredArr = array.filter(x => x.DisplayName && x.DisplayName.toLowerCase().indexOf(obj.toLowerCase()) !== -1);
+
+            return filteredArr;
+        }
+        return array;
+    }
 }

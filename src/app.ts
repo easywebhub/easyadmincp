@@ -2,7 +2,7 @@ import {Aurelia} from 'aurelia-framework';
 import {Router, RouterConfiguration} from 'aurelia-router';
 
 import * as Lockr from 'lockr';
-
+import * as $ from 'jquery'
 
 export class App {
   router: Router;

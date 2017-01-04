@@ -105,8 +105,13 @@
           <input type="text" placeholder="WebsiteDisplayName" value.two-way="Web.Accounts.WebsiteDisplayName">
         </div>
         <div class="field">
+            <label>AccountType</label>
+         </div> 
+        <div class="field">
           <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="Web.Accounts.AccessLevels">
+           
             <input name="gender" type="hidden" value="${Web.Accounts.AccessLevels}">
+           
             <i class="dropdown icon"></i>
             <div class="default text">--Select All--</div>
             <div class="menu">

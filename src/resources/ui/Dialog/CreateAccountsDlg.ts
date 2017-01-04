@@ -4,7 +4,7 @@ import {
 import {
   inject
 } from 'aurelia-dependency-injection';
-
+import * as $ from 'jquery'
 @inject(DialogController)
 export class CreateAccountsDlg {
   dialogController: DialogController;
@@ -54,7 +54,7 @@ export class CreateAccountsDlg {
     ($(".ui.form") as any).form({fields:rules, 
       inline: true,
       on: 'blur'
-    );
+    });
     
   }
 

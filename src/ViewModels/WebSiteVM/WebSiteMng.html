@@ -31,7 +31,9 @@
       </div>
     </div>-->
   </form>
-  <button click.delegate="createWeb()" ui-modal ui-tooltip data-content="Create" style="width:50px;margin:10px 0px" class="ui blue button"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+  <button click.delegate="createWeb()" ui-modal ui-tooltip data-content="Create Website"  class="ui blue button">Create Website</button>
+   <br>
+   <br>
   <div class="ui" if.bind="!pendding">
     <div class="ui active inverted dimmer">
       <div class="ui large text loader">Loading</div>
@@ -51,7 +53,7 @@
           <th></th>
         </tr>
       </thead>
-      <tbody ref="mydata" items.bind="listWebSite">
+      <tbody ref="mydata" items.bind="listWebSite | searchDisplayName:searchDisplayName.value | searchName:searchName.value">
         <tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (pageSize):current * (pageSize)">
           <td>${(current-1)*pageSize+$index+1}</td>
           <td>${item.Name}</td>
