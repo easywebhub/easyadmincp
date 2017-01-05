@@ -33,6 +33,7 @@
         Log-in to your account
       </div>
     </h2>
+    
     <form class="ui large form" submit.delegate="submit()">
    
       <div class="ui stacked secondary  segment">
@@ -42,7 +43,7 @@
           <div class="ui left icon input">
             <i class="user icon"></i>
             
-            <input type="text" id="UserName" data-validate="UserName" name="UserName" value.bind="Login.UserName">
+            <input type="text" id="UserName"  value.bind="Login.UserName & validate">
           </div>
         </div>
        
@@ -50,7 +51,7 @@
           <div class="ui left icon input">
             <i class="lock icon"></i>
             
-            <input type="password" id="Password" data-validate="Password" name="Password" value.bind="Login.Password">
+            <input type="password" id="Password"  value.bind="Login.Password & validate">
           </div>
         </div>
 

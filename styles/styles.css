@@ -1,7 +1,9 @@
 body {
   margin: 0;
 }
-
+ul {
+	list-style: none;
+}
 .splash {
   text-align: center;
   margin: 10% 0 0 0;

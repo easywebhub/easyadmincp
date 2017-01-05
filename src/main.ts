@@ -37,7 +37,7 @@ Bluebird.config({ warnings: false });
 export async function configure(aurelia: Aurelia) {
   aurelia.use
     .standardConfiguration()
-    .feature('resources/ui')
+    .feature('resources/ui').plugin('aurelia-validation')
      .plugin('aurelia-dialog', config => {
       config.useDefaults();
       config.settings.lock = true;
