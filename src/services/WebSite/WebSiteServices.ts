@@ -68,10 +68,7 @@ export class WebSiteServices {
         responseType: 'json'
       }).then(data =>
         resolve(data)
-
-
-
-      ).catch(err => {
+   ).catch(err => {
         console.log(err)
         reject(Error(err))
       })

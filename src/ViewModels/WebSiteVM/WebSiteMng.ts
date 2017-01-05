@@ -23,14 +23,10 @@ import {
 } from '../../resources/ui/Dialog/DetailWebUsersDlg'; 
 
 import {
-  CreateWeb,
-  CreateRoleWeb
+  WebSite
 } from '../../models//website';
 
 import * as Lockr from 'lockr';
-
-
-
 declare let $: any;
  
 
@@ -42,20 +38,12 @@ export class WebSiteMng {
   allPage: number
   webSiteServices: WebSiteServices;
   listWebSite: any;
-  //listSchool: any;
-
-  Web: any;
-  
-
- 
+   Web: any;
   bindingEngine: BindingEngine;
   dialogService: DialogService
   pendding: boolean
   constructor(webSiteServices, bindingEngine, dialogService) {
     this.webSiteServices = webSiteServices;
-
-
-
     this.current = 1;
     this.total = 0
     this.dialogService = dialogService;
@@ -91,7 +79,7 @@ export class WebSiteMng {
       }).then((result) => {
         if (!result.wasCancelled) {
          // console.log('result.output', result.output);
-          this.webSiteServices.CreateWeb(new CreateWeb(result.output)).then((rs: any) => {
+          this.webSiteServices.CreateWeb(result.output).then((rs: any) => {
           
           }).catch(err=>{
           
@@ -133,7 +121,7 @@ detailWebsiteUser(item) {
       }).then((result) => {
         if (!result.wasCancelled) {
          // console.log('result.output', result.output);
-          this.webSiteServices.CreateWeb(new CreateWeb(result.output)).then((rs: any) => {
+          this.webSiteServices.CreateWeb(result.output).then((rs: any) => {
           
 
               swal({

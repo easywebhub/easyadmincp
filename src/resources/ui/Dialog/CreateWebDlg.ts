@@ -5,60 +5,55 @@ import {
 import {
   inject
 } from 'aurelia-dependency-injection';
+import {
+  WebSite,Accounts
+} from '../../../models//website';
+import {
+  ValidationControllerFactory
 
+} from 'aurelia-validation';
+import {
+  SemanticFormRenderer
+} from '../../../resources/validation/semantic-form-renderer';
 import * as Lockr from 'lockr'
 import * as $ from 'jquery'
-@inject(DialogController)
+@inject(DialogController, ValidationControllerFactory)
 
 export class CreateWebDlg {
   dialogController: DialogController;
-  Web: any;
-  
-  constructor(dialogController) {
+  Web: WebSite;
+  controller
+  constructor(dialogController, controllerFactory) {
     this.dialogController = dialogController
-     this.Web = {}
-      this.Web.Accounts = [];
-       this.Web.Accounts.AccountId = (Lockr.get("UserInfo") as any).AccountId;
-     
-      
+
+   // this.Web.Accounts = [];
+  //  this.Web.Accounts.AccountId = (Lockr.get("UserInfo") as any).AccountId;
+
+    this.controller = controllerFactory.createForCurrentScope();
+    this.controller.addRenderer(new SemanticFormRenderer());
+    this.Web = new WebSite({})
+    this.Web.Accounts.push({'AccountId':(Lockr.get("UserInfo") as any).AccountId})
+    console.log('entity',this.Web)
   }
 
   submit() {
-     console.log('web',this.Web.Accounts.WebsiteDisplayName,this.Web.Accounts.AccessLevels,this.Web.Accounts.AccountId)
-    this.dialogController.ok(this.Web);
+    this.controller.validate().then(rs => {
+      if (rs.valid == true)
+
+      {
+      // this.Web.Accounts[0].AccountId = (Lockr.get("UserInfo") as any).AccountId;
+        //this.Web.Accounts.push({'AccountId':(Lockr.get("UserInfo") as any).AccountId})
+        console.log('web', JSON.stringify(new WebSite(this.Web)))
+      //  this.dialogController.ok(this.Web);
+      } else
+        console.log('error')
+
+    });
+    // console.log('web',this.Web.Accounts.WebsiteDisplayName,this.Web.Accounts.AccessLevels,this.Web.Accounts.AccountId)
+
   }
 
-  attached() {
-  
-    var rules = {
-      Name: {
-        identifier: 'Name',
-        rules: [{
-          type: 'empty',
-          prompt: 'Xin vui lòng nhập tên vào'
-        }]
-      },
-      DisplayName: {
-        identifier: 'DisplayName',
-        rules: [{
-          type: 'empty',
-          prompt: 'Xin vui lòng nhập DisplayName'
-        }]
-      },
-      Url: {
-        identifier: 'Url',
-        rules: [{
-          type: 'empty',
-          prompt: 'Xin vui lòng nhập Link'
-        }]
-      }
-    };
-($(".ui.form")as any).form({
-    fields: rules,
-     inline: true,
-      on: 'blur'
-})
-  }
+
 
 
 }

@@ -1,19 +1,22 @@
-export class CreateWeb {
+import {
+  ValidationRules
+} from 'aurelia-validation';
+export class WebSite {
 
     Name : string;
     DisplayName : string;
     Url : string;
-    Accounts:any;
+    Accounts:any=[];
      constructor(entity: any) {
       
-        this.Name = entity.Name;
+        this.Name = entity.Name || '';
         this.DisplayName = entity.DisplayName;
         this.Url = entity.Url;
-        this.Accounts = entity.Accounts;
+        this.Accounts=entity.Accounts || []
        
     }
 }
-export class CreateRoleWeb {
+export class Accounts {
 
     AccountId  : string;
     WebsiteId : string;
@@ -28,3 +31,9 @@ export class CreateRoleWeb {
        
     }
 }
+
+ValidationRules
+  .ensure( (a: WebSite) => a.DisplayName).required()
+  .ensure(a=>a.Url).required()
+  .ensure('WebsiteDisplayName').required()
+  .on(WebSite);

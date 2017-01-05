@@ -90,19 +90,19 @@
       <form class="ui form" submit.delegate="submit()">
         <div class="field">
           <label>Name</label>
-          <input type="text" data-validate="Name" placeholder="Name" value.bind="Web.Name">
+          <input type="text"  placeholder="Name" value.bind="Web.Name">
         </div>
         <div class="field">
           <label>DisplayName</label>
-          <input type="text" data-validate="DisplayName" placeholder="DisplayName" value.bind="Web.DisplayName">
+          <input type="text"  placeholder="DisplayName" value.bind="Web.DisplayName & validate">
         </div>
         <div class="field">
           <label>Url</label>
-          <input type="text" data-validate="Url" placeholder="Url" value.bind="Web.Url">
+          <input type="text"  placeholder="Url" value.bind="Web.Url & validate">
         </div>
         <div class="field">
           <label>WebsiteDisplayName</label>
-          <input type="text" placeholder="WebsiteDisplayName" value.two-way="Web.Accounts.WebsiteDisplayName">
+          <input type="text" placeholder="WebsiteDisplayName" value.two-way="Web.WebsiteDisplayName & validate">
         </div>
         <div class="field">
             <label>AccountType</label>
