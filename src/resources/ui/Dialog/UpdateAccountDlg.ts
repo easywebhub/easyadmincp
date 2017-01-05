@@ -5,48 +5,40 @@ import {
   inject
 } from 'aurelia-dependency-injection';
 import {
-  User
-} from '../../../models//user';
+  ValidationControllerFactory
+
+} from 'aurelia-validation';
+import {
+  SemanticFormRenderer
+} from '../../../resources/validation/semantic-form-renderer';
+import {
+  Info
+} from '../../../models/user';
 import * as $ from 'jquery'
-@inject(DialogController)
+@inject(DialogController,ValidationControllerFactory)
 export class UpdateAccountDlg {
   dialogController: DialogController;
-  meta:User;
-  
-  constructor(dialogController) {
+  meta:Info;
+  controller:any
+  constructor(dialogController,controllerFactory) {
     this.dialogController = dialogController
+      this.controller = controllerFactory.createForCurrentScope();
+      this.controller.addRenderer(new SemanticFormRenderer());
     
-    //this.meta={}
   }
 activate(params){
    
-   this.meta=new User(params);
-   console.log('params',new User(params))
+  this.meta=new Info(params)
+   console.log('params',this.meta)
 }
 
  
   submit() {
    
-   // console.log('meta',JSON.stringify(this.meta))
-    this.dialogController.ok(this.meta);
+   //console.log('meta',JSON.stringify(this.meta))
+     this.dialogController.ok(this.meta);
   }
-  attached() {
-     
-    var rules = {
-      Name: {
-        identifier: 'Name',
-        rules: [{
-          type: 'empty',
-          prompt: 'Xin vui lòng nhập tên vào'
-        }]
-      }
-    };
-    ($(".ui.form") as any).form({fields:rules,
-      inline: true,
-      on: 'blur'}
-    );
-    
-  }
+ 
 
 
 
