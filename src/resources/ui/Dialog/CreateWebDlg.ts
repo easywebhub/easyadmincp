@@ -23,17 +23,18 @@ export class CreateWebDlg {
   dialogController: DialogController;
   Web: WebSite;
   controller
+  Accounts:any
   constructor(dialogController, controllerFactory) {
     this.dialogController = dialogController
 
-   // this.Web.Accounts = [];
-  //  this.Web.Accounts.AccountId = (Lockr.get("UserInfo") as any).AccountId;
+ 
+ 
 
     this.controller = controllerFactory.createForCurrentScope();
     this.controller.addRenderer(new SemanticFormRenderer());
     this.Web = new WebSite({})
-    this.Web.Accounts.push({'AccountId':(Lockr.get("UserInfo") as any).AccountId})
-    console.log('entity',this.Web)
+  
+   
   }
 
   submit() {
@@ -41,15 +42,19 @@ export class CreateWebDlg {
       if (rs.valid == true)
 
       {
-      // this.Web.Accounts[0].AccountId = (Lockr.get("UserInfo") as any).AccountId;
-        //this.Web.Accounts.push({'AccountId':(Lockr.get("UserInfo") as any).AccountId})
-        console.log('web', JSON.stringify(new WebSite(this.Web)))
-      //  this.dialogController.ok(this.Web);
+        this.Accounts.AccountId = (Lockr.get("UserInfo") as any).AccountId;
+        let Acc=new Accounts(this.Accounts)
+        let Arr:any=[]
+        Arr[0]=Acc
+       this.Web.Accounts=Arr;
+      
+      // console.log('web',JSON.stringify(this.Web),Acc)
+       this.dialogController.ok(this.Web);
       } else
         console.log('error')
 
     });
-    // console.log('web',this.Web.Accounts.WebsiteDisplayName,this.Web.Accounts.AccessLevels,this.Web.Accounts.AccountId)
+   
 
   }
 

@@ -12,7 +12,7 @@ export class WebSite {
         this.Name = entity.Name || '';
         this.DisplayName = entity.DisplayName;
         this.Url = entity.Url;
-        this.Accounts=entity.Accounts || []
+        this.Accounts=entity.Accounts
        
     }
 }
@@ -21,13 +21,13 @@ export class Accounts {
     AccountId  : string;
     WebsiteId : string;
     WebsiteDisplayName : string;
-    AccessLevel:any;
+    AccessLevels:Array<any>;
      constructor(entity: any) {
       
         this.AccountId = entity.AccountId;
         this.WebsiteId = entity.WebsiteId;
         this.WebsiteDisplayName = entity.WebsiteDisplayName;
-        this.AccessLevel = entity.AccessLevel;
+        this.AccessLevels = entity.AccessLevels==undefined ? []: entity.AccessLevels.split(',')
        
     }
 }
