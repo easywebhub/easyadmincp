@@ -4,58 +4,47 @@ import {
 import {
   inject
 } from 'aurelia-dependency-injection';
+import {
+  ValidationControllerFactory,
+  ValidationController,
+  ValidationRules
+} from 'aurelia-validation';
+import {
+  SemanticFormRenderer
+} from '../../../resources/validation/semantic-form-renderer';
+import {
+  User
+} from '../../../models/user';
 import * as $ from 'jquery'
-@inject(DialogController)
+
+@inject(DialogController, ValidationControllerFactory)
 export class CreateAccountsDlg {
   dialogController: DialogController;
-  meta: any;
-  
-  constructor(dialogController) {
+ 
+   meta: User;
+  controller: any
+  constructor(dialogController, controllerFactory) {
     this.dialogController = dialogController
-    
-    this.meta={}
+    this.controller = controllerFactory.createForCurrentScope();
+    this.controller.addRenderer(new SemanticFormRenderer());
+    this.meta = new User({})
   }
 
   submit() {
-   
+  
+   this.controller.validate().then(rs => {
+       if(rs.valid==true)
 
-    
-    //this.Web.Accounts = this.Account;
-    console.log('meta',JSON.stringify(this.meta))
-    this.dialogController.ok(this.meta);
-  }
-  attached() {
-     
-    var rules = {
-      Name: {
-        identifier: 'Name',
-        rules: [{
-          type: 'empty',
-          prompt: 'Xin vui lòng nhập Name'
-        }]
-      },
-      PasswoDisplayName: {
-        identifier: 'AccountType',
-        rules: [{
-          type: 'empty',
-          prompt: 'Xin vui lòng nhập AccountType'
-        }]
-      },
-      Link: {
-        identifier: 'UserName',
-        rules: [{
-          type: 'empty',
-          prompt: 'Xin vui lòng nhập UserName'
-        }]
-      }
+        {
+           this.meta.Info.Name=(this.meta as any).Name;
+          // console.log('meta', JSON.stringify(this.meta))
+           this.dialogController.ok(this.meta);
+        }
+        else
+         console.log('error')
 
-
-    };
-    ($(".ui.form") as any).form({fields:rules, 
-      inline: true,
-      on: 'blur'
     });
-    
+   
   }
 
 

@@ -5,7 +5,7 @@ import {
   inject
 } from 'aurelia-dependency-injection';
 import {
-  User,Users
+  User
 } from '../../../models//user';
 import * as $ from 'jquery'
 @inject(DialogController)

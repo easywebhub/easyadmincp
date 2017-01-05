@@ -88,7 +88,7 @@
 
         <div class="field">
           <label>Name</label>
-          <input type="text" data-validate="Name" placeholder="Name" value.bind="meta.Info.Name">
+          <input type="text"  placeholder="Name" value.bind="meta.Name & validate">
         </div>
 
         <div class="field">
@@ -112,7 +112,7 @@
 
         <div class="field">
           <label>AccountType</label>
-          <select value.bind="meta.AccountType" data-validate="AccountType">
+          <select value.bind="meta.AccountType & validate">
               <option value="">--Select All--</option>
              <option value="test">test</option>
                <option value="user">user</option>
@@ -122,11 +122,11 @@
       
         <div class="field">
           <label>UserName</label>
-          <input type="text" data-validate="UserName" placeholder="UserName" value.bind="meta.UserName">
+          <input type="text" placeholder="UserName" value.bind="meta.UserName & validate">
         </div>
         <div class="field">
           <label>Password</label>
-          <input type="password" data-validate="Password" placeholder="Password" value.bind="meta.Password">
+          <input type="password"  placeholder="Password" value.bind="meta.Password & validate">
         </div>
         <br>
         <button class="ui blue button" type="submit">Tạo mới</button>

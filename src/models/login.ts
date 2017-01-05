@@ -1,6 +1,4 @@
 import {
-  ValidationControllerFactory,
-  ValidationController,
   ValidationRules
 } from 'aurelia-validation';
 export class Login {

@@ -21,8 +21,7 @@ import {
   CreateAccountsDlg
 } from '../../resources/ui/Dialog/CreateAccountsDlg';
 import {
-  User,
-  Users
+  User
 } from '../../models//user';
 import * as swal from 'sweetalert'
 @inject(UserServices, BindingEngine, DialogService)
@@ -63,7 +62,7 @@ export class UserMng {
       viewModel: CreateAccountsDlg
     }).then(result => {
       if (!result.wasCancelled) {
-        this.userServices.CreateByUsers(new Users(result.output)).then((rs: any) => {
+        this.userServices.CreateByUsers(new User(result.output)).then((rs: any) => {
 
           swal({
             title: "Thông báo",
