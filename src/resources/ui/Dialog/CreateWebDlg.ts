@@ -25,15 +25,23 @@ export class CreateWebDlg {
   controller
   Accounts:any
   constructor(dialogController, controllerFactory) {
+   
     this.dialogController = dialogController
 
+<<<<<<< HEAD
+    this.Web.Accounts.AccountId = (Lockr.get("UserInfo") as any).AccountId;
+=======
  
  
+>>>>>>> 44c27c3c6e65a511c3e088505fd780d8e4145ecb
 
     this.controller = controllerFactory.createForCurrentScope();
     this.controller.addRenderer(new SemanticFormRenderer());
     this.Web = new WebSite({})
+<<<<<<< HEAD
+=======
   
+>>>>>>> 44c27c3c6e65a511c3e088505fd780d8e4145ecb
    
   }
 

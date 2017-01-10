@@ -52,7 +52,7 @@ export class UserServices {
   }
   UpdateByUser(meta) {
     return new Promise((resolve, reject) => {
-      this.http.post(`users/${meta.AccountId}`, meta).then(data =>
+      this.http.put(`users/${meta.AccountId}`, meta).then(data =>
         resolve(data)
       ).catch(err => {
         console.log(err)
@@ -61,8 +61,56 @@ export class UserServices {
     })
   }
 
+ 
+ AllWebsiteOfUser(AccountId) {
 
+    return new Promise((resolve, reject) => {
+      this.http.get(`users/${AccountId}/websites`, {
+        responseType: 'json'
+      }).then(data =>
 
+        resolve(data)
+      ).catch(err => {
+        console.log(err)
+        reject(Error(err))
+      })
+    })
+  }
 
+ DeleteOneWebsiteOfUser(AccountId,WebsiteId) {
+
+    return new Promise((resolve, reject) => {
+      this.http.delete(`users/${AccountId}/websites/${WebsiteId}`, {
+        responseType: 'json'
+      }).then(data =>
+
+        resolve(data)
+      ).catch(err => {
+        console.log(err)
+        reject(Error(err))
+      })
+    })
+  }
+  UpdatePermisSionUserOnWebsite(meta) {
+    return new Promise((resolve, reject) => {
+      this.http.put(`users/${meta.AccountId}/websites/${meta.WebsiteId}`, meta).then(data =>
+        resolve(data)
+      ).catch(err => {
+        console.log(err)
+        reject(Error(err))
+      })
+    })
+  }
+   CreatePermisSionUserOnWebsite(meta) {
+    return new Promise((resolve, reject) => {
+      this.http.post(`users/${meta.AccountId}/websites/${meta.WebsiteId}`, meta).then(data =>
+        resolve(data)
+      ).catch(err => {
+        console.log(err)
+        reject(Error(err))
+      })
+    })
+  }
+  
     
 }
