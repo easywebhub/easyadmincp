@@ -32,7 +32,7 @@ declare let $: any;
 
 @inject(WebSiteServices, BindingEngine, DialogService)
 export class WebSiteMng {
-  pageSize: number = 5
+  pageSize: number = 10
   total: number = 0
   current: number
   allPage: number

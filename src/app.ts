@@ -21,6 +21,7 @@ export class App {
       // { route: 'welcome', name: 'welcome',moduleId: './welcome',nav: this.checkNav, title: 'Welcome' },
       { route: 'WebSiteMenu', name: 'WebSiteMenu', moduleId: 'ViewModels/WebSiteVM/WebSiteMenu', nav:this.checkNav, title: 'Website Management' },
        { route: 'AccountMenu', name: 'AccountMenu', moduleId: 'ViewModels/AccountVM/AccountMenu', nav:this.checkNav, title: 'Account Management' },
+         { route: 'GitMenu', name: 'GitMenu', moduleId: 'ViewModels/GitVM/GitMenu', nav:this.checkNav, title: 'Github Management' },
         { route: 'logout', name: 'logout', moduleId: 'ViewModels/LoginVM/logout', nav: false, settings: { roles: [] }, title: 'LogOut' },
     ]);
 
