@@ -21,16 +21,20 @@ export class Accounts {
     AccountId  : string;
     WebsiteId : string;
     WebsiteDisplayName : string;
-    AccessLevel:any;
+    AccessLevels:any;
      constructor(entity: any) {
       
         this.AccountId = entity.AccountId;
         this.WebsiteId = entity.WebsiteId;
         this.WebsiteDisplayName = entity.WebsiteDisplayName;
-        this.AccessLevel = entity.AccessLevel;
+        this.AccessLevels = [entity.AccessLevels];
        
     }
 }
+ValidationRules
+  .ensure( (a: Accounts) => a.WebsiteDisplayName).required()
+  .ensure(a=>a.AccessLevels).required()
+  .on(Accounts);
 
 ValidationRules
   .ensure( (a: WebSite) => a.DisplayName).required()

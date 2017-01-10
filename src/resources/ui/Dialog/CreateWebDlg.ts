@@ -24,16 +24,15 @@ export class CreateWebDlg {
   Web: WebSite;
   controller
   constructor(dialogController, controllerFactory) {
+   
     this.dialogController = dialogController
 
-   // this.Web.Accounts = [];
-  //  this.Web.Accounts.AccountId = (Lockr.get("UserInfo") as any).AccountId;
+    this.Web.Accounts.AccountId = (Lockr.get("UserInfo") as any).AccountId;
 
     this.controller = controllerFactory.createForCurrentScope();
     this.controller.addRenderer(new SemanticFormRenderer());
     this.Web = new WebSite({})
-    this.Web.Accounts.push({'AccountId':(Lockr.get("UserInfo") as any).AccountId})
-    console.log('entity',this.Web)
+   
   }
 
   submit() {

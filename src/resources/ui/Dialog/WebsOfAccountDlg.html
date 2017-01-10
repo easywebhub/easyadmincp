@@ -1,0 +1,128 @@
+<template>
+  <style>
+    /*fix z index*/
+    
+    .sweet-alert {
+      z-index: 900005 !important;
+    }
+    
+    body>span.select2-container {
+      z-index:-1
+    }
+    
+    ai-dialog-overlay.active {
+      background-color: black;
+      opacity: .5;
+      z-index: 1000 !important;
+    }
+    
+    .edit-form {}
+    
+    ai-dialog-container {
+      margin: 30px auto;
+      z-index: 1000 !important;
+    }
+    
+    ai-dialog,
+    ai-dialog-container>div>div {
+      max-width: 1200px;
+      min-width: 1000px;
+      height: auto;
+      margin: auto;
+      display: block;
+    }
+    
+    ai-dialog>ai-dialog-header {
+      padding: 11px 16px 4px;
+    }
+    
+    ai-dialog>ai-dialog-header>button {
+      display: inline-block;
+      float: none;
+    }
+    
+    ai-dialog-overlay.active {
+      background-color: black;
+      opacity: .5;
+    }
+    
+    .lstdoi {
+      margin-bottom: 20px;
+    }
+    
+    .noidung-lsthaydoi {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 5px;
+      max-height: 150px;
+      overflow: scroll;
+      overflow-x: hidden;
+      min-height: 30px;
+    }
+    
+    #style-1::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      background-color: #F5F5F5;
+    }
+    
+    #style-1::-webkit-scrollbar {
+      width: 5px;
+      background-color: #000;
+      border-radius: 10px;
+    }
+    
+    #style-1::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+      background-color: #555;
+    }
+    
+    table>thead>tr>th {
+      width: 10%;
+    }
+
+  </style>
+  <ai-dialog class="edit-form" data-backdrop="static">
+    <ai-dialog-header>
+      <h3>List Website Of User</h3>
+    </ai-dialog-header>
+    <ai-dialog-body>
+      <table>
+        <thead>
+          <tr>
+            <th>Stt</th>
+            <th>Name</th>
+            <th>DisplayName</th>
+            <th>Url</th>
+            <th>WebsiteType</th>
+            <th>Git</th>
+            <th></th>
+          </tr>
+        </thead>
+         <tbody ref="mydata" items.bind="webSAccount">
+          <tr repeat.for="item of mydata.items">
+            <td  align="center">${(current-1)*pageSize+$index+1}</td>
+            <td>${item.Name}</td>
+            <td>${item.DisplayName}</td>
+            <td>${item.Url}</td>
+            <td>${item.WebsiteType}</td>
+            <td>${item.Git}</td>
+            <td>
+             <button class="ui green button" click.trigger="$parent.createAccount(item)">Create</button></td>
+              <td>
+             <button class="ui green button" click.trigger="$parent.updateAccount(item)">Update</button></td>
+              <td>
+             <button class="ui red button" click.trigger="$parent.deleteAccount(item)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+       <!--<ui-pagination total-record.two-way="total" page-size.two-way="pageSize" page-all.two-way="allPage" current-page.two-way="current"></ui-pagination>-->
+      </ai-dialog-body>
+      
+    <ai-dialog-footer>
+      <button class="ui yellow button" click.trigger="dialogController.cancel()">Cancel</button>
+      <ai-dialog-footer>
+  </ai-dialog>
+</template>

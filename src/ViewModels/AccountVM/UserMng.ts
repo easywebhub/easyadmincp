@@ -21,6 +21,10 @@ import {
   CreateAccountsDlg
 } from '../../resources/ui/Dialog/CreateAccountsDlg';
 import {
+  WebsOfAccountDlg
+} from '../../resources/ui/Dialog/WebsOfAccountDlg';
+
+import {
   User
 } from '../../models//user';
 import * as swal from 'sweetalert'
@@ -135,6 +139,23 @@ export class UserMng {
 
   }
 
+ websitesOfAccount(item) {
+
+    this.dialogService.open({
+      viewModel: WebsOfAccountDlg,
+      model:item
+    }).then((result) => {
+      if (!result.wasCancelled) {
+        console.log('result.output', result.output);
+
+      } else {
+        console.log('bad');
+      }
+
+    });
+
+
+  }
 
   DetailAccount(item) {
 
@@ -153,33 +174,33 @@ export class UserMng {
 
 
   }
+ 
 
 
 }
 export class SearchUserNameValueConverter {
-    toView(array, obj) {
+  toView(array, obj) {
 
-        if (obj == "") {
-            return array;
-        } else if (obj) {
-            let filteredArr = array.filter(x => x.UserName && x.UserName.toLowerCase().indexOf(obj.toLowerCase()) !== -1);
+    if (obj == "") {
+      return array;
+    } else if (obj) {
+      let filteredArr = array.filter(x => x.UserName && x.UserName.toLowerCase().indexOf(obj.toLowerCase()) !== -1);
 
-            return filteredArr;
-        }
-        return array;
+      return filteredArr;
     }
+    return array;
+  }
 }
 export class SearchNameValueConverter {
-    toView(array, obj) {
+  toView(array, obj) {
 
-        if (obj == "") {
-            return array;
-        } else if (obj) {
-            let filteredArr = array.filter(x => x.Info.Name && x.Info.Name.toLowerCase().indexOf(obj.toLowerCase()) !== -1);
+    if (obj == "") {
+      return array;
+    } else if (obj) {
+      let filteredArr = array.filter(x => x.Info.Name && x.Info.Name.toLowerCase().indexOf(obj.toLowerCase()) !== -1);
 
-            return filteredArr;
-        }
-        return array;
+      return filteredArr;
     }
+    return array;
+  }
 }
-
