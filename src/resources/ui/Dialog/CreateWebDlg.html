@@ -102,19 +102,20 @@
         </div>
         <div class="field">
           <label>WebsiteDisplayName</label>
-          <input type="text" placeholder="WebsiteDisplayName" value.two-way="Web.WebsiteDisplayName & validate">
+          <input type="text" placeholder="WebsiteDisplayName" value.two-way="Accounts.WebsiteDisplayName & validate">
         </div>
         <div class="field">
             <label>AccountType</label>
          </div> 
         <div class="field">
-          <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="Web.Accounts.AccessLevels">
+          <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="Accounts.AccessLevels">
            
-            <input name="gender" type="hidden" value="${Web.Accounts.AccessLevels}">
+            <input name="gender" type="hidden" value="${Accounts.AccessLevels}">
            
             <i class="dropdown icon"></i>
             <div class="default text">--Select All--</div>
             <div class="menu">
+            
               <div class="item" data-value="dev">dev</div>
               <div class="item" data-value="tester" >tester</div>
             </div>

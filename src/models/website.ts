@@ -12,7 +12,7 @@ export class WebSite {
         this.Name = entity.Name || '';
         this.DisplayName = entity.DisplayName;
         this.Url = entity.Url;
-        this.Accounts=entity.Accounts || []
+        this.Accounts=entity.Accounts
        
     }
 }
@@ -21,13 +21,21 @@ export class Accounts {
     AccountId  : string;
     WebsiteId : string;
     WebsiteDisplayName : string;
+<<<<<<< HEAD
     AccessLevels:any;
+=======
+    AccessLevels:Array<any>;
+>>>>>>> 44c27c3c6e65a511c3e088505fd780d8e4145ecb
      constructor(entity: any) {
       
         this.AccountId = entity.AccountId;
         this.WebsiteId = entity.WebsiteId;
         this.WebsiteDisplayName = entity.WebsiteDisplayName;
+<<<<<<< HEAD
         this.AccessLevels = [entity.AccessLevels];
+=======
+        this.AccessLevels = entity.AccessLevels==undefined ? []: entity.AccessLevels.split(',')
+>>>>>>> 44c27c3c6e65a511c3e088505fd780d8e4145ecb
        
     }
 }
