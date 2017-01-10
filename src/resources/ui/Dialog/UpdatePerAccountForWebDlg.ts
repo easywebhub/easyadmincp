@@ -13,32 +13,37 @@ import {
   SemanticFormRenderer
 } from '../../../resources/validation/semantic-form-renderer';
 import {
-  User
-} from '../../../models/user';
+  Accounts
+} from '../../../models//website';
 
 
 @inject(DialogController, ValidationControllerFactory)
-export class UpdatePerAccountForWebDlg  {
+export class UpdatePerAccountForWebDlg {
   dialogController: DialogController;
  
-   meta: User;
+   meta: Accounts;
   controller: any
+   
   constructor(dialogController, controllerFactory) {
     this.dialogController = dialogController
     this.controller = controllerFactory.createForCurrentScope();
     this.controller.addRenderer(new SemanticFormRenderer());
-    this.meta = new User({})
+   
+  }
+ async activate(params) {
+    
+    this.meta = new Accounts(params)
+   console.log('this.meta',JSON.stringify(params))
   }
 
   submit() {
-  
+   
    this.controller.validate().then(rs => {
        if(rs.valid==true)
 
         {
-           this.meta.Info.Name=(this.meta as any).Name;
-          // console.log('meta', JSON.stringify(this.meta))
-           this.dialogController.ok(this.meta);
+           console.log('new Accounts(this.meta)',new Accounts(this.meta))
+          // this.dialogController.ok(new Accounts(this.meta));
         }
         else
          console.log('error')

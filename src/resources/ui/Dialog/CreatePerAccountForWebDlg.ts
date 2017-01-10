@@ -15,7 +15,7 @@ import {
 import {
   Accounts
 } from '../../../models//website';
-import * as $ from 'jquery'
+
 
 @inject(DialogController, ValidationControllerFactory)
 export class CreatePerAccountForWebDlg {
@@ -37,19 +37,18 @@ export class CreatePerAccountForWebDlg {
   }
 
   submit() {
-   console.log('valid',this.meta)
-  //  this.controller.validate().then(rs => {
-  //      if(rs.valid==true)
+   
+   this.controller.validate().then(rs => {
+       if(rs.valid==true)
 
-  //       {
-  //          this.meta.Info.Name=(this.meta as any).Name;
-  //         // console.log('meta', JSON.stringify(this.meta))
-  //          this.dialogController.ok(this.meta);
-  //       }
-  //       else
-  //        console.log('error')
+        {
+          
+           this.dialogController.ok(new Accounts(this.meta));
+        }
+        else
+         console.log('error')
 
-  //   });
+    });
    
   }
 

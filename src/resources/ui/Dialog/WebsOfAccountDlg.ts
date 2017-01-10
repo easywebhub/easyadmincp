@@ -79,7 +79,12 @@ export class WebsOfAccountDlg {
       model:this.meta
     }).then((result) => {
       if (!result.wasCancelled) {
-        console.log('result.output', result.output);
+        this.clSevice.CreatePermisSionUserOnWebsite(result.output).then(rs=>{
+               swal("Notification", `Create new Account for a Website`, "success");
+        }).catch(err=>{
+             swal("Notification", `Error create new Account for a Website`, "warning");
+        })
+        
 
       } else {
         console.log('bad');
@@ -88,7 +93,24 @@ export class WebsOfAccountDlg {
     });
   }
   updateAccount(item) {
+       this.meta.WebsiteId=item.WebsiteId
+       this.dialogService.open({
+      viewModel: UpdatePerAccountForWebDlg,
+      model:this.meta
+    }).then((result) => {
+      if (!result.wasCancelled) {
+        this.clSevice.UpdatePermisSionUserOnWebsite(result.output).then(rs=>{
+               swal("Notification", `Update Account for a Website`, "success");
+        }).catch(err=>{
+             swal("Notification", `Error update Account for a Website`, "warning");
+        })
+        
 
+      } else {
+        console.log('bad');
+      }
+
+    });
   }
   deleteAccount(item) {
     swal({
