@@ -15,7 +15,7 @@ import {
 import {
   User
 } from '../../../models/user';
-import * as $ from 'jquery'
+
 
 @inject(DialogController, ValidationControllerFactory)
 export class CreateAccountsDlg {
@@ -37,7 +37,7 @@ export class CreateAccountsDlg {
 
         {
            this.meta.Info.Name=(this.meta as any).Name;
-          // console.log('meta', JSON.stringify(this.meta))
+          console.log('meta', JSON.stringify(this.meta))
            this.dialogController.ok(this.meta);
         }
         else

@@ -60,7 +60,7 @@ export class WebsOfAccountDlg {
       this.total = (rs as any).data.length;
 
       this.allPage = Math.ceil(this.total / this.pageSize)
-       console.log('webSAccount', (rs as any).data)
+      // console.log('webSAccount', (rs as any).data)
     })
   }
 

@@ -14,9 +14,9 @@ export class DetailUserDlg  {
     }
     activate(params) {
        console.log('params',params)
-        this.userServices.DetaiByUser(params.AccountId).then(rs=>{
+     this.userServices.DetaiByUser(params.AccountId).then(rs=>{
         this.user=(rs as any).data;
-        console.log('data',JSON.stringify((rs as any).data))
+      //  console.log('data',JSON.stringify((rs as any).data))
            
         })
         

@@ -1,15 +1,9 @@
 import {
-  json
-} from 'aurelia-fetch-client';
-import {
   Router
 } from 'aurelia-router';
 import {
   inject
 } from 'aurelia-dependency-injection';
-import {
-  LoggingServices
-} from '../../services/Account/LoggingServices';
 
 
 import {
@@ -21,34 +15,36 @@ import {
   SemanticFormRenderer
 } from '../../resources/validation/semantic-form-renderer';
 import {
-  Login
-} from '../../models/login';
-
+  User
+} from '../../models/user';
+import {
+  UserServices
+} from '../../services/Account/UserServices';
 import * as Lockr from 'lockr'
 import * as $ from 'jquery'
 import * as swal from 'sweetalert'
 
-@inject(Router, LoggingServices, ValidationControllerFactory)
-export class LoginViewModel {
+@inject(Router, UserServices, ValidationControllerFactory)
+export class Register {
   theRouter: Router;
 
-  loggingServices: LoggingServices;
+  clsSv: UserServices;
  
-  Login: Login;
+  meta: User;
   pendding: boolean = true
   controller: any
 
-  constructor(router, loggingServices, controllerFactory) {
+  constructor(router, userServices, controllerFactory) {
 
-    this.loggingServices = loggingServices
+    this.clsSv = userServices
     this.theRouter = router
     this.controller = controllerFactory.createForCurrentScope();
     this.controller.addRenderer(new SemanticFormRenderer());
-
+     this.meta = new User({})
   }
 
   activate() {
-    this.Login = new Login({})
+   
   }
   routeRegister() {
 
@@ -57,28 +53,37 @@ export class LoginViewModel {
   }
 
   submit() {
+     this.meta.Info.Name=(this.meta as any).Name;
+     
+    console.log('meta',JSON.stringify(new User(this.meta)))
     this.controller.validate().then(rs => {
        if(rs.valid==true)
         {
                
-          this.login();
+          this.createAccount();
         }
         else
          console.log('error')
 
     });
   }
-  async login() {
-    this.pendding = !this.pendding;
+  routeLogin() {
 
-    await this.loggingServices.CheckLogin(this.Login).then(rs => {
+    this.theRouter.navigateToRoute('login');
+
+  }
+ async createAccount() {
+    this.pendding = !this.pendding;
+    console.log()
+    await this.clsSv.CreateByUsers(new User(this.meta)).then(rs => {
 
         if ((rs as any).status == 200) {
           this.pendding = !this.pendding;
+          
           Lockr.set('UserInfo', (rs as any).data)
           swal({
             title: "Thông báo",
-            text: "Login success",
+            text: "Register success",
             timer: 2500,
             showConfirmButton: true,
             type: "success"
@@ -97,7 +102,7 @@ export class LoginViewModel {
       this.pendding = !this.pendding;
       swal({
         title: "Thông báo",
-        text: "Login fail",
+        text: "Error Register",
         timer: 2500,
         showConfirmButton: true,
         type: "warning"

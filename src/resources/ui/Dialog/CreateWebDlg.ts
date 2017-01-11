@@ -16,7 +16,7 @@ import {
   SemanticFormRenderer
 } from '../../../resources/validation/semantic-form-renderer';
 import * as Lockr from 'lockr'
-import * as $ from 'jquery'
+
 @inject(DialogController, ValidationControllerFactory)
 
 export class CreateWebDlg {
@@ -41,13 +41,12 @@ export class CreateWebDlg {
 
       {
         this.Accounts.AccountId = (Lockr.get("UserInfo") as any).AccountId;
+        this.Accounts.AccessLevels="owner"
         let Acc=new Accounts(this.Accounts)
-        let Arr:any=[]
-        Arr[0]=Acc
-       this.Web.Accounts=Arr;
+        this.Web.Accounts=[Acc];
       
-      // console.log('web',JSON.stringify(this.Web),Acc)
-       this.dialogController.ok(this.Web);
+      //console.log('web',JSON.stringify(this.Web))
+        this.dialogController.ok(this.Web);
       } else
         console.log('error')
 

@@ -2,32 +2,35 @@ import {
   ValidationRules
 } from 'aurelia-validation';
 export class WebSite {
-
+    WebsiteId:string
     Name : string;
     DisplayName : string;
     Url : string;
-    Accounts:any=[];
+    Accounts:any
+    WebTemplateId:string;
      constructor(entity: any) {
-      
+        this.WebsiteId = entity.WebsiteId;
         this.Name = entity.Name || '';
         this.DisplayName = entity.DisplayName;
         this.Url = entity.Url;
         this.Accounts=entity.Accounts
+        this.WebTemplateId=entity.WebTemplateId
        
     }
 }
+
 export class Accounts {
 
     AccountId  : string;
     WebsiteId : string;
     WebsiteDisplayName : string;
 
-    AccessLevels:Array<any>;
+    AccessLevels:any;
 
      constructor(entity: any) {
       
         this.AccountId = entity.AccountId;
-        this.WebsiteId = entity.WebsiteId;
+      
         this.WebsiteDisplayName = entity.WebsiteDisplayName;
 
         this.AccessLevels = [entity.AccessLevels];

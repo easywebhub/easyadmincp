@@ -103,9 +103,7 @@ detailWebsiteUser(item) {
       }).then((result) => {
         if (!result.wasCancelled) {
           console.log('result.output', result.output);
-         
-
-        } else {
+            } else {
           console.log('bad');
         }
 
@@ -122,8 +120,6 @@ detailWebsiteUser(item) {
         if (!result.wasCancelled) {
          // console.log('result.output', result.output);
           this.webSiteServices.CreateWeb(result.output).then((rs: any) => {
-          
-
               swal({
                 title: "Thông báo",
                 text: "Tạo mới thành công",
@@ -131,10 +127,8 @@ detailWebsiteUser(item) {
                 showConfirmButton: true,
                 type: "success"
               });
-
               this.activate();
-            
-          }).catch(err=>{
+            }).catch(err=>{
           
               swal({
                 title: "Thông báo",

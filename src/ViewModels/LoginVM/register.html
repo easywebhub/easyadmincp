@@ -1,0 +1,77 @@
+<template>
+  <style>
+    body>.grid {
+      height: 100%;
+    }
+    
+    .image {
+      margin-top: -100px;
+    }
+    
+    .column {
+      max-width: 450px;
+    }
+    
+    .login_height {
+      margin-top: 200px;
+    }
+
+  </style>
+  <div class="ui" if.bind="!pendding">
+    <div class="ui active inverted dimmer">
+      <div class="ui large text loader">Loading</div>
+    </div>
+    <p></p>
+    <p></p>
+    <p></p>
+  </div>
+  <div>
+    <div class="login_height" if.bind="pendding">
+      <div class="ui middle aligned center aligned grid">
+        <div class="column">
+          <h2 class="ui image header">
+            <div class="content">
+              Register to your account
+            </div>
+          </h2>
+          <form class="ui large form" submit.delegate="submit()">
+            <div class="ui stacked secondary  segment">
+              <div class="field">
+               
+                <input type="text" placeholder="Name" value.bind="meta.Name & validate">
+              </div>
+              <div class="field">
+               
+                <input type="number" placeholder="Age" value.bind="meta.Info.Age">
+              </div>
+              <div class="field">
+               
+                <select value.bind="meta.Info.Sex">
+             <option value="">--Select Sex--</option>
+             <option value="Female">Female</option>
+               <option value="Male">Male</option>
+            </select>
+              </div>
+              <div class="field">
+             
+                <input type="text" placeholder="Address" value.bind="meta.Info.Address">
+              </div>
+              
+            
+              <div class="field">
+               
+                <input type="text" placeholder="UserName" value.bind="meta.UserName & validate">
+              </div>
+              <div class="field">
+                    <input type="password" placeholder="Password" value.bind="meta.Password & validate">
+              </div>
+              <br>
+             <button class="ui blue button" type="submit">Register</button>
+            
+            </div>
+            <a click.delegate="routeLogin()">Back to ?<span style="color:green">Login</span></a>
+          </form>
+        </div>
+      </div>
+    </div>
+</template>

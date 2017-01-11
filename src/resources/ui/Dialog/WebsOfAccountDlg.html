@@ -7,7 +7,7 @@
     }
     
     body>span.select2-container {
-      z-index:-1
+      z-index: -1
     }
     
     ai-dialog-overlay.active {
@@ -88,7 +88,7 @@
       <h3>List Website Of User</h3>
     </ai-dialog-header>
     <ai-dialog-body>
-      <table>
+      <table class="ui table">
         <thead>
           <tr>
             <th>Stt</th>
@@ -100,27 +100,26 @@
             <th></th>
           </tr>
         </thead>
-         <tbody ref="mydata" items.bind="webSAccount">
+        <tbody ref="mydata" items.bind="webSAccount">
           <tr repeat.for="item of mydata.items">
-            <td  align="center">${(current-1)*pageSize+$index+1}</td>
+            <td align="center">${(current-1)*pageSize+$index+1}</td>
             <td>${item.Name}</td>
             <td>${item.DisplayName}</td>
             <td>${item.Url}</td>
             <td>${item.WebsiteType}</td>
             <td>${item.Git}</td>
-            <td>
-             <button class="ui green button" click.trigger="$parent.createAccount(item)">Create</button></td>
-              <td>
-             <button class="ui green button" click.trigger="$parent.updateAccount(item)">Update</button></td>
-              <td>
-             <button class="ui red button" click.trigger="$parent.deleteAccount(item)">Delete</button></td>
+            <td style="width:20%">
+               <div class="row">
+              <button class="ui green button" click.trigger="$parent.createAccount(item)">Create</button>        
+              <button class="ui green button" click.trigger="$parent.updateAccount(item)">Update</button>
+               <button class="ui red button" click.trigger="$parent.deleteAccount(item)">Delete</button></td>
+               </div>
           </tr>
         </tbody>
       </table>
       <br>
-       <!--<ui-pagination total-record.two-way="total" page-size.two-way="pageSize" page-all.two-way="allPage" current-page.two-way="current"></ui-pagination>-->
-      </ai-dialog-body>
-      
+      <!--<ui-pagination total-record.two-way="total" page-size.two-way="pageSize" page-all.two-way="allPage" current-page.two-way="current"></ui-pagination>-->
+    </ai-dialog-body>
     <ai-dialog-footer>
       <button class="ui yellow button" click.trigger="dialogController.cancel()">Cancel</button>
       <ai-dialog-footer>

@@ -15,10 +15,6 @@ export class WebSiteServices {
     this.http = httpService.instance;
 
   }
-
-
-
-
   GetListWebSite() {
 
     return new Promise((resolve, reject) => {
