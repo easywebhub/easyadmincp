@@ -6,15 +6,18 @@ export class DetailUserDlg  {
     dialogController: DialogController;
     user: any;
        userServices:UserServices
+       pendding:boolean=true
     constructor(dialogController,UserServices) {
         this.dialogController = dialogController
         this.user = []
     
         this.userServices=UserServices
     }
-    activate(params) {
-       console.log('params',params)
-     this.userServices.DetaiByUser(params.AccountId).then(rs=>{
+   async activate(params) {
+      // console.log('params',params)
+      this.pendding=!this.pendding
+    await this.userServices.DetaiByUser(params.AccountId).then(rs=>{
+        this.pendding=!this.pendding
         this.user=(rs as any).data;
       //  console.log('data',JSON.stringify((rs as any).data))
            

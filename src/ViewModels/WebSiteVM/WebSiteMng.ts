@@ -121,8 +121,8 @@ detailWebsiteUser(item) {
          // console.log('result.output', result.output);
           this.webSiteServices.CreateWeb(result.output).then((rs: any) => {
               swal({
-                title: "Thông báo",
-                text: "Tạo mới thành công",
+                title: "Notification",
+                text: "Create success",
                 timer: 2500,
                 showConfirmButton: true,
                 type: "success"
@@ -131,8 +131,8 @@ detailWebsiteUser(item) {
             }).catch(err=>{
           
               swal({
-                title: "Thông báo",
-                text: "Tạo mới thất bại",
+                title: "Notification",
+                text: "Create error",
                 timer: 2500,
                 showConfirmButton: true,
                 type: "warning"

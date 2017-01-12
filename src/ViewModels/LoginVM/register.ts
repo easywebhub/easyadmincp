@@ -82,7 +82,7 @@ export class Register {
           
           Lockr.set('UserInfo', (rs as any).data)
           swal({
-            title: "Thông báo",
+            title: "Notification",
             text: "Register success",
             timer: 2500,
             showConfirmButton: true,
@@ -101,7 +101,7 @@ export class Register {
 
       this.pendding = !this.pendding;
       swal({
-        title: "Thông báo",
+        title: "Notification",
         text: "Error Register",
         timer: 2500,
         showConfirmButton: true,

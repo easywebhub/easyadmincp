@@ -14,13 +14,17 @@
     }
 
   </style>
-  <section class="ui">
-    <h3>Account Management &nbsp;
-    </h3>
-    <form>
-      <div class="ui form">
-        <div class="three fields">
-          <div class="field">
+  <div class="content-padding">
+    <div class="ui small basic icon buttons">
+      <a class="ui button show-modal" click.delegate="CreateAccount()"><i class="sticky note outline icon "></i>Create Account</a>
+    </div>
+    <h4 class="ui dividing header">
+        Filter
+    </h4>
+     <div class="filter">
+        <div class="ui  form small">
+            <div class="fields">
+                <div class="field">
             <label>Name</label>
             <input type="text" placeholder="Name" ref="searchName">
           </div>
@@ -28,10 +32,11 @@
             <label>UserName</label>
             <input type="text" placeholder="UserName" ref="searchUserName">
           </div>
-        </div>
-      </div>
-    </form>
-    <button click.delegate="CreateAccount()" ui-tooltip data-content="Create Account" class="ui blue button">Create Account</i></button>
+        
+            </div>
+            </div>
+            </div>  
+    
     </br>
     </br>
     <div class="ui" if.bind="!pendding">
@@ -43,7 +48,7 @@
       <p></p>
     </div>
     <div if.bind="pendding">
-      <table class="ui table">
+      <table id="" class="ui celled table small">
         <thead>
           <tr>
             <th>Stt</th>
@@ -68,24 +73,24 @@
             <td>${item.UserName}</td>
             <td>${item.Status}</td>
             <td>
-              <div class="row">
-                <button ui-tooltip data-content="Update Account" type="button" class="ui blue button" click.delegate="$parent.UpdateAccount(item)"
-                  style="margin-right:5px">
-          Update Account
-        </button>
-                <button type="button" class="ui green button" ui-tooltip data-content="Detail Account" click.delegate="$parent.DetailAccount(item)">
-        Detail Account
-        </button>
-                <button type="button" class="ui green button" ui-tooltip data-content="Websites Of Account" click.delegate="$parent.websitesOfAccount(item)">
-        Websites Of Account
-        </button>
+              <div class="ui buttons mini">
+                <button class="ui green basic button" click.delegate="$parent.UpdateAccount(item)">Update Account</button>
+                <button class="ui blue basic button" click.delegate="$parent.DetailAccount(item)">Detail Account</button>
+                <button class="ui blue basic button" click.delegate="$parent.websitesOfAccount(item)">Websites Of Account</button>
               </div>
             </td>
           </tr>
         </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="10">
+              <div class="ui right floated pagination menu tiny">
+                <ui-pagination total-record.two-way="total" page-size.two-way="pageSize" page-all.two-way="allPage" current-page.two-way="current"></ui-pagination>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
       </table>
-      <ui-pagination total-record.two-way="total" page-size.two-way="pageSize" page-all.two-way="allPage" current-page.two-way="current"></ui-pagination>
-  </section>
-  </section>
+    </div>
   </div>
 </template>

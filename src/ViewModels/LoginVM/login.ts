@@ -77,7 +77,7 @@ export class LoginViewModel {
           this.pendding = !this.pendding;
           Lockr.set('UserInfo', (rs as any).data)
           swal({
-            title: "Thông báo",
+            title: "Notification",
             text: "Login success",
             timer: 2500,
             showConfirmButton: true,
@@ -96,7 +96,7 @@ export class LoginViewModel {
 
       this.pendding = !this.pendding;
       swal({
-        title: "Thông báo",
+        title: "Notification",
         text: "Login fail",
         timer: 2500,
         showConfirmButton: true,

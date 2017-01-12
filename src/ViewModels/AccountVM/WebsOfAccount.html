@@ -1,23 +1,11 @@
+
 <template>
   <style>
-    .form-group {
-      height: 60px;
-      margin-right: 20px;
-    }
     
-    .form-group label {
-      margin-right: 10px;
-    }
-    
-    a {
-      color: black;
-    }
 
   </style>
   <div class="content-padding">
-    <div class="ui small basic icon buttons">
-      <a class="ui button show-modal" click.delegate="createWeb()"><i class="sticky note outline icon "></i>Create Website</a>
-    </div>
+   
     <h4 class="ui dividing header">
         Filter
     </h4>
@@ -48,24 +36,32 @@
     </div>
     <div if.bind="pendding">
       <table id="" class="ui celled table small">
-      <thead>
-        <tr>
-          <th>Stt</th>
-          <th>Name</th>
-          <th>DisplayName</th>
-          
-          <th></th>
-        </tr>
-      </thead>
-      <tbody ref="mydata" items.bind="listWebSite | searchDisplayName:searchDisplayName.value | searchName:searchName.value">
-        <tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (pageSize):current * (pageSize)">
-          <td>${(current-1)*pageSize+$index+1}</td>
-          <td>${item.Name}</td>
-          <td>${item.DisplayName}</td>
-          <td>
+          <thead>
+          <tr>
+            <th>Stt</th>
+            <th>Name</th>
+            <th>DisplayName</th>
+            <th>Url</th>
+            <th>WebsiteType</th>
+            <th>Git</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody ref="mydata" items.bind="webSAccount | searchDisplayName:searchDisplayName.value | searchName:searchName.value">
+          <tr repeat.for="item of mydata.items">
+            <td align="center">${(current-1)*pageSize+$index+1}</td>
+            <td>${item.Name}</td>
+            <td>${item.DisplayName}</td>
+            <td>${item.Url}</td>
+            <td>${item.WebsiteType}</td>
+            <td>${item.Git}</td>
+            <td style="width:20%">
+ 
               <div class="ui buttons mini">
-                <button class="ui blue basic button" click.delegate="$parent.detailWebsite(item)">Detail Website</button>
-                <button class="ui blue basic button" click.delegate="$parent.detailWebsiteUser(item)">Detail Website Users</button>
+      
+                <button class="ui blue basic button" click.delegate="$parent.createAccount(item)">Create</button>
+                <button class="ui blue basic button" click.delegate="$parent.updateAccount(item)">Update</button>
+                 <button class="ui red basic button" click.delegate="$parent.deleteAccount(item)">Delete</button>
                
               </div>
             </td>

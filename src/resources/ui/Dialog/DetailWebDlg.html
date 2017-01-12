@@ -102,103 +102,120 @@
     }
 
   </style>
+     <div class="ui" if.bind="!pendding">
+      <div class="ui active inverted dimmer">
+        <div class="ui large text loader">Loading</div>
+      </div>
+      <p></p>
+      <p></p>
+      <p></p>
+    </div>
+    <div if.bind="pendding">
   <ai-dialog class="edit-form" data-backdrop="static">
-    <ai-dialog-header>
-      <h3>Detail Website</h3>
-    </ai-dialog-header>
-    <ai-dialog-body>
-      <table>
-        <tr>
-          <td class="title">WebsiteId: </td>
-          <td class="text">${Web.WebsiteId}</td>
-        </tr>
-        <tr>
-          <td class="title">Name: </td>
-          <td class="text">${Web.Name}</td>
-        </tr>
-        <tr>
-          <td class="title">DisplayName:</td>
-          <td class="text">${Web.DisplayName}</td>
-        </tr>
-        <tr>
-          <td class="title">Url: </td>
-          <td class="text">${Web.Url}</td>
-        </tr>
+ 
+      <ai-dialog-header>
+        <h3>Detail Website</h3>
+      </ai-dialog-header>
+      <ai-dialog-body>
+        <table class="ui celled table small">
+          <thead>
+            <tr>
+              <th>WebsiteId</th>
+              <th>Name</th>
+              <!--<th>Status</th>-->
+              <th>DisplayName</th>
+              <!--<th>Age</th>-->
+              <th>Url</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>${Web.WebsiteId}</td>
+              <td>${Web.Name}</td>
+              <!--<td>${user.Status}</td>-->
+              <td>${Web.DisplayName}</td>
+              <!--<td>${user.Info.Age}</td>-->
+              <td>${Web.Url}</td>
+            </tr>
+          </tbody>
+        </table>
+        <hr>
+        <h4>List Production
+        </h4>
+        <table class="ui celled table small" if.bind="Web.Production.length>0">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>HostingFee</th>
+              <th>Url</th>
+              <th>Git</th>
+              <th>IsDefault</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr repeat.for="item of Web.Production">
+              <td>${item.Name}</td>
+              <td>${item.HostingFee}</td>
+              <td>${item.Url}</td>
+              <td>${item.Git}</td>
+              <td>${item.IsDefault}</td>
+            </tr>
+          </tbody>
+        </table>
+        <hr>
+        <h4>List Stagging
+        </h4>
+        <table class="ui celled table small" if.bind="Web.Stagging.length>0">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>HostingFee</th>
+              <th>Url</th>
+              <th>Git</th>
+              <th>IsDefault</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr repeat.for="item of Web.Stagging">
+              <td>${item.Name}</td>
+              <td>${item.HostingFee}</td>
+              <td>${item.Url}</td>
+              <td>${item.Git}</td>
+              <td>${item.IsDefault}</td>
+            </tr>
+          </tbody>
+        </table>
         <br>
-      </table>
-	   <hr>
-	  
-      <h4>List Production
-      </h4>
-      <table if.bind="Web.Production.length>0">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>HostingFee</th>
-            <th>Url</th>
-            <th>Git</th>
-            <th>IsDefault</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr repeat.for="item of Web.Production">
-            <td>${item.Name}</td>
-            <td>${item.HostingFee}</td>
-            <td>${item.Url}</td>
-            <td>${item.Git}</td>
-            <td>${item.IsDefault}</td>
-          </tr>
-        </tbody>
-      </table>
-      <br>
-      </table>
-      <hr>
-    
-      <h4>List Stagging
-      </h4>
-      <table if.bind="Web.Stagging.length>0">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>HostingFee</th>
-            <th>Url</th>
-            <th>Git</th>
-            <th>IsDefault</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr repeat.for="item of Web.Stagging" align="center">
-            <td>${item.Name}</td>
-            <td>${item.HostingFee}</td>
-            <td>${item.Url}</td>
-            <td>${item.Git}</td>
-            <td>${item.IsDefault}</td>
-          </tr>
-        </tbody>
-      </table>
-      <br>
-      </table>
-      <hr>
-      <h4>List Accounts
-      </h4>
-      <table if.bind="Web.Accounts.length>0">
-        <thead>
-          <tr>
-            <th>AccountId</th>
-            <th>AccessLevel</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr repeat.for="item of Web.Accounts" align="center">
-            <td>${item.AccountId}</td>
-            <td><span repeat.for="role of item.AccessLevels" class="ui blue button">${role}</span></td>
-          </tr>
-        </tbody>
-      </table>
-      
-    </ai-dialog-body>
-    <ai-dialog-footer>
-      <button class="ui yellow button" click.trigger="dialogController.cancel()">Cancel</button> 
+        <hr>
+        <h4>List Accounts
+        </h4>
+        <table class="ui celled table small" if.bind="Web.Accounts.length>0">
+          <thead>
+            <tr>
+              <th>AccountId</th>
+              <th>AccessLevel</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr repeat.for="item of Web.Accounts">
+              <td>${item.AccountId}</td>
+              <td>
+                <div class="ui buttons mini" repeat.for="role of item.AccessLevels">
+                  <button class="ui green basic button">${role}</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ai-dialog-body>
       <ai-dialog-footer>
+        <div class="actions">
+          <div class="ui deny button" click.trigger="dialogController.cancel()">
+            Cancel
+          </div>
+        </div>
+        <ai-dialog-footer>
+          
   </ai-dialog>
+  </div>
 </template>

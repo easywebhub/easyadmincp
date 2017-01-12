@@ -10,29 +10,27 @@ import {
 } from 'aurelia-validation';
 import {
   SemanticFormRenderer
-} from '../../../resources/validation/semantic-form-renderer';
-import {
-  Accounts
-} from '../../../models//website';
+} from '../../resources/validation/semantic-form-renderer';
+
 import {
   UserServices
-} from '../../../services/Account/UserServices';
+} from '../../services/Account/UserServices';
 import * as swal from 'sweetalert'
 import {
   DialogService
 } from 'aurelia-dialog';
-
 import {
   CreatePerAccountForWebDlg
-} from './CreatePerAccountForWebDlg';
+} from '../../resources/ui/Dialog/CreatePerAccountForWebDlg';
+
 import {
   UpdatePerAccountForWebDlg
-} from './UpdatePerAccountForWebDlg';
+} from '../../resources/ui/Dialog/UpdatePerAccountForWebDlg';
 @inject(DialogController, ValidationControllerFactory, UserServices,DialogService)
 
-export class WebsOfAccountDlg {
+export class WebsOfAccount {
   dialogController: DialogController;
-  meta: Accounts;
+ 
   controller: any
   clSevice: UserServices
   webSAccount: any
@@ -41,38 +39,37 @@ export class WebsOfAccountDlg {
   current: number = 1
   allPage: number = 1
   params:any
-  
+  pendding:boolean=true
  dialogService:DialogService
+ meta:any={}
   constructor(dialogController, controllerFactory, userServices,dialogService) {
     this.dialogController = dialogController
-    this.controller = controllerFactory.createForCurrentScope();
-    this.controller.addRenderer(new SemanticFormRenderer());
+    
+   
     this.clSevice = userServices
     this.dialogService=dialogService
   }
-  async activate(params) {
+ async activate(params) {
     
-    this.params = params
-    this.meta=new Accounts(this.params)
-     console.log('this.meta',this.meta)
-    await this.clSevice.AllWebsiteOfUser(this.params.AccountId).then(rs => {
+    this.params=params
+   // console.log('pẩ',params)
+      this.pendding = !this.pendding;
+    await this.clSevice.AllWebsiteOfUser(params.AccountId).then(rs => {
+      this.pendding = !this.pendding;
       this.webSAccount = (rs as any).data
       this.total = (rs as any).data.length;
 
       this.allPage = Math.ceil(this.total / this.pageSize)
-      // console.log('webSAccount', (rs as any).data)
+      console.log('webSAccount', (rs as any).data)
     })
   }
 
 
-  submit() {
-
-    //console.log('meta',JSON.stringify(this.meta))
-    //this.dialogController.ok(this.meta);
-  }
  
  
   createAccount(item) {
+    
+    this.meta.AccountId= this.params.AccountId
     this.meta.WebsiteId=item.WebsiteId
        this.dialogService.open({
       viewModel: CreatePerAccountForWebDlg,
@@ -139,4 +136,30 @@ export class WebsOfAccountDlg {
   }
 
 
+}
+export class SearchNameValueConverter {
+  toView(array, obj) {
+
+    if (obj == "") {
+      return array;
+    } else if (obj) {
+      let filteredArr = array.filter(x => x.Name && x.Name.toLowerCase().indexOf(obj.toLowerCase()) !== -1);
+
+      return filteredArr;
+    }
+    return array;
+  }
+}
+export class SearchDisplayNameValueConverter {
+  toView(array, obj) {
+
+    if (obj == "") {
+      return array;
+    } else if (obj) {
+      let filteredArr = array.filter(x => x.DisplayName && x.DisplayName.toLowerCase().indexOf(obj.toLowerCase()) !== -1);
+
+      return filteredArr;
+    }
+    return array;
+  }
 }

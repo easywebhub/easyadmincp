@@ -45,8 +45,8 @@ export class CreateWebDlg {
         let Acc=new Accounts(this.Accounts)
         this.Web.Accounts=[Acc];
       
-      //console.log('web',JSON.stringify(this.Web))
-        this.dialogController.ok(this.Web);
+       console.log('web',JSON.stringify(this.Web))
+       this.dialogController.ok(this.Web);
       } else
         console.log('error')
 

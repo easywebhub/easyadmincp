@@ -11,7 +11,7 @@ export class User {
   Info: any;
  constructor(entity: any) {
    this.AccountId=entity.AccountId
-    this.AccountType = entity.AccountType==null?"demo":entity.AccountType ;
+    this.AccountType = entity.AccountType;
     this.UserName = entity.UserName;
     this.Password = entity.Password;
     this.Info = entity.Info;

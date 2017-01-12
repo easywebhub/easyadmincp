@@ -7,15 +7,17 @@ export class DetailWebDlg {
     Web: any;
     Account: any;
     webSiteServices:WebSiteServices
+    pendding:boolean=true
     constructor(dialogController,webSiteServices) {
         this.dialogController = dialogController
         this.Web = []
         this.Account = []
         this.webSiteServices=webSiteServices
     }
-    activate(params) {
-       
-        this.webSiteServices.DetailWebSite(params.WebsiteId).then(rs=>{
+    async activate(params) {
+        this.pendding = !this.pendding;
+        await this.webSiteServices.DetailWebSite(params.WebsiteId).then(rs=>{
+             this.pendding = !this.pendding;
         this.Web=(rs as any).data;
            
         })

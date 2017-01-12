@@ -28,7 +28,8 @@ import {
   User
 } from '../../models//user';
 import * as swal from 'sweetalert'
-@inject(UserServices, BindingEngine, DialogService)
+import {RouterConfiguration, Router} from 'aurelia-router';
+@inject(UserServices, BindingEngine, DialogService,Router)
 export class UserMng {
   userServices: UserServices;
   listUsers: any;
@@ -39,11 +40,13 @@ export class UserMng {
   bindingEngine: BindingEngine;
   pendding: boolean = true
   dialogService: DialogService
-  constructor(userServices, bindingEngine, dialogService) {
+  theRouter:Router
+  constructor(userServices, bindingEngine, dialogService,router) {
     this.userServices = userServices;
     this.current = 1;
     this.total = 0
     this.dialogService = dialogService
+    this.theRouter=router
   }
 
   activate() {
@@ -69,7 +72,7 @@ export class UserMng {
         this.userServices.CreateByUsers(new User(result.output)).then((rs: any) => {
 
           swal({
-            title: "Thông báo",
+            title: "Notification",
             text: "Tạo mới thành công",
             timer: 2500,
             showConfirmButton: true,
@@ -81,7 +84,7 @@ export class UserMng {
         }).catch(err => {
 
           swal({
-            title: "Thông báo",
+            title: "Notification",
             text: "Tạo mới thất bại",
             timer: 2500,
             showConfirmButton: true,
@@ -109,7 +112,7 @@ export class UserMng {
         this.userServices.UpdateByUser(result.output).then((rs: any) => {
 
           swal({
-            title: "Thông báo",
+            title: "Notification",
             text: "Cập nhật Account thành công",
             timer: 2500,
             showConfirmButton: true,
@@ -121,7 +124,7 @@ export class UserMng {
         }).catch(err => {
 
           swal({
-            title: "Thông báo",
+            title: "Notification",
             text: "Cập nhật Account thất bại",
             timer: 2500,
             showConfirmButton: true,
@@ -140,21 +143,10 @@ export class UserMng {
   }
 
  websitesOfAccount(item) {
-
-    this.dialogService.open({
-      viewModel: WebsOfAccountDlg,
-      model:item
-    }).then((result) => {
-      if (!result.wasCancelled) {
-        console.log('result.output', result.output);
-
-      } else {
-        console.log('bad');
-      }
-
-    });
-
-
+   
+     this.theRouter.navigateToRoute('WebsOfAccount',{AccountId:item.AccountId});
+ 
+  
   }
 
   DetailAccount(item) {

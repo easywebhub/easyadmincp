@@ -85,6 +85,7 @@
     </ai-dialog-header>
     <ai-dialog-body>
       <form class="ui form" submit.delegate="submit()">
+      
         <div class="field">
           <label>Name</label>
           <input type="text" placeholder="Name" value.bind="meta.Name & validate">
@@ -128,9 +129,14 @@
           <label>Password</label>
           <input type="password" placeholder="Password" value.bind="meta.Password & validate">
         </div>
-        <br>
-        <button class="ui blue button" type="submit">Create</button>
-        <button class="ui yellow button" click.trigger="dialogController.cancel()">Cancel</button>
+        <div class="actions">
+          <div class="ui deny button" click.trigger="dialogController.cancel()">
+            Cancel
+          </div>
+          <button class="ui primary button" type="submit">Create</button>
+        </div>
+       
+       
       </form>
     </ai-dialog-body>
   </ai-dialog>

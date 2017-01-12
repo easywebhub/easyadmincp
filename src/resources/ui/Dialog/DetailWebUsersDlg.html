@@ -84,12 +84,21 @@
  
 
   </style>
+     <div class="ui" if.bind="!pendding">
+      <div class="ui active inverted dimmer">
+        <div class="ui large text loader">Loading</div>
+      </div>
+      <p></p>
+      <p></p>
+      <p></p>
+    </div>
+    <div if.bind="pendding">
   <ai-dialog class="edit-form" data-backdrop="static">
     <ai-dialog-header>
       <h3>Detail Website List User</h3>
     </ai-dialog-header>
     <ai-dialog-body>
-      <table>
+       <table class="ui celled table small">
         <thead>
          <tr>
             <th>AccountType</th>
@@ -102,8 +111,7 @@
           </tr>
         </thead>
         <tbody>
-        
-          <tr repeat.for="item of listUsers" align="center">
+          <tr repeat.for="item of listUsers">
             <td>${item.AccountType}</td>
             <td>${item.UserName}</td>
              <td>${item.Status}</td>
@@ -119,7 +127,13 @@
       
     </ai-dialog-body>
     <ai-dialog-footer>
-      <button class="ui yellow button" click.trigger="dialogController.cancel()">Cancel</button> 
+     <div class="actions">
+          <div class="ui deny button" click.trigger="dialogController.cancel()">
+            Cancel
+          </div>
+         
+        </div> 
       <ai-dialog-footer>
   </ai-dialog>
+    </div>
 </template>
