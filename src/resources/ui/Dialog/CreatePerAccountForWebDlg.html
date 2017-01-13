@@ -85,16 +85,14 @@
     </ai-dialog-header>
     <ai-dialog-body>
       <form class="ui form" submit.delegate="submit()">
+        
         <div class="field">
-          <label>WebsiteDisplayName</label>
-          <input type="text" placeholder="Name" value.bind="meta.WebsiteDisplayName & validate">
-        </div>
-        <div class="field">
-          <label>AccountType</label>
+          <label>AccessLevels</label>
         </div>
         <div class="field">
           <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="meta.AccessLevels">
-           
+            <input name="gender" type="hidden" value="meta.AccessLevels">
+  
             <i class="dropdown icon"></i>
             <div class="default text">--Select All--</div>
             <div class="menu">

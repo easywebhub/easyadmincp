@@ -33,7 +33,7 @@ export class UpdatePerAccountForWebDlg {
  async activate(params) {
     
     this.meta = new Accounts(params)
-   console.log('this.meta',JSON.stringify(params))
+   console.log('this.meta',JSON.stringify(this.meta))
   }
 
   submit() {

@@ -20,9 +20,6 @@ import {
 import {
   CreateAccountsDlg
 } from '../../resources/ui/Dialog/CreateAccountsDlg';
-import {
-  WebsOfAccountDlg
-} from '../../resources/ui/Dialog/WebsOfAccountDlg';
 
 import {
   User
