@@ -4,19 +4,8 @@
     <a   repeat.for="row of router.navigation" class="${row.isActive ? 'active item' : 'item'} " href.bind="row.href">
         ${row.title} 
     </a>
-   
-
+   </div>
  
-
-</div>
-  <!--<div class="ui secondary pointing menu menu-ngang">
-    <ul class="nav navbar-nav">
-      <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-        <a href.bind="row.href" class="active item">${row.title} ${router.isNavigating}</span></a>
-      </li>
-    </ul>
-  </div>-->
-  
   <div class="ui">
     <router-view></router-view>
   </div>

@@ -1,44 +1,51 @@
 <template>
-  <style>
-    .form-group {
-      height: 60px;
-      margin-right: 20px;
-    }
-    
-    .form-group label {
-      margin-right: 10px;
-    }
-    
-    a {
-      color: black;
-    }
-
-  </style>
   <div class="content-padding">
-    <div class="ui small basic icon buttons">
-      <a class="ui button show-modal" click.delegate="CreateAccount()"><i class="sticky note outline icon "></i>Create Account</a>
-    </div>
-    <h4 class="ui dividing header">
-        Filter
-    </h4>
-     <div class="filter">
+
+    <h3>Account Management &nbsp;
+
+        <div class="ui small basic icon buttons">
+           <a class="ui button show-modal" click.delegate="CreateAccount()"><i class="sticky note outline icon "></i>Create Account</a>
+     
+        </div>
+
+    </h3>
+
+   
+
+    <!--<p>Lọc thông tin :</p>-->
+
+    <div class="filter">
+
         <div class="ui  form small">
             <div class="fields">
-                <div class="field">
+
+            <div class="field">
+            <label>DisplayName</label>
+            <input type="text" placeholder="DisplayName" ref="searchDisplayName">
+          </div>
+          <div class="field">
             <label>Name</label>
             <input type="text" placeholder="Name" ref="searchName">
           </div>
-          <div class="field">
-            <label>UserName</label>
-            <input type="text" placeholder="UserName" ref="searchUserName">
-          </div>
-        
+
+
+                <!--<div class="field">
+                    <label>&nbsp</label>
+                    <button class="ui button green medium">
+                        <i class="icon search "></i> TÌM KIẾM
+                    </button>
+                </div>-->
+
+
+
+
             </div>
-            </div>
-            </div>  
-    
-    </br>
-    </br>
+        </div>
+
+    </div>
+
+
+  <div class="content-padding">
    
   
       <table id="" class="ui celled table small">
@@ -65,14 +72,22 @@
             <td>${item.AccountType}</td>
             <td>${item.UserName}</td>
             <!--<td>${item.Status}</td>-->
-            <td style="width:45% !important">
-              <div class="ui buttons mini">
-                 <button class="ui green basic button" click.delegate="$parent.userCreateWebsite(item)">Create Website</button>
-                <button class="ui green basic button" click.delegate="$parent.UpdateAccount(item)">Update Account</button>
-                <button class="ui blue basic button" click.delegate="$parent.DetailAccount(item)">Detail Account</button>
-                <button class="ui blue basic button" click.delegate="$parent.websitesOfAccount(item)">Websites Of Account</button>
-              </div>
+              <td>
+
+
+            <div class="ui  icon top right pointing dropdown button">
+                <i class="wrench icon"></i>
+                <div class="menu">
+                   
+                   <a class="item"click.delegate="$parent.userCreateWebsite(item)"><i class="add square icon"></i></i>Create Website</a>
+                   <a class="item" click.delegate="$parent.UpdateAccount(item)"><i class="refresh icon"></i>Update Account</a>
+                   <a class="item" click.delegate="$parent.DetailAccount(item)"><i class="list layout icon"></i>Detail Account</a>
+                    <div class="ui divider"></div>
+                     <a class="item" click.delegate="$parent.websitesOfAccount(item)"><i class="list layout icon"></i> Websites Of Account</a>
+                </div>
+                </div>
             </td>
+           
           </tr>
         </tbody>
         <tfoot>

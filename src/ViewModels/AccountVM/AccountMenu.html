@@ -1,17 +1,12 @@
 <template>
-    <div class="ui secondary pointing menu menu-ngang">
-      <ul class="nav navbar-nav">
-         <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-            <a href.bind="row.href" class="active item">${row.title}</span></a>
-          </li>
-        </ul>
-   
-   
-</div>
- <div class="content-padding">
-
-          <router-view></router-view>
-
-   
+  <div class="ui secondary pointing menu menu-ngang">
+    
+    <a   repeat.for="row of router.navigation" class="${row.isActive ? 'active item' : 'item'} " href.bind="row.href">
+        ${row.title} 
+    </a>
+   </div>
+ 
+  <div class="ui">
+    <router-view></router-view>
+  </div>
 </template>
-
