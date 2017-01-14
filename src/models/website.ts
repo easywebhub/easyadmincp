@@ -36,5 +36,5 @@ ValidationRules
 ValidationRules
   .ensure( (a: WebSite) => a.DisplayName).required()
   .ensure(a=>a.Url).required()
-  .ensure('Url').required()
+  .ensure(a=>a.Name).required()
   .on(WebSite);

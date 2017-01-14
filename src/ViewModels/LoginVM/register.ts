@@ -36,11 +36,11 @@ export class Register {
 
   constructor(router, userServices, controllerFactory) {
 
-    this.clsSv = userServices
-    this.theRouter = router
+    this.clsSv = userServices;
+    this.theRouter = router;
     this.controller = controllerFactory.createForCurrentScope();
     this.controller.addRenderer(new SemanticFormRenderer());
-     this.meta = new User({})
+     this.meta = new User();
   }
 
   activate() {

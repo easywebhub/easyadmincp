@@ -122,10 +122,11 @@
             <!--<td>${user.Info.Age}</td>-->
             <td>${user.Info.Sex}</td>
             <td>${user.Info.Address}</td>
-            <td style="width:25%" >
-             <i repeat.for="web of user.Websites"> 
-                ${web.DisplayName} 
-              </i>
+            <td>
+           <ul>   
+                <li repeat.for="web of user.Websites"> ${web.DisplayName} </li> 
+              
+              </ul>
             </td>
           </tr>
         </tbody>

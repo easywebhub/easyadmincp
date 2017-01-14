@@ -42,7 +42,7 @@ export class WebsOfAccount {
   current: number = 1
   allPage: number = 1
   params:any
-  pendding:boolean=true
+
  dialogService:DialogService
  meta:any={}
   constructor(dialogController, controllerFactory, userServices,dialogService) {
@@ -56,9 +56,9 @@ export class WebsOfAccount {
     
     this.params=params
    // console.log('pẩ',params)
-      this.pendding = !this.pendding;
+
     await this.clSevice.AllWebsiteOfUser(params.AccountId).then(rs => {
-      this.pendding = !this.pendding;
+
       this.webSAccount = (rs as any).data
       this.total = (rs as any).data.length;
 

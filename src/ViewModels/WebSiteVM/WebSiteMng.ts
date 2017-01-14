@@ -42,6 +42,7 @@ export class WebSiteMng {
   bindingEngine: BindingEngine;
   dialogService: DialogService
   pendding: boolean
+  disabled:boolean=true
   constructor(webSiteServices, bindingEngine, dialogService) {
     this.webSiteServices = webSiteServices;
     this.current = 1;
@@ -51,13 +52,13 @@ export class WebSiteMng {
     this.pendding = true
 
   }
-  activate() {
-    this.pendding = !this.pendding;
+ async  activate() {
+    // this.pendding = !this.pendding;
     // console.log('show', this.pendding)
-    this.webSiteServices.GetListWebSite().then(rs => {
+   await this.webSiteServices.GetListWebSite().then(rs => {
         //console.log('result', JSON.stringify((rs as any).data))
         if ((rs as any).status == 200) {
-          this.pendding = !this.pendding;
+          // this.pendding = !this.pendding;
           // console.log('(rs[0] as any).Result',(rs[0] as any).Results)
           this.listWebSite = (rs as any).data;
           this.total = (rs as any).data.length;
@@ -146,7 +147,12 @@ detailWebsiteUser(item) {
 
   }
 
-
+ attached() {
+   ($('.ui.dropdown') as any)
+  .dropdown({
+   
+  })
+ }
   createWeb() {
       this.dialogService.open({
         viewModel: CreateWebDlg

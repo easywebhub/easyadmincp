@@ -24,8 +24,8 @@ import * as generateCoverage from '@easy-webpack/config-test-coverage-istanbul';
 const ENV: 'development' | 'production' | 'test' = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() || (process.env.NODE_ENV = 'development');
 
 // basic configuration:
-const title = 'Aurelia Navigation Skeleton';
-const baseUrl = 'https://easyadmincp.com';
+const title = 'Easyadmincp';
+const baseUrl = 'https://easyadmincp.com/';
 const rootDir = path.resolve();
 const srcDir = path.resolve('src');
 const outDir = path.resolve('dist');

@@ -21,14 +21,27 @@ import {
 export class CreateAccountsDlg {
   dialogController: DialogController;
  
-   meta: User;
-  controller: any
+   meta: User = new User();
+  controller: any;
+  /**
+   *
+   */
   constructor(dialogController, controllerFactory) {
-    this.dialogController = dialogController
+  
+    //  this.meta = new User();
+     console.log('meta');
+    this.dialogController = dialogController;
     this.controller = controllerFactory.createForCurrentScope();
     this.controller.addRenderer(new SemanticFormRenderer());
-    this.meta = new User({})
   }
+  // constructor(dialogController, controllerFactory) {
+  //     this.meta = new User({});
+  //    console.log('meta');
+  //   this.dialogController = dialogController;
+  //   this.controller = controllerFactory.createForCurrentScope();
+  //   this.controller.addRenderer(new SemanticFormRenderer());
+  
+  // }
 
   submit() {
   
@@ -36,8 +49,8 @@ export class CreateAccountsDlg {
        if(rs.valid==true)
 
         {
-           this.meta.Info.Name=(this.meta as any).Name;
-          console.log('meta', JSON.stringify(this.meta))
+           //this.meta.Info.Name=(this.meta as any).Name;
+          //console.log('meta', JSON.stringify(this.meta))
            this.dialogController.ok(this.meta);
         }
         else

@@ -38,7 +38,7 @@ export class UserMng {
   current: number
   allPage: number
   bindingEngine: BindingEngine;
-  pendding: boolean = true
+ 
   dialogService: DialogService
   theRouter:Router
   constructor(userServices, bindingEngine, dialogService,router) {
@@ -49,11 +49,11 @@ export class UserMng {
     this.theRouter=router
   }
 
-  activate() {
-    this.pendding = !this.pendding;
-    this.userServices.GetListByUsers().then(rs => {
+  async activate() {
+  
+    await this.userServices.GetListByUsers().then(rs => {
 
-      this.pendding = !this.pendding;
+     
       this.listUsers = (rs as any).data;
       this.total = (rs as any).data.length;
 
@@ -109,7 +109,6 @@ export class UserMng {
       if (!result.wasCancelled) {
         console.log('meta',JSON.stringify(result.output))
         this.userServices.UserByCreateWebSite(result.output).then((rs: any) => {
-
           swal({
             title: "Notification",
             text: "User Create success",
