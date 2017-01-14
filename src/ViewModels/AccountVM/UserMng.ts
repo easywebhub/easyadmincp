@@ -24,6 +24,9 @@ import {
 import {
   User
 } from '../../models//user';
+import {
+  UserCreateWebDlg
+} from '../../resources/ui/Dialog/UserCreateWebDlg';
 import * as swal from 'sweetalert'
 import {RouterConfiguration, Router} from 'aurelia-router';
 @inject(UserServices, BindingEngine, DialogService,Router)
@@ -66,11 +69,11 @@ export class UserMng {
       viewModel: CreateAccountsDlg
     }).then(result => {
       if (!result.wasCancelled) {
-        this.userServices.CreateByUsers(new User(result.output)).then((rs: any) => {
+        this.userServices.CreateByUsers(result.output).then((rs: any) => {
 
           swal({
             title: "Notification",
-            text: "Tạo mới thành công",
+            text: "Create success",
             timer: 2500,
             showConfirmButton: true,
             type: "success"
@@ -79,10 +82,10 @@ export class UserMng {
           this.activate();
 
         }).catch(err => {
-
+         
           swal({
             title: "Notification",
-            text: "Tạo mới thất bại",
+            text:   err.response.data.Message,
             timer: 2500,
             showConfirmButton: true,
             type: "warning"
@@ -98,6 +101,44 @@ export class UserMng {
 
 
   }
+ userCreateWebsite(item){
+   this.dialogService.open({
+      viewModel: UserCreateWebDlg,
+      model:item
+    }).then(result => {
+      if (!result.wasCancelled) {
+        console.log('meta',JSON.stringify(result.output))
+        this.userServices.UserByCreateWebSite(result.output).then((rs: any) => {
+
+          swal({
+            title: "Notification",
+            text: "User Create success",
+            timer: 2500,
+            showConfirmButton: true,
+            type: "success"
+          });
+
+          this.activate();
+
+        }).catch(err => {
+         
+          swal({
+            title: "Notification",
+            text:   err.response.data.Message,
+            timer: 2500,
+            showConfirmButton: true,
+            type: "warning"
+          });
+
+        })
+
+      } else {
+        console.log('bad');
+      }
+
+    });
+
+ }
 
   UpdateAccount(item: User) {
     this.dialogService.open({

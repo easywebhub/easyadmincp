@@ -53,12 +53,12 @@
           <tr>
             <th>Stt</th>
             <th>Name</th>
-            <th>Age</th>
-            <th>Sex</th>
+            <!--<th>Age</th>
+            <th>Sex</th>-->
             <th>Address</th>
             <th>AccountType</th>
             <th>UserName</th>
-            <th>Status</th>
+            <!--<th>Status</th>-->
             <th></th>
           </tr>
         </thead>
@@ -66,14 +66,15 @@
           <tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (pageSize):current * (pageSize)">
             <td>${(current-1)*pageSize+$index+1}</td>
             <td>${item.Info.Name}</td>
-            <td>${item.Info.Age}</td>
-            <td>${item.Info.Sex}</td>
+            <!--<td>${item.Info.Age}</td>
+            <td>${item.Info.Sex}</td>-->
             <td>${item.Info.Address}</td>
             <td>${item.AccountType}</td>
             <td>${item.UserName}</td>
-            <td>${item.Status}</td>
-            <td>
+            <!--<td>${item.Status}</td>-->
+            <td style="width:45% !important">
               <div class="ui buttons mini">
+                 <button class="ui green basic button" click.delegate="$parent.userCreateWebsite(item)">Create Website</button>
                 <button class="ui green basic button" click.delegate="$parent.UpdateAccount(item)">Update Account</button>
                 <button class="ui blue basic button" click.delegate="$parent.DetailAccount(item)">Detail Account</button>
                 <button class="ui blue basic button" click.delegate="$parent.websitesOfAccount(item)">Websites Of Account</button>

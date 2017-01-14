@@ -30,8 +30,10 @@ export class UserServices {
       this.http.post(`users`, meta).then(data =>
         resolve(data)
       ).catch(err => {
-        console.log(err)
-        reject(Error(err))
+         if(err.response.status==422){
+        //console.log(err)
+        reject(err)
+         }
       })
     })
   }
@@ -60,8 +62,23 @@ export class UserServices {
       })
     })
   }
+ UserByCreateWebSite(meta) {
+     return new Promise((resolve, reject) => {
+          this.http.post(`users/${meta.AccountId}/websites`,meta, {
+            responseType: 'json'
+          }).then(data =>
+             resolve(data)
+          ).catch(err => {
+           if(err.response.status==422){
+       //console.log('err',JSON.stringify(err))
+            reject(err)
+           }
+      })
+    })
+  }
 
- 
+
+
  AllWebsiteOfUser(AccountId) {
 
     return new Promise((resolve, reject) => {
