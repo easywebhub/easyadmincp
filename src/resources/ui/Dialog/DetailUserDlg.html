@@ -122,10 +122,10 @@
             <!--<td>${user.Info.Age}</td>-->
             <td>${user.Info.Sex}</td>
             <td>${user.Info.Address}</td>
-            <td style="width:25%">
-              <div class="ui buttons mini">
-                <button class="ui blue basic button" repeat.for="web of user.Websites">${web.DisplayName}</button>
-              </div>
+            <td style="width:25%" >
+             <i repeat.for="web of user.Websites"> 
+                ${web.DisplayName} 
+              </i>
             </td>
           </tr>
         </tbody>
