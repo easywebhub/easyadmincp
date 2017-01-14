@@ -64,9 +64,25 @@ export class WebSiteServices {
         responseType: 'json'
       }).then(data =>
         resolve(data)
-   ).catch(err => {
+      ).catch(err => {
         console.log(err)
         reject(Error(err))
+      })
+    })
+  }
+  ConfirmWebSite(WebsiteId) {
+
+      return new Promise((resolve, reject) => {
+          this.http.get(`/websites/${WebsiteId}/confirm`, {
+            responseType: 'json'
+          }).then(data =>
+
+            resolve(data)
+          ).catch(err => {
+           if(err.response.status==422){
+       //console.log('err',JSON.stringify(err))
+            reject(err)
+           }
       })
     })
   }
@@ -75,5 +91,4 @@ export class WebSiteServices {
 
 
 
-
-}
+      }

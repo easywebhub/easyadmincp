@@ -10,26 +10,22 @@ export class WebSite {
     WebTemplateId:string;
      constructor(entity: any) {
         this.WebsiteId = entity.WebsiteId;
-        this.Name = entity.Name || '';
+        this.Name = entity.Name;
         this.DisplayName = entity.DisplayName;
         this.Url = entity.Url;
-        this.Accounts=entity.Accounts
-        this.WebTemplateId=entity.WebTemplateId
-       
+         this.WebTemplateId=entity.WebTemplateId
+         this.Accounts=entity.Accounts       
     }
 }
 
 export class Accounts {
 
     AccountId  : string;
-    WebsiteId : string;
-   
-
     AccessLevels:any;
 
      constructor(entity: any) {
         this.AccountId = entity.AccountId;
-        this.AccessLevels = [entity.AccessLevels];
+        this.AccessLevels = entity.AccessLevels;
     }
 }
 ValidationRules
@@ -40,5 +36,5 @@ ValidationRules
 ValidationRules
   .ensure( (a: WebSite) => a.DisplayName).required()
   .ensure(a=>a.Url).required()
-  .ensure('WebsiteDisplayName').required()
+  .ensure('Url').required()
   .on(WebSite);

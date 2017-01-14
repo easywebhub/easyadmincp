@@ -85,7 +85,6 @@
     </ai-dialog-header>
     <ai-dialog-body>
       <form class="ui form" submit.delegate="submit()">
-      
         <div class="field">
           <label>Name</label>
           <input type="text" placeholder="Name" value.bind="meta.Name & validate">
@@ -110,14 +109,8 @@
           <label>AccountType</label>
           <select value.bind="meta.AccountType & validate">
               <option value="">--Select All--</option>
-             <option value="test">test</option>
-               <option value="user">user</option>
-               <option value="member">member</option>
-                <option value="member">owner</option>
-                <option value="admin">admin</option>
-                 <option value="contentor">contentor</option>
-                  <option value="dev">dev</option>
-
+             <option value="enterprise">enterprise</option>
+               <option value="personal">personal</option>
                
             </select>
         </div>
@@ -135,8 +128,6 @@
           </div>
           <button class="ui primary button" type="submit">Create</button>
         </div>
-       
-       
       </form>
     </ai-dialog-body>
   </ai-dialog>

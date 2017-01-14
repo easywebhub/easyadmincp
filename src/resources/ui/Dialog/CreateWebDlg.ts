@@ -23,7 +23,7 @@ export class CreateWebDlg {
   dialogController: DialogController;
   Web: WebSite;
   controller
-  Accounts:any
+  Accounts:any={}
   constructor(dialogController, controllerFactory) {
    
     this.dialogController = dialogController
@@ -41,12 +41,12 @@ export class CreateWebDlg {
 
       {
         this.Accounts.AccountId = (Lockr.get("UserInfo") as any).AccountId;
-        this.Accounts.AccessLevels="owner"
-        let Acc=new Accounts(this.Accounts)
-        this.Web.Accounts=[Acc];
+        this.Accounts.AccessLevels=["owner"]
+       
+        this.Web.Accounts=[this.Accounts];
       
-       console.log('web',JSON.stringify(this.Web))
-       this.dialogController.ok(this.Web);
+      // console.log('web',JSON.stringify(new WebSite(this.Web)))
+      this.dialogController.ok(this.Web);
       } else
         console.log('error')
 

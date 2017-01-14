@@ -53,7 +53,8 @@
           <th>Stt</th>
           <th>Name</th>
           <th>DisplayName</th>
-          
+          <!--<th>Source</th>
+          <th>Git</th>-->
           <th></th>
         </tr>
       </thead>
@@ -62,11 +63,15 @@
           <td>${(current-1)*pageSize+$index+1}</td>
           <td>${item.Name}</td>
           <td>${item.DisplayName}</td>
+           <!--<td>${item.Source}</td>
+          <td>${item.Git}</td>-->
+
           <td>
               <div class="ui buttons mini">
                 <button class="ui blue basic button" click.delegate="$parent.detailWebsite(item)">Detail Website</button>
                 <button class="ui blue basic button" click.delegate="$parent.detailWebsiteUser(item)">Detail Website Users</button>
-               
+                <button class="ui blue basic button" click.delegate="$parent.confirmWebsite(item)">Confirm Website</button>
+                
               </div>
             </td>
           </tr>

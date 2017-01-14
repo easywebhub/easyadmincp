@@ -26,6 +26,9 @@ import {
 import {
   UpdatePerAccountForWebDlg
 } from '../../resources/ui/Dialog/UpdatePerAccountForWebDlg';
+import {
+  Accounts
+} from '../../models//website';
 @inject(DialogController, ValidationControllerFactory, UserServices,DialogService)
 
 export class WebsOfAccount {
@@ -69,11 +72,11 @@ export class WebsOfAccount {
  
   createAccount(item) {
     
-    this.meta.AccountId= this.params.AccountId
-    this.meta.WebsiteId=item.WebsiteId
+   
+    
        this.dialogService.open({
       viewModel: CreatePerAccountForWebDlg,
-      model:this.meta
+      model:new Accounts(item)
     }).then((result) => {
       if (!result.wasCancelled) {
         this.clSevice.CreatePermisSionUserOnWebsite(result.output).then(rs=>{

@@ -72,6 +72,40 @@ export class WebSiteMng {
 
     );
   }
+  confirmWebsite(item)
+  {
+   
+    swal({
+      title: "You sure ?",
+      text: "Confirm Website source repositories github",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes, Confirm",
+      cancelButtonText: "No, Back To",
+      closeOnConfirm: false,
+      closeOnCancel: false
+    }, (isConfirm) => {
+      if (isConfirm) {
+        this.webSiteServices.ConfirmWebSite(item.WebsiteId)
+          .then(rs => {
+            swal("Confirm!", `Confirm Website source repositories github`, "success");
+            this.activate();
+          }).catch(err=>{
+                //console.log('err',err)
+               
+               swal("Confirm!",err.response.data.Message, "error");
+                
+              
+          })
+
+      } else {
+        swal("Cancelled", "Cancelled", "error");
+      }
+    });
+
+  }
+  
   detailWebsite(item) {
       
        this.dialogService.open({
@@ -153,24 +187,6 @@ detailWebsiteUser(item) {
 }
 
 
-// export class NameByValueConverter {
-//   toView(array, obj) {
-        
-//         if (obj == "") {
-//             return array;
-//         } else if (obj) {
-//             // let filteredArr = array.filter(function(x){
-//             //     console.log('xx',x.Name)
-//             // });
-//            // let filteredArr=_.find(array, function(o) { console.log('obj',(o as any).Name); return (o as any).Name==obj });
-           
-//            return array => array
-//     .filter(array => array.Name  == obj)
-    
-//         }
-//         return array;
-//     }
-// }
 
 
 export class SearchNameValueConverter {
