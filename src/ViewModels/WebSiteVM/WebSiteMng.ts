@@ -147,12 +147,7 @@ detailWebsiteUser(item) {
 
   }
 
- attached() {
-   ($('.ui.dropdown') as any)
-  .dropdown({
-   
-  })
- }
+ 
   createWeb() {
       this.dialogService.open({
         viewModel: CreateWebDlg

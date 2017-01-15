@@ -63,12 +63,7 @@ export class UserMng {
       console.log('bad', err)
     })
   }
- attached() {
-   ($('.ui.dropdown') as any)
-  .dropdown({
-   
-  })
- }
+
   CreateAccount() {
     this.dialogService.open({
       viewModel: CreateAccountsDlg

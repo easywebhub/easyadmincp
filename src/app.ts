@@ -27,11 +27,5 @@ export class App {
 
     this.router = router;
   }
-  attached() {
-   ($('.ui.inline.dropdown') as any)
-  .dropdown({
-   
-  })
-;
-  }
+  
 }
