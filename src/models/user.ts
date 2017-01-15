@@ -55,7 +55,7 @@ export class Web {
 }
 ValidationRules
   .ensure((a: Web) => a.DisplayName).required()
-  .ensure('Url').required()
+  .ensure(a=>a.Url).matches(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/).required()
   .ensure(a => a.WebTemplateId).required()
   .on(Web);
 ValidationRules

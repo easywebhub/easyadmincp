@@ -35,6 +35,7 @@ ValidationRules
 
 ValidationRules
   .ensure( (a: WebSite) => a.DisplayName).required()
-  .ensure(a=>a.Url).required()
+  .ensure(a=>a.Url).matches(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/).required()
   .ensure(a=>a.Name).required()
   .on(WebSite);
+                         
