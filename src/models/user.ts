@@ -65,6 +65,6 @@ ValidationRules
 ValidationRules
   .ensure((a: User) => a.AccountType).required()
   .ensure(a => a.UserName).required()
- // .ensure("Name").required()
+ //.ensure("Name").required()
   .ensure(a => a.Password).required()
   .on(User);

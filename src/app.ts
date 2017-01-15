@@ -18,7 +18,7 @@ export class App {
     }
     config.map([
        { route: ['', 'login'], name: 'login', moduleId: 'ViewModels/LoginVM/login', nav: false, settings: { roles: [] }, title: 'Login' },
-      { route: 'register', name: 'register',moduleId:'ViewModels/LoginVM/register',nav:false, title: 'Register' },
+      { route: 'resgister', name: 'resgister',moduleId:'ViewModels/LoginVM/register',nav:false, title: 'Register' },
       { route: 'WebSiteMenu', name: 'WebSiteMenu', moduleId: 'ViewModels/WebSiteVM/WebSiteMenu', nav:this.checkNav, title: 'Website Management' },
        { route: 'AccountMenu', name: 'AccountMenu', moduleId: 'ViewModels/AccountVM/AccountMenu', nav:this.checkNav, title: 'Account Management' },
         //  { route: 'GitMenu', name: 'GitMenu', moduleId: 'ViewModels/GitVM/GitMenu', nav:this.checkNav, title: 'Github Management' },

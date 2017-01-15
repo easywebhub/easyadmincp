@@ -3,8 +3,8 @@
 
     <h3>Account Management &nbsp;
 
-        <div class="ui small basic icon buttons">
-           <a class="ui button show-modal" click.delegate="CreateAccount()"><i class="sticky note outline icon "></i>Create Account</a>
+        <div class="ui small basic icon buttons green">
+           <a class="ui button show-modal" click.delegate="CreateAccount()"><i class="sticky note outline icon green"></i>Create Account</a>
      
         </div>
 
@@ -53,37 +53,37 @@
           <tr>
             <th>Stt</th>
             <th>Name</th>
-            <!--<th>Age</th>
-            <th>Sex</th>-->
+            <th>Age</th>
+            <th>Sex</th>
             <th>Address</th>
             <th>AccountType</th>
             <th>UserName</th>
-            <!--<th>Status</th>-->
-            <th></th>
+            <th>Status</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody ref="mydata" items.bind="listUsers | searchUserName:searchUserName.value | searchName:searchName.value">
           <tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (pageSize):current * (pageSize)">
             <td>${(current-1)*pageSize+$index+1}</td>
             <td>${item.Info.Name}</td>
-            <!--<td>${item.Info.Age}</td>
-            <td>${item.Info.Sex}</td>-->
+            <td>${item.Info.Age}</td>
+            <td>${item.Info.Sex}</td>
             <td>${item.Info.Address}</td>
             <td>${item.AccountType}</td>
             <td>${item.UserName}</td>
-            <!--<td>${item.Status}</td>-->
+            <td>${item.Status}</td>
               <td>
 
 
-            <div class="ui  icon top right pointing dropdown button">
+            <div class="ui  icon top right pointing dropdown button green">
                 <i class="wrench icon"></i>
                 <div class="menu">
                    
-                   <a class="item"click.delegate="$parent.userCreateWebsite(item)"><i class="add square icon"></i></i>Create Website</a>
-                   <a class="item" click.delegate="$parent.UpdateAccount(item)"><i class="refresh icon"></i>Update Account</a>
-                   <a class="item" click.delegate="$parent.DetailAccount(item)"><i class="list layout icon"></i>Detail Account</a>
+                   <a class="item"click.delegate="$parent.userCreateWebsite(item)"><i class="add square icon green"></i></i>Create Website</a>
+                   <a class="item" click.delegate="$parent.UpdateAccount(item)"><i class="refresh icon blue"></i>Update Account</a>
+                   <a class="item" click.delegate="$parent.DetailAccount(item)"><i class="list layout icon purple"></i>Detail Account</a>
                     <div class="ui divider"></div>
-                     <a class="item" click.delegate="$parent.websitesOfAccount(item)"><i class="list layout icon"></i> Websites Of Account</a>
+                     <a class="item" click.delegate="$parent.websitesOfAccount(item)"><i class="list layout icon purple"></i> Websites Of Account</a>
                 </div>
                 </div>
             </td>

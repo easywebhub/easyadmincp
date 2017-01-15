@@ -68,7 +68,12 @@ export class WebsOfAccount {
   }
 
 
- 
+ attached() {
+   ($('.ui.dropdown') as any)
+  .dropdown({
+   
+  })
+ }
  
   createAccount(item) {
     

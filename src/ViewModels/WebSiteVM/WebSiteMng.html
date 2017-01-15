@@ -4,16 +4,13 @@
 
     <h3> Website Management &nbsp;
 
-        <div class="ui small basic icon buttons">
-            <a class="ui button show-modal" click.delegate="createWeb()"><i class="sticky note outline icon "></i> Create</a>
+        <div class="ui small basic icon buttons green">
+            <a class="ui button show-modal" click.delegate="createWeb()"><i class="sticky note outline icon"></i> Create</a>
      
         </div>
 
     </h3>
 
-   
-
-    <!--<p>Lọc thông tin :</p>-->
 
     <div class="filter">
 
@@ -28,21 +25,7 @@
             <label>Name</label>
             <input type="text" placeholder="Name" ref="searchName">
           </div>
-
-
-                <!--<div class="field">
-                    <label>Chọn ngày</label>
-
-                    <div class="ui left icon input">
-                        <input type="text" class="datepicker">
-                        <i class="calendar icon"></i>
-                    </div>
-
-                </div>-->
-
-
-
-                <!--<div class="field">
+          <!--<div class="field">
                     <label>&nbsp</label>
                     <button class="ui button green medium">
                         <i class="icon search "></i> TÌM KIẾM
@@ -95,16 +78,16 @@
            <td>
 
 
-            <div class="ui  icon top right pointing dropdown button">
+            <div class="ui  icon top right pointing dropdown button green">
                 <i class="wrench icon"></i>
                 <div class="menu">
                    
-                   <a class="item" click.delegate="$parent.detailWebsite(item)"><i class="list layout icon"></i> Detail Website</a>
+                   <a class="item" click.delegate="$parent.detailWebsite(item)"><i class="list layout icon purple"></i> Detail Website</a>
                   
                     
-                       <a class="item" click.delegate="$parent.detailWebsiteUser(item)"><i class="list layout icon"></i> Detail Website Users</a>
+                       <a class="item" click.delegate="$parent.detailWebsiteUser(item)"><i class="list layout icon purple"></i> Detail Website Users</a>
                     <div class="ui divider"></div>
-                     <a class="item" click.delegate="$parent.confirmWebsite(item)"><i class="checkmark box icon"></i> Confirm Website</a>
+                     <a class="item" click.delegate="$parent.confirmWebsite(item)"><i class="checkmark box icon yellow"></i> Confirm Website</a>
                 </div>
                 </div>
             </td>
