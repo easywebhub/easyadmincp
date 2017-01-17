@@ -1,30 +1,5 @@
-
-
 <template>
   <style>
-    /*fix z index*/
-    
-    .sweet-alert {
-      z-index: 200111;
-    }
-    
-    body>span.select2-container {
-      z-index: 100111;
-    }
-    
-    ai-dialog-overlay.active {
-      background-color: black;
-      opacity: .5;
-      z-index: 9998 !important;
-    }
-    
-    .edit-form {}
-    
-    ai-dialog-container {
-      margin: 30px auto;
-      z-index: 100005 !important;
-    }
-    
     ai-dialog,
     ai-dialog-container>div>div {
       max-width: 1200px;
@@ -47,98 +22,68 @@
       background-color: black;
       opacity: .5;
     }
-    
-    .lstdoi {
-      margin-bottom: 20px;
-    }
-    
-    .noidung-lsthaydoi {
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 5px;
-      max-height: 150px;
-      overflow: scroll;
-      overflow-x: hidden;
-      min-height: 30px;
-    }
-    
-    #style-1::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
-      background-color: #F5F5F5;
-    }
-    
-    #style-1::-webkit-scrollbar {
-      width: 5px;
-      background-color: #000;
-      border-radius: 10px;
-    }
-    
-    #style-1::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-      background-color: #555;
-    }
-    
-    table>thead>tr>th {
-      width: 5%;
-    }
 
   </style>
-   <div class="ui" if.bind="!pendding">
-      <div class="ui active inverted dimmer">
-        <div class="ui large text loader">Loading</div>
-      </div>
-      <p></p>
-      <p></p>
-      <p></p>
-    </div>
-    <div if.bind="pendding">
   <ai-dialog class="edit-form" data-backdrop="static">
     <ai-dialog-header>
       <h3>Detail User</h3>
     </ai-dialog-header>
     <ai-dialog-body>
-      <table class="ui celled table small">
-        <thead>
-          <tr>
-            <th>AccountType</th>
-            <th>UserName</th>
-            <!--<th>Status</th>-->
-            <th>Name</th>
-            <!--<th>Age</th>-->
-            <th>Sex</th>
-            <th>Address</th>
-            <th>Websites</th>
+      <form class="ui form">
+        <div class="two fields">
+          <div class="field">
+            <label>AccountType</label>
+            <input name="integer" type="text" value.bind="user.AccountType" disabled>
+          </div>
+          <div class="field">
+            <label>UserName</label>
+            <input name="email" type="text" value.bind="user.UserName" disabled>
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="field">
+            <label>Status</label>
+            <input name="decimal" type="text" value.bind="user.Status" disabled>
+          </div>
+          <div class="field">
+            <label>Name</label>
+            <input type="text" value.bind="user.Info.Name" disabled>
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="field">
+            <label>Age</label>
+            <input name="url" type="text" value.bind="user.Info.Age" disabled>
+          </div>
+          <div class="field">
+            <label>Sex</label>
+            <input name="regex" type="text" value.bind="user.Info.Sex" disabled>
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="field">
+            <label>Address</label>
+            <input name="url" type="text" value.bind="user.Info.Address" disabled>
+          </div>
+          <div class="field">
+             <label>Websites</label>
            
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>${user.AccountType}</td>
-            <td>${user.UserName}</td>
-            <!--<td>${user.Status}</td>-->
-            <td>${user.Info.Name}</td>
-            <!--<td>${user.Info.Age}</td>-->
-            <td>${user.Info.Sex}</td>
-            <td>${user.Info.Address}</td>
-            <td>
-           <ul>   
-                <li repeat.for="web of user.Websites"> ${web.DisplayName} </li> 
-              
-              </ul>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            <div class="ui list">
+              <div class="ui raised segment">
+              <div class="item blue" repeat.for="web of user.Websites">${web.DisplayName}</div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </form>
     </ai-dialog-body>
     <ai-dialog-footer>
       <div class="actions">
-        <div class="ui deny button"  click.trigger="dialogController.cancel()">
+        <div class="ui deny button" click.trigger="dialogController.cancel()">
           Cancel
         </div>
       </div>
       <ai-dialog-footer>
   </ai-dialog>
-    </div>
+  </div>
 </template>
