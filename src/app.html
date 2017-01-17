@@ -1,4 +1,9 @@
 <template>
+   <div class="ui" if.bind="router.isNavigating">
+      <div class="ui active inverted dimmer">
+        <div class="ui large text loader">Loading</div>
+      </div>
+    </div>
   <div class="topNav" show.bind="checkNav==true">
     <div class="row between-xs middle-xs">
       <div class="col-xs ">
@@ -51,14 +56,10 @@
         </div>
       </div>
     </div>
-    <div class="ui" if.bind="router.isNavigating">
-      <div class="ui active inverted dimmer">
-        <div class="ui large text loader">Loading</div>
-      </div>
-    </div>
+   
     <div class="col-xs">
       <div class="page-host">
-        <router-view>
+         <router-view>
         </router-view>
       </div>
     </div>
