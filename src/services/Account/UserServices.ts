@@ -20,8 +20,10 @@ export class UserServices {
 
         resolve(data)
       ).catch(err => {
+          if(err.response.status==422){
         console.log(err)
-        reject(Error(err))
+        reject(err)
+          }
       })
     })
   }
@@ -47,8 +49,10 @@ export class UserServices {
 
         resolve(data)
       ).catch(err => {
+          if(err.response.status==422){
         console.log(err)
-        reject(Error(err))
+        reject(err)
+          }
       })
     })
   }
@@ -57,8 +61,10 @@ export class UserServices {
       this.http.put(`users/${meta.AccountId}`, meta).then(data =>
         resolve(data)
       ).catch(err => {
+          if(err.response.status==422){
         console.log(err)
-        reject(Error(err))
+        reject(err)
+          }
       })
     })
   }
@@ -88,8 +94,10 @@ export class UserServices {
 
         resolve(data)
       ).catch(err => {
+          if(err.response.status==422){
         console.log(err)
-        reject(Error(err))
+        reject(err)
+          }
       })
     })
   }
@@ -103,8 +111,10 @@ export class UserServices {
 
         resolve(data)
       ).catch(err => {
+          if(err.response.status==422){
         console.log(err)
-        reject(Error(err))
+        reject(err)
+          }
       })
     })
   }
@@ -113,8 +123,10 @@ export class UserServices {
       this.http.put(`users/${meta.AccountId}/websites/${meta.WebsiteId}`, meta).then(data =>
         resolve(data)
       ).catch(err => {
+          if(err.response.status==422){
         console.log(err)
-        reject(Error(err))
+        reject(err)
+          }
       })
     })
   }
@@ -123,8 +135,10 @@ export class UserServices {
       this.http.post(`users/${meta.AccountId}/websites/${meta.WebsiteId}`, meta).then(data =>
         resolve(data)
       ).catch(err => {
+          if(err.response.status==422){
         console.log(err)
-        reject(Error(err))
+        reject(err)
+          }
       })
     })
   }

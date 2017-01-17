@@ -54,7 +54,7 @@ export class WebSiteServices {
         resolve(data)
       ).catch(err => {
         console.log(err)
-        reject(Error(err))
+        reject(err)
       })
     })
   }

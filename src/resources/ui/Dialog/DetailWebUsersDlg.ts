@@ -20,6 +20,8 @@ export class DetailWebUsersDlg {
         this.listUsers=(rs as any).data;
        // console.log('data',JSON.stringify((rs as any).data))
            
+        }).catch(err=>{
+             swal("Notification", `Error Detail Website Accounts`, "warning");
         })
         
     }

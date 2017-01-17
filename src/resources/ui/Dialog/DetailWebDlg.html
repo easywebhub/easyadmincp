@@ -1,28 +1,5 @@
 <template>
   <style>
-    /*fix z index*/
-    
-    .sweet-alert {
-      z-index: 200111;
-    }
-    
-    body>span.select2-container {
-      z-index: 100111;
-    }
-    
-    ai-dialog-overlay.active {
-      background-color: black;
-      opacity: .5;
-      z-index: 9998 !important;
-    }
-    
-    .edit-form {}
-    
-    ai-dialog-container {
-      margin: 30px auto;
-      z-index: 100005 !important;
-    }
-    
     ai-dialog,
     ai-dialog-container>div>div {
       max-width: 1200px;
@@ -45,177 +22,178 @@
       background-color: black;
       opacity: .5;
     }
-    
-    .lstdoi {
-      margin-bottom: 20px;
-    }
-    
-    .noidung-lsthaydoi {
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 5px;
-      max-height: 150px;
-      overflow: scroll;
-      overflow-x: hidden;
-      min-height: 30px;
-    }
-    
-    #style-1::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
-      background-color: #F5F5F5;
-    }
-    
-    #style-1::-webkit-scrollbar {
-      width: 5px;
-      background-color: #000;
-      border-radius: 10px;
-    }
-    
-    #style-1::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-      background-color: #555;
-    }
-    
-    dl {
-      border: 3px double #ccc;
-      padding: 0.5em;
-    }
-    
-    dt {
-      float: left;
-      clear: left;
-      width: 100px;
-      text-align: right;
-      font-weight: bold;
-      color: green;
-    }
-    
-    dt:after {
-      content: ":";
-    }
-    
-    dd {
-      margin: 0 0 0 110px;
-      padding: 0 0 0.5em 0;
-    }
 
   </style>
-     <div class="ui" if.bind="!pendding">
-      <div class="ui active inverted dimmer">
-        <div class="ui large text loader">Loading</div>
-      </div>
-      <p></p>
-      <p></p>
-      <p></p>
-    </div>
-    <div if.bind="pendding">
   <ai-dialog class="edit-form" data-backdrop="static">
- 
-      <ai-dialog-header>
-        <h3>Detail Website</h3>
-      </ai-dialog-header>
-      <ai-dialog-body>
-        <table class="ui celled table small">
-          <thead>
-            <tr>
-              <th>WebsiteId</th>
-              <th>Name</th>
-              <!--<th>Status</th>-->
-              <th>DisplayName</th>
-              <!--<th>Age</th>-->
-              <th>Url</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>${Web.WebsiteId}</td>
-              <td>${Web.Name}</td>
-              <!--<td>${user.Status}</td>-->
-              <td>${Web.DisplayName}</td>
-              <!--<td>${user.Info.Age}</td>-->
-              <td>${Web.Url}</td>
-            </tr>
-          </tbody>
-        </table>
-        <hr>
-        <h4>List Production
-        </h4>
-        <table class="ui celled table small" if.bind="Web.Production.length>0">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>HostingFee</th>
-              <th>Url</th>
-              <th>Git</th>
-              <th>IsDefault</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr repeat.for="item of Web.Production">
-              <td>${item.Name}</td>
-              <td>${item.HostingFee}</td>
-              <td>${item.Url}</td>
-              <td>${item.Git}</td>
-              <td>${item.IsDefault}</td>
-            </tr>
-          </tbody>
-        </table>
-        <hr>
-        <h4>List Stagging
-        </h4>
-        <table class="ui celled table small" if.bind="Web.Stagging.length>0">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>HostingFee</th>
-              <th>Url</th>
-              <th>Git</th>
-              <th>IsDefault</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr repeat.for="item of Web.Stagging">
-              <td>${item.Name}</td>
-              <td>${item.HostingFee}</td>
-              <td>${item.Url}</td>
-              <td>${item.Git}</td>
-              <td>${item.IsDefault}</td>
-            </tr>
-          </tbody>
-        </table>
-        <br>
-        <hr>
-        <h4>List Accounts
-        </h4>
-        <table class="ui celled table small" if.bind="Web.Accounts.length>0">
-          <thead>
-            <tr>
-              <th>AccountId</th>
-              <th>AccessLevel</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr repeat.for="item of Web.Accounts">
-              <td>${item.AccountId}</td>
-              <td>
-                <div class="ui buttons mini" repeat.for="role of item.AccessLevels">
-                  <button class="ui green basic button">${role}</button>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </ai-dialog-body>
-      <ai-dialog-footer>
-        <div class="actions">
-          <div class="ui deny button" click.trigger="dialogController.cancel()">
-            Cancel
+    <ai-dialog-header>
+      <h3>Detail Website</h3>
+    </ai-dialog-header>
+    <ai-dialog-body>
+      <form class="ui form">
+        <div class="two fields">
+          <div class="field">
+            <label>WebsiteId</label>
+            <input name="integer" type="text" value.bind="Web.WebsiteId" disabled>
+          </div>
+          <div class="field">
+            <label>Name</label>
+            <input name="email" type="text" value.bind="Web.Name" disabled>
           </div>
         </div>
-        <ai-dialog-footer>
+        <div class="two fields">
+          <div class="field">
+            <label>DisplayName</label>
+            <input name="decimal" type="text" value.bind="Web.DisplayName" disabled>
+          </div>
+          <div class="field">
+            <label>Age</label>
+            <input name="url" type="text" value.bind="user.Info.Age" disabled>
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="field">
+            <label>Url</label>
+            <input name="regex" type="text" value.bind="Web.Url" disabled>
+          </div>
+          <div class="field">
+            <label>List Production</label>
           
+            <button class="ui green button" data-content="List Production" ui-tooltip id="listProduct" click.delegate="clickProduct()">
+                 Show
+              </button>
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="field">
+            <label>List Stagging</label>
+            <button class="ui green button"  data-content="List Stagging" click.delegate="clickStagging()" ui-tooltip id="listStagging">
+                 Show
+              </button>
+          </div>
+          <div class="field">
+            <label>List Accounts</label>
+            <button class="ui green button"  data-content="List Accounts" ui-tooltip id="listAccounts" click.delegate="clickAccounts()">
+                 Show
+              </button>
+          </div>
+        </div>
+        </div>
+      </form>
+    </ai-dialog-body>
+    <ai-dialog-footer>
+      <div class="actions">
+        <div class="ui deny button" click.trigger="dialogController.cancel()">
+          Cancel
+        </div>
+      </div>
+      <ai-dialog-footer>
   </ai-dialog>
+  <div class="ui modal product">  <i class="close icon"></i>
+    <div class="header">
+      List Production
+    </div>
+    <div class="content">
+      <table class="ui celled table small">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>HostingFee</th>
+            <th>Url</th>
+            <th>Git</th>
+            <th>IsDefault</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr repeat.for="item of Web.Production">
+            <td>${item.Name}</td>
+            <td>${item.HostingFee}</td>
+            <td>${item.Url}</td>
+            <td>${item.Git}</td>
+            <td>${item.IsDefault}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="actions">
+      <div class="ui black deny button">
+        Cancel
+      </div>
+      <div class="ui positive right labeled icon button">
+        Yep, that's me
+        <i class="checkmark icon"></i>
+      </div>
+    </div>
+  </div>
+  <div class="ui modal stagging">
+    <i class="close icon"></i>
+    <div class="header">
+      List Stagging
+    </div>
+    <div class="content">
+      <table class="ui celled table small">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>HostingFee</th>
+            <th>Url</th>
+            <th>Git</th>
+            <th>IsDefault</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr repeat.for="item of Web.Stagging">
+            <td>${item.Name}</td>
+            <td>${item.HostingFee}</td>
+            <td>${item.Url}</td>
+            <td>${item.Git}</td>
+            <td>${item.IsDefault}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="actions">
+      <div class="ui black deny button">
+        Cancel
+      </div>
+      <div class="ui positive right labeled icon button">
+        Yep, that's me
+        <i class="checkmark icon"></i>
+      </div>
+    </div>
+  </div>
+  <div class="ui modal accounts">
+    <i class="close icon"></i>
+    <div class="header">
+      List Accounts
+    </div>
+    <div class="content">
+      <table class="ui celled table small">
+        <thead>
+          <tr>
+            <th>AccountId</th>
+            <th>AccessLevel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr repeat.for="item of Web.Accounts">
+            <td>${item.AccountId}</td>
+            <td>
+              <div class="ui buttons mini">
+                <button class="ui green basic button" if.bind="item.AccessLevels.length>0">${item.AccessLevels}</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="actions">
+      <div class="ui black deny button">
+        Cancel
+      </div>
+      <div class="ui positive right labeled icon button">
+        Yep, that's me
+        <i class="checkmark icon"></i>
+      </div>
+    </div>
   </div>
 </template>

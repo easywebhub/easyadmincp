@@ -21,6 +21,8 @@ export class DetailUserDlg  {
         this.user=(rs as any).data;
       //  console.log('data',JSON.stringify((rs as any).data))
            
+        }).catch(err=>{
+             swal("Notification", `Error Detail Account`, "warning");
         })
         
     }

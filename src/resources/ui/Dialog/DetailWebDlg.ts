@@ -15,14 +15,28 @@ export class DetailWebDlg {
         this.webSiteServices=webSiteServices
     }
     async activate(params) {
-        this.pendding = !this.pendding;
         await this.webSiteServices.DetailWebSite(params.WebsiteId).then(rs=>{
-             this.pendding = !this.pendding;
-        this.Web=(rs as any).data;
+            this.Web=(rs as any).data;
+            console.log('this.Web',JSON.stringify(this.Web))
            
+        }).catch(err=>{
+             swal("Notification", `Error Detail Website`, "warning");
         })
         
     }
-
+   clickProduct()
+    {
+       ($('.product') as any).modal('show');  
+    }
+     clickStagging()
+    {
+       ($('.stagging') as any).modal('show');  
+    }
+     clickAccounts()
+    {
+       ($('.accounts') as any).modal('show');  
+    }
+   
+   
 
 }
