@@ -58,7 +58,7 @@
           <div class="field">
             <label>List Production</label>
           
-            <button class="ui green button" data-content="List Production" ui-tooltip id="listProduct" click.delegate="clickProduct()">
+            <button class="ui green button" data-content="List Production" ui-tooltip id="listProduct">
                  Show
               </button>
           </div>
@@ -66,13 +66,13 @@
         <div class="two fields">
           <div class="field">
             <label>List Stagging</label>
-            <button class="ui green button"  data-content="List Stagging" click.delegate="clickStagging()" ui-tooltip id="listStagging">
+            <button class="ui green button"  data-content="List Stagging"  ui-tooltip id="listStagging">
                  Show
               </button>
           </div>
           <div class="field">
             <label>List Accounts</label>
-            <button class="ui green button"  data-content="List Accounts" ui-tooltip id="listAccounts" click.delegate="clickAccounts()">
+            <button class="ui green button"  data-content="List Accounts" ui-tooltip id="listAccounts">
                  Show
               </button>
           </div>
@@ -88,6 +88,7 @@
       </div>
       <ai-dialog-footer>
   </ai-dialog>
+
   <div class="ui modal product">  <i class="close icon"></i>
     <div class="header">
       List Production
@@ -124,6 +125,7 @@
       </div>
     </div>
   </div>
+
   <div class="ui modal stagging">
     <i class="close icon"></i>
     <div class="header">
@@ -161,6 +163,7 @@
       </div>
     </div>
   </div>
+
   <div class="ui modal accounts">
     <i class="close icon"></i>
     <div class="header">
