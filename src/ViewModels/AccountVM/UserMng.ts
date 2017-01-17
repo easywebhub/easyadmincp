@@ -150,7 +150,7 @@ export class UserMng {
 
           swal({
             title: "Notification",
-            text: "Cập nhật Account thành công",
+            text: "Update Account Success",
             timer: 2500,
             showConfirmButton: true,
             type: "success"
@@ -162,7 +162,7 @@ export class UserMng {
 
           swal({
             title: "Notification",
-            text: "Cập nhật Account thất bại",
+            text: "Update Account fail",
             timer: 2500,
             showConfirmButton: true,
             type: "warning"

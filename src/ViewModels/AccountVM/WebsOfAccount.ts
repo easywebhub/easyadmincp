@@ -71,16 +71,18 @@ export class WebsOfAccount {
 
  
   createAccount(item) {
-    
-   
+    item.AccountId=this.params.AccountId;
+   // console.log('item create',JSON.stringify(item))
     
        this.dialogService.open({
       viewModel: CreatePerAccountForWebDlg,
-      model:new Accounts(item)
+      model:item
     }).then((result) => {
       if (!result.wasCancelled) {
         this.clSevice.CreatePermisSionUserOnWebsite(result.output).then(rs=>{
+                this.activate(this.params)
                swal("Notification", `Create new Account for a Website`, "success");
+               
         }).catch(err=>{
              swal("Notification", `Error create new Account for a Website`, "warning");
         })
@@ -93,16 +95,32 @@ export class WebsOfAccount {
     });
   }
   updateAccount(item) {
-       this.meta.WebsiteId=item.WebsiteId
+       item.AccountId=this.params.AccountId;
        this.dialogService.open({
       viewModel: UpdatePerAccountForWebDlg,
-      model:this.meta
+      model:item
     }).then((result) => {
       if (!result.wasCancelled) {
         this.clSevice.UpdatePermisSionUserOnWebsite(result.output).then(rs=>{
-               swal("Notification", `Update Account for a Website`, "success");
+                this.activate(this.params)
+                swal({
+            title: "Notification",
+            text: "Update Permission Account for a Website success",
+            timer: 2500,
+            showConfirmButton: true,
+            type: "success"
+          });
+             
+                
         }).catch(err=>{
-             swal("Notification", `Error update Account for a Website`, "warning");
+            swal({
+            title: "Notification",
+            text: "Update Permission Account for a Website fail",
+            timer: 2500,
+            showConfirmButton: true,
+            type: "warning"
+          });
+            
         })
         
 
@@ -114,20 +132,20 @@ export class WebsOfAccount {
   }
   deleteAccount(item) {
     swal({
-      title: "Bạn chắc chắn không?",
-      text: "Xóa quyền quản trị website của tài khoản",
+      title: "Are you sure?",
+      text: "Delete Permission Admin website of Account",
       type: "warning",
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
-      confirmButtonText: "Yes, Xóa",
-      cancelButtonText: "No, Quay lại",
+      confirmButtonText: "Yes, Delete",
+      cancelButtonText: "No, Back To",
       closeOnConfirm: false,
       closeOnCancel: false
     }, (isConfirm) => {
       if (isConfirm) {
-        this.clSevice.DeleteOneWebsiteOfUser(this.params.AccountId, item.WebsiteId)
+        this.clSevice.DeleteOneWebsiteOfUser(this.params.AccountId,item.WebsiteId)
           .then(rs => {
-            swal("Deleted!", `Xóa quyền quản trị website của tài khoản`, "success");
+            swal("Deleted!", `Delete Permission Admin website of Account`, "success");
             this.activate(this.params);
           })
 

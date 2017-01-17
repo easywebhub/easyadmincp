@@ -31,7 +31,10 @@ export class DetailWebDlg {
 
   }
   attached() {
-
+    ($('.ui.modal')as any).modal({
+        allowMultiple: true,
+        closable: false
+    });
     ($('#listStagging') as any).click(() => {
       ($('.stagging') as any).modal('show');
     });
@@ -42,6 +45,7 @@ export class DetailWebDlg {
       ($('.accounts') as any).modal('show');
     });
   }
+
 
 
 

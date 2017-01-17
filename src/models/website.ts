@@ -28,6 +28,25 @@ export class Accounts {
         this.AccessLevels = entity.AccessLevels;
     }
 }
+export class PermissionAccountForWeb{
+    WebsiteId:string;
+    AccountId: string;
+    AccessLevels:any;
+     constructor(entity?: any) {
+        if(entity)
+         {
+            this.WebsiteId = entity.WebsiteId;
+            this.AccountId = entity.AccountId;
+           this.AccessLevels = [entity.AccessLevels];
+         }
+    }
+
+}
+ValidationRules
+  
+  .ensure((a:PermissionAccountForWeb)=>a.AccessLevels).required()
+  .on(PermissionAccountForWeb);
+
 ValidationRules
   
   .ensure((a:Accounts)=>a.AccessLevels).required()

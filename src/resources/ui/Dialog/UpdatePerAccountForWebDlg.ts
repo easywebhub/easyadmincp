@@ -13,7 +13,7 @@ import {
   SemanticFormRenderer
 } from '../../../resources/validation/semantic-form-renderer';
 import {
-  Accounts
+  Accounts,PermissionAccountForWeb
 } from '../../../models//website';
 
 
@@ -21,7 +21,7 @@ import {
 export class UpdatePerAccountForWebDlg {
   dialogController: DialogController;
  
-   meta: Accounts;
+   meta: PermissionAccountForWeb;
   controller: any
    
   constructor(dialogController, controllerFactory) {
@@ -32,18 +32,18 @@ export class UpdatePerAccountForWebDlg {
   }
  async activate(params) {
     
-    this.meta = new Accounts(params)
-   console.log('this.meta',JSON.stringify(this.meta))
+    this.meta = new PermissionAccountForWeb(params)
+  // console.log('this.meta',JSON.stringify(this.meta))
   }
 
   submit() {
    
    this.controller.validate().then(rs => {
        if(rs.valid==true)
-
         {
-           console.log('new Accounts(this.meta)',new Accounts(this.meta))
-          // this.dialogController.ok(new Accounts(this.meta));
+          this.meta.AccessLevels=[this.meta.AccessLevels]
+         // console.log('input meta',JSON.stringify(this.meta))
+           this.dialogController.ok(this.meta);
         }
         else
          console.log('error')

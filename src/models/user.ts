@@ -21,13 +21,14 @@ export class User {
 }
 
 export class Info {
-
+  
   Name: string
   Age: string
   Sex: string
   Address: string
   constructor(entity?: any) {
     if (entity) {
+    
       this.Name = entity.Name;
       this.Age = entity.Age;
       this.Sex = entity.Sex;
@@ -35,6 +36,25 @@ export class Info {
     }
   }
 }
+
+export class UpdateUser{
+  AccountId: string;
+  Name: string;
+  Age: string;
+  Sex: string;
+  Address: string;
+   constructor(entity?: any) {
+    if (entity) {
+     this.AccountId=entity.AccountId;
+      this.Name = entity.Info.Name;
+      this.Age = entity.Info.Age;
+      this.Sex = entity.Info.Sex;
+      this.Address = entity.Info.Address;
+    }
+   }
+
+}
+
 export class Web {
   AccountId: string;
   Name: string;
@@ -53,6 +73,9 @@ export class Web {
 
   }
 }
+ValidationRules
+  .ensure((a: UpdateUser) => a.Name).required()
+  .on(UpdateUser);
 ValidationRules
   .ensure((a: Web) => a.DisplayName).required()
   .ensure(a=>a.Url).matches(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/).required()

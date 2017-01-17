@@ -132,7 +132,7 @@ export class UserServices {
   }
    CreatePermisSionUserOnWebsite(meta) {
     return new Promise((resolve, reject) => {
-      this.http.post(`users/${meta.AccountId}/websites/${meta.WebsiteId}`, meta).then(data =>
+      this.http.post(`users/${meta.AccountId}/websites/${meta.WebsiteId}`,meta).then(data =>
         resolve(data)
       ).catch(err => {
           if(err.response.status==422){

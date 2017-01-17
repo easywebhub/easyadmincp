@@ -12,14 +12,13 @@ import {
   SemanticFormRenderer
 } from '../../../resources/validation/semantic-form-renderer';
 import {
-Info,User
+User,UpdateUser
 } from '../../../models/user';
 import * as $ from 'jquery'
 @inject(DialogController,ValidationControllerFactory)
 export class UpdateAccountDlg {
   dialogController: DialogController;
-  meta:Info;
-  user:User;
+  meta:UpdateUser;
   controller:any
   constructor(dialogController,controllerFactory) {
     this.dialogController = dialogController
@@ -28,10 +27,10 @@ export class UpdateAccountDlg {
     
   }
 activate(params){
-   
-  this.meta=new Info(params)
-  this.user=new User(params)
-   console.log('params',this.meta)
+  //console.log('params',JSON.stringify(params))
+  this.meta=new UpdateUser(params)
+ 
+  // console.log('meta',JSON.stringify(this.meta))
 }
 
  
@@ -41,11 +40,9 @@ activate(params){
 
         {
          
-          this.user.Info=this.meta;
          
-         (this.meta as any).AccountId=this.user.AccountId
-         // console.log('meta', JSON.stringify(this.meta))
-           this.dialogController.ok(this.meta);
+          //console.log('meta', JSON.stringify(this.meta))
+          this.dialogController.ok(this.meta);
         }
         else
          console.log('error')
