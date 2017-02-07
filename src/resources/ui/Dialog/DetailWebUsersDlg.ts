@@ -1,6 +1,7 @@
 import { DialogController } from 'aurelia-dialog';
 import { inject } from 'aurelia-dependency-injection';
 import { WebSiteServices } from '../../../services/WebSite/WebSiteServices';
+import * as swal from 'sweetalert'
 @inject(DialogController,WebSiteServices)
 export class DetailWebUsersDlg {
     dialogController: DialogController;

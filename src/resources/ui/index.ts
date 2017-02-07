@@ -20,6 +20,7 @@ export function configure(aurelia) {
     './Dialog/CreatePerAccountForWebDlg',
     './Dialog/UpdatePerAccountForWebDlg',
     './Dialog/UserCreateWebDlg',
+     './Dialog/account-websites',
     './CustomAttributes/ShowDropDown',
      
 

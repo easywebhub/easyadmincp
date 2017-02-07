@@ -37,7 +37,7 @@ export class PermissionAccountForWeb{
          {
             this.WebsiteId = entity.WebsiteId;
             this.AccountId = entity.AccountId;
-           this.AccessLevels = [entity.AccessLevels];
+            this.AccessLevels = [entity.AccessLevels];
          }
     }
 

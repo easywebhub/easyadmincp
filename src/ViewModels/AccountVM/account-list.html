@@ -1,54 +1,33 @@
 <template>
   <div class="content-padding">
-
-    <h3>Account Management &nbsp;
-
-        <div class="ui small basic icon buttons green">
-           <a class="ui button show-modal" click.delegate="CreateAccount()"><i class="sticky note outline icon green"></i>Create Account</a>
-     
-        </div>
-
-    </h3>
-
-   
-
-    <!--<p>Lọc thông tin :</p>-->
-
+    <h3 class="left">Account Management &nbsp;
+        <a href="#accounts/new" class="ui button green show-modal" style="float:right">NEW</a>
+     </h3>
     <div class="filter">
-
-        <div class="ui  form small">
-            <div class="fields">
-
-            <div class="field">
-            <label>DisplayName</label>
-            <input type="text" placeholder="DisplayName" ref="searchDisplayName">
+      <div class="ui form large">
+        <div class="fields">
+          <div class="field">
+            <label>UserName</label>
+            <input type="text" placeholder="UserName" ref="searchUserName">
           </div>
           <div class="field">
             <label>Name</label>
             <input type="text" placeholder="Name" ref="searchName">
           </div>
-
-
-                <!--<div class="field">
-                    <label>&nbsp</label>
-                    <button class="ui button green medium">
-                        <i class="icon search "></i> TÌM KIẾM
-                    </button>
-                </div>-->
-
-
-
-
-            </div>
+           <div class="field">
+            <label>AccountType</label>
+            <input type="text" placeholder="AccountType" ref="searchAccountType">
+          </div>
+           <div class="field">
+            <label>Address</label>
+            <input type="text" placeholder="Address" ref="searchAddress">
+          </div>
+         
         </div>
-
+      </div>
     </div>
-
-
-  <div class="content-padding">
-   
   
-      <table id="" class="ui celled table small">
+      <table class="ui selectable celled table">
         <thead>
           <tr>
             <th>Stt</th>
@@ -59,11 +38,11 @@
             <th>AccountType</th>
             <th>UserName</th>
             <th>Status</th>
-            <th>Action</th>
+            <!--<th>Action</th>-->
           </tr>
         </thead>
-        <tbody ref="mydata" items.bind="listUsers | searchUserName:searchUserName.value | searchName:searchName.value">
-          <tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (pageSize):current * (pageSize)">
+        <tbody ref="mydata" items.bind="entities | searchAddress:searchAddress.value | searchUserName:searchUserName.value | searchName:searchName.value | searchAccountType:searchAccountType.value">
+          <tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (pageSize):current * (pageSize)" click.delegate="$parent.open(item.AccountId)">
             <td>${(current-1)*pageSize+$index+1}</td>
             <td>${item.Info.Name}</td>
             <td>${item.Info.Age}</td>
@@ -72,9 +51,7 @@
             <td>${item.AccountType}</td>
             <td>${item.UserName}</td>
             <td>${item.Status}</td>
-              <td>
-
-
+            <!--<td>
             <div class="ui  icon top right pointing dropdown button green" ui-showDropDown>
                 <i class="wrench icon"></i>
                 <div class="menu">
@@ -86,8 +63,7 @@
                      <a class="item" click.delegate="$parent.websitesOfAccount(item)"><i class="list layout icon purple"></i> Websites Of Account</a>
                 </div>
                 </div>
-            </td>
-           
+            </td>-->
           </tr>
         </tbody>
         <tfoot>
@@ -100,6 +76,5 @@
           </tr>
         </tfoot>
       </table>
-    
-  </div>
+   
 </template>

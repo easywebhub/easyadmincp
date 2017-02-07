@@ -7,6 +7,8 @@ import {
 import {
   WebSiteServices
 } from '../../../services/WebSite/WebSiteServices';
+import * as swal from 'sweetalert';
+import * as $ from 'jquery';
 @inject(DialogController, WebSiteServices)
 export class DetailWebDlg {
   dialogController: DialogController;
