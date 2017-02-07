@@ -235,21 +235,21 @@
 // }
 import {EntityViewModel} from '../../models//entity-view-model';
 import {inject} from 'aurelia-dependency-injection';
-import {OrderService} from './order-service';
-//import {Lookups} from '../lookups';
+import {AccountService} from './account-service';
 
-@inject(OrderService)
+
+@inject(AccountService)
 export class Account extends EntityViewModel {
   customers;
 
   constructor(service) {
     super(service);
-   // this.customers = lookups.customers;
+
   }
 
   get title() {
     if (this.entity.AccountId <= 0) {
-      return 'New Order';
+      return 'NEW ACCOUNT';
     }
     return `Account #${this.entity.AccountId}`;
   }

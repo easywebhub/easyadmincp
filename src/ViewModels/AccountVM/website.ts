@@ -20,7 +20,7 @@
 // import {
 //   CreateAccountsDlg
 // } from '../../resources/ui/Dialog/CreateAccountsDlg';
-// import {ListViewModel} from '../../models//list-view-model';
+
 // import {
 //   User
 // } from '../../models//user';
@@ -30,7 +30,7 @@
 // import * as swal from 'sweetalert'
 // import {RouterConfiguration, Router} from 'aurelia-router';
 // @inject(UserServices, BindingEngine, DialogService,Router)
-// export class AccountList {
+// export class Account {
 //   userServices: UserServices;
 //   listUsers: any;
 //   pageSize: number = 10
@@ -207,68 +207,50 @@
 
 
 // }
+// export class SearchUserNameValueConverter {
+//   toView(array, obj) {
+
+//     if (obj == "") {
+//       return array;
+//     } else if (obj) {
+//       let filteredArr = array.filter(x => x.UserName && x.UserName.toLowerCase().indexOf(obj.toLowerCase()) !== -1);
+
+//       return filteredArr;
+//     }
+//     return array;
+//   }
+// }
+// export class SearchNameValueConverter {
+//   toView(array, obj) {
+
+//     if (obj == "") {
+//       return array;
+//     } else if (obj) {
+//       let filteredArr = array.filter(x => x.Info.Name && x.Info.Name.toLowerCase().indexOf(obj.toLowerCase()) !== -1);
+
+//       return filteredArr;
+//     }
+//     return array;
+//   }
+// }
+import {SubEntityViewModel} from '../../models//sub-entity-view-model';
+import {inject} from 'aurelia-dependency-injection';
+import {WebsiteService} from './website-service';
 
 
-import {ListViewModel} from '../../models//list-view-model';
-import {inject, singleton} from 'aurelia-dependency-injection';
-import {AppRouter} from 'aurelia-router';
-import {AccountService} from './account-service';
+@inject(WebsiteService)
+export class Website extends SubEntityViewModel {
+  customers;
 
-@inject(AppRouter, AccountService)
-export class AccountList extends ListViewModel {
-  constructor(router, service) {
-    super('accounts', router, service)
+  constructor(service) {
+    super(service);
+
   }
-}
-export class SearchUserNameValueConverter {
-  toView(array, obj) {
 
-    if (obj == "") {
-      return array;
-    } else if (obj) {
-      let filteredArr = array.filter(x => x.UserName && x.UserName.toLowerCase().indexOf(obj.toLowerCase()) !== -1);
-
-      return filteredArr;
-    }
-    return array;
-  }
-}
-export class SearchNameValueConverter {
-  toView(array, obj) {
-
-    if (obj == "") {
-      return array;
-    } else if (obj) {
-      let filteredArr = array.filter(x => x.Info.Name && x.Info.Name.toLowerCase().indexOf(obj.toLowerCase()) !== -1);
-
-      return filteredArr;
-    }
-    return array;
-  }
-}
-export class SearchAccountTypeValueConverter {
-  toView(array, obj) {
-
-    if (obj == "") {
-      return array;
-    } else if (obj) {
-      let filteredArr = array.filter(x => x.AccountType && x.AccountType.toLowerCase().indexOf(obj.toLowerCase()) !== -1);
-
-      return filteredArr;
-    }
-    return array;
-  }
-}
-export class SearchAddressValueConverter {
-  toView(array, obj) {
-
-    if (obj == "") {
-      return array;
-    } else if (obj) {
-      let filteredArr = array.filter(x => x.Info.Address && x.Info.Address.toLowerCase().indexOf(obj.toLowerCase()) !== -1);
-
-      return filteredArr;
-    }
-    return array;
-  }
+  // get title() {
+  //   if (this.entity.AccountId <= 0) {
+  //     return 'NEW WEBSITE';
+  //   }
+  //   return `WEBSITE #${this.entity.AccountId}`;
+  // }
 }

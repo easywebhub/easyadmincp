@@ -3,24 +3,24 @@
   <div class="content-padding">
 
      <h3 class="left">WEBSITES &nbsp;
-        <a class="ui button green show-modal" style="float:right" click.delegate="addWebsite()">ADD</a>
+        <a class="ui button green show-modal" style="float:right" click.delegate="addWebsite()">NEW</a>
      </h3>
      <br>
       <table class="ui selectable celled table">
           <thead>
           <tr>
-            <th></th>
+            <!--<th></th>-->
             <th>Name</th>
             <th>DisplayName</th>
             <th>Url</th>
             <th>WebsiteType</th>
             <th>Git</th>
             <th>AccessLevels</th>
-          
+          </tr>
         </thead>
-        <tbody ref="mydata" items.bind="entity">
-          <tr repeat.for="item of mydata.items" click.delegate="$parent.editWebsite(item)">
-            <td click.delegate="$parent.removeWebsite(item)"><i class="remove icon red"></i></td>
+        <tbody ref="mydata" items.bind="entities">
+          <tr repeat.for="item of mydata.items" click.delegate="$parent.open(item)">
+            <!--<td click.delegate="$parent.removeWebsite(item)"><i class="remove icon red"></i></td>-->
             <td>${item.Name}</td>
             <td>${item.DisplayName}</td>
              <td>

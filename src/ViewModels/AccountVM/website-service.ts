@@ -8,15 +8,15 @@ import {
   User
 } from '../../models//user';
 @inject(UserServices)
-export class OrderService {
+export class WebsiteService {
 
   clssServives: UserServices;
   constructor(userServices) {
     this.clssServives = userServices
   }
-  getPage() {
-    return this.clssServives.GetListByUsers().then(rs => {
-      //  console.log('data',(rs as any).data)
+  getPage(id) {
+    return this.clssServives.AllWebsiteOfUser(id).then(rs => {
+      console.log('data',(rs as any).data)
       return {
         entities: (rs as any).data,
         pageSize: 20,

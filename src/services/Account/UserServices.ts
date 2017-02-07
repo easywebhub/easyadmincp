@@ -1,17 +1,24 @@
-import { inject, transient } from 'aurelia-framework';
-import { json } from 'aurelia-fetch-client';
-import { HttpService } from '../..//services/HttpService';
+import {
+  inject,
+  transient
+} from 'aurelia-framework';
+import {
+  json
+} from 'aurelia-fetch-client';
+import {
+  HttpService
+} from '../..//services/HttpService';
 @inject(HttpService)
-//Create OBJ
+  //Create OBJ
 @transient()
 export class UserServices {
-    http: any;
-    constructor(httpService: HttpService) {
-        this.http = httpService.instance;
+  http: any;
+  constructor(httpService: HttpService) {
+    this.http = httpService.instance;
 
-    }
-    
-    GetListByUsers() {
+  }
+
+  GetListByUsers() {
 
     return new Promise((resolve, reject) => {
       this.http.get(`users`, {
@@ -20,10 +27,10 @@ export class UserServices {
 
         resolve(data)
       ).catch(err => {
-          if(err.response.status==422){
-        console.log(err)
-        reject(err)
-          }
+        if (err.response.status == 422) {
+          console.log(err)
+          reject(err)
+        }
       })
     })
   }
@@ -32,15 +39,15 @@ export class UserServices {
       this.http.post(`users`, meta).then(data =>
         resolve(data)
       ).catch(err => {
-         if(err.response.status==422){
-        //console.log(err)
-        reject(err)
-         }
+        if (err.response.status == 422) {
+          //console.log(err)
+          reject(err)
+        }
       })
     })
   }
-  
-   DetaiByUser(AccountId) {
+
+  DetaiByUser(AccountId) {
 
     return new Promise((resolve, reject) => {
       this.http.get(`users/${AccountId}`, {
@@ -49,10 +56,10 @@ export class UserServices {
 
         resolve(data)
       ).catch(err => {
-          if(err.response.status==422){
-        console.log(err)
-        reject(err)
-          }
+        if (err.response.status == 422) {
+          console.log(err)
+          reject(err)
+        }
       })
     })
   }
@@ -61,31 +68,31 @@ export class UserServices {
       this.http.put(`users/${meta.AccountId}`, meta).then(data =>
         resolve(data)
       ).catch(err => {
-          if(err.response.status==422){
-        console.log(err)
-        reject(err)
-          }
+        if (err.response.status == 422) {
+          console.log(err)
+          reject(err)
+        }
       })
     })
   }
- UserByCreateWebSite(meta) {
-     return new Promise((resolve, reject) => {
-          this.http.post(`users/${meta.AccountId}/websites`,meta, {
-            responseType: 'json'
-          }).then(data =>
-             resolve(data)
-          ).catch(err => {
-           if(err.response.status==422){
-       //console.log('err',JSON.stringify(err))
-            reject(err)
-           }
+  UserByCreateWebSite(meta) {
+    return new Promise((resolve, reject) => {
+      this.http.post(`users/${meta.AccountId}/websites`, meta, {
+        responseType: 'json'
+      }).then(data =>
+        resolve(data)
+      ).catch(err => {
+        if (err.response.status == 422) {
+          //console.log('err',JSON.stringify(err))
+          reject(err)
+        }
       })
     })
   }
 
 
 
- AllWebsiteOfUser(AccountId) {
+  AllWebsiteOfUser(AccountId) {
 
     return new Promise((resolve, reject) => {
       this.http.get(`users/${AccountId}/websites`, {
@@ -94,15 +101,15 @@ export class UserServices {
 
         resolve(data)
       ).catch(err => {
-          if(err.response.status==422){
-        console.log(err)
-        reject(err)
-          }
+        if (err.response.status == 422) {
+          console.log(err)
+          reject(err)
+        }
       })
     })
   }
 
- DeleteOneWebsiteOfUser(AccountId,WebsiteId) {
+  DeleteOneWebsiteOfUser(AccountId, WebsiteId) {
 
     return new Promise((resolve, reject) => {
       this.http.delete(`users/${AccountId}/websites/${WebsiteId}`, {
@@ -111,10 +118,10 @@ export class UserServices {
 
         resolve(data)
       ).catch(err => {
-          if(err.response.status==422){
-        console.log(err)
-        reject(err)
-          }
+        if (err.response.status == 422) {
+          console.log(err)
+          reject(err)
+        }
       })
     })
   }
@@ -123,25 +130,25 @@ export class UserServices {
       this.http.put(`users/${meta.AccountId}/websites/${meta.WebsiteId}`, meta).then(data =>
         resolve(data)
       ).catch(err => {
-          if(err.response.status==422){
-        console.log(err)
-        reject(err)
-          }
+        if (err.response.status == 422) {
+          console.log(err)
+          reject(err)
+        }
       })
     })
   }
-   CreatePermisSionUserOnWebsite(meta) {
+  CreatePermisSionUserOnWebsite(meta) {
     return new Promise((resolve, reject) => {
-      this.http.post(`users/${meta.AccountId}/websites/${meta.WebsiteId}`,meta).then(data =>
+      this.http.post(`users/${meta.AccountId}/websites/${meta.WebsiteId}`, meta).then(data =>
         resolve(data)
       ).catch(err => {
-          if(err.response.status==422){
-        console.log(err)
-        reject(err)
-          }
+        if (err.response.status == 422) {
+          console.log(err)
+          reject(err)
+        }
       })
     })
   }
-  
-    
+
+
 }

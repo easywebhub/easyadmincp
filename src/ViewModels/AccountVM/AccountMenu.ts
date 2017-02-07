@@ -4,7 +4,9 @@ export class AccountMenu {
         config.map([
              { route: '', name: 'account-list', moduleId: '../../ViewModels/AccountVM/account-list', nav: true, settings: { roles: [] }, title: 'Account Management'},
              { route: 'WebsOfAccount/:AccountId', name: 'WebsOfAccount', moduleId: '../../ViewModels/AccountVM/WebsOfAccount', nav: false, title: 'Website Of Account' },
-             { route: ':id', moduleId: '../../ViewModels/AccountVM/account',nav: false, title: 'Account' }
+             { route: ':id', moduleId: '../../ViewModels/AccountVM/account',nav: false, title: 'Account' },
+             { route: ':AccountId/WebsOfAccount/:WebsiteId', moduleId: '../../ViewModels/AccountVM/website',nav: false, title: 'Website' }
+
         ]);
         this.router = router;
         
