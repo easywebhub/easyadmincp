@@ -1,76 +1,62 @@
-
 <template>
-  <div class="content-padding">
-
-     <h3 class="left">WEBSITES &nbsp;
-        <a class="ui button green show-modal" style="float:right" click.delegate="addWebsite()">NEW</a>
-     </h3>
-     <br>
-      <table class="ui selectable celled table">
-          <thead>
-          <tr>
-            <!--<th></th>-->
-            <th>Name</th>
-            <th>DisplayName</th>
-            <th>Url</th>
+ 
+    <h3 class="left">WEBSITES &nbsp;
+      <a class="ui button green show-modal" style="float:right" click.delegate="addWebsite()">ADD</a>
+    </h3>
+    <br>
+    <table class="ui selectable celled table">
+      <thead>
+        <tr> 
+          <th></th>
+          <th>Name</th>
+          <th>DisplayName</th>
+          <th>Url</th>
+        
+          <th>WebTemplateId</th>
+           <th>Source</th>
+          <th>Git</th>
             <th>WebsiteType</th>
-            <th>Git</th>
-            <th>AccessLevels</th>
-          </tr>
-        </thead>
-        <tbody ref="mydata" items.bind="entities">
-          <tr repeat.for="item of mydata.items" click.delegate="$parent.open(item)">
-            <!--<td click.delegate="$parent.removeWebsite(item)"><i class="remove icon red"></i></td>-->
-            <td>${item.Name}</td>
-            <td>${item.DisplayName}</td>
-             <td>
-            <a class="tiny ui icon button circular orange" href.bind="item.Url" if.bind="item.Url" title.bind="item.Url" target="_blank"
+
+          <th>AccessLevels</th>
+        </tr>
+      </thead>
+      <tbody ref="mydata" items.bind="entities">
+        <tr repeat.for="item of mydata.items">
+          <td click.delegate="$parent.removeWebsite(item)"><i class="remove icon red"/></td>
+          <td click.delegate="$parent.editWebsite(item)">${item.Name}</td>
+          <td click.delegate="$parent.editWebsite(item)">${item.DisplayName}</td>
+          <td>
+            <a class="tiny ui icon button circular blue" href.bind="item.Url" if.bind="item.Url" title.bind="item.Url" target="_blank"
               href="${item.Url}">
               <i class="code icon"></i>
-            </a>
+              </a>
           </td>
-           
-            <td>${item.WebsiteType}</td>
-            <td>
+          <td click.delegate="$parent.editWebsite(item)">${item.WebTemplateId}</td>
+           <td>
+            <a class="tiny ui icon button circular blue" href.bind="item.Git" if.bind="item.Source" title.bind="item.Source" target="_blank"
+              href="${item.Source}">
+               <i class="code icon"></i>
+              </a>
+          </td>
+          <td>
             <a class="tiny ui icon button circular blue" href.bind="item.Git" if.bind="item.Git" title.bind="item.Git" target="_blank"
-              href="${item.Url}">
-              <i class="git icon"></i>
-            </a>
+              href="${item.Git}">
+               <i class="code icon"></i>
+              </a>
           </td>
-           
-            <td>${item.AccessLevels}</td>
-             <!--<td>
+           <td click.delegate="$parent.editWebsite(item)">${item.WebsiteType}</td>
+          <td click.delegate="$parent.editWebsite(item)">${item.AccessLevels}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="10">
+            <div class="ui right floated pagination menu tiny">
+              <!--<ui-pagination total-record.two-way="total" page-size.two-way="pageSize" page-all.two-way="allPage" current-page.two-way="current"></ui-pagination>-->
+            </div>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
 
-
-            <div class="ui  icon top right pointing dropdown button green" ui-showDropDown>
-                <i class="wrench icon"></i>
-                <div class="menu">
-                   
-                   <a class="item" click.delegate="$parent.createAccount(item)"><i class="add square icon green"></i>Create</a>
-                  
-                    
-                       <a class="item" click.delegate="$parent.updateAccount(item)"><i class="refresh icon blue"></i>Update</a>
-                    <div class="ui divider"></div>
-                     <a class="item" click.delegate="$parent.deleteAccount(item)"><i class="remove icon red"></i>Delete</a>
-                </div>
-                </div>
-            </td>-->
-          
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th colspan="10">
-              <div class="ui right floated pagination menu tiny">
-                <!--<ui-pagination total-record.two-way="total" page-size.two-way="pageSize" page-all.two-way="allPage" current-page.two-way="current"></ui-pagination>-->
-              </div>
-            </th>
-          </tr>
-        </tfoot>
-      </table>
-
-  </div>
 </template>
-
-
-

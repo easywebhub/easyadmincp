@@ -26,17 +26,10 @@ export class ListViewModel {
         this.current = result.current;
         this.allPage = result.allPage;
         this.pageSize = result.pageSize;
-        //console.log('result',result.current,result.pageSize, result.allPage,result.total)
-        // this.isLoading = false;
+        
       });
   }
-
-  //   setPage(index) {
-  //     this.pageIndex = index;
-  //     this.load();
-  //   }
-
-  open(id) {
+ open(id) {
     this.router.navigate(this.route + '/' + id);
   }
 }

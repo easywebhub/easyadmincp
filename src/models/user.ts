@@ -73,6 +73,36 @@ export class Web {
 
   }
 }
+export class ModelWeb {
+  WebsiteId:string;
+ // AccountId: string;
+  Name: string;
+  DisplayName: string;
+  Url: string;
+  WebTemplateId: string;
+  AccessLevels:any;
+  Source: string;
+  WebsiteType: string;
+  Git: string;
+  constructor(entity?: any) {
+    if (entity) {
+    //  this.AccountId = entity.AccountId;
+      this.WebsiteId = entity.WebsiteId || 0
+      this.Name = entity.Name;
+      this.DisplayName = entity.DisplayName;
+      this.Url = entity.Url;
+      this.WebTemplateId = entity.WebTemplateId;
+      this.AccessLevels = entity.AccessLevels;
+      this.Source = entity.Source
+      this.WebsiteType = entity.WebsiteType;
+      this.Git = entity.Git;
+    }
+
+
+  }
+}
+
+
 ValidationRules
   .ensure((a: UpdateUser) => a.Name).required()
   .on(UpdateUser);

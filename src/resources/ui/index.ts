@@ -22,7 +22,7 @@ export function configure(aurelia) {
     './Dialog/UserCreateWebDlg',
      './Dialog/account-websites',
     './CustomAttributes/ShowDropDown',
-     
-
-  );
+     './Dialog/cu-account-website-Dlg',
+     './Dialog/menu-header.html'
+     );
 }
