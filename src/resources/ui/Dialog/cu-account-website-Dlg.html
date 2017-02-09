@@ -86,17 +86,17 @@
     <ai-dialog-body>
       <form class="ui form large" submit.delegate="submit()">
         <div class="ui two fields">
-          <!--<div class="field">
+          <!--<div class="field" hidden>
             <label>WebsiteId</label>
-            <input type="text" placeholder="WebsiteId" value.bind="entity.WebsiteId">
+            <input type="text" placeholder="WebsiteId" value.bind="item.WebsiteId">
           </div>-->
           <div class="field">
             <label>Name</label>
-            <input type="text" placeholder="Name" value.bind="entity.Name">
+            <input type="text" placeholder="Name" value.bind="item.Name">
           </div>
           <div class="field">
             <label>DisplayName</label>
-            <input type="text" placeholder="DisplayName" value.bind="entity.DisplayName">
+            <input type="text" placeholder="DisplayName" value.bind="item.DisplayName">
           </div>
         </div>
 
@@ -104,11 +104,11 @@
 
           <div class="field">
             <label>Url</label>
-            <input type="text" placeholder="Url" value.bind="entity.Url">
+            <input type="text" placeholder="Url" value.bind="item.Url">
           </div>
           <div class="field">
             <label>WebTemplateId</label>
-            <input type="text" placeholder="WebTemplateId" value.bind="entity.WebTemplateId">
+            <input type="text" placeholder="WebTemplateId" value.bind="item.WebTemplateId">
           </div>
 
         </div>
@@ -116,22 +116,22 @@
           
           <div class="field">
             <label>Source</label>
-            <input type="text" placeholder="Source" value.bind="entity.Source">
+            <input type="text" placeholder="Source" value.bind="item.Source">
           </div>
            <div class="field">
             <label>Git</label>
-            <input type="text" placeholder="Source" value.bind="entity.Git">
+            <input type="text" placeholder="Source" value.bind="item.Git">
           </div>
         </div>
         <div class="ui two fields">
           <div class="field">
             <label>WebsiteType</label>
-            <input type="text" placeholder="WebsiteType" value.bind="entity.WebsiteType">
+            <input type="text" placeholder="WebsiteType" value.bind="item.WebsiteType">
           </div>
           <div class="field">
                <label>AccessLevels</label>
-            <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="entity.AccessLevels">
-              <input name="gender" type="hidden" value="${entity.AccessLevels}">
+            <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="item.AccessLevels & validate">
+              <input name="gender" type="hidden" value="${item.AccessLevels}">
               <i class="dropdown icon"></i>
               <div class="default text">--Select All--</div>
               <div class="menu">

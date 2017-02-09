@@ -11,7 +11,7 @@ import {
   CUAccountWebsiteDlg
 } from '../../../resources/ui/Dialog/cu-account-website-Dlg';
 import {
-  ModelWeb
+  ModelWeb,User
 } from '../../../models/user';
 
 @inject(UserServices, DialogService)
@@ -21,7 +21,6 @@ export class AccountWebsites {
   entities: any;
   clssServices: UserServices;
   dialogService: DialogService;
-
   constructor(UserServices, dialogService) {
 
     this.clssServices = UserServices;
@@ -29,24 +28,34 @@ export class AccountWebsites {
   
 }
 
-  activate(params) {
-   
+   activate(params) {
+    //console.log('params',params)
+     this.entities = params;
     if (params.Websites) {
-     
-      this.entities = params.Websites
-   
-   } else
+        
+         this.entities.Websites=this.entities.Websites.map(x=>{
+            return new ModelWeb(x)
+         })
+      }
+    else
+     {
+       // console.log('@@@',params)
+        this.entities =params
+        this.entities.Websites=[];
+     }
     
-      this.entities = []
   }
 
-  addWebsite() {
+  addWebsite(item) {
 
     this.dialogService.open({
-      viewModel: CUAccountWebsiteDlg
+      viewModel: CUAccountWebsiteDlg,
+      model:new ModelWeb(item)
     }).then((result) => {
       if (!result.wasCancelled) {
-        this.entities.push(result.output)
+        //result.output.AccessLevels=[result.output.AccessLevels]
+         this.entities.Websites.push(result.output);
+        
       } else {
         console.log('bad');
       }
@@ -55,32 +64,19 @@ export class AccountWebsites {
 
   }
   editWebsite(item) {
-    let obj;
+ 
     this.dialogService.open({
       viewModel: CUAccountWebsiteDlg,
-      model: item
+      model:item
     }).then((result) => {
       if (!result.wasCancelled) {
-        //console.log('@@@',result.output)
-        this.entities = this.entities.map(x => {
-          if (result.output.WebsiteId && x.WebsiteId == result.output.WebsiteId) {
-            return result.output;
-          } else
-            return x;
-
-        });
-
-
-      } else {
-        console.log('bad');
       }
-
     });
   }
 
   removeWebsite(item) {
   
-    this.entities.splice(this.entities.indexOf(item), 1);
+    this.entities.Websites.splice(this.entities.Websites.indexOf(item), 1);
  
  }
 

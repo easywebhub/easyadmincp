@@ -10,7 +10,7 @@ import {
   Accounts
 } from '../../../models//website';
 import {
-  ValidationControllerFactory
+  ValidationControllerFactory,ValidationRules
 
 } from 'aurelia-validation';
 import {
@@ -24,30 +24,31 @@ import {
 
 export class CUAccountWebsiteDlg {
   dialogController: DialogController;
-  entity: ModelWeb;
+  item :ModelWeb;
   controller: any;
-
   constructor(dialogController, controllerFactory) {
-
-    this.dialogController = dialogController
-
+    this.dialogController = dialogController;
     this.controller = controllerFactory.createForCurrentScope();
     this.controller.addRenderer(new SemanticFormRenderer());
-
-
-
+  
   }
   activate(params) {
-      this.entity = new ModelWeb(params);
+      //console.log("para",params);
+      this.item =params;
+      
    }
   submit() {
+    //console.log('valid',this.controller)
     this.controller.validate().then(rs => {
       if (rs.valid == true)
       {
-        this.dialogController.ok(this.entity);
+        //console.log(this.item)
+        this.item.AccessLevels=[this.item.AccessLevels]||[];
+        this.dialogController.ok(this.item);
       } else
         console.log('error')
 
     });
   }
+  
 }

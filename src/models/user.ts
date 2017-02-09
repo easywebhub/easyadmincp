@@ -8,13 +8,15 @@ export class User {
   UserName: string;
   Password: string;
   Info: Info = new Info();
+  Websites:ModelWeb[]=[]
   constructor(entity?: any) {
     if (entity) {
-      this.AccountId = entity.AccountId;
+      this.AccountId = entity.AccountId ||0;
       this.AccountType = entity.AccountType;
       this.UserName = entity.UserName;
       this.Password = entity.Password;
       this.Info = entity.Info;
+      this.Websites=entity.Websites;
     }
 
   }
@@ -102,6 +104,25 @@ export class ModelWeb {
   }
 }
 
+ValidationRules.customRule(
+    'AccessLevels',
+    (value, obj, otherPropertyName) => {
+       console.log('value',value)
+        if (value !== null || value !== undefined ||
+        value !== "") {
+
+            return true;
+    } 
+    else {
+        return false;
+    }}
+    ,
+    '${$displayName} không hợp lệ',
+    otherPropertyName => ({ otherPropertyName })
+);
+ValidationRules
+  .ensure((a: ModelWeb) => a.AccessLevels).required().satisfiesRule('AccessLevels').ensure(a => a.Name).required()
+  .on(ModelWeb);
 
 ValidationRules
   .ensure((a: UpdateUser) => a.Name).required()
@@ -115,9 +136,9 @@ ValidationRules
   .ensure((a: Info) => a.Name).required()
   .on(Info);
 
-ValidationRules
-  .ensure((a: User) => a.AccountType).required()
-  .ensure(a => a.UserName).required()
- //.ensure("Name").required()
-  .ensure(a => a.Password).required()
-  .on(User);
+// ValidationRules
+//  // .ensure((a: User) => a.AccountType).required()
+//   .ensure((a:User) => a.UserName).required()
+//  //.ensure("Name").required()
+//  // .ensure(a => a.Password).required()
+//   .on(User);

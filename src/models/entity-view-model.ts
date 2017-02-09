@@ -22,7 +22,7 @@ export class EntityViewModel {
   }
 
   save() {
-      console.log('Model Account',JSON.stringify(this.entity));
+      console.log('Model Account',this.entity);
   }
 
   revert() {

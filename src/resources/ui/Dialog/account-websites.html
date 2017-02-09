@@ -1,7 +1,7 @@
 <template>
  
     <h3 class="left">WEBSITES &nbsp;
-      <a class="ui button green show-modal" style="float:right" click.delegate="addWebsite()">ADD</a>
+      <a class="ui button green show-modal" style="float:right" click.delegate="addWebsite(item)">ADD</a>
     </h3>
     <br>
     <table class="ui selectable celled table">
@@ -20,7 +20,7 @@
           <th>AccessLevels</th>
         </tr>
       </thead>
-      <tbody ref="mydata" items.bind="entities">
+      <tbody ref="mydata" items.bind="entities.Websites">
         <tr repeat.for="item of mydata.items">
           <td click.delegate="$parent.removeWebsite(item)"><i class="remove icon red"/></td>
           <td click.delegate="$parent.editWebsite(item)">${item.Name}</td>

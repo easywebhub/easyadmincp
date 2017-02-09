@@ -8,7 +8,7 @@
         <div class="ui four fields">
         <div class="field">
           <label>AccountId</label>
-          <input type="text" placeholder="AccountId" value.bind="entity.AccountId">
+          <input type="text" placeholder="AccountId" value.bind="entity.AccountId" disabled>
         </div>
         <div class="field">
           <label>AccountType</label>
@@ -21,7 +21,7 @@
         </div>
         <div class="field">
           <label>UserName</label>
-          <input type="text" placeholder="UserName" value.bind="entity.UserName">
+          <input type="text" placeholder="UserName" value.bind="entity.UserName & validate">
         </div>
         <div class="field">
           <label>Status</label>
@@ -37,11 +37,11 @@
       <div class="ui four fields">
         <div class="field">
           <label>Name</label>
-          <input type="text" placeholder="AccountId" value.bind="entity.Info.Name">
+          <input type="text" placeholder="Name" value.bind="entity.Info.Name">
         </div>
         <div class="field">
           <label>Age</label>
-          <input type="number" placeholder="AccountId" value.bind="entity.Info.Age">
+          <input type="number" placeholder="Age" value.bind="entity.Info.Age">
         </div>
         <div class="field">
           <label>Sex</label>
