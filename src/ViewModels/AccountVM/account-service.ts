@@ -7,12 +7,22 @@ import {
 import {
   User
 } from '../../models//user';
-@inject(UserServices)
+import {
+  ValidationControllerFactory,ValidationRules
+
+} from 'aurelia-validation';
+import {
+  SemanticFormRenderer
+} from '../../resources/validation/semantic-form-renderer';
+@inject(UserServices,ValidationControllerFactory)
 export class AccountService {
 
   clssServives: UserServices;
-  constructor(userServices) {
-    this.clssServives = userServices
+  controller:any;
+  constructor(userServices,controllerFactory) {
+    this.clssServives = userServices;
+    this.controller = controllerFactory.createForCurrentScope();
+    this.controller.addRenderer(new SemanticFormRenderer());
   }
   getPage() {
     return this.clssServives.GetListByUsers().then(rs => {
@@ -31,9 +41,9 @@ export class AccountService {
   loadExisting(id) {
     return this.clssServives.DetaiByUser(id)
       .then(rs => {
-
+        console.log('@@@@@####',rs)
         return {
-          entity: (rs as any).data
+          entity: new User((rs as any).data)
 
         };
       });
@@ -46,14 +56,12 @@ export class AccountService {
  } 
   createNew() {
      return this.createPromise().then(rs=>{
+       console.log('new',rs)
          return {
             entity:rs
          }
      })
   
   }
-  save(){
-      
-  }
- 
+  
 }

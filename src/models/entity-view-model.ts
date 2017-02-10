@@ -2,13 +2,15 @@ export class EntityViewModel {
   service;
   entityManager;
   entity;
-  info:any;
+  info: any;
+  controller:any;
   constructor(service) {
     this.service = service;
+    console.log('service',service)
   }
 
   activate(info) {
-    this.info=info;
+    this.info = info;
     var promise;
     if (info.id === 'new') {
       promise = this.service.createNew();
@@ -17,15 +19,25 @@ export class EntityViewModel {
     }
 
     return promise.then(result => {
-         this.entity = result.entity;
+      
+      this.entity = result.entity;
     });
   }
 
   save() {
-      console.log('Model Account',this.entity);
+ 
+    this.service.controller.validate().then(rs => {
+     
+      if (rs.valid == true) {
+         console.log('Model Account', this.entity);
+      } else
+        console.log('error')
+    })
   }
 
   revert() {
-     this.activate(this.info)
+     this.activate(this.info);
+
+    
   }
 }

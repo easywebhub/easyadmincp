@@ -29,15 +29,14 @@
               <option value="">--Select All--</option>
              <option value="verified">Verified</option>
               <option value="Not Verified">Not Verified</option>
-               
-            </select>
+              </select>
         </div>
       </div>
       <h3>INFO</h3>
       <div class="ui four fields">
         <div class="field">
           <label>Name</label>
-          <input type="text" placeholder="Name" value.bind="entity.Info.Name">
+          <input type="text" placeholder="Name" value.bind="entity.Info.Name & validate">
         </div>
         <div class="field">
           <label>Age</label>

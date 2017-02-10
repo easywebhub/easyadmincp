@@ -20,13 +20,13 @@ import {
 import {
   ModelWeb
 } from '../../../models/user';
-@inject(DialogController, ValidationControllerFactory)
+@inject(DialogController,ValidationControllerFactory)
 
 export class CUAccountWebsiteDlg {
   dialogController: DialogController;
   item :ModelWeb;
   controller: any;
-  constructor(dialogController, controllerFactory) {
+  constructor(dialogController,controllerFactory) {
     this.dialogController = dialogController;
     this.controller = controllerFactory.createForCurrentScope();
     this.controller.addRenderer(new SemanticFormRenderer());
@@ -38,11 +38,12 @@ export class CUAccountWebsiteDlg {
       
    }
   submit() {
-    //console.log('valid',this.controller)
+    console.log('valid',this.controller)
     this.controller.validate().then(rs => {
+      console.log('rs cu',rs)
       if (rs.valid == true)
       {
-        //console.log(this.item)
+        console.log(this.item)
         this.item.AccessLevels=[this.item.AccessLevels]||[];
         this.dialogController.ok(this.item);
       } else

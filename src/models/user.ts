@@ -8,14 +8,14 @@ export class User {
   UserName: string;
   Password: string;
   Info: Info = new Info();
-  Websites:ModelWeb[]=[]
+  Websites:Array<ModelWeb>
   constructor(entity?: any) {
     if (entity) {
       this.AccountId = entity.AccountId ||0;
       this.AccountType = entity.AccountType;
       this.UserName = entity.UserName;
       this.Password = entity.Password;
-      this.Info = entity.Info;
+      this.Info = new Info(entity.Info);
       this.Websites=entity.Websites;
     }
 
@@ -136,9 +136,6 @@ ValidationRules
   .ensure((a: Info) => a.Name).required()
   .on(Info);
 
-// ValidationRules
-//  // .ensure((a: User) => a.AccountType).required()
-//   .ensure((a:User) => a.UserName).required()
-//  //.ensure("Name").required()
-//  // .ensure(a => a.Password).required()
-//   .on(User);
+ValidationRules
+  .ensure((a:User) => a.UserName).required()
+  .on(User);
