@@ -89,7 +89,7 @@ export class Register {
             type: "success"
           });
           window.setTimeout(() => {
-            this.theRouter.navigateToRoute('WebSiteMenu');
+            this.theRouter.navigateToRoute('websites');
             location.reload();
           }, 1200);
           console.log('true')

@@ -81,36 +81,52 @@
   </style>
   <ai-dialog class="edit-form" data-backdrop="static">
     <ai-dialog-header>
-      <h3>Update</h3>
+      <h3>Create</h3>
     </ai-dialog-header>
     <ai-dialog-body>
-      <form class="ui form" submit.delegate="submit()">
-        <div class="field">
-          <label>AccessLevels</label>
-        </div>
-        <div class="field">
-          <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="meta.AccessLevels">
-            <input name="gender" type="hidden" value="${meta.AccessLevels}">
-            <i class="dropdown icon"></i>
-            <div class="default text">--Select All--</div>
-            <div class="menu">
-              <div class="item" data-value="dev">dev</div>
-              <div class="item" data-value="test">test</div>
-              <div class="item" data-value="member">member</div>
-              <div class="item" data-value="owner">owner</div>
-              <div class="item" data-value="contentor">contentor</div>
-              <div class="item" data-value="admin">admin</div>
-              <div class="item" data-value="user">user</div>
-              
-            </div>
+      <form class="ui form large" submit.delegate="submit()">
+        <div class="ui two fields">
+    
+          <div class="field">
+            <label>Id</label>
+            <input type="text" placeholder="Id" value.bind="item.Id" disabled>
+          </div>
+          <div class="field">
+            <label>Name</label>
+            <input type="text" placeholder="Name" value.bind="item.Name">
           </div>
         </div>
-        <br>
-          <div class="actions">
+
+         <div class="ui two fields"> 
+           <div class="field">
+            <label>HostingFee</label>
+            <input type="text" placeholder="HostingFee" value.bind="item.HostingFee">
+          </div>
+          <div class="field">
+            <label>Url</label>
+            <input type="text" placeholder="Url" value.bind="item.Url">
+          </div>
+        </div>
+
+        <div class="ui two fields"> 
+           <div class="field">
+            <label>Git</label>
+            <input type="text" placeholder="Git" value.bind="item.Git">
+          </div>
+          <div class="field">
+            <label>IsDefault</label>
+            <input type="text" placeholder="IsDefault" value.bind="item.IsDefault">
+          </div>
+        </div>
+
+        <div class="field">
+        <div class="actions right">
           <div class="ui deny button" click.trigger="dialogController.cancel()">
-            Cancel
+            Close
           </div>
-          <button class="ui primary button" type="submit">Update</button>
+          <button class="ui primary button" type="submit">OK</button>
+        </div>
+        </div>
         </div>
       </form>
     </ai-dialog-body>

@@ -15,13 +15,13 @@ import {
 } from '../../../resources/validation/semantic-form-renderer';
 
 import {
-  ModelWeb
-} from '../../../models/user';
+  Production,Stagging
+} from '../../../models/model-web';
 @inject(DialogController,ValidationControllerFactory)
 
-export class CUAccountWebsiteDlg {
+export class CUStaggingDlg {
   dialogController: DialogController;
-  item :ModelWeb;
+  item :Stagging;
   controller: any;
   constructor(dialogController,controllerFactory) {
     this.dialogController = dialogController;
@@ -30,7 +30,7 @@ export class CUAccountWebsiteDlg {
   
   }
   activate(params) {
-      //console.log("para",params);
+      console.log("para",params);
       this.item =params;
       
    }
@@ -41,7 +41,6 @@ export class CUAccountWebsiteDlg {
       if (rs.valid == true)
       {
         console.log(this.item)
-        this.item.AccessLevels=[this.item.AccessLevels]||[];
         this.dialogController.ok(this.item);
       } else
         console.log('error')

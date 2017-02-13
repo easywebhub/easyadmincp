@@ -1,0 +1,33 @@
+<template>
+    <h3 class="left">Accounts &nbsp;
+      <a class="ui button green show-modal" style="float:right" click.delegate="addAccount(item)">ADD</a>
+    </h3>
+    </br>
+    <table class="ui selectable celled table">
+      <thead>
+        <tr> 
+          <th></th>
+          <th>AccountId</th>
+          <th>AccessLevels</th>
+          
+        </tr>
+      </thead>
+      <tbody ref="mydata" items.bind="entities.Accounts">
+        <tr repeat.for="item of mydata.items">
+          <td click.delegate="$parent.removeAccount(item)"><i class="remove icon red"/></td>
+          <td click.delegate="$parent.editAccount(item)">${item.AccountId}</td>
+          <td click.delegate="$parent.editAccount(item)">${item.AccessLevels}</td>
+         </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="10">
+            <div class="ui right floated pagination menu tiny">
+              <!--<ui-pagination total-record.two-way="total" page-size.two-way="pageSize" page-all.two-way="allPage" current-page.two-way="current"></ui-pagination>-->
+            </div>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+
+</template>

@@ -77,66 +77,49 @@
       -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
       background-color: #555;
     }
-  table>thead>tr>th {
-    width: 10%;
-   
-  }
+
   </style>
   <ai-dialog class="edit-form" data-backdrop="static">
     <ai-dialog-header>
-      <h3>Create Website</h3>
+      <h3>Create</h3>
     </ai-dialog-header>
     <ai-dialog-body>
-     
-      <form class="ui form" submit.delegate="submit()">
-        <div class="field">
-          <label>Name</label>
-          <input type="text"  placeholder="Name" value.bind="Web.Name & validate">
-        </div>
-        <div class="field">
-          <label>DisplayName</label>
-          <input type="text"  placeholder="DisplayName" value.bind="Web.DisplayName & validate">
-        </div>
-        <div class="field">
-          <label>Url</label>
-          <input type="text"  placeholder="Url" value.bind="Web.Url & validate">
-        </div>
-        <div class="field">
-          <label>WebTemplateId</label>
-          <input type="text"  placeholder="WebTemplateId" value.bind="Web.WebTemplateId">
-        </div>
-       
-        <!--<div class="field">
-            <label>AccountType</label>
-         </div> 
-        <div class="field">
-          <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="Accounts.AccessLevels">
-           
-            <input name="gender" type="hidden" value="${Accounts.AccessLevels}">
-           
-            <i class="dropdown icon"></i>
-            <div class="default text">--Select All--</div>
-            <div class="menu">
-             <div class="item" data-value="dev">dev</div>
-              <div class="item" data-value="tester">tester</div>
-              <div class="item" data-value="member">member</div>
-              <div class="item" data-value="owner">owner</div>
-              <div class="item" data-value="contentor">contentor</div>
-              <div class="item" data-value="admin">admin</div>
-              <div class="item" data-value="user">user</div>
+      <form class="ui form large" submit.delegate="submit()">
+        <div class="ui two fields">
+         
+          <div class="field">
+            <label>AccountId</label>
+            <input type="text" placeholder="AccountId" value.bind="item.AccountId" disabled>
+          </div>
+           <div class="field">
+               <label>AccessLevels</label>
+            <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="item.AccessLevels">
+              <input name="gender" type="hidden" value="${item.AccessLevels}">
+              <i class="dropdown icon"></i>
+              <div class="default text">--Select All--</div>
+              <div class="menu">
+                <div class="item" data-value="dev">dev</div>
+                <div class="item" data-value="test">test</div>
+                <div class="item" data-value="member">member</div>
+                <div class="item" data-value="owner">owner</div>
+                <div class="item" data-value="contentor">contentor</div>
+                <div class="item" data-value="admin">admin</div>
+                <div class="item" data-value="user">user</div>
+              </div>
             </div>
           </div>
-        
-        </div>-->
-        
+        </div>
+
+       
         <div class="field">
-       <div class="actions">
+        <div class="actions right">
           <div class="ui deny button" click.trigger="dialogController.cancel()">
-            EXIT
+            Close
           </div>
           <button class="ui primary button" type="submit">OK</button>
         </div>
-        <div>
+        </div>
+        </div>
       </form>
     </ai-dialog-body>
   </ai-dialog>

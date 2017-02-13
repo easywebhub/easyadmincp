@@ -1,0 +1,65 @@
+
+<template>
+  <div class="content-padding">
+    <h3 class="left">Website Management &nbsp;
+      <a href="#websites/new" class="ui button green show-modal" style="float:right;margin-right:100px;">NEW</a>
+    </h3>
+    <div class="filter">
+      <div class="ui form large">
+        <div class="fields">
+          <div class="field">
+            <label>DisplayName</label>
+            <input type="text" placeholder="DisplayName" ref="searchDisplayName">
+          </div>
+          <div class="field">
+            <label>Name</label>
+            <input type="text" placeholder="Name" ref="searchName">
+          </div>
+          <div class="field">
+            <label>Url</label>
+            <input type="text" placeholder="Url" ref="searchUrl">
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  
+      <table class="ui selectable celled table">
+        <thead>
+          <tr>
+            <th>Stt</th>
+          <th>Name</th>
+          <th>DisplayName</th>
+          <th>Url</th>
+          <th>WebTemplateId</th>
+          <th>Source</th>
+          <th>WebsiteType</th>
+          <th>Git </th>
+            <!--<th>Action</th>-->
+          </tr>
+        </thead>
+       <tbody ref="mydata" items.bind="entities | searchDisplayName:searchDisplayName.value | searchName:searchName.value | searchUrl:searchUrl.value">
+        <tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (pageSize):current * (pageSize)" click.delegate="$parent.open(item.WebsiteId)">
+          <td>${(current-1)*pageSize+$index+1}</td>
+          <td>${item.Name}</td>
+          <td>${item.DisplayName}</td>
+          <td>${item.Url}</td>
+          <td>${item.WebTemplateId}</td>
+          <td>${item.Source}</td>
+          <td>${item.WebsiteType}</td>
+          <td>${item.Git}</td>
+        </tr>
+      </tbody>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="10">
+              <div class="ui right floated pagination menu tiny">
+                <ui-pagination total-record.two-way="total" page-size.two-way="pageSize" page-all.two-way="allPage" current-page.two-way="current"></ui-pagination>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+   
+</template>

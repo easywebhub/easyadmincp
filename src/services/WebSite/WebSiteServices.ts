@@ -21,7 +21,7 @@ export class WebSiteServices {
       this.http.get(`websites`, {
         responseType: 'json'
       }).then(data =>
-
+         
         resolve(data)
       ).catch(err => {
         console.log(err)
@@ -30,20 +30,7 @@ export class WebSiteServices {
     })
   }
 
-  DetailWebSiteUsers(WebsiteId) {
-
-    return new Promise((resolve, reject) => {
-      this.http.get(`websites/${WebsiteId}/users`, {
-        responseType: 'json'
-      }).then(data =>
-
-        resolve(data)
-      ).catch(err => {
-        console.log(err)
-        reject(Error(err))
-      })
-    })
-  }
+ 
   DetailWebSite(WebsiteId) {
 
     return new Promise((resolve, reject) => {
@@ -70,22 +57,7 @@ export class WebSiteServices {
       })
     })
   }
-  ConfirmWebSite(WebsiteId) {
-
-      return new Promise((resolve, reject) => {
-          this.http.get(`/websites/${WebsiteId}/confirm`, {
-            responseType: 'json'
-          }).then(data =>
-
-            resolve(data)
-          ).catch(err => {
-           if(err.response.status==422){
-       //console.log('err',JSON.stringify(err))
-            reject(err)
-           }
-      })
-    })
-  }
+ 
 
 
 

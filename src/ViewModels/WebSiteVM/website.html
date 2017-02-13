@@ -1,0 +1,58 @@
+<template>
+  
+  </br>
+  <div class="content-padding">
+    <form class="ui form" submit.delegate="save()">
+       <compose view="resources/ui/Dialog/menu-header.html"></compose>
+       <br>
+      
+        <div class="ui four fields">
+        <div class="field">
+          <label>WebsiteId</label>
+          <input type="text" placeholder="AccountId" value.bind="entity.WebsiteId" disabled>
+        </div>
+       
+        <div class="field">
+          <label>Name</label>
+          <input type="text" placeholder="Name" value.bind="entity.Name">
+        </div>
+        <div class="field">
+          <label>DisplayName</label>
+          <input type="text" placeholder="DisplayName" value.bind="entity.DisplayName" disabled>
+        </div>
+       
+        <div class="field">
+          <label>Url</label>
+          <input type="text" placeholder="Url" value.bind="entity.Url">
+        </div>
+       
+      </div>
+      <div class="ui four fields">
+        <div class="field">
+          <label>WebTemplateId</label>
+          <input type="text" placeholder="WebTemplateId" value.bind="entity.WebTemplateId" disabled>
+        </div>
+       
+        <div class="field">
+          <label>Source</label>
+          <input type="text" placeholder="Source" value.bind="entity.Source">
+        </div>
+        <div class="field">
+          <label>WebsiteType</label>
+          <input type="text" placeholder="WebsiteType" value.bind="entity.WebsiteType" disabled>
+        </div>
+       
+        <div class="field">
+          <label>Git</label>
+          <input type="text" placeholder="Git" value.bind="entity.Git">
+        </div>
+       
+      </div>
+      <compose model.bind="entity" view-model="resources/ui/Dialog/account-list"></compose>
+      </br>
+      <compose model.bind="entity" view-model="resources/ui/Dialog/production-list"></compose>
+    </form>
+  </div>
+ 
+
+</template>

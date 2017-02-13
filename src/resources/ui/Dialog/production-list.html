@@ -1,0 +1,37 @@
+<template>
+  <h3 class="left">Productions &nbsp;
+    <a class="ui button green show-modal" style="float:right" click.delegate="addAccount(item)">ADD</a>
+  </h3>
+  </br>
+  <table class="ui selectable celled table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>HostingFee</th>
+        <th>Url</th>
+        <th>Git</th>
+        <th>IsDefault</th>
+      </tr>
+    </thead>
+    <tbody ref="mydata" items.bind="entities.Production">
+      <tr repeat.for="item of mydata.items">
+        <td click.delegate="$parent.removeProduction(item)"><i class="remove icon red" /></td>
+        <td click.delegate="$parent.editProduction(item)">${item.Name}</td>
+        <td click.delegate="$parent.editProduction(item)">${item.HostingFee}</td>
+        <td click.delegate="$parent.editProduction(item)">${item.Url}</td>
+        <td click.delegate="$parent.editProduction(item)">${item.Git}</td>
+        <td click.delegate="$parent.editProduction(item)">${item.IsDefault}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="10">
+          <div class="ui right floated pagination menu tiny">
+            <!--<ui-pagination total-record.two-way="total" page-size.two-way="pageSize" page-all.two-way="allPage" current-page.two-way="current"></ui-pagination>-->
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</template>

@@ -14,10 +14,7 @@ export class Account extends EntityViewModel {
     this.entity=new User(this.entity)
    
  }
-  // activate(){
-  //   console.log('entity @@@',JSON.stringify(this.entity))
-  //   this.entity=new User(this.entity)
-  // }
+
   get title() {
     if (this.entity.AccountId) {
       return `Account #${this.entity.AccountId}`;

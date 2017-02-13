@@ -11,18 +11,11 @@ export function configure(aurelia) {
     './CustomAttributes/Menu',
     './CustomAttributes/Tab',
     './CustomElements/pagination',
-    './Dialog/CreateWebDlg',
-    './Dialog/DetailWebDlg',
-    './Dialog/DetailWebUsersDlg',
-    './Dialog/DetailUserDlg',
-    './Dialog/UpdateAccountDlg',
-    './Dialog/CreateAccountsDlg',
-    './Dialog/CreatePerAccountForWebDlg',
-    './Dialog/UpdatePerAccountForWebDlg',
-    './Dialog/UserCreateWebDlg',
      './Dialog/account-websites',
     './CustomAttributes/ShowDropDown',
      './Dialog/cu-account-website-Dlg',
-     './Dialog/menu-header.html'
+     './Dialog/menu-header.html',
+     './Dialog/cu-account-Dlg',
+     './Dialog/cu-production-Dlg'
      );
 }

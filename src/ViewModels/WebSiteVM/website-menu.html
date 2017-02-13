@@ -1,7 +1,7 @@
 <template>
   <div class="ui secondary pointing menu menu-ngang">
     
-    <a   repeat.for="row of router.navigation" class="${row.isActive ? 'active item' : 'item'} " href.bind="row.href">
+    <a repeat.for="row of router.navigation" class="${row.isActive ? 'active item' : 'item'}" href.bind="row.href">
         ${row.title} 
     </a>
    </div>

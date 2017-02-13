@@ -15,13 +15,13 @@ import {
 } from '../../../resources/validation/semantic-form-renderer';
 
 import {
-  ModelWeb
-} from '../../../models/user';
+  Accounts
+} from '../../../models/model-web';
 @inject(DialogController,ValidationControllerFactory)
 
-export class CUAccountWebsiteDlg {
+export class CUAccountDlg {
   dialogController: DialogController;
-  item :ModelWeb;
+  item :Accounts;
   controller: any;
   constructor(dialogController,controllerFactory) {
     this.dialogController = dialogController;
@@ -30,7 +30,7 @@ export class CUAccountWebsiteDlg {
   
   }
   activate(params) {
-      //console.log("para",params);
+      console.log("para",params);
       this.item =params;
       
    }
