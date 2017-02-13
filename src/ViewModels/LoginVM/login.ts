@@ -84,9 +84,9 @@ export class LoginViewModel {
             type: "success"
           });
           window.setTimeout(() => {
-            this.theRouter.navigateToRoute('webSite-menu');
+             location.href='#/websites';
             location.reload();
-          }, 1200);
+          }, 2000);
           console.log('true')
           return
         }

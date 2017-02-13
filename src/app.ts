@@ -19,7 +19,7 @@ export class App {
     config.map([
        { route: ['', 'login'], name: 'login', moduleId: 'ViewModels/LoginVM/login', nav: false, settings: { roles: [] }, title: 'Login' },
       { route: 'resgister', name: 'resgister',moduleId:'ViewModels/LoginVM/register',nav:false, title: 'Register' },
-      { route: 'websites', name: 'websites', moduleId: 'ViewModels/WebSiteVM/website-menu', nav:this.checkNav, title: 'Website Management' },
+      { route: 'websites', name: 'websites', moduleId: 'ViewModels/WebSiteVM/WebsiteMenu', nav:this.checkNav, title: 'Website Management' },
        { route: 'accounts', name: 'accounts', moduleId: 'ViewModels/AccountVM/account-menu', nav:this.checkNav, title: 'Account Management' },
         { route: 'logout', name: 'logout', moduleId: 'ViewModels/LoginVM/logout', nav: false, settings: { roles: [] }, title: 'LogOut' },
     ]);
