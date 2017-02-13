@@ -42,7 +42,7 @@ export class AccountList {
      {
        // console.log('@@@',params)
         this.entities =params
-        this.entities.Accounts=new Accounts({});
+        this.entities.Accounts=[];
      }
     
   }

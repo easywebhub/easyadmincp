@@ -2,7 +2,7 @@
 <template>
   <div class="content-padding">
     <h3 class="left">Website Management &nbsp;
-      <a href="#websites/new" class="ui button green show-modal" style="float:right;margin-right:100px;">NEW</a>
+      <a href="#websites/new" class="ui button green show-modal" style="float:right;">NEW</a>
     </h3>
     <div class="filter">
       <div class="ui form large">
@@ -43,11 +43,26 @@
           <td>${(current-1)*pageSize+$index+1}</td>
           <td>${item.Name}</td>
           <td>${item.DisplayName}</td>
-          <td>${item.Url}</td>
+          <td>
+            <a class="tiny ui icon button circular blue" href.bind="item.Url" if.bind="item.Url" title.bind="item.Url" target="_blank"
+              href="${item.Url}">
+              <i class="code icon"></i>
+              </a>
+          </td>
           <td>${item.WebTemplateId}</td>
-          <td>${item.Source}</td>
+           <td>
+            <a class="tiny ui icon button circular blue" href.bind="item.Source" if.bind="item.Source" title.bind="item.Source" target="_blank"
+              href="${item.Source}">
+              <i class="code icon"></i>
+              </a>
+          </td>
           <td>${item.WebsiteType}</td>
-          <td>${item.Git}</td>
+          <td>
+            <a class="tiny ui icon button circular blue" href.bind="item.Git" if.bind="item.Git" title.bind="item.Git" target="_blank"
+              href="${item.Git}">
+              <i class="code icon"></i>
+              </a>
+          </td>
         </tr>
       </tbody>
         </tbody>

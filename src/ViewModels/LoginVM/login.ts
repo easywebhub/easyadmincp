@@ -84,7 +84,7 @@ export class LoginViewModel {
             type: "success"
           });
           window.setTimeout(() => {
-            this.theRouter.navigateToRoute('WebSiteMenu');
+            this.theRouter.navigateToRoute('webSite-menu');
             location.reload();
           }, 1200);
           console.log('true')

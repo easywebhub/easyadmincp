@@ -59,7 +59,7 @@ export class Services {
     return this.createPromise().then(rs => {
       console.log('new', rs)
       return {
-        entity: rs
+        entity: []
       }
     })
 

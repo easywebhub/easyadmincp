@@ -16,6 +16,7 @@ export function configure(aurelia) {
      './Dialog/cu-account-website-Dlg',
      './Dialog/menu-header.html',
      './Dialog/cu-account-Dlg',
-     './Dialog/cu-production-Dlg'
+     './Dialog/cu-production-Dlg',
+     './Dialog/cu-stagging-Dlg'
      );
 }

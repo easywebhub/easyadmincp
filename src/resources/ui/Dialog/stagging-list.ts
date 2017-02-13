@@ -47,14 +47,14 @@ export class StaggingList {
     
   }
 
-  addStagging(item) {
+  addStagging(item){
 
     this.dialogService.open({
       viewModel:CUStaggingDlg,
       model:new Stagging({})
     }).then((result) => {
       if (!result.wasCancelled) {
-        //result.output.AccessLevels=[result.output.AccessLevels]
+        
          this.entities.Stagging.push(result.output);
         
       } else {
