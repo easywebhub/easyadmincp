@@ -37,7 +37,7 @@ export class CUProductionDlg {
       console.log("para",params);
       this.item =params;
       this.hostings=HostingFees;
-      console.log('HostingFees',HostingFees)
+      //console.log('HostingFees',HostingFees)
    }
   submit() {
     console.log('valid',this.controller)
