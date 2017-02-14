@@ -17,12 +17,16 @@ import {
 import {
   Production,Stagging
 } from '../../../models/model-web';
+import {
+  HostingFees
+} from '../../../resources/helpers/enum';
 @inject(DialogController,ValidationControllerFactory)
 
 export class CUStaggingDlg {
   dialogController: DialogController;
   item :Stagging;
   controller: any;
+  hostings:any;
   constructor(dialogController,controllerFactory) {
     this.dialogController = dialogController;
     this.controller = controllerFactory.createForCurrentScope();
@@ -32,7 +36,7 @@ export class CUStaggingDlg {
   activate(params) {
       console.log("para",params);
       this.item =params;
-      
+       this.hostings=HostingFees;
    }
   submit() {
     console.log('valid',this.controller)
@@ -47,5 +51,14 @@ export class CUStaggingDlg {
 
     });
   }
-  
+   get title() {
+    if (this.item.Id=="0") {
+        return 'NEW';
+      
+    }
+    else
+     return `Stagging #${this.item.Id}`;
+     
+    
+  }
 }

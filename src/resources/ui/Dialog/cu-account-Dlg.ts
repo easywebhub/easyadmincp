@@ -17,12 +17,16 @@ import {
 import {
   Accounts
 } from '../../../models/model-web';
+import {
+  AccessLevels
+} from '../../../resources/helpers/enum';
 @inject(DialogController,ValidationControllerFactory)
 
 export class CUAccountDlg {
   dialogController: DialogController;
   item :Accounts;
   controller: any;
+  accessLevels:any
   constructor(dialogController,controllerFactory) {
     this.dialogController = dialogController;
     this.controller = controllerFactory.createForCurrentScope();
@@ -32,12 +36,13 @@ export class CUAccountDlg {
   activate(params) {
       console.log("para",params);
       this.item =params;
-      
+      this.accessLevels=AccessLevels;   
    }
+
   submit() {
     console.log('valid',this.controller)
     this.controller.validate().then(rs => {
-      console.log('rs cu',rs)
+     // console.log('rs cu',rs)
       if (rs.valid == true)
       {
         console.log(this.item)
@@ -47,6 +52,16 @@ export class CUAccountDlg {
         console.log('error')
 
     });
+  }
+   get title() {
+    if (this.item.AccountId=="0") {
+        return 'NEW';
+      
+    }
+    else
+     return `Account #${this.item.AccountId}`;
+     
+    
   }
   
 }

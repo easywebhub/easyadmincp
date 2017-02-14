@@ -81,7 +81,7 @@
   </style>
   <ai-dialog class="edit-form" data-backdrop="static">
     <ai-dialog-header>
-      <h3>Create</h3>
+      <h3>${title}</h3>
     </ai-dialog-header>
     <ai-dialog-body>
       <form class="ui form large" submit.delegate="submit()">
@@ -93,29 +93,39 @@
           </div>
           <div class="field">
             <label>Name</label>
-            <input type="text" placeholder="Name" value.bind="item.Name">
+            <input type="text" placeholder="Name" value.bind="item.Name & validate">
           </div>
         </div>
 
          <div class="ui two fields"> 
            <div class="field">
             <label>HostingFee</label>
-            <input type="text" placeholder="HostingFee" value.bind="item.HostingFee">
+            <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="item.HostingFee & validate">
+              <input name="gender" type="hidden" value="${item.HostingFee}">
+              <i class="dropdown icon"></i>
+               <div class="default text">--Select All--</div>
+              <div class="menu">
+                <div class="item" repeat.for="item of hostings" value="item.text">${item.value}</div>
+              </div>
+            </div>
           </div>
           <div class="field">
             <label>Url</label>
-            <input type="text" placeholder="Url" value.bind="item.Url">
+            <input type="text" placeholder="Url" value.bind="item.Url & validate">
           </div>
         </div>
 
         <div class="ui two fields"> 
            <div class="field">
             <label>Git</label>
-            <input type="text" placeholder="Git" value.bind="item.Git">
+            <input type="text" placeholder="Git" value.bind="item.Git & validate">
           </div>
           <div class="field">
-            <label>IsDefault</label>
-            <input type="text" placeholder="IsDefault" value.bind="item.IsDefault">
+              <label>IsDefault</label>
+            <div class="ui checkbox">
+              <input type="checkbox" name="checkbox" value.bind="item.IsDefault">
+               <label></label>
+            </div>
           </div>
         </div>
 

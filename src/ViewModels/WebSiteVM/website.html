@@ -14,37 +14,44 @@
        
         <div class="field">
           <label>Name</label>
-          <input type="text" placeholder="Name" value.bind="entity.Name">
+          <input type="text" placeholder="Name" value.bind="entity.Name & validate">
         </div>
         <div class="field">
           <label>DisplayName</label>
-          <input type="text" placeholder="DisplayName" value.bind="entity.DisplayName" disabled>
+          <input type="text" placeholder="DisplayName" value.bind="entity.DisplayName">
         </div>
        
         <div class="field">
           <label>Url</label>
-          <input type="text" placeholder="Url" value.bind="entity.Url">
+          <input type="text" placeholder="Url" value.bind="entity.Url & validate">
         </div>
        
       </div>
       <div class="ui four fields">
         <div class="field">
           <label>WebTemplateId</label>
-          <input type="text" placeholder="WebTemplateId" value.bind="entity.WebTemplateId" disabled>
+          <input type="text" placeholder="WebTemplateId" value.bind="entity.WebTemplateId">
         </div>
        
         <div class="field">
           <label>Source</label>
-          <input type="text" placeholder="Source" value.bind="entity.Source">
+          <input type="text" placeholder="Source" value.bind="entity.Source & validate">
         </div>
-        <div class="field">
-          <label>WebsiteType</label>
-          <input type="text" placeholder="WebsiteType" value.bind="entity.WebsiteType" disabled>
-        </div>
-       
+          <div class="field">
+            <label>WebsiteType</label>
+            <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="item.WebsiteType & validate">
+              <input name="gender" type="hidden" value="${item.WebsiteType}">
+              <i class="dropdown icon"></i>
+               <div class="default text">--Select All--</div>
+              <div class="menu">
+                <div class="item" repeat.for="item of websiteTypes" value="item.text">${item.value}</div>
+              </div>
+            </div>
+          </div>
+
         <div class="field">
           <label>Git</label>
-          <input type="text" placeholder="Git" value.bind="entity.Git">
+          <input type="text" placeholder="Git" value.bind="entity.Git & validate">
         </div>
        
       </div>

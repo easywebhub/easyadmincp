@@ -6,7 +6,7 @@ export class EntityViewModel {
   controller:any;
   constructor(service) {
     this.service = service;
-    console.log('service',service)
+    //console.log('service',service)
   }
 
   activate(info) {
@@ -29,13 +29,14 @@ export class EntityViewModel {
     this.service.controller.validate().then(rs => {
      
       if (rs.valid == true) {
-         console.log('Model Account', this.entity);
+         console.log('Model Account',JSON.stringify(this.entity));
       } else
         console.log('error')
     })
   }
 
   revert() {
+    this.service.controller.reset();
      this.activate(this.info);
 
     

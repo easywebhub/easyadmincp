@@ -81,7 +81,7 @@
   </style>
   <ai-dialog class="edit-form" data-backdrop="static">
     <ai-dialog-header>
-      <h3>Create</h3>
+      <h3>${title}</h3>
     </ai-dialog-header>
     <ai-dialog-body>
       <form class="ui form large" submit.delegate="submit()">
@@ -91,24 +91,18 @@
             <label>AccountId</label>
             <input type="text" placeholder="AccountId" value.bind="item.AccountId" disabled>
           </div>
-           <div class="field">
-               <label>AccessLevels</label>
-            <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="item.AccessLevels">
+          <div class="field">
+            <label>AccessLevels</label>
+            <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="item.AccessLevels & validate">
               <input name="gender" type="hidden" value="${item.AccessLevels}">
               <i class="dropdown icon"></i>
-              <div class="default text">--Select All--</div>
+               <div class="default text">--Select All--</div>
               <div class="menu">
-                <div class="item" data-value="dev">dev</div>
-                <div class="item" data-value="test">test</div>
-                <div class="item" data-value="member">member</div>
-                <div class="item" data-value="owner">owner</div>
-                <div class="item" data-value="contentor">contentor</div>
-                <div class="item" data-value="admin">admin</div>
-                <div class="item" data-value="user">user</div>
+                <div class="item" repeat.for="item of accessLevels" value="item.text">${item.value}</div>
               </div>
             </div>
           </div>
-        </div>
+           </div>
 
        
         <div class="field">

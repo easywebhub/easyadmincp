@@ -30,7 +30,7 @@ export class CUAccountWebsiteDlg {
   
   }
   activate(params) {
-      //console.log("para",params);
+      console.log("11111",JSON.stringify(params));
       this.item =params;
       
    }
@@ -47,6 +47,16 @@ export class CUAccountWebsiteDlg {
         console.log('error')
 
     });
+  }
+   get title() {
+    if (!this.item.WebsiteId) {
+        return 'NEW';
+      
+    }
+    else
+     return `Update`;
+     
+    
   }
   
 }

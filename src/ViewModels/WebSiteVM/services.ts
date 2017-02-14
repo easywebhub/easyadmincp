@@ -42,7 +42,8 @@ export class Services {
     console.log('id',id)
     return this.clssServives.DetailWebSite(id)
       .then(rs => {
-        console.log('@@@@@####', rs)
+        console.log('####',JSON.stringify(rs))
+        console.log('@@@@',new ModelWeb((rs as any).data))
         return {
           entity: new ModelWeb((rs as any).data)
 
@@ -59,7 +60,7 @@ export class Services {
     return this.createPromise().then(rs => {
       console.log('new', rs)
       return {
-        entity: []
+        entity: rs
       }
     })
 

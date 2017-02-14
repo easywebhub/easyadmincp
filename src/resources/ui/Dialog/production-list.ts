@@ -47,7 +47,7 @@ export class ProductionList {
     
   }
 
-  addAccount(item) {
+  addProduction(item) {
 
     this.dialogService.open({
       viewModel:CUProductionDlg,
@@ -64,7 +64,7 @@ export class ProductionList {
     });
 
   }
-  editAccount(item) {
+  editProduction(item) {
  
     this.dialogService.open({
       viewModel: CUProductionDlg,
@@ -75,7 +75,7 @@ export class ProductionList {
     });
   }
 
-  removeAccount(item) {
+  removeProduction(item) {
   
     this.entities.Production.splice(this.entities.Production.indexOf(item), 1);
  

@@ -17,12 +17,16 @@ import {
 import {
   Production
 } from '../../../models/model-web';
+import {
+  HostingFees
+} from '../../../resources/helpers/enum';
 @inject(DialogController,ValidationControllerFactory)
 
 export class CUProductionDlg {
   dialogController: DialogController;
   item :Production;
   controller: any;
+  hostings:any;
   constructor(dialogController,controllerFactory) {
     this.dialogController = dialogController;
     this.controller = controllerFactory.createForCurrentScope();
@@ -32,7 +36,8 @@ export class CUProductionDlg {
   activate(params) {
       console.log("para",params);
       this.item =params;
-      
+      this.hostings=HostingFees;
+      console.log('HostingFees',HostingFees)
    }
   submit() {
     console.log('valid',this.controller)
@@ -46,6 +51,16 @@ export class CUProductionDlg {
         console.log('error')
 
     });
+  }
+   get title() {
+    if (this.item.Id=="0") {
+        return 'NEW';
+      
+    }
+    else
+     return `Production #${this.item.Id}`;
+     
+    
   }
   
 }
