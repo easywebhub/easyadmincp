@@ -57,7 +57,37 @@ export class WebSiteServices {
       })
     })
   }
- 
+CreateWebFull(meta) {
+    return new Promise((resolve, reject) => {
+      this.http.post(`websites/fulladd`, meta, {
+       
+      }).then(data =>
+        resolve(data)
+      ).catch(err => {
+            
+         if (err.response.status == 422) {
+          //console.log(err)
+          reject(err.response.data.Message)
+        }
+      })
+    })
+  } 
+  UpdateWebFull(meta) {
+    return new Promise((resolve, reject) => {
+      this.http.patch(`websites/${meta.WebsiteId}/fullupdate`, meta
+       
+      ).then(data =>
+        resolve(data)
+      ).catch(err => {
+         //console.log('@@@@@',err.Error)
+        if (err.response.status == 422) {
+         
+           reject(err.response.data.Message)
+        }
+      })
+    })
+  } 
+
 
 
 

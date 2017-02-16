@@ -1,12 +1,16 @@
+import * as _ from 'lodash';
+import * as $ from 'jquery';
 export class EntityViewModel {
   service;
   entityManager;
   entity;
   info: any;
   controller:any;
+  isFirst = true;
+  
   constructor(service) {
     this.service = service;
-    //console.log('service',service)
+    // console.log('service',)
   }
 
   activate(info) {
@@ -23,22 +27,19 @@ export class EntityViewModel {
       this.entity = result.entity;
     });
   }
-
-  save() {
- 
+ save() {
     this.service.controller.validate().then(rs => {
      
       if (rs.valid == true) {
-         console.log('Model Account',JSON.stringify(this.entity));
+        // console.log('Model Account',JSON.stringify(this.entity));
+         this.service.saveServices(this.entity);
       } else
         console.log('error')
     })
   }
 
   revert() {
-    this.service.controller.reset();
+     this.service.controller.reset();
      this.activate(this.info);
-
-    
   }
 }

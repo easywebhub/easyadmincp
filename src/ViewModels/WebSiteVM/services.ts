@@ -14,6 +14,7 @@ import {
 import {
   SemanticFormRenderer
 } from '../../resources/validation/semantic-form-renderer';
+import * as swal from 'sweetalert'
 @inject(WebSiteServices, ValidationControllerFactory)
 export class Services {
 
@@ -42,8 +43,8 @@ export class Services {
     console.log('id',id)
     return this.clssServives.DetailWebSite(id)
       .then(rs => {
-        console.log('####',JSON.stringify(rs))
-        console.log('@@@@',new ModelWeb((rs as any).data))
+       // console.log('####',JSON.stringify(rs))
+      //  console.log('@@@@',new ModelWeb((rs as any).data))
         return {
           entity: new ModelWeb((rs as any).data)
 
@@ -58,12 +59,56 @@ export class Services {
   }
   createNew() {
     return this.createPromise().then(rs => {
-      console.log('new', rs)
+     // console.log('new', rs)
       return {
         entity: rs
       }
     })
 
+  }
+  saveServices(meta){
+    if(meta.WebsiteId==0)
+     {
+        this.clssServives.CreateWebFull(meta).then(rs=>{
+            swal({
+            title: "Notification",
+            text: "Create Website success",
+            timer: 2500,
+            showConfirmButton: true,
+            type: "success"
+          });
+        }).catch(error=>{
+             swal({
+            title: "Notification",
+            text: error,
+            timer: 2500,
+            showConfirmButton: true,
+            type: "warning"
+          }); 
+        })
+     }
+     else
+     
+     {
+        this.clssServives.UpdateWebFull(meta).then(rs=>{
+            swal({
+            title: "Notification",
+            text: "Update Website success",
+            timer: 2500,
+            showConfirmButton: true,
+            type: "success"
+          });
+        }).catch(error=>{
+         //console.log('error',error.Message)
+             swal({
+            title: "Notification",
+            text: error,
+            timer: 2500,
+            showConfirmButton: true,
+            type: "warning"
+          }); 
+        })
+     }
   }
 
 }

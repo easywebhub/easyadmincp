@@ -86,32 +86,35 @@
     <ai-dialog-body>
       <form class="ui form large" submit.delegate="submit()">
         <div class="ui two fields">
-         
           <div class="field">
-            <label>AccountId</label>
-            <input type="text" placeholder="AccountId" value.bind="item.AccountId" disabled>
+            <label>UserName</label>
+            <select value.bind="item.AccountId & validate">
+                  <!--<option value="0">...Select Account...</option>-->
+                  <option repeat.for="tmp of listAccount" value="${tmp.AccountId}">${tmp.UserName}
+                  </option>
+            </select>
+            
+         
           </div>
           <div class="field">
             <label>AccessLevels</label>
             <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="item.AccessLevels & validate">
               <input name="gender" type="hidden" value="${item.AccessLevels}">
               <i class="dropdown icon"></i>
-               <div class="default text">--Select All--</div>
+              <div class="default text">--Select All--</div>
               <div class="menu">
                 <div class="item" repeat.for="item of accessLevels" value="item.text">${item.value}</div>
               </div>
             </div>
           </div>
-           </div>
-
-       
-        <div class="field">
-        <div class="actions right">
-          <div class="ui deny button" click.trigger="dialogController.cancel()">
-            Close
-          </div>
-          <button class="ui primary button" type="submit">OK</button>
         </div>
+        <div class="field">
+          <div class="actions right">
+            <div class="ui deny button" click.trigger="dialogController.cancel()">
+              Close
+            </div>
+            <button class="ui primary button" type="submit">OK</button>
+          </div>
         </div>
         </div>
       </form>

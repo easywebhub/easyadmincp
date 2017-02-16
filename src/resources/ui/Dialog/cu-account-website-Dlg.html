@@ -92,7 +92,7 @@
           </div>-->
           <div class="field">
             <label>Name</label>
-            <input type="text" placeholder="Name" value.bind="item.Name">
+            <input type="text" placeholder="Name" value.bind="item.Name &  validate">
           </div>
           <div class="field">
             <label>DisplayName</label>
@@ -104,7 +104,7 @@
 
           <div class="field">
             <label>Url</label>
-            <input type="text" placeholder="Url" value.bind="item.Url">
+            <input type="text" placeholder="Url" value.bind="item.Url & validate">
           </div>
           <div class="field">
             <label>WebTemplateId</label>
@@ -116,17 +116,26 @@
           
           <div class="field">
             <label>Source</label>
-            <input type="text" placeholder="Source" value.bind="item.Source">
+            <input type="text" placeholder="Source" value.bind="item.Source & validate">
           </div>
            <div class="field">
             <label>Git</label>
-            <input type="text" placeholder="Source" value.bind="item.Git">
+            <input type="text" placeholder="Source" value.bind="item.Git & validate">
           </div>
         </div>
         <div class="ui two fields">
           <div class="field">
             <label>WebsiteType</label>
-            <input type="text" placeholder="WebsiteType" value.bind="item.WebsiteType">
+           
+             <div class="ui selection dropdown" ui-dropdown vdrop.two-way="item.WebsiteType & validate">
+              <input name="gender" type="hidden" value="${item.WebsiteType}">
+              <i class="dropdown icon"></i>
+              <div class="default text">--Select All--</div>
+              <div class="menu">
+                <div class="item" repeat.for="item of websiteTypes" value="${item.text}">${item.value}</div>
+               
+              </div>
+            </div>
           </div>
           <div class="field">
                <label>AccessLevels</label>
@@ -135,13 +144,8 @@
               <i class="dropdown icon"></i>
               <div class="default text">--Select All--</div>
               <div class="menu">
-                <div class="item" data-value="dev">dev</div>
-                <div class="item" data-value="test">test</div>
-                <div class="item" data-value="member">member</div>
-                <div class="item" data-value="owner">owner</div>
-                <div class="item" data-value="contentor">contentor</div>
-                <div class="item" data-value="admin">admin</div>
-                <div class="item" data-value="user">user</div>
+                <div class="item" repeat.for="item of accessLevels" value="${item.text}">${item.value}</div>
+               
               </div>
             </div>
           </div>

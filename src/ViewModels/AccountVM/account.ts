@@ -5,13 +5,22 @@ import {AccountService} from './account-service';
 import {
   User
 } from '../../models/user';
+import {
+  AccountType,AccountStatus
+} from '../../resources/helpers/enum';
+import * as _ from 'lodash'
 
 @inject(AccountService)
 export class Account extends EntityViewModel {
- entity:User
+ entity:User;
+ accountStatus=AccountStatus;
+ accountType=AccountType; 
+  item:any;
   constructor(service) {
     super(service);
-    this.entity=new User(this.entity)
+    this.entity=new User(this.entity);
+    this.item=this.entity;
+    //console.log('1',JSON.stringify(this.item),'2',JSON.stringify(this.entity))
    
  }
 
@@ -24,5 +33,6 @@ export class Account extends EntityViewModel {
       return 'NEW ACCOUNT';
     
   }
+ 
  
 }

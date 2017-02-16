@@ -14,6 +14,7 @@ import {
 import {
   SemanticFormRenderer
 } from '../../resources/validation/semantic-form-renderer';
+import * as swal from 'sweetalert'
 @inject(UserServices,ValidationControllerFactory)
 export class AccountService {
 
@@ -23,6 +24,7 @@ export class AccountService {
     this.clssServives = userServices;
     this.controller = controllerFactory.createForCurrentScope();
     this.controller.addRenderer(new SemanticFormRenderer());
+    
   }
   getPage() {
     return this.clssServives.GetListByUsers().then(rs => {
@@ -63,5 +65,23 @@ export class AccountService {
      })
   
   }
-  
+  saveServices(meta){
+      this.clssServives.CreateUserFull(meta).then(rs=>{
+            swal({
+            title: "Notification",
+            text: "Create Account success",
+            timer: 2500,
+            showConfirmButton: true,
+            type: "success"
+          });
+        }).catch(error=>{
+             swal({
+            title: "Notification",
+            text: error,
+            timer: 2500,
+            showConfirmButton: true,
+            type: "warning"
+          }); 
+        })
+  }
 }

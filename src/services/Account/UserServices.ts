@@ -150,5 +150,17 @@ export class UserServices {
     })
   }
 
+CreateUserFull(meta) {
+    return new Promise((resolve, reject) => {
+      this.http.post(`users/${meta.AccountId}/fullupdate`, meta).then(data =>
+         resolve(data)
+      ).catch(err => {
+         if (err.response.status == 422) {
+         
+          reject(err.response.data.Message)
+        }
+      })
+    })
+  }
 
 }

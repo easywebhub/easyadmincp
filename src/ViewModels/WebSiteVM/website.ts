@@ -15,8 +15,7 @@ export class Website extends EntityViewModel {
   constructor(service) {
     super(service);
   //  this.entity=new ModelWeb(this.entity)
-    console.log('@@@',this.entity)
-   console
+    
      
 }
   get title() {

@@ -1,7 +1,4 @@
-export const HostingFees = [{
-    text: "",
-    value: "-- Select All--"
-  },
+export const HostingFees = [
   {
     text: "Free",
     value: "Free"
@@ -20,10 +17,7 @@ export const HostingFees = [{
   }
 
 ]
-export const WebsiteTypes = [{
-    text: "",
-    value: "-- Select All--"
-  },
+export const WebsiteTypes = [
   {
     text: "Free",
     value: "Free"
@@ -34,10 +28,7 @@ export const WebsiteTypes = [{
   }
 
 ]
-export const AccessLevels = [{
-    text: "",
-    value: "--Select All--"
-  },
+export const AccessLevels = [
   {
     text: "Owner",
     value: "Owner"
@@ -52,10 +43,12 @@ export const AccessLevels = [{
   }
 
 ]
-export const AccountStatus = [{
-    text: "",
-    value: "--Select All--"
-  },
+export const AccountStatus = [
+  
+  {
+    text: "Active",
+    value: "Active"
+  },    
   {
     text: "Locked",
     value: "Locked"
@@ -63,6 +56,17 @@ export const AccountStatus = [{
   {
     text: "Deleted",
     value: "Deleted"
+  }
+
+]
+export const AccountType= [
+  {
+    text: "enterprise",
+    value: "enterprise"
+  },
+  {
+    text: "personal",
+    value: "personal"
   }
 
 ]

@@ -4,9 +4,22 @@ import {
   ValidateResult
 } from 'aurelia-validation';
 
-export class SemanticFormRenderer {
+export class SemanticFormRendererThinh {
+  /**
+   *
+   */
+  private _renderable = true;
+  constructor(renderable?:boolean ) {
+    if(renderable == false){
+      this._renderable= renderable;
+    }
+  }
   
   render(instruction: RenderInstruction) {
+    if(!this._renderable){
+      return;
+      
+    }
     for (let { result, elements } of instruction.unrender) {
       for (let element of elements) {
         this.remove(element, result);

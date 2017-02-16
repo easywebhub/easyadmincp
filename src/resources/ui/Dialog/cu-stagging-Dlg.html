@@ -86,7 +86,6 @@
     <ai-dialog-body>
       <form class="ui form large" submit.delegate="submit()">
         <div class="ui two fields">
-    
           <div class="field">
             <label>Id</label>
             <input type="text" placeholder="Id" value.bind="item.Id" disabled>
@@ -96,46 +95,39 @@
             <input type="text" placeholder="Name" value.bind="item.Name & validate">
           </div>
         </div>
-
-         <div class="ui two fields"> 
-           <div class="field">
+        <div class="ui two fields">
+          <div class="field">
             <label>HostingFee</label>
-            <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="item.HostingFee & validate">
-              <input name="gender" type="hidden" value="${item.HostingFee}">
-              <i class="dropdown icon"></i>
-               <div class="default text">--Select All--</div>
-              <div class="menu">
-                <div class="item" repeat.for="item of hostings" value="item.text">${item.value}</div>
-              </div>
-            </div>
+            <select value.bind="item.HostingFee & validate">
+                  <option repeat.for="item of hostings" value.bind="item.text">${item.value}
+                  </option>
+            </select>
           </div>
           <div class="field">
             <label>Url</label>
             <input type="text" placeholder="Url" value.bind="item.Url & validate">
           </div>
         </div>
-
-        <div class="ui two fields"> 
-           <div class="field">
+        <div class="ui two fields">
+          <div class="field">
             <label>Git</label>
             <input type="text" placeholder="Git" value.bind="item.Git & validate">
           </div>
           <div class="field">
-              <label>IsDefault</label>
+            <label>IsDefault</label>
             <div class="ui checkbox">
               <input type="checkbox" name="checkbox" value.bind="item.IsDefault">
-               <label></label>
+              <label></label>
             </div>
           </div>
         </div>
-
         <div class="field">
-        <div class="actions right">
-          <div class="ui deny button" click.trigger="dialogController.cancel()">
-            Close
+          <div class="actions right">
+            <div class="ui deny button" click.trigger="dialogController.cancel()">
+              Close
+            </div>
+            <button class="ui primary button" type="submit">OK</button>
           </div>
-          <button class="ui primary button" type="submit">OK</button>
-        </div>
         </div>
         </div>
       </form>

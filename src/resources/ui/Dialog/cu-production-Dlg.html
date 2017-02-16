@@ -98,14 +98,10 @@
         <div class="ui two fields">
           <div class="field">
             <label>HostingFee</label>
-            <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="item.HostingFee & validate">
-              <input name="gender" type="hidden" value="${item.HostingFee}">
-              <i class="dropdown icon"></i>
-              <div class="default text">--Select All--</div>
-              <div class="menu">
-                <div class="item" repeat.for="item of hostings" value="item.text">${item.value}</div>
-              </div>
-            </div>
+            <select value.bind="item.HostingFee & validate">
+                  <option repeat.for="item of hostings" value.bind="item.text">${item.value}
+                  </option>
+            </select>
           </div>
           <div class="field">
             <label>Url</label>
