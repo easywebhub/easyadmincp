@@ -11,9 +11,11 @@ import {
   CUAccountWebsiteDlg
 } from '../../../resources/ui/Dialog/cu-account-website-Dlg';
 import {
-  ModelWeb,User
+  ModelWeb,
+  User
 } from '../../../models/user';
-
+import * as _
+from 'lodash';
 @inject(UserServices, DialogService)
 
 export class AccountWebsites {
@@ -25,37 +27,51 @@ export class AccountWebsites {
 
     this.clssServices = UserServices;
     this.dialogService = dialogService;
-  
-}
 
-   activate(params) {
+  }
+
+  activate(params) {
     //console.log('params',params)
-     this.entities = params;
+    this.entities = params;
     if (params.Websites) {
-        
-         this.entities.Websites=this.entities.Websites.map(x=>{
-            return new ModelWeb(x)
-         })
-      }
-    else
-     {
-       // console.log('@@@',params)
-        this.entities =params
-        this.entities.Websites=[];
-     }
-    
+
+      this.entities.Websites = this.entities.Websites.map(x => {
+        return new ModelWeb(x)
+      })
+    } else {
+      // console.log('@@@',params)
+      this.entities = params
+      this.entities.Websites = [];
+    }
+
+
   }
 
   addWebsite(item) {
 
     this.dialogService.open({
       viewModel: CUAccountWebsiteDlg,
-      model:new ModelWeb(item)
+      model: new ModelWeb(item)
     }).then((result) => {
       if (!result.wasCancelled) {
-        //result.output.AccessLevels=[result.output.AccessLevels]
-         this.entities.Websites.push(result.output);
-        
+       
+        let searchWebId=_.find(this.entities.Websites,(o)=> { return (o as any).WebsiteId== result.output.WebsiteId; })
+    if(_.isEmpty(searchWebId)==false){
+        let tmp = _.map(this.entities.Websites, (x) => {
+          if ((x as any).WebsiteId == result.output.WebsiteId) {
+            (x as any).AccessLevels = _.union((x as any).AccessLevels, result.output.AccessLevels);
+            return x;
+          } else
+            return x;
+        });
+        this.entities.Websites=tmp;
+      //  console.log('tmp',tmp);
+    }
+    else{
+      
+        this.entities.Websites.push(result.output);
+        //console.log('result',this.entities.Websites);
+    }
       } else {
         console.log('bad');
       }
@@ -64,21 +80,20 @@ export class AccountWebsites {
 
   }
   editWebsite(item) {
- 
+
     this.dialogService.open({
       viewModel: CUAccountWebsiteDlg,
-      model:item
+      model: item
     }).then((result) => {
-      if (!result.wasCancelled) {
-      }
+      if (!result.wasCancelled) {}
     });
   }
 
   removeWebsite(item) {
-  
+
     this.entities.Websites.splice(this.entities.Websites.indexOf(item), 1);
- 
- }
+
+  }
 
 }
 

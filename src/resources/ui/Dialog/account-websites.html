@@ -8,14 +8,14 @@
       <thead>
         <tr> 
           <th></th>
-          <th>Name</th>
-          <th>DisplayName</th>
+          <th>WebsiteId</th>
+          <!--<th>DisplayName</th>
           <th>Url</th>
         
           <th>WebTemplateId</th>
            <th>Source</th>
           <th>Git</th>
-            <th>WebsiteType</th>
+            <!--<th>WebsiteType</th>-->
 
           <th>AccessLevels</th>
         </tr>
@@ -23,9 +23,9 @@
       <tbody ref="mydata" items.bind="entities.Websites">
         <tr repeat.for="item of mydata.items">
           <td click.delegate="$parent.removeWebsite(item)"><i class="remove icon red"/></td>
-          <td click.delegate="$parent.editWebsite(item)">${item.Name}</td>
-          <td click.delegate="$parent.editWebsite(item)">${item.DisplayName}</td>
-          <td>
+          <td click.delegate="$parent.editWebsite(item)">${item.WebsiteId}</td>
+          <!--<td click.delegate="$parent.editWebsite(item)">${item.DisplayName}</td>-->
+          <!--<td>
             <a class="tiny ui icon button circular blue" href.bind="item.Url" if.bind="item.Url" title.bind="item.Url" target="_blank"
               href="${item.Url}">
               <i class="code icon"></i>
@@ -43,8 +43,8 @@
               href="${item.Git}">
                <i class="code icon"></i>
               </a>
-          </td>
-           <td click.delegate="$parent.editWebsite(item)">${item.WebsiteType}</td>
+          </td>-->
+           <!--<td click.delegate="$parent.editWebsite(item)">${item.WebsiteType}</td>-->
           <td click.delegate="$parent.editWebsite(item)">${item.AccessLevels}</td>
         </tr>
       </tbody>
