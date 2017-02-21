@@ -37,17 +37,15 @@
           <label>Source</label>
           <input type="text" placeholder="Source" value.bind="entity.Source & validate">
         </div>
-          <div class="field">
-            <label>WebsiteType</label>
-            <div class="ui selection dropdown" ui-dropdown vdrop.two-way="item.WebsiteType & validate">
-              <input name="gender" type="hidden" value="${item.WebsiteType}">
-              <i class="dropdown icon"></i>
-               <div class="default text">--Select All--</div>
-              <div class="menu">
-                <div class="item" repeat.for="item of websiteTypes" value="item.text">${item.value}</div>
-              </div>
-            </div>
-          </div>
+        <div class="field">
+          <label>WebsiteType</label>
+          <select value.bind="entity.WebsiteType">
+                 
+                  <option repeat.for="tmp of websiteTypes" value="${tmp.text}">${tmp.value}
+                  </option>
+            </select>
+        </div>
+         
 
         <div class="field">
           <label>Git</label>

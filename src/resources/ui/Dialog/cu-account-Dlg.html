@@ -81,14 +81,15 @@
   </style>
   <ai-dialog class="edit-form" data-backdrop="static">
     <ai-dialog-header>
-      <h3>${title}</h3>
+      <h3 if.bind="check==true">UPDATE</h3>
+      <h3 if.bind="check==false">NEW</h3>
     </ai-dialog-header>
     <ai-dialog-body>
       <form class="ui form large" submit.delegate="submit()">
         <div class="ui two fields">
           <div class="field">
             <label>UserName</label>
-            <select value.bind="item.AccountId & validate">
+            <select value.bind="item.AccountId & validate" disabled.bind="check">
                   <!--<option value="0">...Select Account...</option>-->
                   <option repeat.for="tmp of listAccount" value="${tmp.AccountId}">${tmp.UserName}
                   </option>
