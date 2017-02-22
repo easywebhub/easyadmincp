@@ -94,12 +94,11 @@
                   <option repeat.for="tmp of listAccount" value="${tmp.AccountId}">${tmp.UserName}
                   </option>
             </select>
-            
-         
           </div>
+
           <div class="field">
             <label>AccessLevels</label>
-            <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="item.AccessLevels & validate">
+            <div class="ui multiple search selection dropdown" ui-dropdown vdrop.two-way="item.AccessLevels & validate">
               <input name="gender" type="hidden" value="${item.AccessLevels}">
               <i class="dropdown icon"></i>
               <div class="default text">--Select All--</div>
@@ -109,6 +108,7 @@
             </div>
           </div>
         </div>
+
         <div class="field">
           <div class="actions right">
             <div class="ui deny button" click.trigger="dialogController.cancel()">

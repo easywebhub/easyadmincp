@@ -55,6 +55,7 @@ export class CUAccountDlg {
        this.check=true;
      }
     this.accessLevels = AccessLevels;
+     console.log('(rs as any).data',JSON.stringify(this.accessLevels));
     this.item = params;
     await this.userSR.GetListByUsers().then(rs => {
       this.listAccount = (rs as any).data;
@@ -67,7 +68,7 @@ export class CUAccountDlg {
       this.listAccount = _.sortBy(this.listAccount, [function (o) {
         return o.AccountId;
       }]);
-     // console.log('(rs as any).data',this.listAccount);
+     
     })
 
   }
