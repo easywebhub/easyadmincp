@@ -92,19 +92,21 @@
             <label>WebsiteId</label>
             <input type="text" placeholder="WebsiteId" value.bind="item.WebsiteId">
           </div>-->
-          <div class="field">
+           <div class="field">
             <label>DisplayName</label>
-            <select value.bind="item.WebsiteId & validate" disabled.bind="check">
-                  <!--<option value="0">...Select Account...</option>-->
-                  <option repeat.for="tmp of listWeb" value="${tmp.WebsiteId}">${tmp.DisplayName}
-                  </option>
-            </select>
-            
-         
+            <div class="ui search selection dropdown ${check?'disabled':'enabled'}" ui-dropdown vdrop.two-way="item.WebsiteId & validate">
+              <input name="gender" type="hidden" value="${item.WebsiteId}">
+              <i class="dropdown icon"></i>
+              <div class="default text">--Select All--</div>
+              <div class="menu">
+                <div class="item" repeat.for="item of listWeb" data-value="${item.WebsiteId}">${item.DisplayName}</div>
+              </div>
+            </div>
           </div>
+         
            <div class="field">
                <label>AccessLevels</label>
-            <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="item.AccessLevels & validate">
+            <div class="ui multiple search selection dropdown" ui-dropdown vdrop.two-way="item.AccessLevels & validate">
               <input name="gender" type="hidden" value="${item.AccessLevels}">
               <i class="dropdown icon"></i>
               <div class="default text">--Select All--</div>

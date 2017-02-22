@@ -89,13 +89,16 @@
         <div class="ui two fields">
           <div class="field">
             <label>UserName</label>
-            <select value.bind="item.AccountId & validate" disabled.bind="check">
-                  <!--<option value="0">...Select Account...</option>-->
-                  <option repeat.for="tmp of listAccount" value="${tmp.AccountId}">${tmp.UserName}
-                  </option>
-            </select>
+            <div class="ui search selection dropdown ${check?'disabled':'enabled'}" ui-dropdown vdrop.two-way="item.AccountId & validate">
+              <input name="gender" type="hidden" value="${item.AccountId}">
+              <i class="dropdown icon"></i>
+              <div class="default text">--Select All--</div>
+              <div class="menu">
+                <div class="item" repeat.for="item of listAccount" data-value="${item.AccountId}">${item.UserName}</div>
+              </div>
+            </div>
           </div>
-
+          
           <div class="field">
             <label>AccessLevels</label>
             <div class="ui multiple search selection dropdown" ui-dropdown vdrop.two-way="item.AccessLevels & validate">
@@ -103,12 +106,11 @@
               <i class="dropdown icon"></i>
               <div class="default text">--Select All--</div>
               <div class="menu">
-                <div class="item" repeat.for="item of accessLevels" value="item.text">${item.value}</div>
+                <div class="item" repeat.for="item of accessLevels" data-value="${item.text}">${item.value}</div>
               </div>
             </div>
           </div>
         </div>
-
         <div class="field">
           <div class="actions right">
             <div class="ui deny button" click.trigger="dialogController.cancel()">

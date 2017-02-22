@@ -18,16 +18,12 @@ export class UIDropdown {
     this.element = element;
   }
   attached() {
-    //($('.ui.dropdown') as any).dropdown('refresh');
-
-          ($('.ui.dropdown') as any).dropdown(
-          'set selected', this.vdrop
-        );
-      
-    
+    ($('.ui.dropdown') as any).dropdown(
+      'set selected', this.vdrop
+    );
     ($('.ui.dropdown') as any)
     .dropdown({
-      onChange: function (value, text, $selectedItem) {
+      onChange: function (value, text) {
         this.vdrop = value
         console.log('chang drop', this.vdrop);
       }

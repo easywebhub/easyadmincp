@@ -67,7 +67,7 @@ export class Services {
 
   }
   saveServices(meta){
-    console.log('####',JSON.stringify(meta))
+   // console.log('####',JSON.stringify(meta))
     if(meta.WebsiteId==0)
      {
         this.clssServives.CreateWebFull(meta).then(rs=>{

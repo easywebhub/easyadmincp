@@ -72,44 +72,7 @@ export class CUAccountDlg {
     })
 
   }
-  // attached() {
 
-  //   ($('.ui.search') as any)
-  //   .search({
-  //     type: 'category',
-  //     searchFields:['title'],
-  //     minCharacters: 2,
-  //   apiSettings   : {
-  //     onResponse: (githubResponse) =>{
-  //       var
-  //         response = {
-  //           results : {}
-  //         }
-  //       ;
-          
-  //       $.each(githubResponse,(index, item)=> {
-       
-  //        if(response.results[index] === undefined) {
-  //           response.results[index] = {
-              
-  //             results : []
-  //           };
-  //         }
-  //         //console.log('item',response.results[index])
-  //         // add result to category
-        
-  //         response.results[index].results.push({
-  //           title       : item.UserName,
-  //           description:item.AccountId
-           
-  //         });
-  //       });
-  //       return response;
-  //     },
-  //     url: 'https://api.easywebhub.com/users'
-  //   }
-  // })
-  // }
   submit() {
     //  console.log('valid',this.controller)
     this.controller.validate().then(rs => {
