@@ -61,7 +61,7 @@
             </a>
             
           </td>
-          <td><button class="ui orange basic button" click.delegate="$parent.comfirmWeb(item)">
+          <td><button class="ui orange basic button" click.delegate="$parent.comfirmWeb(item)" show.bind="item.Confirmed==false">
               Confirm
               </button></td>
         </tr>
