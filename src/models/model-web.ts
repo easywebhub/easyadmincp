@@ -121,7 +121,7 @@ ValidationRules.customRule(
   .ensure((a: ModelWeb) => a.Name).required()
   .ensure(a=>a.Url).matches(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/).required()
   .ensure(a=>a.WebsiteType).required().satisfiesRule('WebsiteType')
-  .ensure(a=>a.Git).matches(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/).required()
+ // .ensure(a=>a.Git).matches(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/).required()
   .ensure(a=>a.Source).matches(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/).required()
   .on(ModelWeb);
   ValidationRules
