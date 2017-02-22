@@ -20,8 +20,8 @@ export class Services {
 
   clssServives: WebSiteServices;
   controller: any;
-  constructor(UserServices, controllerFactory) {
-    this.clssServives = UserServices;
+  constructor(WebSiteServices, controllerFactory) {
+    this.clssServives = WebSiteServices;
     this.controller = controllerFactory.createForCurrentScope();
     this.controller.addRenderer(new SemanticFormRenderer());
   }
@@ -67,6 +67,7 @@ export class Services {
 
   }
   saveServices(meta){
+    console.log('####',JSON.stringify(meta))
     if(meta.WebsiteId==0)
      {
         this.clssServives.CreateWebFull(meta).then(rs=>{
@@ -110,5 +111,26 @@ export class Services {
         })
      }
   }
+  confirmServices(item){
+     this.clssServives.confirmWebsite(item.WebsiteId).then(rs=>{
+           swal({
+            title: "Notification",
+            text: "ConFirm Website success",
+            timer: 2500,
+            showConfirmButton: true,
+            type: "success"
+          });
+     }).catch(error=>{
+         //console.log('error',error.Message)
+             swal({
+            title: "Notification",
+            text: error,
+            timer: 2500,
+            showConfirmButton: true,
+            type: "warning"
+          }); 
+        })
+     }
+  }
 
-}
+

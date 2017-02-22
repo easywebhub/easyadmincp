@@ -102,6 +102,21 @@ export class Stagging{
     '${$displayName} không hợp lệ',
     otherPropertyName => ({ otherPropertyName })
 );
+ValidationRules.customRule(
+    'AccountId',
+    (value, obj, otherPropertyName) => {
+    //    console.log('value',value)
+        if (value !== '0') {
+
+            return true;
+    } 
+    else {
+        return false;
+    }}
+    ,
+    '${$displayName} không hợp lệ',
+    otherPropertyName => ({ otherPropertyName })
+);
   ValidationRules
   .ensure((a: ModelWeb) => a.Name).required()
   .ensure(a=>a.Url).matches(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/).required()
@@ -122,6 +137,6 @@ export class Stagging{
   .ensure(a=>a.Git).matches(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/).required()
   .on(Stagging);
     ValidationRules
-  .ensure((a: Accounts) => a.AccessLevels).required()
+  .ensure((a: Accounts) => a.AccessLevels).required().ensure(a => a.AccountId).required().satisfiesRule('AccountId')
   .on(Accounts);
                          

@@ -23,18 +23,20 @@ export class User {
 }
 
 export class Info {
-  
-  Name: string
-  Age: string
-  Sex: string
-  Address: string
+  Email:string;
+  Name: string;
+  Age: string;
+  Sex: string;
+  Address: string;
+  Phone:string;
   constructor(entity?: any) {
     if (entity) {
-    
+      this.Email=entity.Email;
       this.Name = entity.Name;
       this.Age = entity.Age;
       this.Sex = entity.Sex;
       this.Address = entity.Address;
+      this.Phone=entity.Phone;
     }
   }
 }
@@ -120,12 +122,27 @@ ValidationRules.customRule(
     '${$displayName} không hợp lệ',
     otherPropertyName => ({ otherPropertyName })
 );
+ValidationRules.customRule(
+    'WebsiteId',
+    (value, obj, otherPropertyName) => {
+       console.log('value',value)
+        if (value != '0') {
+
+            return true;
+    } 
+    else {
+        return false;
+    }}
+    ,
+    '${$displayName} không hợp lệ',
+    otherPropertyName => ({ otherPropertyName })
+);
 ValidationRules
   .ensure((a: ModelWeb) => a.AccessLevels).required().satisfiesRule('AccessLevels').ensure(a => a.Name).required().
    ensure(a=>a.Git).matches(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/).required().
     ensure(a=>a.Source).matches(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/).required().
      ensure(a=>a.Url).matches(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/).required().
-      ensure(a=>a.Name).required()
+      ensure(a=>a.Name).required().ensure(a=>a.WebsiteId).required().satisfiesRule('WebsiteId')
   .on(ModelWeb);
 
 ValidationRules
@@ -137,7 +154,7 @@ ValidationRules
   .ensure(a => a.WebTemplateId).required()
   .on(Web);
 ValidationRules
-  .ensure((a: Info) => a.Name).required()
+  .ensure((a: Info) => a.Email).required().email()
   .on(Info);
 
 ValidationRules

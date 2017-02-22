@@ -43,7 +43,7 @@ export class AccountService {
   loadExisting(id) {
     return this.clssServives.DetaiByUser(id)
       .then(rs => {
-        console.log('@@@@@####',rs)
+      //  console.log('@@@@@####',rs)
         return {
           entity: new User((rs as any).data)
 
@@ -58,7 +58,7 @@ export class AccountService {
  } 
   createNew() {
      return this.createPromise().then(rs=>{
-       console.log('new',rs)
+     //  console.log('new',rs)
          return {
             entity:rs
          }
@@ -66,6 +66,7 @@ export class AccountService {
   
   }
   saveServices(meta){
+   // console.log('@@',JSON.stringify(meta));
       this.clssServives.CreateUserFull(meta).then(rs=>{
             swal({
             title: "Notification",

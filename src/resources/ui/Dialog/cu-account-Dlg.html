@@ -81,24 +81,24 @@
   </style>
   <ai-dialog class="edit-form" data-backdrop="static">
     <ai-dialog-header>
-      <h3>${title}</h3>
+      <h3 if.bind="check==true">UPDATE</h3>
+      <h3 if.bind="check==false">NEW</h3>
     </ai-dialog-header>
     <ai-dialog-body>
       <form class="ui form large" submit.delegate="submit()">
         <div class="ui two fields">
           <div class="field">
             <label>UserName</label>
-            <select value.bind="item.AccountId & validate">
+            <select value.bind="item.AccountId & validate" disabled.bind="check">
                   <!--<option value="0">...Select Account...</option>-->
                   <option repeat.for="tmp of listAccount" value="${tmp.AccountId}">${tmp.UserName}
                   </option>
             </select>
-            
-         
           </div>
+
           <div class="field">
             <label>AccessLevels</label>
-            <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="item.AccessLevels & validate">
+            <div class="ui multiple search selection dropdown" ui-dropdown vdrop.two-way="item.AccessLevels & validate">
               <input name="gender" type="hidden" value="${item.AccessLevels}">
               <i class="dropdown icon"></i>
               <div class="default text">--Select All--</div>
@@ -108,6 +108,7 @@
             </div>
           </div>
         </div>
+
         <div class="field">
           <div class="actions right">
             <div class="ui deny button" click.trigger="dialogController.cancel()">

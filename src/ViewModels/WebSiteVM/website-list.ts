@@ -8,6 +8,10 @@ import {Services} from './services';
 export class WebSiteList extends ListViewModel {
   constructor(router, service) {
     super('websites', router, service)
+ 
+}
+  comfirmWeb(item){
+      this.service.confirmServices(item);
   }
   
 }

@@ -88,7 +88,21 @@ CreateWebFull(meta) {
     })
   } 
 
-
+confirmWebsite(websiteId) {
+    return new Promise((resolve, reject) => {
+      this.http.get(`/websites/${websiteId}/confirm`
+       
+      ).then(data =>
+        resolve(data)
+      ).catch(err => {
+         //console.log('@@@@@',err.Error)
+        if (err.response.status == 422) {
+         
+           reject(err.response.data.Message)
+        }
+      })
+    })
+  } 
 
 
 

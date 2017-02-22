@@ -1,7 +1,7 @@
 <template>
   </br>
   <div class="content-padding">
-    <form class="ui form" submit.delegate="save()" validation-errors.bind="errors">
+    <form class="ui form" submit.delegate="save()">
       <compose view="resources/ui/Dialog/menu-header.html"></compose>
       <br>
       <div class="ui four fields">
@@ -10,40 +10,39 @@
           <input type="text" placeholder="AccountId" value.bind="entity.AccountId" disabled>
         </div>
         <div class="field">
-            <label>AccountType</label>
-            <div class="ui selection dropdown" ui-dropdown vdrop.two-way="entity.AccountType">
-              <input name="gender" type="hidden" value="${item.AccountType}">
-              <i class="dropdown icon"></i>
-               <div class="default text">--Select All--</div>
-              <div class="menu">
-                <div class="item" repeat.for="item of accountType" value="item.text">${item.value}</div>
-              </div>
-            </div>
-          </div>
-       
+          <label>AccountType</label>
+          <select value.bind="entity.AccountType">
+                 
+                  <option repeat.for="tmp of accountType" value="${tmp.text}">${tmp.value}
+                  </option>
+            </select>
+        </div>
         <div class="field">
           <label>UserName</label>
           <input type="text" placeholder="UserName" value.bind="entity.UserName & validate">
         </div>
-         <div class="field">
-            <label>Status</label>
-            <div class="ui selection dropdown" ui-dropdown vdrop.two-way="entity.Status">
-              <input name="gender" type="hidden" value="${item.Status}">
-              <i class="dropdown icon"></i>
-               <div class="default text">--Select All--</div>
-              <div class="menu">
-                <div class="item" repeat.for="item of accountStatus" value="item.text">${item.value}</div>
-              </div>
-            </div>
-          </div>
-       
+        <div class="field">
+          <label>Status</label>
+          <select value.bind="entity.Status">
+                  <option repeat.for="tmp of accountStatus" value="${tmp.text}">${tmp.value}
+                  </option>
+            </select>
+        </div>
       </div>
       </br>
       <h3>INFO</h3>
       <div class="ui four fields">
         <div class="field">
+          <label>Email</label>
+          <input type="text" placeholder="Email" value.bind="entity.Info.Email & validate">
+        </div>
+        <div class="field">
           <label>Name</label>
-          <input type="text" placeholder="Name" value.bind="entity.Info.Name & validate">
+          <input type="text" placeholder="Name" value.bind="entity.Info.Name">
+        </div>
+        <div class="field">
+          <label>Phone</label>
+          <input type="number" placeholder="Phone" value.bind="entity.Info.Phone">
         </div>
         <div class="field">
           <label>Age</label>

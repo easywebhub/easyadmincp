@@ -17,6 +17,7 @@ export class SearchUserNameValueConverter {
     if (obj == "") {
       return array;
     } else if (obj) {
+    
       let filteredArr = array.filter(x => x.UserName && x.UserName.toLowerCase().indexOf(obj.toLowerCase()) !== -1);
 
       return filteredArr;

@@ -20,9 +20,14 @@ import {
 import {
   AccessLevels,WebsiteTypes
 } from '../../../resources/helpers/enum';
+import {
+  WebSiteServices
+} from '../../../services/WebSite/WebSiteServices';
 import * as $
 from 'jquery';
-@inject(DialogController,ValidationControllerFactory)
+import * as _
+from 'lodash';
+@inject(WebSiteServices,DialogController,ValidationControllerFactory)
 
 export class CUAccountWebsiteDlg {
   dialogController: DialogController;
@@ -30,16 +35,39 @@ export class CUAccountWebsiteDlg {
   controller: any;
   accessLevels=AccessLevels;
   websiteTypes=WebsiteTypes;
-  constructor(dialogController,controllerFactory) {
+  clssServer:WebSiteServices;
+  listWeb:any;
+  check:boolean=false;
+  constructor(webSiteServices,dialogController,controllerFactory) {
+    
     this.dialogController = dialogController;
     this.controller = controllerFactory.createForCurrentScope();
     this.controller.addRenderer(new SemanticFormRenderer());
+    this.clssServer=webSiteServices;
   
   }
-  activate(params) {
-    //  console.log("11111",JSON.stringify(params));
-      this.item =params;
-      
+  async activate(params) {
+   //  console.log("11111",params);
+     if(params.WebsiteId!='0')
+      {
+        this.check=true;
+      }
+     
+     await this.clssServer.GetListWebSite().then(rs=>{
+          this.listWeb=(rs as any).data;
+          //console.log('9999',(rs as any).data);
+           this.listWeb.push({
+        'WebsiteId': '0',
+        'DisplayName': '--Select Account--',
+        'Name': 'a'
+      });
+       this.item =params;
+      this.listWeb = _.sortBy(this.listWeb, [function (o) {
+        return o.WebsiteId;
+      }]);
+      })
+         
+
    }
   submit() {
     console.log('valid',this.controller)
@@ -61,15 +89,15 @@ export class CUAccountWebsiteDlg {
 
     });
   }
-   get title() {
-    if (!this.item.WebsiteId) {
-        return 'NEW';
+  //  get title() {
+  //   if (this.check==false) {
+  //       return 'NEW';
       
-    }
-    else
-     return `Update`;
+  //   }
+  //   else
+  //    return `Update`;
      
     
-  }
+  // }
   
 }

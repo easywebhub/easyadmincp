@@ -13,7 +13,8 @@ import {
 import {
   ModelWeb,Accounts
 } from '../../../models/model-web';
-
+import * as _
+from 'lodash';
 @inject(UserServices, DialogService)
 
 export class AccountList {
@@ -55,7 +56,24 @@ export class AccountList {
     }).then((result) => {
       if (!result.wasCancelled) {
         //result.output.AccessLevels=[result.output.AccessLevels]
-         this.entities.Accounts.push(result.output);
+         let searchWebId=_.find(this.entities.Accounts,(o)=> { return (o as any).AccountId== result.output.AccountId; })
+    if(_.isEmpty(searchWebId)==false){
+        let tmp = _.map(this.entities.Accounts, (x) => {
+          if ((x as any).AccountId == result.output.AccountId) {
+            (x as any).AccessLevels = _.union((x as any).AccessLevels, result.output.AccessLevels);
+            return x;
+          } else
+            return x;
+        });
+        this.entities.Accounts=tmp;
+      //  console.log('tmp',tmp);
+    }
+    else{
+      
+       this.entities.Accounts.push(result.output);
+        //console.log('result',this.entities.Websites);
+    }
+         
         
       } else {
         console.log('bad');

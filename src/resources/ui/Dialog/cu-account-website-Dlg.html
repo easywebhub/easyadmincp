@@ -81,7 +81,9 @@
   </style>
   <ai-dialog class="edit-form" data-backdrop="static">
     <ai-dialog-header>
-      <h3>${title}</h3>
+
+      <h3 if.bind='check==true'>Update</h3>
+      <h3 if.bind='check==false'>New</h3>
     </ai-dialog-header>
     <ai-dialog-body>
       <form class="ui form large" submit.delegate="submit()">
@@ -91,16 +93,34 @@
             <input type="text" placeholder="WebsiteId" value.bind="item.WebsiteId">
           </div>-->
           <div class="field">
-            <label>Name</label>
-            <input type="text" placeholder="Name" value.bind="item.Name &  validate">
+            <label>DisplayName</label>
+            <select value.bind="item.WebsiteId & validate" disabled.bind="check">
+                  <!--<option value="0">...Select Account...</option>-->
+                  <option repeat.for="tmp of listWeb" value="${tmp.WebsiteId}">${tmp.DisplayName}
+                  </option>
+            </select>
+            
+         
           </div>
-          <div class="field">
+           <div class="field">
+               <label>AccessLevels</label>
+            <div class="ui multiple selection dropdown" ui-dropdown vdrop.two-way="item.AccessLevels & validate">
+              <input name="gender" type="hidden" value="${item.AccessLevels}">
+              <i class="dropdown icon"></i>
+              <div class="default text">--Select All--</div>
+              <div class="menu">
+                <div class="item" repeat.for="item of accessLevels" value="${item.text}">${item.value}</div>
+               
+              </div>
+            </div>
+          </div>
+          <!--<div class="field">
             <label>DisplayName</label>
             <input type="text" placeholder="DisplayName" value.bind="item.DisplayName">
-          </div>
+          </div>-->
         </div>
 
-        <div class="ui two fields">
+        <!--<div class="ui two fields">
 
           <div class="field">
             <label>Url</label>
@@ -149,7 +169,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
         <div class="field">
         <div class="actions right">
           <div class="ui deny button" click.trigger="dialogController.cancel()">
