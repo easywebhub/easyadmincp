@@ -1,6 +1,7 @@
 body {
   margin: 0;
 }
+
 ul {
 	list-style: none;
 }
@@ -128,7 +129,37 @@ div.au-stagger {
   border-radius: 50%;
   border: 2px #FFF solid;
 }
-
+  dialog-container.sweet-alert {
+      z-index: 200111;
+    }
+    dialog-container ai-dialog,
+    dialog-container ai-dialog-container {
+      z-index: 100005 !important;
+      overflow: hidden;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: auto;
+    }
+    
+    ai-dialog>ai-dialog-header {
+      padding: 11px 16px 4px;
+    }
+    
+    ai-dialog>ai-dialog-header>button {
+      display: inline-block;
+      float: none;
+    }
+    
+    ai-dialog-overlay.active {
+      background-color: black;
+      opacity: .5 !important;
+    }
+    
+    
+   
 /* animation definitions */
 @-webkit-keyframes fadeInRight {
   0% {

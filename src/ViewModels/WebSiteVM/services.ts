@@ -112,14 +112,17 @@ export class Services {
      }
   }
   confirmServices(item){
+
      this.clssServives.confirmWebsite(item.WebsiteId).then(rs=>{
            swal({
             title: "Notification",
             text: "ConFirm Website success",
-            timer: 2500,
+            timer: 1000,
             showConfirmButton: true,
             type: "success"
           });
+          window.location.reload(true);
+         
      }).catch(error=>{
          //console.log('error',error.Message)
              swal({
@@ -129,6 +132,7 @@ export class Services {
             showConfirmButton: true,
             type: "warning"
           }); 
+          
         })
      }
   }

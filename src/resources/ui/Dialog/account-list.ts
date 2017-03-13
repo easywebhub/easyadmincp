@@ -22,6 +22,9 @@ export class AccountList {
   entities: any;
   clssServices: UserServices;
   dialogService: DialogService;
+  item:any;
+  count=0;
+  disableButton:boolean=false;
   constructor(UserServices, dialogService) {
 
     this.clssServices = UserServices;
@@ -31,6 +34,7 @@ export class AccountList {
 
    activate(params) {
     //console.log('params',params)
+    
      this.entities = params;
     if (params.Accounts) {
         
@@ -47,14 +51,18 @@ export class AccountList {
      }
     
   }
-
+  
   addAccount(item) {
-
-    this.dialogService.open({
+      
+      
+         this.disableButton=true;    
+       this.dialogService.open({
       viewModel: CUAccountDlg,
       model:new Accounts({})
     }).then((result) => {
+       this.disableButton=false;  
       if (!result.wasCancelled) {
+       // this.disableButton=false;
         //result.output.AccessLevels=[result.output.AccessLevels]
          let searchWebId=_.find(this.entities.Accounts,(o)=> { return (o as any).AccountId== result.output.AccountId; })
     if(_.isEmpty(searchWebId)==false){
@@ -67,20 +75,21 @@ export class AccountList {
         });
         this.entities.Accounts=tmp;
       //  console.log('tmp',tmp);
-    }
+     
+  }
     else{
       
        this.entities.Accounts.push(result.output);
         //console.log('result',this.entities.Websites);
     }
-         
+        
         
       } else {
         console.log('bad');
       }
 
     });
-
+      
   }
   editAccount(item) {
  

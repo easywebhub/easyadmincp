@@ -38,6 +38,7 @@ export class CUAccountWebsiteDlg {
   clssServer:WebSiteServices;
   listWeb:any;
   check:boolean=false;
+  pending:boolean=false;
   constructor(webSiteServices,dialogController,controllerFactory) {
     
     this.dialogController = dialogController;
@@ -46,7 +47,7 @@ export class CUAccountWebsiteDlg {
     this.clssServer=webSiteServices;
   
   }
-  async activate(params) {
+async activate(params) {
    //  console.log("11111",params);
      if(params.WebsiteId!='0')
       {
@@ -54,23 +55,17 @@ export class CUAccountWebsiteDlg {
       }
      
      await this.clssServer.GetListWebSite().then(rs=>{
+         setTimeout(()=>{this.pending=true;},1000)
+           
           this.listWeb=(rs as any).data;
-          //console.log('9999',(rs as any).data);
-           this.listWeb.push({
-        'WebsiteId': '0',
-        'DisplayName': '--Select Account--',
-        'Name': 'a'
-      });
-       this.item =params;
-      this.listWeb = _.sortBy(this.listWeb, [function (o) {
-        return o.WebsiteId;
-      }]);
+          this.item =params;
+     
       })
          
 
    }
   submit() {
-    console.log('valid',this.controller)
+  //  console.log('valid',this.controller)
     this.controller.validate().then(rs => {
     
       if (rs.valid == true)

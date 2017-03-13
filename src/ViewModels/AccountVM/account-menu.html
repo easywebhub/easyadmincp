@@ -1,11 +1,14 @@
 <template>
-  <div class="ui secondary pointing menu menu-ngang">
-    
-    <a   repeat.for="row of router.navigation" class="${row.isActive ? 'active item' : 'item'} " href.bind="row.href">
+  <div class="ui" show.bind="pending==false">
+    <div class="ui active inverted dimmer">
+      <div class="ui large text loader">Loading</div>
+    </div>
+  </div>
+  <div class="ui secondary pointing menu menu-ngang" show.bind="pending==true">
+    <a repeat.for="row of router.navigation" class="${row.isActive ? 'active item' : 'item'} " href.bind="row.href">
         ${row.title} 
     </a>
-   </div>
- 
+  </div>
   <div class="ui">
     <router-view></router-view>
   </div>

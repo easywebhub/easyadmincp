@@ -23,6 +23,7 @@ export class AccountWebsites {
   entities: any;
   clssServices: UserServices;
   dialogService: DialogService;
+  disabledButton:boolean=false;
   constructor(UserServices, dialogService) {
 
     this.clssServices = UserServices;
@@ -48,11 +49,12 @@ export class AccountWebsites {
   }
 
   addWebsite(item) {
-
+    this.disabledButton=true;
     this.dialogService.open({
       viewModel: CUAccountWebsiteDlg,
       model: new ModelWeb(item)
     }).then((result) => {
+      this.disabledButton=false;
       if (!result.wasCancelled) {
        
         let searchWebId=_.find(this.entities.Websites,(o)=> { return (o as any).WebsiteId== result.output.WebsiteId; })

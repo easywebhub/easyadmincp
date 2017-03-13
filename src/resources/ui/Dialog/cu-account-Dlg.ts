@@ -39,14 +39,16 @@ export class CUAccountDlg {
   listAccount: any;
   userSR: UserServices;
  check:boolean=false;
+ pending:boolean=false;
   constructor(dialogController, controllerFactory, userServices) {
     this.dialogController = dialogController;
     this.controller = controllerFactory.createForCurrentScope();
     this.controller.addRenderer(new SemanticFormRenderer());
     this.userSR = userServices;
   }
- async activate(params) {
-    if(params.AccountId=='0')
+  checkCountId(params)
+  {
+      if(params.AccountId=='0')
      {
        this.check=false;
      }
@@ -54,20 +56,16 @@ export class CUAccountDlg {
      {
        this.check=true;
      }
+  }
+ async activate(params) {
+    this.checkCountId(params);
     this.accessLevels = AccessLevels;
-     console.log('(rs as any).data',JSON.stringify(this.accessLevels));
+    // console.log('(rs as any).data',JSON.stringify(this.accessLevels));
     this.item = params;
     await this.userSR.GetListByUsers().then(rs => {
+     
+     setTimeout(()=>{this.pending=true},1000);
       this.listAccount = (rs as any).data;
-      this.listAccount.push({
-        'AccountId': '0',
-        'UserName': '--Select Account--',
-        'AccountType': 'a'
-      });
-      this.item = params;
-      this.listAccount = _.sortBy(this.listAccount, [function (o) {
-        return o.AccountId;
-      }]);
      
     })
 

@@ -1,6 +1,6 @@
 <template>
     <h3 class="left">Accounts &nbsp;
-      <a class="ui button green show-modal" style="float:right" click.delegate="addAccount(item)">ADD</a>
+      <button  id="disabled" class="ui button green show-modal" style="float:right" click.delegate="addAccount(item)" disabled.bind="disableButton">ADD</button> 
     </h3>
     </br>
     <table class="ui selectable celled table">

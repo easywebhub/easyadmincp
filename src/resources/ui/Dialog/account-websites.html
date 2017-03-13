@@ -1,9 +1,10 @@
 <template>
- 
+    
     <h3 class="left">WEBSITES &nbsp;
-      <a class="ui button green show-modal" style="float:right" click.delegate="addWebsite(item)">ADD</a>
+      <button class="ui button green show-modal" style="float:right" click.delegate="addWebsite(item)" disabled.bind="disabledButton">ADD</button>
     </h3>
     <br>
+ 
     <table class="ui selectable celled table">
       <thead>
         <tr> 
