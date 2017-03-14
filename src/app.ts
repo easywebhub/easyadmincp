@@ -6,7 +6,8 @@ import * as $ from 'jquery'
 
 export class App {
   router: Router;
-  checkNav:any
+  checkNav:any;
+  User:any;
    constructor(appState, private history: History) {
     this.checkNav = false;
   }
@@ -15,6 +16,8 @@ export class App {
     
     if ((Lockr.get('UserInfo')as any)) {
       this.checkNav = true;
+      console.log('@@@',Lockr.get('UserInfo')as any);
+      this.User=Lockr.get('UserInfo');
     }
     config.map([
        { route: ['', 'login'], name: 'login', moduleId: 'ViewModels/LoginVM/login', nav: false, settings: { roles: [] }, title: 'Login' },
