@@ -44,6 +44,7 @@ export class LoginViewModel {
     this.theRouter = router
     this.controller = controllerFactory.createForCurrentScope();
     this.controller.addRenderer(new SemanticFormRenderer());
+    this.Login = new Login({})
     if (Lockr.get('UserInfo') != null) {
             //this.theRouter.navigate("Dashboard");
             // location.reload();
@@ -57,15 +58,7 @@ export class LoginViewModel {
    
   }
 
-    activate() {
-     this.Login = new Login({})
     
-
-    //  setTimeout(function(){
-    //             //window.history.back();
-    //         }, 3000);
-  }
-
 
   routeRegister() {
 
