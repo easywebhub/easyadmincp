@@ -17,7 +17,7 @@ export class LogOut {
           this.theRouter.navigateToRoute('login');
           location.reload();
         
-    }, 1200);
+    }, 500);
     return;
   }
    reset() {

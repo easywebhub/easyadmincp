@@ -37,19 +37,36 @@ export class LoginViewModel {
   Login: Login;
   pendding: boolean = true
   controller: any
-
+  nIntervId:any;
   constructor(router, loggingServices, controllerFactory) {
 
     this.loggingServices = loggingServices
     this.theRouter = router
     this.controller = controllerFactory.createForCurrentScope();
     this.controller.addRenderer(new SemanticFormRenderer());
+    if (Lockr.get('UserInfo') != null) {
+            //this.theRouter.navigate("Dashboard");
+            // location.reload();
+            this.theRouter.navigateToRoute('login');
+            Lockr.rm('UserInfo');
+            location.reload();
+            
 
+            return;
+        }
+   
   }
 
-  activate() {
-    this.Login = new Login({})
+    activate() {
+     this.Login = new Login({})
+    
+
+    //  setTimeout(function(){
+    //             //window.history.back();
+    //         }, 3000);
   }
+
+
   routeRegister() {
 
     this.theRouter.navigateToRoute('register');
