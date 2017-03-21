@@ -1,3 +1,13 @@
+# Overview EasyAdminCP:
+
+#### 1. Web Admin:  Aurelia with Semantic UI (limit to use Bootstrap)
+   + Save source on branch ```easyadmincp```
+   + Use branch `/gh-pages` to host Aurelia website on GitHub pages.
+   + CNAME:  easyadmincp.com
+
+#### 2. API: call API from ```api.easyadmincp.com```
+see more backend project of API system: https://github.com/easywebhub/BackendEasyWeb/edit/master/README.md
+
 # aurelia-skeleton-webpack
 
 ## Getting started
