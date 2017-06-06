@@ -141,7 +141,7 @@ ValidationRules
   .ensure((a: ModelWeb) => a.AccessLevels).required().satisfiesRule('AccessLevels').ensure(a => a.Name).required().
    ensure(a=>a.Git).matches(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/).required().
     ensure(a=>a.Source).matches(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/).required().
-     ensure(a=>a.Url).matches(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/).required().
+  //   ensure(a=>a.Url).matches(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/).required().
       ensure(a=>a.Name).required().ensure(a=>a.WebsiteId).required().satisfiesRule('WebsiteId')
   .on(ModelWeb);
 
@@ -150,7 +150,7 @@ ValidationRules
   .on(UpdateUser);
 ValidationRules
   .ensure((a: Web) => a.DisplayName).required()
-  .ensure(a=>a.Url).matches(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/).required()
+  // .ensure(a=>a.Url).matches(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/).required()
   .ensure(a => a.WebTemplateId).required()
   .on(Web);
 ValidationRules

@@ -16,10 +16,10 @@ export class ListViewModel {
     await this.load();
   }
 
-  load() {
+ async load() {
     this.entities = [];
 
-    this.service.getPage()
+   await this.service.getPage()
       .then(result => {
         this.entities = result.entities;
         this.total = result.total;

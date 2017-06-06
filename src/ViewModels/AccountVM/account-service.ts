@@ -26,8 +26,8 @@ export class AccountService {
     this.controller.addRenderer(new SemanticFormRenderer());
     
   }
-  getPage() {
-    return this.clssServives.GetListByUsers().then(rs => {
+  async getPage() {
+    return await this.clssServives.GetListByUsers().then(rs => {
       //  console.log('data',(rs as any).data)
       return {
         entities: (rs as any).data,

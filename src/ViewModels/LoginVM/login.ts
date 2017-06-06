@@ -37,7 +37,7 @@ export class LoginViewModel {
   Login: Login;
   pendding: boolean = true
   controller: any
-  nIntervId:any;
+ 
   constructor(router, loggingServices, controllerFactory) {
 
     this.loggingServices = loggingServices
@@ -46,12 +46,9 @@ export class LoginViewModel {
     this.controller.addRenderer(new SemanticFormRenderer());
     this.Login = new Login({})
     if (Lockr.get('UserInfo') != null) {
-            //this.theRouter.navigate("Dashboard");
-            // location.reload();
-            this.theRouter.navigateToRoute('login');
             Lockr.rm('UserInfo');
             location.reload();
-            
+             this.theRouter.navigateToRoute('login');
 
             return;
         }
@@ -94,7 +91,7 @@ export class LoginViewModel {
             type: "success"
           });
           window.setTimeout(() => {
-             location.href='#/websites';
+             this.theRouter.navigateToRoute('websites');
             location.reload();
           }, 2000);
           console.log('true')

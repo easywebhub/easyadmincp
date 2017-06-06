@@ -25,8 +25,8 @@ export class Services {
     this.controller = controllerFactory.createForCurrentScope();
     this.controller.addRenderer(new SemanticFormRenderer());
   }
-  getPage() {
-    return this.clssServives.GetListWebSite().then(rs => {
+  async getPage() {
+    return await this.clssServives.GetListWebSite().then(rs => {
     //  console.log('data', (rs as any).data)
       return {
         entities: (rs as any).data,
